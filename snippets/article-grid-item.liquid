@@ -1,0 +1,22 @@
+<a href="{% if article.metafields.c_f.press_link != blank %}{{ article.metafields.c_f.press_link }}{% else %}{{ article.url }}{% endif %}" {% if article.metafields.c_f.press_link != blank %}target="_blank"{% endif %}
+  class="block-post" 
+  data-equal-height="post" 
+  data-screen-width="640">
+  <figure>
+    <img src="{{ article.image.src | img_url: 'grande' }}" alt="{{ article.title | escape }}" />
+  </figure>
+  <div class="post-content">
+    <h3>{{ article.title }}</h3>
+    <p>
+      {% if article.excerpt.size > 0 %}
+      {{ article.excerpt | strip_html | truncatewords: 25 }}
+      {% else %}
+      {{ article.content | strip_html | truncatewords: 25 }}
+      {% endif %}
+    </p>
+    <footer class="archive-meta">
+      Read More
+      {% comment %}<span class="archive-date"> {{ article.published_at | date: '%b %d, %Y' }}</span> {% endcomment %}
+    </footer>
+  </div>
+</a>

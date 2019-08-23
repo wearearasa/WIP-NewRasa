@@ -1,0 +1,105 @@
+<section class="section-modals custom-scroll" id="depth-2">
+  <div class="container">
+    <div class="content-scrolling custom-content-scroll">
+      <h2>{{ section.settings.title }}</h2>
+      {{ section.settings.content }}
+     
+    </div>
+
+    <div class="content-prallax">
+      <div class="herbs">
+        {% include 'narrative-2.1' %}
+        {% include 'narrative-2.2' %}
+        {% include 'narrative-2.3' %}
+      </div>
+      <div class="herbs-colored">
+        {% for block in section.blocks %}
+        <span class="modal-trigger {{ block.settings.title }}" data-modal-trigger="{{ block.settings.trigger_title }}"><img src="{{ block.settings.image | img_url:'master' }}" alt="{{ block.settings.title }}"><span class="label">{{ block.settings.title }}</span></span>
+        {% endfor %}	
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal-overlay"></div>
+
+
+<div class="hide">
+
+  {% for block in section.blocks %}
+  <div class="modal-loaded" data-modal-content="{{ block.settings.trigger_title }}">
+
+    <figure class="modal-image is-{{ block.settings.title }}"></figure>
+
+    <div class="modal-body">
+      <h2>{{ block.settings.modal_title }}</h2>
+      
+      <p class="modal-lead">{{ block.settings.modal_content }}
+      </p>
+    </div>
+
+  </div>
+  {% endfor %}
+ 
+    
+    
+</div>
+
+{% schema %}
+  {
+    "name": "Home Ingredients",
+    "settings": [
+		{
+			"type":"text",
+			"id":"title",
+			"label":"Title"
+		},
+		{
+			"type":"textarea",
+			"id":"content",
+			"label":"content"
+		}
+	],
+
+	"blocks":[
+		{
+			"type":"text",
+			"name":"Add Ingredients",
+
+		"settings":[
+          {
+              "type":"image_picker",
+              "id":"image",
+              "label":"Image"
+          },
+          {
+              "type":"text",
+              "id":"title",
+              "label":"Title"
+          },	
+		  {
+              "type":"text",
+              "id":"trigger_title",
+              "label":"Trigger text"
+          },
+		  {
+			"type":"text",
+			"id":"modal_title",
+			"label":"Modal Title"
+		  },
+		  {
+			"type":"textarea",
+			"id":"modal_content",
+			"label":"Modal Content"
+		  }
+		]
+	  }
+	],
+"presets":[
+	{
+		"category":"Custom Content",
+		"name":"Ingredient Section"
+	}	
+]
+  }
+{% endschema %}
+

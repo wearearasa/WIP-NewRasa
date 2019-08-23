@@ -1,0 +1,23 @@
+<section class="hero-shop">
+  <div class="container">
+    <h1>
+      Shop Rasa Coffe Alternatives
+    </h1>
+    <p class="lead">
+      A blend of 12 all-star herbs, 7 of which are bonafide adaptogens, from the time-honored traditions of Ayurveda, Chinese medicine, and Western herbalism in a dark, roasty, flavorful, nutritious brew with a hint of cinnamon that you can savor all day long.
+    </p>
+  </div>
+</section>
+
+<section class="grid-shop">
+  <div class="container">
+
+    {% for product in collection.products %}
+      {% include 'product-grid-item' with products_per_row %}
+    {% else %}
+      <p>There are no products in this view.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% include 'narrative-cta' %}

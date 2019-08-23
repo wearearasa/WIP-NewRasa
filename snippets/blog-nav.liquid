@@ -1,0 +1,31 @@
+<div class="container blog-nav">
+{% if blog.handle == 'press' %}
+  <style>
+    .archive-tags {
+      margin-top: 1.5em;
+    }
+  </style> 
+{% endif %}
+  <div class="archive-tags">
+    <a href="{{ blog.url }}">All</a>
+
+      {% if blog.handle == 'press' %}
+        {% for tag in blogs['press'].all_tags %}
+          {% capture tag_path %}
+            {{ blog.url }}/tagged/{{ tag | handle }}
+          {% endcapture %}
+          
+          <a href="{{ tag_path }}">{{ tag }}</a>
+        {% endfor %}
+
+        {% else %}
+
+        {% for tag in blogs['news'].all_tags %}
+          {% capture tag_path %}
+            {{ blog.url }}/tagged/{{ tag | handle }}
+          {% endcapture %}
+          <a href="{{ tag_path }}">{{ tag }}</a>
+      {% endfor %}
+      {% endif %}
+  </div>
+</div>

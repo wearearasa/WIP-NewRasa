@@ -1,0 +1,76 @@
+<section class="hero-homepage">
+    <figure>
+      <img class="hero-slide-1" src="{{ 'rasa-hero.jpg' | asset_url }}" alt="Rasa Adaptogenic Coffee Alternative">
+    </figure>
+  <div class="container">
+    <span class="is-hidden">
+      <span class="hero-heading-rotator">
+        <span class="rotate-box">
+        	<span class="dark-peach">Healthy Coffee Alternatives for Sustainable Energy</span>
+            <span class="hero-heading-static">Rasa’s adaptogenic formula energizes while helping your body cope with stress. Drink it alone, or dress it up with all your fave fixins.</span>
+            <div class="quiz-button-hero-wrapper">
+              <a class="button-transparent quiz-button-hero cus-learn-more" href="#">Learn More</a>  
+            </div>
+        </span>
+        <span class="rotate-box">
+        	<span class="dark-peach">Original • Cacao • Dirty</span>
+          	<span class="hero-heading-static">There’s something for all your moods. Enjoy Rasa no matter who you are, where you are, or what you’re doing.</span>
+            <div class="quiz-button-hero-wrapper">
+              <a class="button-transparent quiz-button-hero" href="/collections/rasa-products">Order Now</a>  
+            </div>
+        </span>
+      </span>
+      
+      <!--span class="hero-heading-static">with a daily cup of our delicious adaptogenic coffee & coffee alternative blends.</span><br>
+      
+ 	<div class="quiz-button-hero-wrapper">
+      <a class="button-transparent quiz-button-hero" href="/collections/all-products">Shop Our Products</a>  
+    </div-->
+    </span>
+    
+  </div>
+</section>
+
+{% include 'guarantee' %}
+
+  <section class="section-ingredients" id="depth-3">
+  <div class="container">
+    <div class="content-parallax">
+      <figure>        
+        <img class="img-over" src="{{ 'rasa-original.jpg' | asset_url }}" alt="Rasa Coffee Alternative">
+      </figure>
+    </div>
+
+    <div class="content-scrolling">
+      <h2>Rasa contains no common allergens, no fillers, & no BS.</h2>
+      <p>
+        Rasa has no common allergens—just organic, sustainable herbs, blended together for you to enjoy however suits your life.
+      </p>
+	  <p>Our balanced herbal formula builds stress resilience & gives you calm energy, without jitters or crash! Short-term energy herbs give you that pep in your step, while long-term energy herbs go to work building your energy reserves and stabilizing energy levels over time. 🙌</p>
+      <p>
+        <a href="/collections/all-products" class="button-red">Shop Our Products</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="grid-shop home-grid">
+  <div class="container">
+
+     {% for product in collections.home.products %}
+      {% include 'product-grid-item' with products_per_row %}
+    {% else %}
+      <p>There are no products in this view.</p>
+    {% endfor %}
+  </div>
+</section>
+
+
+
+<script>
+  
+  $(".indicator-down,.cus-learn-more").click(function() {
+    $('html, body').animate({
+        scrollTop: $(".custom-content-scroll").offset().top - -50 }, 1000);
+});
+</script>

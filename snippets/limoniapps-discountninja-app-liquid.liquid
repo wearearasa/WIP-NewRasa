@@ -1,0 +1,77 @@
+{% comment %}V2.1.1 - September 2018
+This liquid snippet is used by Discount Ninja, an app from Limoni Apps
+Do not modify or remove this snippet, this snippet can be overwritten when the app is upgraded
+{% endcomment %}
+
+<script>
+  window.limoniapps_discountninja_liquid = {
+  MoneyFormat: "{{shop.money_with_currency_format | replace: '"', "'"}}",
+  Customer: null,
+  Cart: {{ cart | json }},
+  Product: null,
+  ProductVariants: null
+  };
+
+  {%- if customer -%}
+  window.limoniapps_discountninja_liquid.Customer = {
+  Id: {{ customer.id }},
+  Email: "{{ customer.email }}",
+  Tags: {{ customer.tags | json }},
+  FirstName: "{{ customer.first_name }}",
+  LastName: "{{ customer.last_name }}"
+  };
+  {%- endif -%}
+
+  {%- if product -%}
+    {%- comment -%}Get the first variant if available{%- endcomment -%}
+    {%- if product.first_available_variant.id -%}
+      {%- assign variantid = product.first_available_variant.id -%}
+    {%- else -%}
+      {%- assign variantid = 'null' -%}
+    {%- endif -%}
+
+    if (window.limoniapps_discountninja_liquid.Product === null) window.limoniapps_discountninja_liquid.Product = {};
+    window.limoniapps_discountninja_liquid.Product.Id = {{ product.id }};
+    window.limoniapps_discountninja_liquid.Product.VariantId = {{ variantid }};
+    {%- assign collections = "" -%}
+    {%- for collection in product.collections -%}
+      {%- assign collections = collections | append: collection.handle | append: "," -%}
+    {%- endfor -%}
+    window.limoniapps_discountninja_liquid.Product.Collections = '{{ collections }}';
+    window.limoniapps_discountninja_liquid.Product.FeaturedImage = '{{ product.featured_image | img_url: '500x' }}';
+    if (window.limoniapps_discountninja_liquid.ProductVariants === null) window.limoniapps_discountninja_liquid.ProductVariants = [];
+
+    {%- for variant in product.variants limit: 200 -%}
+    {%- comment -%}Add inventory quantity if it is tracked{%- endcomment -%}
+    {%- assign inventory_quantity = variant.inventory_quantity -%}
+    {%- if inventory_quantity == nil or inventory_quantity < 0 -%}
+             {%- assign inventory_quantity_below_zero = 1 -%}
+          {%- else -%}
+             {%- assign inventory_quantity_below_zero = 0 -%}
+          {%- endif -%}
+          {%- if variant.inventory_management and variant.inventory_policy == 'deny' -%}
+             {%- assign inventory_quantity_apply = 1 -%}
+          {%- else -%}
+             {%- assign inventory_quantity_apply = 0 -%}
+          {%- endif -%}
+
+          {%- if inventory_quantity_below_zero == 1 and inventory_quantity_apply == 0 -%}
+            {%- assign inventory_quantity = 'null' -%}
+          {%- endif -%}
+
+          {%- comment -%}Add compare at price if available (if not, default to price){%- endcomment -%}
+          {%- assign compare_at_or_product_price = variant.compare_at_price -%}
+          {%- if compare_at_or_product_price == nil -%}
+            {%- assign compare_at_or_product_price = variant.price -%}
+          {%- endif -%}
+
+          {%- comment -%}Add to array{%- endcomment -%}
+          window.limoniapps_discountninja_liquid.ProductVariants.push({ VariantId: {{variant.id}}, Price: {{ variant.price }}, CompareAtPrice: {{ compare_at_or_product_price }}, Inventory: {{ inventory_quantity }} });                                                               
+      {%- endfor -%}
+  {%- endif -%}   
+        
+  {%- if variant -%}
+  	if (window.limoniapps_discountninja_liquid.Product === null) window.limoniapps_discountninja_liquid.Product = {};
+  	else window.limoniapps_discountninja_liquid.Product.VariantId = {{ variant.id }};    
+  {%- endif -%}
+</script>

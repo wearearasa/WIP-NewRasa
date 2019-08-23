@@ -1,0 +1,279 @@
+<article class="blog-post is-page">
+
+  <style>
+    ._form_6 ._field4 ._form-label,
+    ._form_6 ._field5 ._form-label {
+      display: block;
+    }
+  </style>
+
+  {% if page.title contains "Frequently Asked Questions" %}
+  {% include 'hero-faq' %}
+  {% endif %}
+
+
+  <div class="container press">
+    <section class="article-content">
+
+      <h1 {% if page.title contains "Frequently Asked Questions" %}style="padding-top:25px;" {% endif %}>{{ page.title }}</h1>
+
+      <div class="article-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+          <path fill="#D7D7D7" fill-rule="evenodd" d="M21.939 14.5c-.6-.42-.775-.242-1.456-.339a1.274 1.274 0 0 1-.483-.16V14h4c-.04.197-.096.363-.165.5.07.137.125.303.165.5H20.001 20c.14-.084.3-.136.483-.161.68-.097.855.081 1.456-.339zm-4.974 8.827c-.098.32-.406.56-.965.673v-4c.085.137.135.301.162.483.101.707-.096.868.392 1.53l.013.018a21.6 21.6 0 0 1-.098-.38c-.456-1.825-.598-3.392-.343-3.651.342.088.95 1.521 1.405 3.346.456 1.826.598 3.394.343 3.654-.226-.058-.57-.709-.909-1.673zM8.062 14.5c.6.418.775.241 1.455.338.183.028.345.077.483.16L9.997 15H6a1.97 1.97 0 0 1 .166-.5A1.97 1.97 0 0 1 6 14h3.997l.003.001c-.138.083-.3.133-.483.16-.68.098-.854-.079-1.455.339zm8.505-6.532a3.815 3.815 0 0 1-.013.018c-.488.663-.29.824-.392 1.531A1.262 1.262 0 0 1 16 10V6c.56.114.867.353.965.673.339-.964.683-1.615.91-1.673.254.26.112 1.828-.344 3.654-.456 1.825-1.063 3.258-1.405 3.346-.255-.26-.113-1.826.343-3.652a21.6 21.6 0 0 1 .098-.38zM26.82 14.5A1.357 1.357 0 0 1 27 15h-2v-.001c.029-.181.092-.352.182-.499a1.376 1.376 0 0 1-.182-.499V14h2a1.357 1.357 0 0 1-.18.5zm-24.637 0a1.357 1.357 0 0 1-.166-.417C2.01 14.055 2.004 14.028 2 14h2c-.03.182-.092.353-.182.5.09.147.153.318.182.5H2c.004-.028.01-.055.016-.083.034-.155.091-.295.166-.417zm6.613-8.56c-.21.134-.452.045-.62-.264-.234-.432-.233-1.131 0-1.566l.031-.052.04-.02c.32-.159.648.192.733.783.062.42-.018.851-.184 1.118zM4.82 8.98c-.59-.086-.94-.415-.782-.735a.638.638 0 0 1 .02-.04.951.951 0 0 0 .054-.03c.431-.234 1.133-.234 1.564.001.309.167.396.41.265.618-.27.167-.699.247-1.121.185zm9.223-5.718c-.178-.543.214-1.101.875-1.247.027-.006.053-.01.082-.015v2c-.449-.072-.832-.349-.957-.738zm2.039-1.247c.662.146 1.053.703.875 1.248-.126.387-.508.665-.956.737H16V2c.028.004.056.01.082.015zm4.123 3.925c-.167-.268-.245-.7-.184-1.12.085-.591.413-.94.735-.782a.273.273 0 0 1 .038.022.85.85 0 0 1 .03.05c.235.433.234 1.134 0 1.564-.167.31-.41.4-.619.266zm4.974 3.04c-.421.06-.852-.018-1.12-.187-.132-.208-.044-.45.263-.617.434-.235 1.133-.235 1.565 0l.053.03a.416.416 0 0 0 .023.039c.156.32-.194.649-.784.734zM8.795 24.06c.166.268.246.698.184 1.12-.085.59-.414.941-.734.781a1.265 1.265 0 0 0-.039-.02 2.33 2.33 0 0 1-.03-.051c-.234-.435-.235-1.134 0-1.566.167-.308.408-.398.619-.263zM4.82 20.02c.422-.06.851.02 1.121.186.131.208.044.451-.265.618-.431.235-1.133.235-1.564 0a1.008 1.008 0 0 0-.053-.03.637.637 0 0 1-.021-.039c-.158-.32.193-.649.782-.734zm9.223 5.718c.125-.389.508-.666.957-.738v2c-.029-.005-.055-.009-.082-.015-.66-.146-1.053-.704-.875-1.247zm2.039 1.246A.892.892 0 0 1 16 27v-2h.001c.448.072.83.35.956.737.178.545-.213 1.102-.875 1.247zm4.123-2.924c.21-.133.452-.044.62.266.233.43.234 1.13 0 1.564l-.031.05a.29.29 0 0 1-.038.022c-.322.158-.65-.19-.735-.782-.061-.42.017-.852.184-1.12zm4.974-4.04c.59.086.94.414.784.735a.425.425 0 0 0-.023.04l-.053.029c-.432.235-1.131.235-1.565 0-.307-.167-.395-.409-.263-.617.268-.169.699-.248 1.12-.186zM10.064.909c.251-.66.725-.281.89-.112.094-.295.4-1.052.8-.708.598.515-.049 3.469-.325 3.912-.36-.132-1.74-2.108-1.365-3.092zM4.001 5.199c.034-.427.532-.482.715-.481.001-.184.055-.681.482-.717.639-.05.888 1.635.776 1.973-.339.113-2.025-.137-1.973-.775zM.088 11.755c-.345-.4.414-.707.707-.801-.168-.164-.549-.64.112-.89.984-.375 2.962 1.003 3.093 1.365-.44.276-3.398.923-3.912.326zM18.571 4c-.276-.446-.924-3.399-.325-3.912.4-.343.705.409.8.706.165-.171.638-.547.89.112.375.984-1.003 2.957-1.365 3.094zM26 11.429c.132-.36 2.11-1.74 3.095-1.365.659.252.28.726.112.89.296.095 1.048.4.705.8-.513.598-3.47-.049-3.912-.325zm-1.974-5.455c-.112-.34.137-2.023.775-1.973.43.034.483.534.482.716.184.001.682.054.716.482.05.638-1.635.888-1.973.775zM10.064 29.092c-.376-.984 1.004-2.96 1.365-3.092.276.443.923 3.397.325 3.912-.4.344-.706-.413-.8-.709-.165.17-.639.55-.89-.11zm-6.063-4.291c-.052-.638 1.634-.888 1.973-.775.112.338-.137 2.023-.776 1.973-.427-.036-.48-.533-.482-.716-.183 0-.681-.055-.715-.482zM.088 18.245c.514-.597 3.473.05 3.912.326-.13.362-2.109 1.74-3.093 1.365-.66-.25-.28-.726-.112-.89-.293-.094-1.052-.4-.707-.8zM18.571 26c.362.137 1.74 2.11 1.365 3.094-.252.66-.725.283-.89.112-.095.297-.4 1.05-.8.706-.599-.513.05-3.467.325-3.912zM26 18.571c.441-.276 3.4-.923 3.912-.326.343.4-.41.706-.705.801.169.165.547.638-.112.89-.985.375-2.963-1.005-3.095-1.365zm-1.974 5.455c.338-.113 2.023.137 1.973.775-.034.428-.532.48-.716.482 0 .182-.053.681-.482.716-.638.05-.887-1.634-.775-1.973zM11.7 10.608c-.356-.64-.296-.896-.878-1.298-.82-.57-1.118-1.391-.465-2.221.847-.36 1.217.406 1.166 1.664-.036.892.155.95.38 1.693.06.193.095.376.098.554a1.339 1.339 0 0 1-.3-.392zm-2.184-.121C7.953 8.927 6.885 7.43 7.01 7.01c.42-.125 1.918.944 3.478 2.505 1.558 1.56 2.627 3.058 2.502 3.475-.421.127-1.915-.942-3.475-2.503zm-.763 1.035c-1.256.052-2.022-.316-1.664-1.167.831-.652 1.653-.353 2.222.467.402.582.657.523 1.299.878.165.091.298.19.391.3a1.914 1.914 0 0 1-.552-.097c-.744-.227-.802-.416-1.696-.38zm3.717-2.87c-.456-1.826-.599-3.393-.343-3.652.341.088.95 1.522 1.406 3.348.455 1.824.597 3.392.343 3.652-.342-.089-.95-1.52-1.406-3.348zm-4.121 4.879C6.522 13.074 5.086 12.467 5 12.126c.258-.256 1.827-.113 3.653.343 1.825.456 3.26 1.064 3.347 1.405-.257.255-1.826.113-3.652-.343zM15 10a1.242 1.242 0 0 1-.163-.485c-.101-.705.098-.868-.393-1.53-.688-.934-.63-1.743.556-1.985v4zm4.18-.692c-.582.402-.523.66-.878 1.3-.093.167-.193.3-.302.392.003-.177.04-.362.097-.553.227-.742.417-.8.381-1.694-.05-1.259.317-2.022 1.167-1.665.651.832.355 1.65-.465 2.22zm-2.17 3.682c-.125-.421.943-1.918 2.504-3.476 1.559-1.56 3.054-2.629 3.476-2.504.125.42-.945 1.916-2.504 3.476-1.56 1.562-3.055 2.628-3.476 2.504zm4.642.54c-1.828.457-3.395.6-3.652.344.084-.34 1.52-.948 3.346-1.405 1.827-.457 3.394-.598 3.654-.343-.086.34-1.52.95-3.348 1.405zm-.405-2.007c-.892-.037-.95.154-1.694.38A1.957 1.957 0 0 1 19 12a1.33 1.33 0 0 1 .393-.3c.64-.357.895-.298 1.298-.88.57-.818 1.393-1.116 2.22-.466.359.85-.404 1.22-1.664 1.169zm-9.548 7.869c.092-.166.19-.301.301-.392a2.03 2.03 0 0 1-.097.554c-.226.743-.417.8-.38 1.693.05 1.259-.32 2.023-1.167 1.664-.653-.83-.355-1.65.465-2.22.582-.403.522-.658.878-1.3zm-2.184.121c1.56-1.561 3.054-2.63 3.475-2.503.125.417-.944 1.914-2.502 3.475-1.56 1.561-3.058 2.63-3.478 2.505-.126-.42.943-1.916 2.505-3.477zm-.763-1.035c.894.035.952-.154 1.696-.38.192-.061.375-.096.552-.098-.093.11-.226.209-.391.3-.642.355-.897.296-1.3.878-.568.82-1.39 1.12-2.22.467-.359-.85.407-1.219 1.663-1.167zm3.717 2.87c.456-1.827 1.064-3.26 1.406-3.348.254.26.112 1.828-.343 3.652-.456 1.826-1.065 3.26-1.406 3.348-.256-.259-.113-1.826.343-3.652zm-4.121-4.879c1.826-.456 3.395-.599 3.652-.343-.086.34-1.522.949-3.347 1.405-1.826.456-3.395.598-3.653.343.086-.34 1.522-.948 3.348-1.405zM15 20v4c-1.187-.242-1.244-1.05-.556-1.985.491-.663.292-.825.393-1.53A1.24 1.24 0 0 1 15 20zm4.18.692c.82.57 1.116 1.388.465 2.22-.85.357-1.218-.406-1.167-1.665.036-.893-.154-.952-.381-1.694A2.049 2.049 0 0 1 18 19c.11.092.21.225.302.393.355.639.296.897.878 1.299zm-2.17-3.682c.42-.124 1.917.942 3.476 2.504 1.56 1.56 2.629 3.055 2.504 3.476-.422.125-1.917-.943-3.476-2.504-1.56-1.558-2.63-3.054-2.504-3.476zm4.642-.54c1.828.455 3.262 1.063 3.348 1.404-.26.255-1.827.114-3.654-.343-1.825-.457-3.262-1.066-3.346-1.405.257-.256 1.824-.113 3.652.343zm-.405 2.007c1.26-.05 2.023.32 1.664 1.169-.827.65-1.65.352-2.22-.467-.403-.581-.659-.522-1.298-.878-.169-.092-.301-.19-.393-.301.177.002.362.038.553.097.744.226.802.417 1.694.38z"></path>
+        </svg>
+      </div>
+
+    {% comment %}
+      {{ page.content }}
+    {% endcomment %}
+
+      <h1 class="text-left  ">Media Features</h1>
+
+      <article>
+        <a href="https://www.ozy.com/good-sht/want-to-protect-yourself-from-toxins-try-an-herb-infused-latte/91625" target="_blank">
+          <img src="{{ 'ozy_logo_90h.png' | asset_url }}" height="90" width="232" />
+        </a> 
+
+        <a href="https://www.ozy.com/good-sht/want-to-protect-yourself-from-toxins-try-an-herb-infused-latte/91625" target="_blank">
+          <h2>Want To Protect Yourself From Toxins? Try An Herb-Infused Latte</h2>
+        </a>
+        <p>“Among others, Rasa sources the beverage from ashwagandha, reishi, chaga and rhodiola, herbs commonly known for their positive effects on immunity, anti-inflammation and mental health. Van der Mersch believes the adaptogenic drink allows people to wear a 'stress suit,' or what she calls a 'nice padding between me and stress.'”</p>
+        <p> - Allison Yates, OZY</p>
+      </article>
+      
+      
+      <article>
+        <a href="https://www.forbes.com/sites/saraweinreb/2018/12/11/want-to-give-sustainable-and-socially-conscious-holiday-gifts-heres-how/" target="_blank">
+          <img src="{{ 'forbes-logo-black-transparent-600x90.png' | asset_url }}" />
+        </a> 
+
+        <a href="https://www.forbes.com/sites/saraweinreb/2018/12/11/want-to-give-sustainable-and-socially-conscious-holiday-gifts-heres-how/" target="_blank">
+          <h2>Want To Give Sustainable and Socially Conscious Holiday Gifts? Here's How.</h2>
+        </a>
+        <p>“I love consumable gifts because they don’t lead to clutter, they are very fun, and they are a special treat while often serving a purpose (meaning less waste!). Consumable gifts can be fancy or special food items, beauty products, candles, or more. ... RASA offers a health-supportive herbal coffee blend that comes in compostable packaging.”</p>
+        <p> - Sara Weinreb, Forbes</p>
+      </article>
+      
+      <article>
+        <a href="https://www.freeandnative.com/free-native-1/2018/9/11/nativeweek-no-83-teams-loving-lately?rq=fall%20must-have" target="_blank">
+          <img src="{{ 'free_native.jpg' | asset_url }}" />
+        </a> 
+
+        <a href="https://www.freeandnative.com/free-native-1/2018/9/11/nativeweek-no-83-teams-loving-lately?rq=fall%20must-have" target="_blank">
+          <h2>#NATIVEweek No. 83 • FN Team’s Fall Equinox Must-Haves</h2>
+        </a>
+        <p>“I've been trying to find more natural alternatives of morning energy instead of the go-to matcha, so I've replaced it with a cup of this adaptogenic herbal coffee replacement. No gluten, caffeine, sugar, or coffee! Perfect remedy to get you going without the disservice to your adrenals.”</p>
+        <p> - Sierra, for Free & Native</p>
+      </article>
+
+      
+      <article>
+        <a href="https://www.thebalancedblonde.com/2018/09/18/quitting-coffee-some-of-my-fave-coffee-alternatives/" target="_blank">
+          <img src="{{ 'bal_blonde.jpg' | asset_url }}" />
+        </a>
+        
+        <a href="https://www.thebalancedblonde.com/2018/09/18/quitting-coffee-some-of-my-fave-coffee-alternatives/" target="_blank">
+          <h2>QUITTING COFFEE + SOME OF MY FAVE COFFEE ALTERNATIVES</h2>
+        </a>
+        <p>“Another adaptogenic coffee brand I am obsessed with, that was started by a working mama who needed to get her coffee fix but wanted to do so in the healthiest way possible. They have 7 adaptogens & 2 mushrooms, plus 4 other herbs that are great for detox, lymph health, and digestive support.”</p>
+        <p> - Jordan Younger, The Balanced Blonde</p>
+      </article>
+
+      <article>
+        <a href="https://ideamensch.com/lopa-van-der-mersch/" target="_blank">
+          <img src="{{ 'idea.jpg' | asset_url }}"/>
+        </a>
+        <a href="https://ideamensch.com/lopa-van-der-mersch/" target="_blank">
+          <h2>Lopa van der Mersch Founder & CEO of Rasa</h2>
+        </a>
+        <p>“Having integrity really helps me to be productive. If I am proud and fully standing behind all of my decisions in the business, and I am executing in the business in accordance with my values, then I don’t have energy, thought, and money tied up in feeling like I didn’t quite do the right thing. Having a strong compass of values helps me to make decisions faster and choose *which* decisions to make more quickly, as well.”</p>
+        <p> - Lopa van der Mersch, founder of Rasa</p>
+      </article>
+
+
+      
+      <article></article>
+
+      <div class="clearfix"></div>
+      
+      <h1 class="text-left  ">Podcasts</h1>
+      
+
+       <article>
+        <a href="http://bit.ly/2UFCs8I" target="_blank">
+          <img src="{{ 'woke-wired_pod.png' | asset_url }}"  />
+        </a>
+        
+        <a href="http://bit.ly/2UFCs8I" target="_blank">
+          <h2>Woke & Wired</h2>
+        </a>
+        <p>A conversation between Lopa and Ksenia Advulova that will take you to new dimensions in understanding business as a spiritual practice, and social media as a tool for expansion. Learn about Lopa’s story (from living in a jungle in Costa Rica to speaking at TEDx) and the importance of doing business from a place of truth and integrity.</p>
+        <p>
+          <iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/8916170/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/6915b7/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        </p>
+      </article>
+      
+      
+      <article>
+        <a href="https://www.saraweinreb.com/podcast/16" target="_blank">
+          <img src="{{ 'mediumwell.jpg' | asset_url }}"  />
+        </a>
+        
+        <a href="https://www.saraweinreb.com/podcast/16" target="_blank">
+          <h2>Medium Well Podcast</h2>
+        </a>
+        <p>This episode of Medium Well is as informative as it is entertaining! Today I interview Lopa Van der Mersch, Founder & CEO of Rasa, an herbal coffee company. Lopa has such an interesting and unique story which we dive into, as well as her approach to wellness, why she started her adaptogen-based herbal coffee brand, the challenges of sustainability in business, and more.</p>
+          
+        <p>
+          <iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/8533592/height/90/theme/custom/thumbnail/yes/direction/backward/render-playlist/no/custom-color/bc89bd/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        </p>
+      </article>
+      
+      <article>
+        <a href="http://reclaimyourhealth.us/manage-stress-better-with-coffee/" target="_blank">
+          <img src="{{ 'reclaim-your-health.jpg' | asset_url }}"  /></a>
+        
+        <a href="http://reclaimyourhealth.us/manage-stress-better-with-coffee/" target="_blank"><h2>Reclaim Your Health</h2></a>
+        <p>Listen in for the lowdown on how adaptogens calm your nervous system and help you better handle stress. Lopa shares the story behind developing Rasa’s formula as a new mom, and what to expect from taking adaptogens regularly.</p>
+        <p><iframe height="102" src="https://www.youtube.com/embed/tD2Uroroj5k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+      </article>
+
+<article>
+        <a href="https://anchor.fm/not-another-wellness-podcast/episodes/37-Is-It-Time-To-Break-Up-With-Coffee---Rasa-Koffee--Lopa-van-der-Mersch-e3vj7m" target="_blank">
+          <img src="{{ 'not-another-wellness-pod.jpg' | asset_url }}"  /></a>
+        
+        <a href="https://anchor.fm/not-another-wellness-podcast/episodes/37-Is-It-Time-To-Break-Up-With-Coffee---Rasa-Koffee--Lopa-van-der-Mersch-e3vj7m" target="_blank"><h2>Not Another Wellness Podcast</h2></a>
+        <p>Natalie and Lopa talk about how Rasa started, where motherhood and business intersect, adaptogenic herbs and their effects, how coffee affects the body, coffee and the doshas, acknowledging and listening to our natural energy states, and Lopa’s favorite way to make a Rasa latte.</p>
+<p><iframe src="https://anchor.fm/not-another-wellness-podcast/embed/episodes/37-Is-It-Time-To-Break-Up-With-Coffee---Rasa-Koffee--Lopa-van-der-Mersch-e3vj7m/a-af97lo" height="102px" width="400px" frameborder="0" scrolling="no"></iframe></p>
+      </article>
+
+      
+      <article>
+        <a href="https://player.fm/series/bio-alchemy-the-daily-biohacking-podcast/the-ultimate-herbal-coffee-alternative-biohacking-with-hypercharged-adaptogens-activating-eustress-and-ancient-healing-herbs-lopa-van-der-mersch-044" target="_blank">
+          <img src="{{ 'bio-alchemy.jpg' | asset_url }}"  />
+        </a>
+        
+        <a href="https://player.fm/series/bio-alchemy-the-daily-biohacking-podcast/the-ultimate-herbal-coffee-alternative-biohacking-with-hypercharged-adaptogens-activating-eustress-and-ancient-healing-herbs-lopa-van-der-mersch-044" target="_blank">
+          <h2>Bio Alchemy Podcast</h2>
+        </a>
+        <p>Explore the health and healing benefits of Rasa’s herbs, what adaptogens are and how they help your body beat stress and maintain homeostasis, what eustress is, sustainability in business, and so much more.</p>          
+        <p>
+		<iframe src="https://www.listennotes.com/embedded/e/4954983ce4034f62b57d7198ebca5817/" height="170px" width="100%" style="width: 1px; min-width: 100%;" frameborder="0" scrolling="no"></iframe>
+        </p>
+      </article>
+
+      <article>
+        <a href="https://bit.ly/2JHYvmr" target="_blank">
+          <img src="{{ 'sahara.jpg' | asset_url }}"  />
+        </a>
+        
+        <a href="https://bit.ly/2JHYvmr" target="_blank">
+          <h2>Highest Self Podcast</h2>
+        </a>
+        <p>Ever heard of adaptogens? These intelligent herbs actually work with your body giving you exactly what you need, whether it’s more energy or more relaxation. Learn more about them from Rasa founder Lopa</p>
+
+        <p>
+          <iframe width="100%" height="170" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/525462615&color=%23ec7724&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe> 
+        </p>
+      </article>
+
+      <article>
+        <a href="http://mygratitudeattitude.libsyn.com/sustainable-koffee-with-lopa-from-rasa-koffee" target="_blank">
+          <img src="{{ 'gratitude-attitude.jpg' | asset_url }}"  />
+
+        </a>
+        
+        <a href="http://mygratitudeattitude.libsyn.com/sustainable-koffee-with-lopa-from-rasa-koffee" target="_blank">
+          <h2>My Gratitude Attitude Podcast</h2>
+        </a>
+        <p>Lopa chats about how the adaptogens and herbs in Rasa help her cope with the stress of being a full-time mom and biz owner. Plus get an inner look into the backend logistics and operations of launching Rasa.</p>
+          
+        <p>
+<iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/9555662/height/90/theme/custom/thumbnail/yes/direction/forward/render-playlist/no/custom-color/f2f0de/" height="90" width="100%" scrolling="no" ></iframe>
+        </p>
+      </article>
+      
+      <article>
+        <a href="https://fitfierceandfabulous.libsyn.com/kids-cults-and-koffee-with-rasa-founder-lopa-van-der-mersch" target="_blank">
+          <img src="{{ 'fit-fierce-fabulous.jpg' | asset_url }}"  /></a>  
+        <a href="https://fitfierceandfabulous.libsyn.com/kids-cults-and-koffee-with-rasa-founder-lopa-van-der-mersch" target="_blank"><h2>Fit, Fierce and Fabulous</h2></a>
+        <p>Courtney chats with Lopa about her journey to discovering adaptogens, how food and spirituality align, why we need to think about soil quality, what it’s like to be in a cult, and how to be compassionate towards yourself and others.</p>
+        <p><iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/9474158/height/90/theme/custom/thumbnail/yes/direction/forward/render-playlist/no/custom-color/87A93A/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></p>
+      </article>
+
+            <article>
+        <a href="https://www.healingpowers.net/podcast/2019/5/22/adaptogens-with-lopa-van-der-mersch" target="_blank">
+          <img src="{{ 'healing-powers.jpg' | asset_url }}"  />
+        </a> 
+        <a href="https://www.healingpowers.net/podcast/2019/5/22/adaptogens-with-lopa-van-der-mersch" target="_blank">
+          <h2>Healing Powers</h2>
+        </a>
+              <p>Lopa and Laura Powers discuss adaptogens and the possible benefits of coffee alternatives.</p>
+        <p>
+			<iframe style="border: solid 1px #dedede;"  src="https://app.stitcher.com/splayer/f/86201/60854019" width="400" height="98" frameborder="0" scrolling="no"></iframe>
+      	</p>
+      </article>
+
+      
+      <article>
+        <a href="https://www.lotuswei.com/blogs/podcast/lopa-van-der-mersch" target="_blank">
+          <img src="{{ 'lotus.jpg' | asset_url }}"  />
+        </a>
+        
+        <a href="https://www.lotuswei.com/blogs/podcast/lopa-van-der-mersch" target="_blank">
+          <h2>Flowerlounge with Katie Heiss</h2>
+        </a>
+        <p>How adaptogens build your energy from the inside out, herbs for slowing the aging process, Lopa’s biggest challenges and victories as an entrepreneur, and how rituals can create spaciousness and bring you closer to your loved ones.</p>
+        <p><iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/7289807/height/90/theme/custom/thumbnail/yes/direction/forward/render-playlist/no/custom-color/000000/" height="90" width="100%" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe></p>
+      </article>
+
+
+      <article>
+        <a href="https://www.riseupforyou.com/podcast/episode-189-with-lopa-van-der-mersch-adapting-to-stress/
+" target="_blank">
+          <img src="{{ 'rise.jpg' | asset_url }}"/>
+        </a>
+        
+        <a href="https://www.riseupforyou.com/podcast/episode-189-with-lopa-van-der-mersch-adapting-to-stress/
+" target="_blank">
+          <h2>Rise Up For You</h2>
+        </a>
+        <p>What Rise Up means to Lopa: ”Sometimes you feel that life is being done to you. I feel the opposite when I hear Rise Up For You if that which is the sense that myself is rising up to meet myself!”
+        <br/>...and much more.</p>
+      </article>
+      
+      
+      <article>
+        <a href="https://www.stitcher.com/podcast/nutrition-unscripted/e/53151410" target="_blank">
+          <img src="{{ 'nutrition.jpg' | asset_url }}"/>
+        </a>
+        
+        <a href="https://www.stitcher.com/podcast/nutrition-unscripted/e/53151410" target="_blank">
+          <h2>Nutrition Unscripted</h2>
+        </a>
+        <p>We chat adaptogens, how they're useful for the body, and how Rasa came to be. Tune in for a fun-filled, adaptogen-loving episode!</p>
+        <p><iframe style="border: solid 1px #dedede;"  src="https://app.stitcher.com/splayer/f/152457/53151410" width="400" height="90" frameborder="0" scrolling="no"></iframe></p>
+      </article>
+      
+
+      <article>
+        <a href="https://katya.coach/caring-for-your-energy-levels-and-healing-eating-disorders-one-meal-at-a-time-with-lopa-van-der-mersch/
+" target="_blank">
+          <img src="{{ 'katya.jpg' | asset_url }}"/>
+        </a>
+        
+        <a href="https://katya.coach/caring-for-your-energy-levels-and-healing-eating-disorders-one-meal-at-a-time-with-lopa-van-der-mersch/
+" target="_blank">
+          <h2>Caring for Your Energy Levels and Healing Eating Disorders One Meal at a Time</h2>
+        </a>
+        <p>
+          <iframe style="border: none" src="//html5-player.libsyn.com/embed/episode/id/7550795/height/90/theme/custom/autoplay/no/autonext/no/thumbnail/yes/preload/no/no_addthis/no/direction/backward/render-playlist/no/custom-color/87A93A/" height="90" width="400" scrolling="no"  allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>
+        </p>
+        </article>
+      <div class="clearfix"></div>
+
+    </section>
+  </div>
+</article>
+
+{% include 'narrative-cta' %}

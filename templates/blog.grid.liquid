@@ -1,0 +1,30 @@
+{% assign products_per_page = settings.products_per_row | times: settings.number_of_rows %}
+{% assign numbers = 'one, two, three, four, five, six' | split: ',' %}
+{% assign products_per_row = settings.products_per_row | minus: 1 %}
+{% assign products_per_row = numbers[products_per_row] | strip | append: '-per-row' %}
+
+{% paginate blog.articles by products_per_page %}
+
+<section class="section-archive" id="news">
+
+  
+  <div class="container">
+    <div class="archive-posts">
+      {% for article in blog.articles %}
+        {% include 'article-grid-item' with products_per_row %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if paginate.pages > 1 %}
+<div class="pagination">
+{% comment %}
+  When paginating blog articles, a previous article is actually a newer article, not an older one,
+  because blog articles are shown and paginated in a reversed chronological order.
+  The word 'previous' can be confusing, hence we'll change it.
+{% endcomment %}
+{{ paginate | default_pagination | replace: 'Previous', 'Newer articles' | replace: 'Next', 'Older articles' }}
+{% endif %}
+
+{% endpaginate %}

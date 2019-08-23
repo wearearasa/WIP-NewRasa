@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="238" height="56" viewBox="0 0 238 56">
+    <g fill="none" fill-rule="evenodd">
+        <text fill="#FFF" font-family="BradleyHandITCTT-Bold, Bradley Hand" font-size="18" font-style="expanded" font-weight="bold" letter-spacing="1.108" transform="rotate(-6 79.872 32.033)">
+            <tspan x="1.872" y="25.033">Tap the herbs to</tspan> <tspan x="1.872" y="47.033">see their benefits!</tspan>
+        </text>
+        <path stroke="#FFF" stroke-linecap="round" stroke-width="1.5" d="M158.853 15.446c24.739-9.71 50.43-12.948 77.073-9.71M233 .7c.796 1.72 2.029 3.36 3.698 4.922-1.85 1.841-2.988 2.84-3.698 4.74"/>
+    </g>
+</svg>

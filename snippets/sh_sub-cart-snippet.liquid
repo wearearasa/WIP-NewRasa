@@ -1,0 +1,39 @@
+{% assign cartParts = cart | json | split: ',' | first | split: '"' %}
+{% assign tokenIndex = cartParts.size | minus: 1%}
+<script>
+    var SUBParams = {
+        "id" : "6a02e3ad853877f8210148effb3bc35a",
+        "app_id" : "1",        "total_price" : {{cart.total_price}},
+        "items" : [
+        {% for item in cart.items %}
+        {
+            'id': {{item.id}},
+            'product': { id:{{item.product_id}}, handle:'{{item.product.handle}}', title:{{item.product.title | json}},variants:[{% for variant in item.product.variants %}{% if item.variant_id == variant.id %}{id:{{variant.id}},title:{{variant.title | json}},available:{{variant.available}},price:'{{variant.price}}',inventory_quantity:'{{variant.inventory_quantity}}'}{% endif %}{% endfor %}]}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+        ],
+        "moneyFormat" : "{{ shop.money_with_currency_format }}",
+        "token" : "{{cartParts[tokenIndex]}}"
+    };
+</script>
+<script src="{% if shop.metafields.sh_sub['debug_mode'] == '1' %}https://s3.amazonaws.com/shopify-extensions/upsell-bundles/js/common.js{% else %}https://s3.amazonaws.com/shopify-extensions/upsell-bundles/js/common.min.js{% endif %}"></script><script>
+  if (typeof Spurit === 'undefined') {
+    Spurit = {};
+  }
+  if (typeof Spurit.altCurrencies === 'undefined') {
+    Spurit.altCurrencies = {
+      shop_currency: '{{ shop.currency }}',
+      cart: {{ cart | json }}
+    };
+  }
+</script><script>
+  if (typeof Spurit === 'undefined') {
+    Spurit = {};
+  }
+  if (typeof Spurit.altCurrencies === 'undefined') {
+    Spurit.altCurrencies = {
+      shop_currency: '{{ shop.currency }}',
+      cart: {{ cart | json }}
+    };
+  }
+</script>

@@ -1,0 +1,73 @@
+<div class="shop-item-home">
+  <a href="{{ product.url | within: collection }}">
+    <figure><img src="{{ product | img_url: '1024x1024' }}" alt="{{ product.featured_image.alt | escape }}" /></figure>
+  </a>
+  <div class="rating">
+    <div class="yotpo bottomLine"
+     style="display:inline-block"
+     data-product-id="{{ product.id }}">
+    </div>
+  </div>
+  <a href="{{ product.url | within: collection }}">
+    <h2>{{ product.title }}</h2>
+    
+    {% if product.handle == "try-rasa" %}
+    <p>4 servings each of our products + FREE shipping so you can discover the right Rasa(s) for you.</p>
+    {% elsif product.handle == "whole-rasa-koffee-8-oz" %}
+    <p>For our die-hards who love making Rasa in big batches.</p>
+    {% elsif product.handle == "ground-rasa-koffee-8-oz" %}
+    <p>Our most potent adaptogenic experience, ready to be brewed on its own or with coffee. ☕</p>
+    {% elsif product.handle == "cacao-rasa-1" %}
+    <p>An indulgent treat you can say yes to. Adaptogens + Criollo Cacao = 😍</p>
+    {% elsif product.handle == "dirty-rasa-8-oz-32-servings" %}
+    <p>Your daily coffee, now with a hug for your nervous system. 🤗</p>
+   {% elsif product.handle == "energy-engineer" %}
+    <p>If you're weaning off coffee, or want to recalibrate your relationship to caffeine.</p>
+    {% elsif product.handle == "cacao-original-rasa-bundle" %}
+    <p>Our über-low caffeine bundle--less than 5 mg in Cacao Rasa, 0 mg in Original, for centered, balanced energy.</p>
+    {% elsif product.handle == "energy-lush" %}
+    <p>You're welcome to drink these two separately, but we don't think you're gonna want to.</p>
+    {% elsif product.handle == "energy-alchemist-1" %}
+    <p>$10 OFF our all-star adaptogen blends. Mix & match for daily energy alchemy.</p>
+    {% elsif product.handle == "make-your-case"%}
+    <p>Save $20 when you buy 6 bags, + get a free travel trio!</p>
+    {% endif %}
+    
+    
+    
+    
+    <span class="item-meta"><span class="price">{% if product.price_varies %}From {% endif %}{{ product.price | money }}{% if on_sale %}<s class="compare-at-price">{{ product.compare_at_price | money }}</s>{% endif %}</span></span>
+  </a>
+  
+     <form action="/cart/add" data-productid="{{product.id}}" method="post" enctype="multipart/form-data">
+
+      {% assign hide_default_title = false %}
+      {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
+        {% assign hide_default_title = true %}
+      {% endif %}
+
+        <div id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="delta">
+        <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+       
+      </div>
+       
+
+      <div class="product-quantities">
+        <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
+          <select id="product-select" name="id" data-productid="{{product.id }}" class="col-variants">
+          {% for variant in product.variants %}
+            <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
+            {{ variant.title }} - {{ variant.price | money }}
+            </option>
+          {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      
+        <input type="submit" name="add" id="add" class="button addtocart addc custom-form-butom-product" value="Add To Cart" data-loc="collection">
+     
+      </form>
+</div>
+
+

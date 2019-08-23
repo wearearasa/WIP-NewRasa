@@ -1,0 +1,59 @@
+<td class="shop-item-home">
+  <a href="{{ product.url | within: collection }}">
+    <figure><img src="{{ product | img_url: 'medium' }}" alt="{{ product.featured_image.alt | escape }}" /></figure>
+    <div class="wholesale-title-block">
+      <h2>{{ product.title }}</h2>
+      <!--<p class="product-tagline">
+
+        {% if product.handle == "whole-rasa-koffee-ul-li-8-oz" %}
+         
+        {% elsif product.handle == "ground-rasa-koffee-ul-li-8-oz" %}
+         
+        {% endif %}
+      </p>-->
+    </div>
+  </a>
+</td>
+<td class="shop-item-price">
+  <h4>Wholesale</h4>
+  <span class="item-meta">
+    <span class="price product-{{product.id}}">
+      {% if product.price_varies %}From {% endif %}{{ product.price | money }}{% if on_sale %}
+      <s class="compare-at-price">{{ product.compare_at_price | money }}</s>
+      {% endif %}
+    </span>
+  </span>
+</td>
+<td class="shop-item-buy">
+
+    
+<form action="/cart/add" data-productid="{{product.id}}" method="post" enctype="multipart/form-data" id="AddToCartForm"> 
+{% if product.available %}{% include 'subscription-product' %}{% endif %} 
+	  <div class="product-single-picker">   
+          <div class="product-single__quantity">
+            <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+          </div>
+          <div class="product-variants">
+            <select name="id" data-productid="{{product.id }}" id="productSelect" class="product-single__variants">
+              {% for variant in product.variants %}
+              {% if variant.available %}
+
+              <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+
+              {% else %}
+              <option disabled="disabled">
+                {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+              </option>
+              {% endif %}
+              {% endfor %}
+            </select>
+        </div>
+      </div>
+      <div class="product-submit">
+        <button type="submit" name="add" id="AddToCart" class="btn">
+          <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+        </button>
+      </div>
+</form>
+    
+</td>

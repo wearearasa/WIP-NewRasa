@@ -1,0 +1,405 @@
+{
+  "current": {
+    "background_color": "#e6ebeb",
+    "text_color": "#555555",
+    "link_color": "#ed3d25",
+    "base_font_family": "'Source Sans Pro', sans-serif",
+    "base_font_size": "16px",
+    "use_logo": false,
+    "facebook_url": "https:\/\/www.facebook.com\/shopify",
+    "twitter_url": "https:\/\/twitter.com\/shopify",
+    "pinterest_url": "http:\/\/pinterest.com\/shopify\/",
+    "googleplus_url": "",
+    "flickr_url": "",
+    "instagram_url": "http:\/\/instagram.com\/shopify",
+    "linkedin_url": "",
+    "vimeo_url": "http:\/\/vimeo.com\/shopify",
+    "youtube_url": "https:\/\/www.youtube.com\/user\/shopify",
+    "tumblr_url": "",
+    "wordpress_url": "",
+    "yelp_url": "",
+    "contact_email": "",
+    "featured_blog": "news",
+    "social_icons_style": "",
+    "homepage_page": "home",
+    "homepage_collection": "",
+    "products_per_row": "3",
+    "number_of_rows": "4",
+    "recurring-orders-loading": "Loading subscription info...",
+    "recurring-orders-inherit-classes": false,
+    "recurring-orders-additional-button-classes": "",
+    "checkout_header_image": "",
+    "checkout_use_storefront_logo": false,
+    "checkout_logo_image": "shopify:\/\/shop_images\/logo.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "customer_layout": "theme",
+    "sections": {
+      "product-template": {
+        "type": "product-template",
+        "blocks": {
+          "1559116381055": {
+            "type": "text",
+            "settings": {
+              "review_image": "shopify:\/\/shop_images\/image_1.png",
+              "name": "Dandre H.",
+              "review": "\"I love it. I grew it with a raw tea ball and add coconut milk. My body drinks it in. And I've been off caffeine for a month now, thanks to RASA!\""
+            }
+          },
+          "1559116434167": {
+            "type": "text",
+            "settings": {
+              "review_image": "shopify:\/\/shop_images\/image_1.png",
+              "name": "Stephanie R.",
+              "review": "\"I purchased my first bag of Rasa Koffee a few weeks ago and I'm in love! I don't drink coffee as it is too stimulating for me, but I love the taste so this is the perfect coffee alternative. PLUS the adaptogens help my adrenals and give me the boost I need without a crash. LOVE!\""
+            }
+          },
+          "1559116454846": {
+            "type": "text",
+            "settings": {
+              "review_image": "shopify:\/\/shop_images\/image_1.png",
+              "name": "Amanda L.",
+              "review": "\"This morning elixir has become and absolute ritual! I look forward to the smell the taste every morning. I love how there is a smooth calm sense of energy, no jitters like caffeine!! Thank you so much!! Absolutely necessary component of my daily life!!\""
+            }
+          },
+          "1559116472838": {
+            "type": "text",
+            "settings": {
+              "review_image": "shopify:\/\/shop_images\/image_1.png",
+              "name": "Emma R.",
+              "review": "\"I start my day with a Rasa almond milk latte every morning--such a soothing, super yummy ritual! Gotta nourish to flourish!\""
+            }
+          },
+          "1559116491030": {
+            "type": "text",
+            "settings": {
+              "review_image": "shopify:\/\/shop_images\/image_1.png",
+              "name": "Anne L.",
+              "review": "\"I LOVE Rasa! I tried it and immediately bought two bags. I have completely stopped drinking coffee and substituted Rasa, which is saying something coming from someone who had an infatuation with Italian dark roast espresso. I feel much more clear, focused and quick! It doesn't tastes exactly like coffee, but it's honestly so good it doesn't matter.\""
+            }
+          }
+        },
+        "block_order": [
+          "1559116381055",
+          "1559116434167",
+          "1559116454846",
+          "1559116472838",
+          "1559116491030"
+        ],
+        "settings": {
+          "title": "Featured Reviews"
+        }
+      },
+      "1559889150720": {
+        "type": "home-page",
+        "settings": {
+          "banner_image": "shopify:\/\/shop_images\/rasa-hero_e3149a99-829d-4a51-bdb4-c7daa6b30b38.jpg",
+          "title": "",
+          "content": "",
+          "btn_label": "",
+          "banner_shopall_url": ""
+        }
+      },
+      "1559890803621": {
+        "type": "guarantee",
+        "blocks": {
+          "1559890850444": {
+            "type": "text",
+            "settings": {
+              "icons_image": "shopify:\/\/shop_images\/icon-organic.png",
+              "icon_name": "CERTIFIED ORGANIC"
+            }
+          },
+          "1559890871263": {
+            "type": "text",
+            "settings": {
+              "icons_image": "shopify:\/\/shop_images\/icon-whole30.png",
+              "icon_name": "WHOLE 30"
+            }
+          },
+          "1559890891272": {
+            "type": "text",
+            "settings": {
+              "icons_image": "shopify:\/\/shop_images\/icon-lab.png",
+              "icon_name": "3RD PARTY LAB TESTED"
+            }
+          },
+          "1559890911430": {
+            "type": "text",
+            "settings": {
+              "icons_image": "shopify:\/\/shop_images\/icon-gf.png",
+              "icon_name": "GLUTEN FREE"
+            }
+          },
+          "1559890932142": {
+            "type": "text",
+            "settings": {
+              "icons_image": "shopify:\/\/shop_images\/icon-sugarfree.png",
+              "icon_name": "SUGAR FREE"
+            }
+          },
+          "1559890947299": {
+            "type": "text",
+            "settings": {
+              "icons_image": "shopify:\/\/shop_images\/icon-vegan1.png",
+              "icon_name": "VEGAN"
+            }
+          }
+        },
+        "block_order": [
+          "1559890850444",
+          "1559890871263",
+          "1559890891272",
+          "1559890911430",
+          "1559890932142",
+          "1559890947299"
+        ],
+        "settings": {
+          "main_title": "We’re pretty into that whole “walk your talk” thing, & Rasa will always be:"
+        }
+      },
+      "1559891009934": {
+        "type": "home-starter-product",
+        "settings": {
+          "product_image": "shopify:\/\/shop_images\/rasa-energy-trio_599bb19c-b1b4-4596-9be5-177851a01580.jpg",
+          "product_title": "Original • Cacao • Dirty",
+          "product_content": "Something for all your moods. Not sure where to start? Try our Starter Pack! 4 servings of each variety so you can find out which Rasas are best for you.",
+          "btn_label": "Buy Now",
+          "buy_now": "shopify:\/\/products\/try-rasa"
+        }
+      },
+      "1559891128139": {
+        "type": "home-custom-content",
+        "settings": {
+          "title": "Rasa contains no common allergens, no fillers, & no BS.",
+          "content": "<p>Rasa has no common allergens—just organic, sustainable herbs, blended together for you to enjoy however suits your life.<\/p>\n<p>Instead, the Rasa formula is packed with great-tasting herbs that provide lasting energy, nourishing your adrenals rather than taxing them.<\/p>\n<p>You can enjoy Rasa on its own, or try one of our amazing blends–Cacao Rasa or Dirty Rasa, which has a little coffee in it…because we know that’s what you were going to do anyways! 😉<\/p>",
+          "image": "shopify:\/\/shop_images\/rasa-original_85a9273a-ae03-4643-bbc4-85ee3a27cfaa.jpg",
+          "alignment": "right",
+          "btn_label": "shop all",
+          "buy_now": "shopify:\/\/collections\/all-products"
+        }
+      },
+      "1559891259779": {
+        "type": "home-collection",
+        "settings": {
+          "collection": "home"
+        }
+      },
+      "1559891394315": {
+        "type": "home-ingredient-section",
+        "blocks": {
+          "1559891425849": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/codonopsis-colored_2x_eba633e8-d4dc-4b2c-998d-5528eb3f70ef.png",
+              "title": "codonopsis",
+              "trigger_title": "codonopsis",
+              "modal_title": "Codonopsis - Vitality",
+              "modal_content": "<p class=\"modal-lead\">\"Codonopsis acts as a powerful adaptogenic vitality booster for the body, restoring energy and building the blood.\"<\/p>\n      <p>\n        Codonopsis root is all about vitality boosting in the Rasa formula.\n      <\/p>\n      <p>\n        This nourishing yet energizing adaptogen helps restore our body’s natural energy reserve both short and long-term. This vital energy bank is also called our “vital force” (yes...the force IS within you too!) Another vitality boosting action in codonopsis is its ability to help build the blood. When we are blood deficient, our vitality levels are often lacking as well. We think it's pretty amazing how codonopsis covers both bases here.\n      <\/p>"
+            }
+          },
+          "1559891453364": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/reishi-colored_2x_f33c0f1a-e216-4d60-b5d7-fdbd6a4a36cf.png",
+              "title": "reishi",
+              "trigger_title": "reishi",
+              "modal_title": "Reishi - Relaxation",
+              "modal_content": "<p class=\"modal-lead\">\"Reishi is an adaptogenic mushroom that powerfully relaxes the mind, contributes to longevity, and builds a powerful immune system.\"<\/p>\n      <p>\n        One of the hidden powers of reishi we harness in Rasa is its ability to relax the mind.\n      <\/p>\n      <p>\n        Although this adaptogenic mushroom is now well known for its immune system building properties (and you’re still getting a strong element of that in Rasa too!), we love the aspect of mental relaxation it provides. Amidst some of the other stimulating adaptogens in the formula, the energy of reishi helps ground everything back to earth and back into our bodies. This relaxing action also helps calm our nerves and spirit which means no jitters.\n      <\/p>"
+            }
+          },
+          "1559891472573": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/rhodiola-colored_2x_59d7f46d-5604-44c1-85d0-869cec9960ae.png",
+              "title": "rhodiola",
+              "trigger_title": "rhodiola",
+              "modal_title": "Rhodiola - Endurance",
+              "modal_content": "<p class=\"modal-lead\">\"Rhodiola is a powerful energizing adaptogen that boosts brainpower, while improving mood, stamina, and endurance.\"<\/p>\n      <p>\n        Rhodiola is a powerful energizing adaptogen that boosts brainpower, while improving mood, stamina, and endurance.\n      <\/p>\n      <p>\n        Rhodiola root is a powerful stimulating adaptogen that focuses its energy in a slightly different way than the other energizers in Rasa. The energy in rhodiola is all about endurance. Not the kind of endurance which will drive you to the ground exhausted, but the kind that promotes sharper mental focus, balanced energy levels, and overall physical stamina. Many herbalists will use rhodiola root for people who are adjusting to altitude or athletes in training. So just imagine what this herb could do for you in the your daily life too...there is some serious brain-power in here!\n      <\/p>"
+            }
+          },
+          "1559891492213": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/ashwagandha-colored_2x_556773b3-6da5-4592-829d-dff82520c308.png",
+              "title": "ashwagandha",
+              "trigger_title": "ashwagandha",
+              "modal_title": "Ashwagandha - Calm",
+              "modal_content": "<p class=\"modal-lead\">\"Ashwagandha is a powerful calming adaptogen that soothes the nervous system and brain for a deep sense of well-being.\"<\/p>\n      <p>\n        Ashwagandha root offers a subtly sweet and warm energy to Rasa which helps balance out some of the other bitter and colder herbs in the blend.\n      <\/p>\n      <p>\n        Since it is a <strong>calming adaptogen<\/strong>, it carries the ability to <strong>soothe frayed nerves without putting you to sleep<\/strong> (a rare commodity!). If you are looking for a sense of <strong>deep well-being in body, mind, and spirit<\/strong>: look no further. While ashwagandha does promote restful sleep, it also <strong>boosts libido<\/strong> (also known as a “yang tonic”)! Don’t worry: the effect is not instantaneous, like other aphrodisiacs, but instead will <strong>support your sex drive on a deeper, long-term and more restorative level<\/strong> (you’ll thank us later).\n      <\/p>"
+            }
+          },
+          "1559891514076": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/dandelion-root-colored_2x_86d96a74-2bf8-4eeb-846f-4971f0d0230d.png",
+              "title": "dandelion-root",
+              "trigger_title": "dandelion-root",
+              "modal_title": "Dandelion Root - Detoxification",
+              "modal_content": "<p class=\"modal-lead\">\"Dandelion root aids digestion, while gently detoxifying the liver, gall bladder, and kidneys.\"<\/p>\n      <p>\n        Roasted dandelion root is one of our core “coffee”-flavor enhancers.\n      <\/p>\n      <p>\n        The earthy, bitter notes that dandelion offers simulate the same bitter accent that a cup of regular black coffee can have. While some of us may not be attracted to bitterness in our morning cup (or any other aspect of our lives for that matter), tasting this flavor actually helps <strong>stimulate our digestive juices<\/strong> to start moving and thus the detoxification process to begin. In other words...when the juices get flowing, so does everything else! Dandelion root <strong>detoxifies in a gentle way<\/strong> which promotes <strong>cleansing of the liver, gallbladder, and kidneys<\/strong>.\n      <\/p>"
+            }
+          },
+          "1559891526570": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/he-shou-wu-colored_2x_5eebc9b5-79e6-4627-914e-2e3335b68a65.png",
+              "title": "he-shou-wu",
+              "trigger_title": "he-shou-wu",
+              "modal_title": "He Shou Wu - Longevity",
+              "modal_content": "<p class=\"modal-lead\">\"He shou wu root is a rejuvenating adaptogen that enhances cognition, promotes longevity, and restores the body's vital reserves.\"<\/p>\n      <p>\n        He shou wu is a <strong>deeply rejuvenating adaptogenic root<\/strong> that lends a warming and moistening energy to the Rasa formula (compared to most herbs that tend to be cold and dry).\n      <\/p>\n      <p>\n        One of the key properties of he shou wu is its ability to <strong>promote longevity<\/strong>. In Traditional Chinese Medicine, the vast array of beneficial and supportive actions in he shou wu have generally been found to promote longevity. Some of these actions include its ability <strong>to support a better mood or mental state, enhancement of our overall cognition, restoration of the body’s vital energy reserves<\/strong>, and <strong>tonification of our reproductive organs<\/strong> (just to name a few!) \n      <\/p>"
+            }
+          },
+          "1559891551547": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/chaga-colored_2x_8b7d2c3d-091d-4c35-86b4-38fee6840931.png",
+              "title": "chaga",
+              "trigger_title": "chaga",
+              "modal_title": "Chaga  - Immunity",
+              "modal_content": "<p class=\"modal-lead\">\"Chaga is a super-powered antioxidant mushroom that strengthens the immune system and energizes the body.\"<\/p>\n      <p>\n        <strong>Chaga is one of two super-powered medicinal mushrooms in Rasa.<\/strong>\n      <\/p>\n      <p>\n        Before any herbalists or sustainability gurus go into shock: know that <strong>we now only use domestically-grown chaga mycelium<\/strong> instead of wild-harvested  fruiting bodies <strong>to make Rasa more sustainable<\/strong> (and so the medicine of Chaga can carry on). The adaptogenic and <strong>antioxidant-rich<\/strong> properties of Chaga offer a <strong>vital boost for your immune system<\/strong> and your body’s <strong>ability to adapt to stressors<\/strong>. This means we can exit our fight or flight mode (finally!) with a <strong>positive surge of sustainable energy<\/strong>. Bonus: enjoying chaga daily in your cup of Rasa can support your natural defense system against colds, the flu, and other bugs. \n      <\/p>"
+            }
+          },
+          "1559891571035": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/burdock-root-colored_2x_bb0121f4-c8af-46c8-b2b0-bbbb92f0cd6c.png",
+              "title": "burdock-root",
+              "trigger_title": "burdock-root",
+              "modal_title": "Burdock Root - Purification",
+              "modal_content": "<p class=\"modal-lead\">\"Burdock root smoothes and nourishes the skin, while cleansing the lymphatic system and eliminating toxins.\"<\/p>\n      <p>\n        Burdock root wields the force of <strong>lymphatic system purification<\/strong> in the Rasa formula. \n      <\/p>\n      <p>\n        Burdock root promotes our lymph to <strong>detox<\/strong> or “dump” congested toxins into the bloodstream from stagnant pockets in the body. Aka, Burdock cleans up your inner cobwebs. These toxins are then cleared up and pushed out by other herbs in the formula! That’s the magic of Rasa for ya. ; ) Overall, this detoxification <strong>supports clear skin, less inflammation, and natural vital energy<\/strong>. We opt for roasted burdock root to lend that toasty, warming coffee kick (without the caffeine of course).  \n      <\/p>"
+            }
+          },
+          "1559891588847": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/eleuthero-colored_2x_06a15622-282a-4f98-85e4-a26e610aa445.png",
+              "title": "eleuthero",
+              "trigger_title": "eleuthero",
+              "modal_title": "Eleuthero - Energy",
+              "modal_content": "<p class=\"modal-lead\">\"Eleuthero root is a powerful adaptogen that restores the nervous system and rebuilds the adrenal glands.\"<\/p>\n      <p>\n        <strong>One of the main reasons we love to drink coffee is for the energy boost!<\/strong> \n      <\/p>\n      <p>\n        However, drinking coffee daily can slowly tax our adrenals over time until we feel general fatigue and “burned out.” This is why we use eleuthero in Rasa. Eleuthero is a powerful adaptogenic root that gives the <strong>energy boost<\/strong> we are looking for while actually <strong>rebuilding the adrenal glands<\/strong> and <strong>restoring the nervous system<\/strong> instead of frying it. This makes it a perfect ally along with coffee, or a post-coffee-breakup rebound lover. ; )  \n      <\/p>"
+            }
+          },
+          "1559891632563": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/chicory-root-colored_2x_7b0d75b6-fdf1-4f2c-9af8-bdc114f35995.png",
+              "title": "chicory-root",
+              "trigger_title": "chicory-root",
+              "modal_title": "Chicory Root  - Digestion",
+              "modal_content": "<p class=\"modal-lead\">\"Chicory root supports and rebuilds the digestive system for the smooth and comfortable absorption of nutrients.\"<\/p>\n      <p>\n        <strong>We use roasted chicory root in our formula to bring out the toasty, slightly nutty, and rich flavors that regular coffee offers.<\/strong>  \n      <\/p>\n      <p>\n        But, of course, there's more going on in there than the flavor! Chicory <strong>supports the digestive system<\/strong> overall through helping us <strong>digest fat, assimilate nutrients, and regulate our bowel movements<\/strong>. So if you rely on coffee for your morning poo to happen, have no fear switching over to Rasa! Chicory only shows mild laxative effects (so have no fear on the other end too). It actually helps <strong>decongest the liver<\/strong> which creates a cascade of other health benefits including healthy digestion overall.  \n      <\/p>"
+            }
+          },
+          "1559891670265": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/cinnamon-colored_2x_9c8a0209-18c9-4f38-910b-d91d5e9e107e.png",
+              "title": "cinnamon",
+              "trigger_title": "cinnamon",
+              "modal_title": "Cinnamon - Circulation",
+              "modal_content": "<p class=\"modal-lead\">\"Cinnamon stimulates circulation, supports digestion, supports healthy blood sugar balance, and relieves sore muscles.\"<\/p>\n      <p>\n       Oh, cinnamon bark, one of our favorite flavor harmonizers in Rasa!  \n      <\/p>\n      <p>\n        Aside from lending a naturally sweet and aromatic taste, cinnamon also <strong>stimulates our circulatory system<\/strong> and <strong>supports healthy blood sugar balance<\/strong>. By drinking Rasa as your daily morning tonic or beverage of choice, you are actually setting yourself up for a more balanced day overall (instead of riding the blood sugar roller coaster all day like most of us tend to do…) Since cinnamon is a circulatory enhancing herb, this means that it <strong>helps circulate the energies and actions of the other herbs<\/strong> in the Rasa formula (that could otherwise get stuck in places they’re not supposed to be).  \n      <\/p>"
+            }
+          },
+          "1559891687861": {
+            "type": "text",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/shatavari-colored_2x_8aded6c6-7829-499e-9ef2-4719b2719968.png",
+              "title": "shatavari",
+              "trigger_title": "shatavari",
+              "modal_title": "Shatavari - Nourishment",
+              "modal_content": "<p class=\"modal-lead\">\"Shatavari is an adaptogen that naturally balances emotions, calming irritability and soothing the spirit.\"<\/p>\n      <p>\n       Shatavari root is a warming, moistening, and nourishing tonic in the Rasa formula.  \n      <\/p>\n      <p>\n        So <strong>nourishing and soothing<\/strong> in fact that many would not guess it is also an adaptogen! Shatavari does not act quite like other adaptogens you might be used to. Instead of stimulating and ramping up our energy, shatavari calms everything down, <strong>balances our emotions<\/strong>, and <strong>replenishes depleted vitality stores<\/strong>. In many ways, this root is a perfect “yin” complement to some of the other “yang” herbs in Rasa.   \n      <\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1559891425849",
+          "1559891453364",
+          "1559891472573",
+          "1559891492213",
+          "1559891514076",
+          "1559891526570",
+          "1559891551547",
+          "1559891571035",
+          "1559891588847",
+          "1559891632563",
+          "1559891670265",
+          "1559891687861"
+        ],
+        "settings": {
+          "title": "Calm energy, <br>Mental clarity & <br>Stress resilience<br>",
+          "content": "<h2 style=\"font-style: italic;\">To support you through your days.<\/h2>\n<p>Herbalists in China and India discovered the answer more than 5,000 years ago.<\/p>\n      <p>\n        Using special combinations of adaptogens — herbs that help your body adapt to stress — these ancient masters cracked the code on stable energy without side effects. \n      <\/p>\n      <p>\n          We’ve taken inspiration from these ancient traditions to create Rasa, the only herbal coffee alternatives that offer functional benefits, drawing on Indian, Chinese, & Western herbal wisdom. \n      <\/p>\n      <p class=\"lead\">\n        Learn more about the Rasa herbs! Our coffee substitute ingredients are:\n   \n      <\/p>"
+        }
+      },
+      "1559891943524": {
+        "type": "home-custom-content",
+        "settings": {
+          "title": "You’ve got this and we’ve got you 🙌",
+          "content": "<p>We believe in sourcing energy from within, and adaptogens are Nature’s key to sustained, balanced energy all day long.<\/p> \n<p>Coffee is great, but it’s an external source of energy that is taxing to your adrenals and nervous system in the long run. Our culture’s #1 support tool for a worn-out life takes from us, too. That’s why we set out to create an alternative that energizes AND nourishes.<\/p> <p>You can still have your coffee with Rasa! Or with cacao…or in an adaptogenic latte. However it fits into YOUR life. You’ll feel energized & nourished, not one or the other!<\/p>",
+          "image": "shopify:\/\/shop_images\/rasa-lopa-story_87066723-727b-4b40-99cc-094d1645db8f.jpg",
+          "alignment": "left",
+          "btn_label": "read our story",
+          "buy_now": "shopify:\/\/pages\/mission"
+        }
+      },
+      "1559900816881": {
+        "type": "slider-banner",
+        "blocks": {
+          "1562081216359": {
+            "type": "text",
+            "settings": {
+              "dark_peach": "We're Here To Help You Perk Up & Chill Out",
+              "heading-static": "Rasa's adaptogenic formula energizes while helping your body cope with stress. Drink it alone or dress it up with all your fave fixin’s.",
+              "button-label": "shop our products",
+              "button-label-link": "shopify:\/\/collections\/all-products"
+            }
+          }
+        },
+        "block_order": [
+          "1562081216359"
+        ],
+        "settings": {}
+      }
+    },
+    "content_for_index": [
+      "1559889150720",
+      "1559900816881",
+      "1559890803621",
+      "1559891009934",
+      "1559891128139",
+      "1559891259779",
+      "1559891394315",
+      "1559891943524"
+    ]
+  },
+  "presets": {
+    "Slate": {
+      "customer_layout": "theme",
+      "background_color": "#e6ebeb",
+      "text_color": "#555555",
+      "link_color": "#b5792b",
+      "facebook_url": "https:\/\/www.facebook.com\/shopify",
+      "twitter_url": "https:\/\/twitter.com\/shopify",
+      "pinterest_url": "http:\/\/pinterest.com\/shopify\/",
+      "instagram_url": "http:\/\/instagram.com\/shopify",
+      "vimeo_url": "http:\/\/vimeo.com\/shopify",
+      "youtube_url": "https:\/\/www.youtube.com\/user\/shopify",
+      "social_icons_style": "",
+      "use_logo": false,
+      "base_font_size": "16px",
+      "base_font_family": "'Source Sans Pro', sans-serif",
+      "featured_blog": "news",
+      "homepage_page": "frontpage",
+      "homepage_collection": "frontpage",
+      "products_per_row": "3",
+      "number_of_rows": "4"
+    }
+  }
+}

@@ -1,0 +1,254 @@
+<div class="modal">
+  <div class="modal-content">
+  <!--------------------------------------------
+  ADAM READ THIS USAGE NOTE  
+  Modal content gets pulled in here based on 
+  data-modal-trigger attribute value on colored herbs elements
+  data-modal-content attribute value set below in .modal-loaded elements 
+  
+  so for instance, above you have: 
+  <span class="modal-trigger ashwagandha" data-modal-trigger="ashwagandha"><img src="images/ashwagandha-colored@2x.png" alt="ashwagandha"><span class="label">ashwagandha</span></span>
+  
+  which will automatically trigger this modal and load content from this element present below:
+  <div class="hide"><div class="modal-loaded" data-modal-content="ashwagandha">....</div></div>
+  
+  any new modal content element with appropriate data-modal-content attribute will also be triggered automatically since all the triggers are in place. Here's the full list:
+  data-modal-content="dandelionroot"
+  data-modal-content="reishi"
+  data-modal-content="codonopsis"
+  data-modal-content="ashwagandha"
+  data-modal-content="rhodiola"
+  data-modal-content="heshouwu"
+  data-modal-content="chaga"
+  data-modal-content="burdockroot"
+  data-modal-content="eleuthero"
+  data-modal-content="chicoryroot"
+  data-modal-content="cinnamon"
+  data-modal-content="shatavari"
+  ---------------------------------------------->
+  </div>
+  <span class="modal-close">&times;</span>
+</div>
+<div class="modal-overlay"></div>
+
+
+<div class="hide">
+
+  <div class="modal-loaded" data-modal-content="codonopsis">
+
+    <figure class="modal-image is-codonopsis"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Codonopsis - Vitality</h2>
+      <p class="modal-lead">"Codonopsis acts as a powerful adaptogenic vitality booster for the body, restoring energy and building the blood."</p>
+      <p>
+        Codonopsis root is all about vitality boosting in the Rasa formula.
+      </p>
+      <p>
+        This nourishing yet energizing adaptogen helps restore our body’s natural energy reserve both short and long-term. This vital energy bank is also called our “vital force” (yes...the force IS within you too!) Another vitality boosting action in codonopsis is its ability to help build the blood. When we are blood deficient, our vitality levels are often lacking as well. We think it's pretty amazing how codonopsis covers both bases here.
+      </p>
+    </div>
+
+  </div>
+  
+  <div class="modal-loaded" data-modal-content="reishi">
+
+    <figure class="modal-image is-reishi"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Reishi - Relaxation</h2>
+      <p class="modal-lead">"Reishi is an adaptogenic mushroom that powerfully relaxes the mind, contributes to longevity, and builds a powerful immune system."</p>
+      <p>
+        One of the hidden powers of reishi we harness in Rasa is its ability to relax the mind.
+      </p>
+      <p>
+        Although this adaptogenic mushroom is now well known for its immune system building properties (and you’re still getting a strong element of that in Rasa too!), we love the aspect of mental relaxation it provides. Amidst some of the other stimulating adaptogens in the formula, the energy of reishi helps ground everything back to earth and back into our bodies. This relaxing action also helps calm our nerves and spirit which means no jitters.
+      </p>
+    </div>
+    
+  </div>  
+    
+  <div class="modal-loaded" data-modal-content="rhodiola">
+
+    <figure class="modal-image is-rhodiola"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Rhodiola - Endurance</h2>
+      <p class="modal-lead">"Rhodiola is a powerful energizing adaptogen that boosts brainpower, while improving mood, stamina, and endurance."</p>
+      <p>
+        Rhodiola is a powerful energizing adaptogen that boosts brainpower, while improving mood, stamina, and endurance.
+      </p>
+      <p>
+        Rhodiola root is a powerful stimulating adaptogen that focuses its energy in a slightly different way than the other energizers in Rasa. The energy in rhodiola is all about endurance. Not the kind of endurance which will drive you to the ground exhausted, but the kind that promotes sharper mental focus, balanced energy levels, and overall physical stamina. Many herbalists will use rhodiola root for people who are adjusting to altitude or athletes in training. So just imagine what this herb could do for you in the your daily life too...there is some serious brain-power in here!
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="ashwagandha">
+
+    <figure class="modal-image is-ashwagandha"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Ashwagandha - Calm</h2>
+      <p class="modal-lead">"Ashwagandha is a powerful calming adaptogen that soothes the nervous system and brain for a deep sense of well-being."</p>
+      <p>
+        Ashwagandha root offers a subtly sweet and warm energy to Rasa which helps balance out some of the other bitter and colder herbs in the blend.
+      </p>
+      <p>
+        Since it is a <strong>calming adaptogen</strong>, it carries the ability to <strong>soothe frayed nerves without putting you to sleep</strong> (a rare commodity!). If you are looking for a sense of <strong>deep well-being in body, mind, and spirit</strong>: look no further. While ashwagandha does promote restful sleep, it also <strong>boosts libido</strong> (also known as a “yang tonic”)! Don’t worry: the effect is not instantaneous, like other aphrodisiacs, but instead will <strong>support your sex drive on a deeper, long-term and more restorative level</strong> (you’ll thank us later).
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="dandelionroot">
+
+    <figure class="modal-image is-dandelion-root"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Dandelion Root - Detoxification</h2>
+      <p class="modal-lead">"Dandelion root aids digestion, while gently detoxifying the liver, gall bladder, and kidneys."</p>
+      <p>
+        Roasted dandelion root is one of our core “coffee”-flavor enhancers.
+      </p>
+      <p>
+        The earthy, bitter notes that dandelion offers simulate the same bitter accent that a cup of regular black coffee can have. While some of us may not be attracted to bitterness in our morning cup (or any other aspect of our lives for that matter), tasting this flavor actually helps <strong>stimulate our digestive juices</strong> to start moving and thus the detoxification process to begin. In other words...when the juices get flowing, so does everything else! Dandelion root <strong>detoxifies in a gentle way</strong> which promotes <strong>cleansing of the liver, gallbladder, and kidneys</strong>.
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="heshouwu">
+
+    <figure class="modal-image is-he-shou-wu"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>He Shou Wu - Longevity</h2>
+      <p class="modal-lead">"He shou wu root is a rejuvenating adaptogen that enhances cognition, promotes longevity, and restores the body's vital reserves."</p>
+      <p>
+        He shou wu is a <strong>deeply rejuvenating adaptogenic root</strong> that lends a warming and moistening energy to the Rasa formula (compared to most herbs that tend to be cold and dry).
+      </p>
+      <p>
+        One of the key properties of he shou wu is its ability to <strong>promote longevity</strong>. In Traditional Chinese Medicine, the vast array of beneficial and supportive actions in he shou wu have generally been found to promote longevity. Some of these actions include its ability <strong>to support a better mood or mental state, enhancement of our overall cognition, restoration of the body’s vital energy reserves</strong>, and <strong>tonification of our reproductive organs</strong> (just to name a few!) 
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="chaga">
+
+    <figure class="modal-image is-chaga"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Chaga  - Immunity</h2>
+      <p class="modal-lead">"Chaga is a super-powered antioxidant mushroom that strengthens the immune system and energizes the body."</p>
+      <p>
+        <strong>Chaga is one of two super-powered medicinal mushrooms in Rasa.</strong>
+      </p>
+      <p>
+        Before any herbalists or sustainability gurus go into shock: know that <strong>we now only use domestically-grown chaga mycelium</strong> instead of wild-harvested  fruiting bodies <strong>to make Rasa more sustainable</strong> (and so the medicine of Chaga can carry on). The adaptogenic and <strong>antioxidant-rich</strong> properties of Chaga offer a <strong>vital boost for your immune system</strong> and your body’s <strong>ability to adapt to stressors</strong>. This means we can exit our fight or flight mode (finally!) with a <strong>positive surge of sustainable energy</strong>. Bonus: enjoying chaga daily in your cup of Rasa can support your natural defense system against colds, the flu, and other bugs. 
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="burdockroot">
+
+    <figure class="modal-image is-burdock-root"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Burdock Root - Purification</h2>
+      <p class="modal-lead">"Burdock root smoothes and nourishes the skin, while cleansing the lymphatic system and eliminating toxins."</p>
+      <p>
+        Burdock root wields the force of <strong>lymphatic system purification</strong> in the Rasa formula. 
+      </p>
+      <p>
+        Burdock root promotes our lymph to <strong>detox</strong> or “dump” congested toxins into the bloodstream from stagnant pockets in the body. Aka, Burdock cleans up your inner cobwebs. These toxins are then cleared up and pushed out by other herbs in the formula! That’s the magic of Rasa for ya. ; ) Overall, this detoxification <strong>supports clear skin, less inflammation, and natural vital energy</strong>. We opt for roasted burdock root to lend that toasty, warming coffee kick (without the caffeine of course).  
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="eleuthero">
+
+    <figure class="modal-image is-eleuthero"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Eleuthero - Energy</h2>
+      <p class="modal-lead">"Eleuthero root is a powerful adaptogen that restores the nervous system and rebuilds the adrenal glands."</p>
+      <p>
+        <strong>One of the main reasons we love to drink coffee is for the energy boost!</strong> 
+      </p>
+      <p>
+        However, drinking coffee daily can slowly tax our adrenals over time until we feel general fatigue and “burned out.” This is why we use eleuthero in Rasa. Eleuthero is a powerful adaptogenic root that gives the <strong>energy boost</strong> we are looking for while actually <strong>rebuilding the adrenal glands</strong> and <strong>restoring the nervous system</strong> instead of frying it. This makes it a perfect ally along with coffee, or a post-coffee-breakup rebound lover. ; )  
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="chicoryroot">
+
+    <figure class="modal-image is-chicory-root"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Chicory Root  - Digestion</h2>
+      <p class="modal-lead">"Chicory root supports and rebuilds the digestive system for the smooth and comfortable absorption of nutrients."</p>
+      <p>
+        <strong>We use roasted chicory root in our formula to bring out the toasty, slightly nutty, and rich flavors that regular coffee offers.</strong>  
+      </p>
+      <p>
+        But, of course, there's more going on in there than the flavor! Chicory <strong>supports the digestive system</strong> overall through helping us <strong>digest fat, assimilate nutrients, and regulate our bowel movements</strong>. So if you rely on coffee for your morning poo to happen, have no fear switching over to Rasa! Chicory only shows mild laxative effects (so have no fear on the other end too). It actually helps <strong>decongest the liver</strong> which creates a cascade of other health benefits including healthy digestion overall.  
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="cinnamon">
+
+    <figure class="modal-image is-cinnamon"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Cinnamon - Circulation</h2>
+      <p class="modal-lead">"Cinnamon stimulates circulation, supports digestion, supports healthy blood sugar balance, and relieves sore muscles."</p>
+      <p>
+       Oh, cinnamon bark, one of our favorite flavor harmonizers in Rasa!  
+      </p>
+      <p>
+        Aside from lending a naturally sweet and aromatic taste, cinnamon also <strong>stimulates our circulatory system</strong> and <strong>supports healthy blood sugar balance</strong>. By drinking Rasa as your daily morning tonic or beverage of choice, you are actually setting yourself up for a more balanced day overall (instead of riding the blood sugar roller coaster all day like most of us tend to do…) Since cinnamon is a circulatory enhancing herb, this means that it <strong>helps circulate the energies and actions of the other herbs</strong> in the Rasa formula (that could otherwise get stuck in places they’re not supposed to be).  
+      </p>
+    </div>
+
+  </div>
+    
+  <div class="modal-loaded" data-modal-content="shatavari">
+
+    <figure class="modal-image is-shatavari"></figure>
+
+    <div class="modal-body">
+      <?php include 'includes/svg/burst.php';?>
+      <h2>Shatavari - Nourishment</h2>
+      <p class="modal-lead">"Shatavari is an adaptogen that naturally balances emotions, calming irritability and soothing the spirit."</p>
+      <p>
+       Shatavari root is a warming, moistening, and nourishing tonic in the Rasa formula.  
+      </p>
+      <p>
+        So <strong>nourishing and soothing</strong> in fact that many would not guess it is also an adaptogen! Shatavari does not act quite like other adaptogens you might be used to. Instead of stimulating and ramping up our energy, shatavari calms everything down, <strong>balances our emotions</strong>, and <strong>replenishes depleted vitality stores</strong>. In many ways, this root is a perfect “yin” complement to some of the other “yang” herbs in Rasa.   
+      </p>
+    </div>
+
+  </div>
+    
+    
+</div>

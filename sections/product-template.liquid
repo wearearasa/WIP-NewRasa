@@ -1,0 +1,122 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"> </script>
+
+      <h3 class="featured-reviews-header">{{ section.settings.title }}</h3>
+
+      <div class="featured-reviewed-list">
+       
+        {% for block in section.blocks %}
+         <div class="featured-review-wrapper">
+          <div class="featured-review">
+            <span class="yotpo-stars">
+              <span class="rating-star"><img src="{{ block.settings.review_image | img_url:'master' }}" alt="Rating Star"></span>
+            </span>
+            <span class="customer-name">{{ block.settings.name }}</span>
+            <p>{{  block.settings.review }}</p>
+          </div>
+           </div>
+        {% endfor %}
+       
+  </div>
+<style>
+  .icon {
+  background: rgba(255, 255, 255, .6);
+  color: rgba(0, 0, 0, .3);
+	font-family: 'FontAwesome';
+	font-size: 40px;
+	line-height: 60px;
+  margin-top: -30px;
+  position: absolute; top: 50%;
+  text-align: center;
+  width: 60px; height: 60px;
+}
+.owl-next, 
+.owl-prev {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 33.33333333%;
+}
+.owl-next {
+  right: 0;
+}
+.owl-prev {
+  left: 0;
+}
+.owl-next:hover .icon, 
+.owl-prev:hover .icon {
+  background: rgba(48, 117, 70, .8);
+  color: rgba(255, 255, 255, .9);
+}
+.icon-arrow-left7 { left: 0; }
+.icon-arrow-left7:before { content: "\f053"; }
+.icon-arrow-right7 { right: 0; }
+.icon-arrow-right7:before { content: "\f054"; }
+
+</style>
+<script>
+
+    $('.featured-reviewed-list').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    navigation:true,
+    items:2,
+   
+	navigationText: ["<span class='slick-prev slick-arrow'><svg xmlns='http://www.w3.org/2000/svg' width='18' height='29' viewBox='0 0 18 29'><path fill='#AEAEAE' fill-rule='evenodd' d='M18 14.5L2.88 0 0 2.762 12.24 14.5 0 26.238 2.88 29z'/></svg></span>"," <span class='slick-next slick-arrow'><svg xmlns='http://www.w3.org/2000/svg' width='18' height='29' viewBox='0 0 18 29'><path fill='#AEAEAE' fill-rule='evenodd' d='M18 14.5L2.88 0 0 2.762 12.24 14.5 0 26.238 2.88 29z'/></svg></span>"], 
+      responsive:{
+        0:{
+            items:1, 
+          	autoplay:true,
+    		autoplayTimeout:1000
+        },
+        600:{
+            items:2
+        },
+        1000:{
+            items:2
+        }
+    }
+
+  });
+
+</script>
+
+{% schema %}
+  {
+    "name": "Product",
+    "settings": [
+		{
+			"type":"text",
+			"id":"title",
+			"label":"Heading"
+		}
+	],
+	"blocks":[
+		{
+			"type":"text",
+			"name":"Add Reviews",
+			"settings":[
+				{
+					"type":"image_picker",
+					"id":"review_image",
+					"label":"Review Image"
+				},
+				{
+                    "type":"text",
+                    "id":"name",
+                    "label":"Name"
+                },
+                {
+                    "type":"textarea",
+                    "id":"review",
+                    "label":"Review"
+           		}
+			]
+		}
+	]
+  }
+{% endschema %}
+
+

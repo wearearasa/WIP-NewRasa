@@ -1,0 +1,74 @@
+<section class="hero-homepage custom-slid">
+<div class="container">
+    <span class="is-hidden">
+      <span class="hero-heading-rotator">
+        {% for block in section.blocks %}
+        <span class="rotate-box">
+          <span class="dark-peach"><h2>{{ block.settings.dark_peach }}</h2></span>
+            <span class="hero-heading-static">{{ block.settings.heading-static }}</span>
+            <div class="quiz-button-hero-wrapper">
+              <a class="button-transparent quiz-button-hero cus-learn-more" href="{{ block.settings.button-label-link }}">{{ block.settings.button-label }}</a>  
+            </div>
+        </span>
+        {% endfor %}
+      </span>
+      
+      <!--span class="hero-heading-static">with a daily cup of our delicious adaptogenic coffee & coffee alternative blends.</span><br>
+      
+ 	<div class="quiz-button-hero-wrapper">
+      <a class="button-transparent quiz-button-hero" href="/collections/all-products">Shop Our Products</a>  
+    </div-->
+    </span>
+    <div class="indicator">
+      <a href="#depth-2" data-scroll-speed="600" class="indicator-down">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="12">
+          <path fill="none" stroke="#4E686E" stroke-width="4" d="M.12111051 11.6956852L19.4803068 0l19.7138503 11.6956852"/>
+        </svg>
+      </a>        
+    </div>
+</div>
+</section>
+{% schema %}
+  {
+    "name": "Custom Slider",
+    "settings": [
+		
+	],
+
+	"blocks":[
+		{
+			"type":"text",
+			"name":"Add Slide",
+
+		"settings":[
+          {
+              "type":"text",
+              "id":"dark_peach",
+              "label":"heading"
+          },
+			{
+              "type":"textarea",
+              "id":"heading-static",
+              "label":"Text Content"
+          },
+          {
+              "type":"text",
+              "id":"button-label",
+              "label":"Button Label"
+          },	
+		  {
+              "type":"url",
+              "id":"button-label-link",
+              "label":"Button Label Link"
+          }	
+		]
+	  }
+	],
+"presets":[
+	{
+		"category":"Slider Content",
+		"name":"Custom Slider"
+	}	
+]
+  }
+{% endschema %}

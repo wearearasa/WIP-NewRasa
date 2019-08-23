@@ -1,0 +1,10 @@
+<div class="container">    
+  <div class="archive-posts">
+    {% for article in blog.articles %}
+      {% include 'article-grid-item' with products_per_row %}
+    {% endfor %}
+  </div>
+  {% if blog.handle contains 'press' %}
+    <p style="text-align: center;"><strong>Press and Social Media Inquires</strong><br/>Please email hello@wearerasa.com</p>
+  {% endif %} 
+</div>

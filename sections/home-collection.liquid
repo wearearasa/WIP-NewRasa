@@ -1,0 +1,37 @@
+<section class="grid-shop home-grid">
+<div class="home-featured-col">
+  	<div class="container">
+	{% assign collection = collections[section.settings.collection] %}
+        <ul class="grid clearfix">
+        {% for product in collection.products %}
+          {% include 'product-grid-item-home' with 'three-per-row' %}
+        {% else %}
+        <li>
+          <p>
+            You have no products in your {{ collections[settings.homepage_collection].title }} collection. 
+            <a href="http://www.shopify.com/admin/collections">Add some.</a>
+          <p>
+        </li>
+        {% endfor %}
+        </ul>
+  </div>
+</div>
+</section>
+{% schema %}
+  {
+    "name": "Featured Collection",
+    "settings": [
+		{
+			"type":"collection",
+			"id":"collection",
+			"label":"Collection"
+		}
+	],
+"presets":[
+	{
+		"category":"Collection",
+		"name":"Featured Collection"
+	}
+]
+  }
+{% endschema %}

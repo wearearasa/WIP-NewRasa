@@ -1,0 +1,47 @@
+<!-- sh_sub-added -->
+{% include 'sh_sub-collection-snippet' %}
+<!-- /sh_sub-added -->
+<section class="hero-shop">
+  <div class="container">
+    <h1>{{ collection.title }}</h1>
+    <p class="lead">
+      {{ collection.description }}
+    </p>
+  </div>
+</section>
+
+<div class="shopmenu">
+  <div class="container">
+    <div class="filter-list">
+        {% for link in linklists.collections-menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+<section class="newgrid">
+	{% paginate collection.products by 6 %}
+      <div class="container AjaxinateLoop">
+          {% for product in collection.products %}
+          {% include 'product-grid-item' with products_per_row %}
+          {% else %}
+          <p>Amazing products coming your way, stay tuned!</p>
+          {% endfor %}
+      </div>
+ 	 <div class="AjaxinatePagination">
+      {% if paginate.next %}
+        <a href="{{ paginate.next.url }}"><em>Loading More Products</em></a>
+      {% endif %}
+    </div>
+    {% endpaginate %}
+
+</section>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+      var endlessScroll = new Ajaxinate();
+    });
+</script>
+
+{% include 'narrative-cta' %}
