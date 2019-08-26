@@ -554,46 +554,16 @@
   {% endunless %}
 
   <div class="container  nav-cont">
-    <div class="logo-div-custom">
-      <a class="nav-logo" href="/"><span class="logotype"></span></a>
 
-      <span class="tagline">We're all in this together.</span> 
+    <div class="menu-drawer-overlay-custom">
+      <div class="menu-drawer" >
+        {% for link in linklists.dev-desktop.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      </div>
     </div>
 
-
-    {% comment %}
-    {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
-    <span class="tagline">
-      {% if template contains 'page %}
-      <span>{{ page.title }}</span>
-      {% elsif template contains 'product' %}
-      {% if collection.url %}
-      <span aria-hidden="true">/</span>
-      {{ collection.title | link_to: collection.url }}
-      {% endif %}
-      <!--<span aria-hidden="true">/</span>
-<span>{{ product.title }}</span> -->
-      {% elsif template contains 'collection' and collection.handle %}
-      <a href="/collections/all-products" title="Shop">Shop</a>
-      {% elsif template == 'blog' %}
-      {% if current_tags %}
-      <a href="/blogs/news" title="Blog">Blog</a>
-      <span aria-hidden="true">/</span>
-      <span>{{ current_tags | join: " + " }}</span>
-      {% else %}
-      <span>Blog</span>
-      {% endif %}
-      {% elsif template == 'article' %}
-      <a href="/blogs/news" title="Blog">Blog</a>
-      <span aria-hidden="true">/</span>
-      <span>Article</span>
-      {% else %}
-      <span aria-hidden="true">/</span>
-      <span>{{ page_title }}</span>
-      {% endif %}
-    </span>
-    {% endunless %}
-    {% endcomment %}
+{% comment %}
     <div class="menu-drawer-overlay-custom">
       <div class="menu-drawer" >
         <ul data-toggle-target="mobile-menu" class="extra-menu">
@@ -631,6 +601,12 @@
         </ul>
       </div>
     </div>
+{% endcomment %}
+    <div class="logo-div-custom">
+      <a class="nav-logo" href="/"><span class="logotype"></span></a>
+    </div>
+
+
     <div class="shopping">
       <a class="menu-button" href="/collections/all-products">Shop</a>
       <a href="#" class="site-header__cart mobile-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cus-cart-count">{{ cart.item_count }}</span></a>
