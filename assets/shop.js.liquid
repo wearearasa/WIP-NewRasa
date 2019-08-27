@@ -10,6 +10,18 @@ var switchImage = function(newImageSrc, newImage, mainImageDomEl) {
 };
 
 jQuery(function($) {
+
+  $('.desktop-menu-search').hide();
+  $('.search-icon').click(function(e){
+      e.preventDefault();
+      $('.desktop-menu-search').fadeToggle( "slow" );
+  });
+
+  $('.submenu').hide();
+  $('.has-submenu').click(function(e){
+    e.preventDefault();
+    $('.has-submenu .submenu').slideToggle( "fast" );
+  });
                     
   /* Placeholder JS */
   /*==========================*/

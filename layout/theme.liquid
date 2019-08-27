@@ -182,7 +182,7 @@
         top: 0px;
       }
       .nav-main > .container {
-        padding: 1.5em 0 1.2em 7em;
+        padding: 1.5em 0 1.2em 0;
       }
 
       h2 ul { display: none; }
@@ -1472,16 +1472,37 @@
 
       /*Mobile updates*/
       .nav-main > .container {
-        padding: 1.5em 1.1em 1.2em 7em;
+        padding: 1.2em 1.1em 1.2em 0;
       }
 
       .nav-main ul li {
-        margin-left: 1.27em;
+        line-height: 80px;
       }
+
+      .nav-main ul li:first-child {
+        margin-left: .20em;
+      }      
 
       .contactus {
         right: -45px;
       }
+
+      .desktop-menu-search {
+        position: absolute;
+      }
+
+      .desktop-menu-search input[type="text"] {
+        position: absolute;
+        top: 30px;
+        right: 145px;
+        border-bottom: 1px solid #17a7a1;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        font-size: 0.8em;
+      }
+
+      .desktop-menu-search input[type="submit"] { visibility: hidden; }
 
       @media screen and (max-width: 387px) {
         span.quiz-mobile-hide {
@@ -2010,8 +2031,7 @@
 
       /*Navigation button fix*/
       .nav-main ul {
-        display: flex;
-        justify-content: flex-end;
+        
       }
 
       @media only screen and (max-width: 767px) {
@@ -3122,8 +3142,8 @@
       @media only screen and (min-width: 769px) {
 
         .logotype, .blog-nav .title-logo {
-          height: 26px;
-          width: 100px;
+          height: 37px;
+          width: 150px;
         }
       }
 
