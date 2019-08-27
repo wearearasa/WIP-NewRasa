@@ -902,13 +902,18 @@ a:hover {
   color: #008b8f;
 }
 
+.menu-left li,
+.menu-right li { position: relative; } 
+
 .menu-left .submenu,
 .menu-right .submenu {
   display: block;
   background: #fff;
-  left: 0%;
+  left: -40px;
   position: absolute;
   top: 65px;
+  width: auto;
+  min-width: 120px;
 }
 
 .menu-left .submenu li,

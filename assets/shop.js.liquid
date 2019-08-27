@@ -20,7 +20,7 @@ jQuery(function($) {
   $('.submenu').hide();
   $('.has-submenu').click(function(e){
     e.preventDefault();
-    $('.has-submenu .submenu').slideToggle( "fast" );
+    $(this).find('.submenu').slideToggle( "fast" );
   });
                     
   /* Placeholder JS */

@@ -563,8 +563,16 @@
       <div class="menu-left">
         <ul class="menu-left-links">
           {% for link in linklists.desktop-left.links %}
-          <li>
+          {%- if link.links != blank -%} {% assign class = "has-submenu" %} {% endif %}
+          <li class="{{ class }}" >
             <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- if link.links != blank -%}
+              <ul class="submenu">
+                {%- for child_link in link.links -%}
+                  <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           </li>
           {% endfor %}
         </ul>
