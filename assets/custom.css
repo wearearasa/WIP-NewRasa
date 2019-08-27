@@ -1058,7 +1058,7 @@ parallex
     width:8px;
   }
 }
-@media(max-width:768px){
+@media(max-width:812px){
   
   .sectioningredients-content h2, .sectioningredients-content p {
     text-align: center;

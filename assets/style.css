@@ -139,7 +139,12 @@ input[type=number]::-webkit-outer-spin-button {
    -webkit-appearance: inner-spin-button !important;
 }
 
-@media(max-width:768px){
+@media(min-width: 813px) {
+  .mobile-menu,
+  .shopping { display: none; }
+}
+
+@media(max-width:812px){
   .nav-cont .mobile-cart{
     right:0;
   }

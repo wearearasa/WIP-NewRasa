@@ -579,8 +579,8 @@
       </div>
     </div>
 
-{% comment %}
-    <div class="menu-drawer-overlay-custom">
+
+    <div class="menu-drawer-overlay-custom mobile-menu">
       <div class="menu-drawer" >
         <ul data-toggle-target="mobile-menu" class="extra-menu">
           <a class="menu-drwer-close" href="#">×</a>
@@ -593,16 +593,11 @@
           {% if customer.tags contains 'Wholesale' %}
           <li><a class="nav-link-text" href="/collections/wholesale"><span class="">Wholesale </span> Shop</a></li>
           {% endif %}
-          <li class=""><a class="nav-link-text" href="/blogs/news">Blog</a></li>
-          <li class=""> 
-            <a class="nav-link-text" href="/pages/press">Press</a>  
-          </li> 
-          <li class="">
-            <a href="/blogs/news/tagged/recipes">Recipes</a>
-          </li>
-          <li class=""><a class="nav-link-text" href="/pages/mission">About</a></li>
-          <!--li class=""><a class="nav-link-text" href="/blogs/news/tagged/recipes">Recipes</a></li-->
-          <li><a class="nav-link-text" href="/pages/faq">FAQ</a></li>
+
+          {% for link in linklists.dev-mobile.links %}
+            <li><a href="{{ link.url }}" class="nav-link-text">{{ link.title }}</a></li>
+          {% endfor %}
+          
           <li class="mobile-shop"> 
             <a class="button-transparent" href="/collections/all-products">Shop</a>  
           </li> 
@@ -617,7 +612,7 @@
         </ul>
       </div>
     </div>
-{% endcomment %}
+
     <div class="logo-div-custom">
       <a class="nav-logo" href="/"><span class="logotype"></span></a>
     </div>
@@ -656,6 +651,7 @@
 
 
     <div class="shopping">
+      <a class="menu-button" href="/collections/all-products">Shop</a>
       <a href="#" class="site-header__cart mobile-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cus-cart-count">{{ cart.item_count }}</span></a>
     </div>
     <a class="menu-trigger" id="nav-trigger" href="javascript:void(0)" data-toggle-trigger="mobile-menu"><span class="nav_trigger"></span></a>

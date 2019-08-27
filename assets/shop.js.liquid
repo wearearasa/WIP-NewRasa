@@ -11,6 +11,10 @@ var switchImage = function(newImageSrc, newImage, mainImageDomEl) {
 
 jQuery(function($) {
 
+  if( $(window).width() <= 812 ) {
+      $('.nav-cont').addClass('container');
+  }
+
   $('.desktop-menu-search').hide();
   $('.search-icon').click(function(e){
       e.preventDefault();
