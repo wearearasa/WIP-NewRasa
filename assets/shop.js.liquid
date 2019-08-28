@@ -22,8 +22,7 @@ jQuery(function($) {
   });
 
   $('.submenu').hide();
-  $('.has-submenu').click(function(e){
-    e.preventDefault();
+  $('.has-submenu').hover(function(){
     $(this).find('.submenu').slideToggle( "fast" );
   });
                     
