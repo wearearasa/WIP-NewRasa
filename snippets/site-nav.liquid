@@ -325,6 +325,37 @@
     font-size: 0;
     outline:0 !important
   }
+
+  .tealbar-menu-left,
+  .tealbar-menu-right {
+    display: inline;
+    position: absolute;
+    top: 0;
+  }
+
+  .tealbar-menu-left {
+    left: 3%;
+  }
+
+  .tealbar-menu-right {
+    right: 3%;
+  }
+
+  .tealbar-menu-left ul li,
+  .tealbar-menu-right ul li {
+    line-height: 30px;
+  }
+
+  .tealbar-menu-center {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    line-height: 30px;
+  }
+
+  .top-links {
+    height: 30px;
+  }
   /********* Start media quaeries ********/
 
   @media (min-width: 992px) {
@@ -509,55 +540,40 @@
 
 <nav class="nav-main" role="navigation" id="top">
 
-  {% unless template == 'blog' or template == 'article' %}
   <div class="nav-user">
-    <div class="container">
-      <div class="header-search-bar">
-        <form method="get" action="/search">
-          <input type="text" name="q" />
-          <input  type="submit" value="Search" />
-        </form>
-      </div>
-      <div class="discount-txt">
-        {% comment %}
-        <span class="tooltip-container">
-          <a data-toggle-trigger="checkuptooltip" data-toggle-class="is-active" style="font-weight:400;text-transform:none;letter-spacing:0;">Click here for FREE U.S. SHIPPING!</a> 
-
-          <div class="tooltip-subscription acform" data-toggle-target="checkuptooltip">
-
-            <div class="_form_4"></div>
-            <script src="https://rasakoffee.activehosted.com/f/embed.php?id=4" type="text/javascript" charset="utf-8"></script>
-          </div>
-          <div class="tooltip-overlay" data-toggle-target="checkuptooltip" data-toggle-trigger="checkuptooltip" data-toggle-class="is-active"></div>  
-
-        </span>
-        {% endcomment %}
-      </div>    
-
-      <div class="top-links">
-        {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-        <!--div class="cart-link" style="display:inline;">
-<a class="nav-link-text" href="/cart">
-<span class="cart-text" style="top:0">Cart</span>
-</a>
-</div-->
-        <a href="/account">{{ customer.first_name }}</a>{{ 'Log out' | customer_logout_link }}
-        {% else %}
-        <!--div class="cart-link" style="display:inline;">
-<a class="nav-link-text" href="/cart">
-<span class="cart-text" style="top:0">Cart</span>
-</a>
-</div-->
-        {{ 'Log in' | customer_login_link }}
-        {% if shop.customer_accounts_optional %}&nbsp;&nbsp;&nbsp;&nbsp;<span class="mobile-screen-hide"></span><span class="tertiary-small">{{ 'Sign up' | customer_register_link }} &nbsp; </span><span class="tertiary-large">{{ 'Create account' | customer_register_link }}</span>
-        {% endif %}
-        {% endif %}
-        {% endif %}
-      </div>
+    <div class="top-links">
+      <div class="tealbar-menu-left">
+      <ul class="menu-left-links">
+        {% for link in linklists.teal-bar-left.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
+
+    <div class="tealbar-menu-center">
+      <p>free shipping on all orders 100+</p>
+    </div>
+
+    <div class="tealbar-menu-right">
+      <ul class="menu-right-links">
+        {% assign loginUrl = "https://wearerasa.com/account/login" %}
+        {% for link in linklists.teal-bar-right.links %}
+          {% if link.url == loginUrl %}
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <li>{{ 'Log out' | customer_logout_link }}</li>
+              {% else %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endif %}
+            {% endif %}
+          {% else %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endif %}          
+        {% endfor %}
+      </ul>
   </div>
-  {% endunless %}
+</div>
+</div>
 
   <div class="nav-cont">
 
@@ -587,7 +603,7 @@
         <ul data-toggle-target="mobile-menu" class="extra-menu">
           <a class="menu-drwer-close" href="#">×</a>
           <div class="header-search-bar desktop-version-hide">
-            <form method="get" action="/search">
+            <form method="get" action="/search" _lpchecked="1">
               <input type="text" name="q" placeholder="Search" />
               <input  type="submit" value="Search" />
             </form>

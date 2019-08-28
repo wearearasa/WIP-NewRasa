@@ -150,6 +150,7 @@ input[type=number]::-webkit-outer-spin-button {
   }
   nav#top {
     padding: 16px 0;
+    height: 43px;
 }
   body .logotype, .blog-nav .title-logo {
     height: 31px;
