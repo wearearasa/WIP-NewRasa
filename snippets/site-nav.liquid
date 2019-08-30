@@ -555,7 +555,7 @@
     </div>
 
     <div class="tealbar-menu-center">
-      <p>Free Shipping on All Orders 100+</p>
+      <p>Free shipping on all orders $100+</p>
     </div>
 
     <div class="tealbar-menu-right">
@@ -655,10 +655,10 @@
               {% if customer %}
                 <li class="has-submenu" >
                   <a href="{{ link.url }}">{{ link.title }}</a>
-                    <ul class="submenu">
-                      <li>{{ 'Log out' | customer_logout_link }}</li>
-                    </ul>
-                  </li>
+                  <ul class="submenu">
+                    <li>{{ 'Log out' | customer_logout_link }}</li>
+                  </ul>
+                </li>
               {% else %}
                 {%- if link.links != blank -%} {% assign class = "has-submenu" %} {% endif %}
                 <li class="{{ class }}" >
