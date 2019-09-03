@@ -2,3 +2,7 @@ development:
   password: ${DEV_PASSWD}
   theme_id: ${DEV_THEMEID}
   store: ${DEV_SHOP}
+live:
+  password: ${DEV_PASSWD}
+  theme_id: ${LIVE_THEMEID}
+  store: ${DEV_SHOP}
