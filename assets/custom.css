@@ -491,12 +491,12 @@ Home
 
 
 section.hero-homepage {
-    padding: 100px 0;
+    padding: 185px 0;
   	margin-bottom: 50px;
   	background-position:center;
   	background-size:cover;
   	background-repeat:no-repeat;
-    height: 350px;
+    height: 150px;
 }
 
 section.hero-homepage.custom-slid{
@@ -1058,7 +1058,7 @@ parallex
     width:8px;
   }
 }
-@media(max-width:768px){
+@media(max-width:812px){
   
   .sectioningredients-content h2, .sectioningredients-content p {
     text-align: center;
