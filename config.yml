@@ -1,4 +1,4 @@
-development:
+production:
   password: ${DEV_PASSWD}
-  theme_id: ${DEV_THEMEID}
+  theme_id: ${LIVE_THEMEID}
   store: ${DEV_SHOP}
