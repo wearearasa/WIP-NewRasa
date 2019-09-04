@@ -10,6 +10,21 @@ var switchImage = function(newImageSrc, newImage, mainImageDomEl) {
 };
 
 jQuery(function($) {
+
+  if( $(window).width() <= 812 ) {
+      $('.nav-cont').addClass('container');
+  }
+
+  $('.desktop-menu-search').hide();
+  $('.search-icon').click(function(e){
+      e.preventDefault();
+      $('.desktop-menu-search').fadeToggle( "slow" );
+  });
+
+  $('.submenu').hide();
+  $('.has-submenu').hover(function(){
+    $(this).find('.submenu').slideToggle( "fast" );
+  });
                     
   /* Placeholder JS */
   /*==========================*/

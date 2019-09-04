@@ -86,6 +86,11 @@
         border: 0;
       }
 
+      .shopify-section {
+        position: relative;
+        top: -6px;
+      }
+
       .article-content > div img[role="presentation"],
       .article-content > p img[role="presentation"] {
         width: auto !important;
@@ -127,7 +132,7 @@
         right: 0;
         background: #17a7a1;
         position: relative;
-        padding: .5em 0;
+        padding: .2em 0;
         font-size: 14px !important;
       }
       div.nav-user .discount-txt {
@@ -182,7 +187,7 @@
         top: 0px;
       }
       .nav-main > .container {
-        padding: 1.5em 0 1.2em 7em;
+        padding: 1.5em 0 1.2em 0;
       }
 
       h2 ul { display: none; }
@@ -1472,16 +1477,37 @@
 
       /*Mobile updates*/
       .nav-main > .container {
-        padding: 1.5em 1.1em 1.2em 7em;
+        padding: 1.2em 1.1em 1.2em 0;
       }
 
       .nav-main ul li {
-        margin-left: 1.27em;
+        line-height: 60px;
+      }
+
+      .nav-main ul li:first-child {
+        margin-left: .20em;
       }
 
       .contactus {
         right: -45px;
       }
+
+      .desktop-menu-search {
+        position: absolute;
+      }
+
+      .desktop-menu-search input[type="text"] {
+        position: absolute;
+        top: 30px;
+        right: 145px;
+        border-bottom: 1px solid #17a7a1;
+        border-radius: 0;
+        padding: 0;
+        box-shadow: none;
+        font-size: 0.8em;
+      }
+
+      .desktop-menu-search input[type="submit"] { visibility: hidden; }
 
       @media screen and (max-width: 387px) {
         span.quiz-mobile-hide {
@@ -2010,8 +2036,7 @@
 
       /*Navigation button fix*/
       .nav-main ul {
-        display: flex;
-        justify-content: flex-end;
+        
       }
 
       @media only screen and (max-width: 767px) {
@@ -2879,7 +2904,7 @@
       }
 
 
-      @media only screen and (max-width:768px){
+      @media only screen and (max-width:812px){
 
         .nav-main .nav-logo {
           top: 8px;
@@ -2921,7 +2946,7 @@
       #nav-trigger span:after {
         bottom: -9px;
       }      
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 812px) {
 
         .nav-main {
           z-index: 99999;
@@ -3088,7 +3113,7 @@
         #nav-trigger {
           width: 30px;
           right: 0.8em;
-          top: 7px;
+          top: 10px;
         }
         .nav-main .container .menu-button {
           right: 8em !important;
@@ -3122,8 +3147,8 @@
       @media only screen and (min-width: 769px) {
 
         .logotype, .blog-nav .title-logo {
-          height: 26px;
-          width: 100px;
+          height: 30px;
+          width: 120px;
         }
       }
 

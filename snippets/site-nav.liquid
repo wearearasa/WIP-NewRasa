@@ -1,6 +1,6 @@
 <style>
   .nav-main ul {
-    min-width: 54%;
+    display: inline;
   }
 
   .contactus-option {
@@ -15,6 +15,7 @@
   }
   .container.nav-cont {
     display: flex;
+    padding: 0;
   }
   p.up-cart-quant {
     cursor: pointer;
@@ -57,8 +58,11 @@
 
   }
   .logo-div-custom {
-    display: block;
-    width: 30%;
+    position: absolute;
+    left: 50%;
+    margin-left: -60px;
+    top: 50%;
+    margin-top: 4px;
   }
   .cart_drawer_main {
     position: fixed;    
@@ -179,9 +183,6 @@
   }
   .cart_drawer p.cart_price span {
     font-size: 24px;
-  }
-  vvvvvvv    width: 100%;
-  padding: 25px 0;
   } 
   .cart_drawer .cart-note__input {
     min-height: 130px;
@@ -324,6 +325,39 @@
     font-size: 0;
     outline:0 !important
   }
+
+  .tealbar-menu-left,
+  .tealbar-menu-right {
+    display: inline;
+    position: absolute;
+    top: 0;
+  }
+
+  .tealbar-menu-left {
+    left: 3%;
+  }
+
+  .tealbar-menu-right {
+    right: 3%;
+  }
+
+  .tealbar-menu-left ul li,
+  .tealbar-menu-right ul li {
+    line-height: 35px;
+  }
+
+  .tealbar-menu-center {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .tealbar-menu-center,
+  .tealbar-menu-center p { line-height: 35px; }
+
+  .top-links {
+    height: 35px;
+  }
   /********* Start media quaeries ********/
 
   @media (min-width: 992px) {
@@ -337,6 +371,12 @@
       margin-right:0;
       width: 100%;
     }	
+  }
+
+  @media(max-width: 812px) {
+    .logo-div-custom { margin-left: -53px; }
+    
+    .nav-main div.nav-user { display: none; }
   }
 
   @media (max-width: 768px) {
@@ -391,6 +431,7 @@
     }
     .header-search-bar.desktop-version-hide {
       display: block;
+      margin-bottom: 20px;
     }
     .header-search-bar.desktop-version-hide form {
       width: 100%;
@@ -401,7 +442,7 @@
     .header-search-bar.desktop-version-hide form input[type="text"] {
       color: #000;
       border-bottom: 2px solid #f2f2f2;
-      padding-right: 46px;
+      padding-left: 20px;
     }
     .header-search-bar form input[type="submit"] {
       position: absolute;
@@ -417,7 +458,7 @@
       outline:0 !important
     }
     .header-search-bar.desktop-version-hide form:before {
-      right: 15px;
+      left: 5px;
       color: #333;
       background-color: transparent;
     }
@@ -503,120 +544,82 @@
 
 <nav class="nav-main" role="navigation" id="top">
 
-  {% unless template == 'blog' or template == 'article' %}
   <div class="nav-user">
-    <div class="container">
-      <div class="header-search-bar">
-        <form method="get" action="/search">
-          <input type="text" name="q" />
-          <input  type="submit" value="Search" />
-        </form>
-      </div>
-      <div class="discount-txt">
-        {% comment %}
-        <span class="tooltip-container">
-          <a data-toggle-trigger="checkuptooltip" data-toggle-class="is-active" style="font-weight:400;text-transform:none;letter-spacing:0;">Click here for FREE U.S. SHIPPING!</a> 
-
-          <div class="tooltip-subscription acform" data-toggle-target="checkuptooltip">
-
-            <div class="_form_4"></div>
-            <script src="https://rasakoffee.activehosted.com/f/embed.php?id=4" type="text/javascript" charset="utf-8"></script>
-          </div>
-          <div class="tooltip-overlay" data-toggle-target="checkuptooltip" data-toggle-trigger="checkuptooltip" data-toggle-class="is-active"></div>  
-
-        </span>
-        {% endcomment %}
-      </div>    
-
-      <div class="top-links">
-        {% if shop.customer_accounts_enabled %}
-        {% if customer %}
-        <!--div class="cart-link" style="display:inline;">
-<a class="nav-link-text" href="/cart">
-<span class="cart-text" style="top:0">Cart</span>
-</a>
-</div-->
-        <a href="/account">{{ customer.first_name }}</a>{{ 'Log out' | customer_logout_link }}
-        {% else %}
-        <!--div class="cart-link" style="display:inline;">
-<a class="nav-link-text" href="/cart">
-<span class="cart-text" style="top:0">Cart</span>
-</a>
-</div-->
-        {{ 'Log in' | customer_login_link }}
-        {% if shop.customer_accounts_optional %}&nbsp;&nbsp;&nbsp;&nbsp;<span class="mobile-screen-hide"></span><span class="tertiary-small">{{ 'Sign up' | customer_register_link }} &nbsp; </span><span class="tertiary-large">{{ 'Create account' | customer_register_link }}</span>
-        {% endif %}
-        {% endif %}
-        {% endif %}
-      </div>
+    <div class="top-links">
+      <div class="tealbar-menu-left">
+      <ul class="menu-left-links">
+        {% for link in linklists.teal-bar-left.links %}
+          <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
     </div>
+
+    <div class="tealbar-menu-center">
+      <p>Free shipping on all orders $50+</p>
+    </div>
+
+    <div class="tealbar-menu-right">
+      <ul class="menu-right-links">
+        {% assign loginUrl = "https://wearerasa.com/account/login" %}
+        {% for link in linklists.teal-bar-right.links %}
+          {% if link.url == loginUrl %}
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <li>{{ 'Log out' | customer_logout_link }}</li>
+              {% else %}
+                <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+              {% endif %}
+            {% endif %}
+          {% else %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {% endif %}          
+        {% endfor %}
+      </ul>
   </div>
-  {% endunless %}
+</div>
+</div>
 
-  <div class="container  nav-cont">
-    <div class="logo-div-custom">
-      <a class="nav-logo" href="/"><span class="logotype"></span></a>
+  <div class="nav-cont">
 
-      <span class="tagline">We're all in this together.</span> 
+    <div class="menu-drawer" >
+      <div class="menu-left">
+        <ul class="menu-left-links">
+          {% for link in linklists.desktop-left.links %}
+          {%- if link.links != blank -%} {% assign class = "has-submenu" %} {% endif %}
+          <li class="{{ class }}" >
+            <a href="{{ link.url }}">{{ link.title }}</a>
+            {%- if link.links != blank -%}
+              <ul class="submenu">
+                {%- for child_link in link.links -%}
+                  <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+                {% endfor %}
+              </ul>
+            {% endif %}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
     </div>
 
 
-    {% comment %}
-    {% unless template == 'index' or template == 'cart' or template == 'list-collections' %}
-    <span class="tagline">
-      {% if template contains 'page %}
-      <span>{{ page.title }}</span>
-      {% elsif template contains 'product' %}
-      {% if collection.url %}
-      <span aria-hidden="true">/</span>
-      {{ collection.title | link_to: collection.url }}
-      {% endif %}
-      <!--<span aria-hidden="true">/</span>
-<span>{{ product.title }}</span> -->
-      {% elsif template contains 'collection' and collection.handle %}
-      <a href="/collections/all-products" title="Shop">Shop</a>
-      {% elsif template == 'blog' %}
-      {% if current_tags %}
-      <a href="/blogs/news" title="Blog">Blog</a>
-      <span aria-hidden="true">/</span>
-      <span>{{ current_tags | join: " + " }}</span>
-      {% else %}
-      <span>Blog</span>
-      {% endif %}
-      {% elsif template == 'article' %}
-      <a href="/blogs/news" title="Blog">Blog</a>
-      <span aria-hidden="true">/</span>
-      <span>Article</span>
-      {% else %}
-      <span aria-hidden="true">/</span>
-      <span>{{ page_title }}</span>
-      {% endif %}
-    </span>
-    {% endunless %}
-    {% endcomment %}
-    <div class="menu-drawer-overlay-custom">
+    <div class="menu-drawer-overlay-custom mobile-menu">
       <div class="menu-drawer" >
         <ul data-toggle-target="mobile-menu" class="extra-menu">
           <a class="menu-drwer-close" href="#">×</a>
           <div class="header-search-bar desktop-version-hide">
-            <form method="get" action="/search">
-              <input type="text" name="q" />
+            <form method="get" action="/search" _lpchecked="1">
+              <input type="text" name="q" placeholder="Search" />
               <input  type="submit" value="Search" />
             </form>
           </div>
           {% if customer.tags contains 'Wholesale' %}
           <li><a class="nav-link-text" href="/collections/wholesale"><span class="">Wholesale </span> Shop</a></li>
           {% endif %}
-          <li class=""><a class="nav-link-text" href="/blogs/news">Blog</a></li>
-          <li class=""> 
-            <a class="nav-link-text" href="/pages/press">Press</a>  
-          </li> 
-          <li class="">
-            <a href="/blogs/news/tagged/recipes">Recipes</a>
-          </li>
-          <li class=""><a class="nav-link-text" href="/pages/mission">About</a></li>
-          <!--li class=""><a class="nav-link-text" href="/blogs/news/tagged/recipes">Recipes</a></li-->
-          <li><a class="nav-link-text" href="/pages/faq">FAQ</a></li>
+
+          {% for link in linklists.dev-mobile.links %}
+            <li><a href="{{ link.url }}" class="nav-link-text">{{ link.title }}</a></li>
+          {% endfor %}
+          
           <li class="mobile-shop"> 
             <a class="button-transparent" href="/collections/all-products">Shop</a>  
           </li> 
@@ -631,6 +634,59 @@
         </ul>
       </div>
     </div>
+
+    <div class="logo-div-custom">
+      <a class="nav-logo" href="/"><span class="logotype"></span></a>
+    </div>
+    
+
+    <div class="menu-right">
+      <form class="search desktop-menu-search" action="/search">
+        <input type="text" placeholder="Search" name="q" value="{{ search.terms | escape }}"  />
+        <input type="submit" value="Search" />
+      </form>
+      <ul class="menu-right-links">
+        <li>
+          <a href="" class="search-icon"><i class="fa fa-search"></i></a>
+        </li>
+        {% assign loginUrl = "https://wearerasa.com/account/login" %}
+        {% for link in linklists.desktop-right.links %}
+            {% if shop.customer_accounts_enabled %}
+              {% if customer %}
+                <li class="has-submenu" >
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                  <ul class="submenu">
+                    <li>{{ 'Log out' | customer_logout_link }}</li>
+                  </ul>
+                </li>
+              {% else %}
+                {%- if link.links != blank -%} {% assign class = "has-submenu" %} {% endif %}
+                <li class="{{ class }}" >
+                  <a href="{{ link.url }}">{{ link.title }}</a>
+                  {%- if link.links != blank -%}
+                    <ul class="submenu">
+                      {%- for child_link in link.links -%}
+                        <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </li>
+              {% endif %}
+            {% endif %}
+          {% else %}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+        {% endfor %}
+
+        <li>
+          <a href="#" class="site-header__cart">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <span class="cus-cart-count">{{ cart.item_count }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
     <div class="shopping">
       <a class="menu-button" href="/collections/all-products">Shop</a>
       <a href="#" class="site-header__cart mobile-cart"><i class="fa fa-shopping-bag" aria-hidden="true"></i><span class="cus-cart-count">{{ cart.item_count }}</span></a>

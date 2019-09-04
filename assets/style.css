@@ -139,12 +139,21 @@ input[type=number]::-webkit-outer-spin-button {
    -webkit-appearance: inner-spin-button !important;
 }
 
-@media(max-width:768px){
+@media(min-width: 813px) {
+  .mobile-menu,
+  .shopping { display: none; }
+}
+
+@media(max-width:812px){
+  .shopify-section {
+    top: -20px !important;
+  }
+
   .nav-cont .mobile-cart{
     right:0;
   }
   nav#top {
-    padding: 16px 0;
+    height: 48px;
 }
   body .logotype, .blog-nav .title-logo {
     height: 31px;
@@ -157,7 +166,7 @@ input[type=number]::-webkit-outer-spin-button {
     background-position:center;
 }
   .nav-main .container.nav-cont {
-    margin-top: 0 !important;
+    margin-top: 5px !important;
 }
   .nav-cont #nav-trigger{
     right: auto;
