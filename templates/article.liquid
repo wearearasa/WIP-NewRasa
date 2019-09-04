@@ -45,8 +45,6 @@
   </div>
 </article>
 
-{% include 'narrative-cta' %}
-
 {% assign products_per_page = settings.products_per_row | times: settings.number_of_rows %}
 {% assign numbers = 'one, two, three, four, five, six' | split: ',' %}
 {% assign products_per_row = settings.products_per_row | minus: 1 %}
