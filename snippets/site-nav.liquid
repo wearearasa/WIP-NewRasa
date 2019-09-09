@@ -597,6 +597,11 @@
             {% endif %}
           </li>
           {% endfor %}
+          {% if customer.tags contains 'Wholesale' %}
+            <li>
+              <a class="nav-link-text" href="/collections/wholesale"><span class="">Wholesale </span> Shop</a>
+            </li>
+          {% endif %}
         </ul>
       </div>
     </div>
