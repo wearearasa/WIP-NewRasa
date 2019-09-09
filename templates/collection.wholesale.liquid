@@ -142,8 +142,9 @@
   }
   
   .collection-wholesale td .product-submit button {
-    height: 40px;
-    width: 110px;
+    position: relative;
+    top: 10px;
+    margin-bottom: 10px;
   }
   
   .collection-wholesale td {
@@ -154,6 +155,12 @@
     opacity: 1; 
   }
   
+  @media( max-width: 812px ) {
+    .collection-wholesale td .product-single-picker,
+    .collection-wholesale td .product-submit,
+    .collection-wholesale td .product-submit button { width: 100%; }
+  }
+
   @media screen and (max-width: 900px) {
       .collection-wholesale tr {
         display: grid;
