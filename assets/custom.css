@@ -75,6 +75,22 @@ body h1,body h2, body h3,body h4, body h5, body h6{
   	font-family:"Cormorant Garamond";
   	line-height: 35px;
 }
+
+#how-to-brew-rasa h1,
+#how-to-brew-rasa h2,
+#how-to-brew-rasa h3,
+#how-to-brew-rasa h4,
+#how-to-brew-rasa h5,
+#how-to-brew-rasa h6{
+    font-family: "Muli", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif
+}
+
+#how-to-brew-rasa h2 {
+  text-align: center;
+  font-size: 1.8em;
+  padding-top: 20px;
+}
+
 iframe#launcher {
     display: none;
 }
