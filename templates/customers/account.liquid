@@ -1,62 +1,112 @@
 {% layout settings.customer_layout %}
 
-<div id="admin_header">
-  <div class="action_link action_return note" id='return_to_store'><a href="{{ shop.url }}">Return to Store</a></div>
-  <h2 class="title">Account Details and Order History</h2>
-</div>
+<div class="container-account">
+  <aside class="menu-sidebar">
+    <ul class="menu-options-sidebar">
+      <li class="item-menu-sidebar">
+        <a href="#account-details" class="link-menu-sidebar">Account Details</a>
+      </li>
+      <li class="item-menu-sidebar">
+        <a href="#account-order-history" class="link-menu-sidebar">Order History</a>
+      </li>
+      <li class="item-menu-sidebar">
+        <a href="#account-address-book" class="link-menu-sidebar">Address Book</a>
+      </li>
+      <li class="item-menu-sidebar">
+        <a href="#account-billing" class="link-menu-sidebar">Billing</a>
+      </li>
+      <li class="item-menu-sidebar">
+        <a href="#account-credit" class="link-menu-sidebar">Store Credit</a>
+      </li>
+      <li class="item-menu-sidebar">
+        <a href="#account-discount" class="link-menu-sidebar">Get $10</a>
+      </li>
+      <li class="item-menu-sidebar">
+        <a href="#account-authorization" class="link-menu-sidebar">Authorization</a>
+      </li>
+    </ul>
+  </aside>
+  <!-- End menu-sidebar -->
 
-<div id="customer_sidebar">
-  <div id="customer_detail" class="group">
-    <h5 class="name">{{ customer.name }}</h5>
-    
-<!-- Begin ReCharge code -->
-{% if customer.metafields.subscriptions.customer_string %}
-<p><a href="/tools/recurring/customers/{{ customer.metafields.subscriptions.customer_string }}/subscriptions/">Manage Subscriptions</a></p>
-<!-- End ReCharge code -->
-{% endif %}
-    <p><a href="/tools/checkout/front_end/login" class="text-link">Manage Subscription</a></p>
-    <p class="email note">{{ customer.email }}</p>
-    <div class="address note">
-      {% if customer.default_address != nil %}
-        <p>{{ customer.default_address.address1 }}</p>
-        {% if customer.default_address.address2 != "" %}
-          <p>{{ customer.default_address.address2 }}</p>
-        {% endif %}
-        <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
-        <p>{{ customer.default_address.zip}}</p>
-        <p>{{ customer.default_address.phone }}</p>
+  <div class="page-content">
+    <div class="action_link action_return note" id='return_to_store'><a href="{{ shop.url }}">Return to Store</a></div>
+    <section id="account-details">
+      <h5 class="name">{{ customer.name }}</h5>
+
+      {% if customer.metafields.subscriptions.customer_string %}
+        <p>
+          <a href="/tools/recurring/customers/{{ customer.metafields.subscriptions.customer_string }}/subscriptions/">Manage Subscriptions</a>
+        </p>
       {% endif %}
-      <a id="view_address" href="/account/addresses">View Addresses ({{ customer.addresses_count }})</a>
-    </div>
 
+      <p>
+        <a href="/tools/checkout/front_end/login" class="text-link">Manage Subscription</a>
+      </p>
+      
+      <p class="email note">{{ customer.email }}</p>
+      
+      <div class="address note">
+        {% if customer.default_address != nil %}
+          <p>{{ customer.default_address.address1 }}</p>
+          {% if customer.default_address.address2 != "" %}
+            <p>{{ customer.default_address.address2 }}</p>
+          {% endif %}
+          <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
+          <p>{{ customer.default_address.zip}}</p>
+          <p>{{ customer.default_address.phone }}</p>
+        {% endif %}
+        <a id="view_address" href="/account/addresses">View Addresses ({{ customer.addresses_count }})</a>
+      </div>
+    </section>
+    <!-- End #Account Details -->
+
+    <section id="account-order-history">
+      <div id="customer_orders">
+        {% if customer.orders.size != 0 %}
+        <table>
+          <thead>
+            <tr>
+              <th class="order_number">Order</th>
+              <th class="date">Date</th>
+              <th class="payment_status">Payment Status</th>
+              <th class="fulfillment_status">Fulfillment Status</th>
+              <th class="total">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in customer.orders %}
+            <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
+              <td>{{ order.name | link_to: order.customer_url }}</td>
+              <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
+              <td><span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></td>
+              <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></td>
+              <td><span class="total money">{{ order.total_price | money }}</span></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% else %}
+          <p>You haven't placed any orders yet.</p>
+        {% endif %}
+      </div>
+
+    </section>
+    <!-- End #Account Order History -->
+
+    <section id="account-address-book"></section>
+    <!-- End #Account Address Book -->
+
+    <section id="account-billing"></section>
+    <!-- End #Account Billing -->
+
+    <section id="account-credit"></section>
+    <!-- End #Account Credit -->
+
+    <section id="account-discount"></section>
+    <!-- End #Account Discount -->
+
+    <section id="account-authorization"></section>
+    <!-- End #Account Authorization -->
   </div>
-</div>
-
-<div id="customer_orders">
-  {% if customer.orders.size != 0 %}
-  <table>
-    <thead>
-      <tr>
-        <th class="order_number">Order</th>
-        <th class="date">Date</th>
-        <th class="payment_status">Payment Status</th>
-        <th class="fulfillment_status">Fulfillment Status</th>
-        <th class="total">Total</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for order in customer.orders %}
-      <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
-        <td>{{ order.name | link_to: order.customer_url }}</td>
-        <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
-        <td><span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></td>
-        <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></td>
-        <td><span class="total money">{{ order.total_price | money }}</span></td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-    <p>You haven't placed any orders yet.</p>
-  {% endif %}
+  <!-- End page-content -->
 </div>
