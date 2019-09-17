@@ -1757,20 +1757,62 @@ span.bold-ro__recurring-text {
 
 .template-customers-account .container-account {
   display: inline-block;
-  width: 100%;
+  width: 94%;
   margin: 0 3%;
 }
 
 .template-customers-account .menu-sidebar {
   display: inline-block;
   float: left;
-  width: 25%;
+  width: 20%;
 }
 
 .template-customers-account .page-content {
   display: inline-block;
-  float: right;
-  width: 75%;
+  width: 76%;
+  margin-left: 4%;
+}
+
+.menu-options-sidebar {
+  list-style: none;
+  padding: 0;
+}
+
+.item-menu-sidebar:first-child { border-top: none; }
+
+.item-menu-sidebar {
+  padding: .25em .75em;
+  border-top: 1px solid #F0F0EE;
+  border-right: 1px solid #F0F0EE;
+  border-left: 1px solid #F0F0EE;
+  text-align: center;
+}
+
+.item-menu-sidebar.active {
+  background: #F0F0EE;
+  border: 1px solid transparent;
+}
+
+.item-menu-sidebar.active a { color: #000; }
+
+.page-content .action_return a {
+  font-weight: 600;
+  font-size: 12px;
+  color: #000 !important;
+}
+
+.page-content .action_return span { text-decoration: underline; }
+
+.page-content .section-title {
+  width: 100%;
+  text-align: center;
+  font-family: "Muli", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-weight: 100;
+}
+
+.page-content .section-subtitle {
+  font-size: 20px;
+  color: #000;
 }
 
 #account input:not(.btn),
