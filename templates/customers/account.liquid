@@ -31,7 +31,10 @@
         <p class="name">{{ customer.name }}</p>
         <p class="email">{{ customer.email }}</p>
       </div>
-
+      
+      <div class="edit-button">
+        <a href="" class="edit">Edit</a>
+      </div>
     </section>
     <!-- End #Account Details -->
 
@@ -54,7 +57,19 @@
               <td>{{ order.name | link_to: order.customer_url }}</td>
               <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
               <td><span class="total money">{{ order.total_price | money }}</span></td>
-              <td><span class="tracking">{% for o in order %} {{ o }} {% endfor %}</span></td>
+              <td>
+                <span class="tracking">
+                  {% assign track_number = "" %}
+                  {% for line in order.line_items %} 
+                    {% if line.fulfillment.tracking_number %}                    
+                      {% if track_number != line.fulfillment.tracking_number %}
+                        {{ line.fulfillment.tracking_number | link_to: line.fulfillment.tracking_url }}
+                      {% endif %}
+                      {% assign track_number = line.fulfillment.tracking_number %}
+                    {% endif %}
+                  {% endfor %}
+                </span>
+              </td>
             </tr>
             {% endfor %}
           </tbody>
