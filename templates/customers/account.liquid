@@ -15,23 +15,14 @@
       <li class="item-menu-sidebar item-account-billing">
         <a data-url="#account-billing" class="link-menu-sidebar">Billing</a>
       </li>
-      <li class="item-menu-sidebar item-account-credit">
-        <a data-url="#account-credit" class="link-menu-sidebar">Store Credit</a>
-      </li>
-      <li class="item-menu-sidebar item-account-discount">
-        <a data-url="#account-discount" class="link-menu-sidebar">Get $10</a>
-      </li>
-      <li class="item-menu-sidebar item-account-authorization">
-        <a data-url="#account-authorization" class="link-menu-sidebar">Authorization</a>
+      <li class="item-menu-sidebar item-account-subscription">
+        <a data-url="#account-subscription" class="link-menu-sidebar">Subscription</a>
       </li>
     </ul>
   </aside>
   <!-- End menu-sidebar -->
 
-  <div class="page-content">
-    <div class="action_link action_return note" id='return_to_store'>
-      <a href="{{ shop.url }}"><i class="fa fa-arrow-left"></i> <span>Return to Store</span></a>
-    </div>
+  <div class="page-content">    
 
     <section id="account-details">
       <h2 class="section-title">Account Details</h2>
@@ -41,18 +32,6 @@
         <p class="email">{{ customer.email }}</p>
       </div>
 
-      <h3 class="section-subtitle">Subscriptions</h3>
-      <div class="subscriptions">
-      {% if customer.metafields.subscriptions.customer_string %}
-        <p>
-          <a href="/tools/recurring/customers/{{ customer.metafields.subscriptions.customer_string }}/subscriptions/">Manage Subscriptions</a>
-        </p>
-      {% endif %}
-
-      <p>
-        You doesn't have any active Subscription. <a href="/tools/checkout/front_end/login" class="text-link">Subscribe now!</a>
-      </p>
-      </div>
     </section>
     <!-- End #Account Details -->
 
@@ -65,9 +44,8 @@
             <tr>
               <th class="order_number">Order</th>
               <th class="date">Date</th>
-              <th class="payment_status">Payment Status</th>
-              <th class="fulfillment_status">Fulfillment Status</th>
-              <th class="total">Total</th>
+              <th class="total">Amount</th>
+              <th class="tracking">Tracking</th>
             </tr>
           </thead>
           <tbody>
@@ -75,9 +53,8 @@
             <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
               <td>{{ order.name | link_to: order.customer_url }}</td>
               <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
-              <td><span class="status_{{ order.financial_status }}">{{ order.financial_status }}</span></td>
-              <td><span class="status_{{ order.fulfillment_status }}">{{ order.fulfillment_status }}</span></td>
               <td><span class="total money">{{ order.total_price | money }}</span></td>
+              <td><span class="tracking">{% for o in order %} {{ o }} {% endfor %}</span></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -186,20 +163,19 @@
     </section>
     <!-- End #Account Billing -->
 
-    <section id="account-credit">
-      <h2 class="section-title">Credit</h2>
-    </section>
-    <!-- End #Account Credit -->
+    <section id="account-subscription">
+      <h2 class="section-title">Subscription</h2>
+      {% if customer.metafields.subscriptions.customer_string %}
+        <p>
+          <a href="/tools/recurring/customers/{{ customer.metafields.subscriptions.customer_string }}/subscriptions/">Manage Subscriptions</a>
+        </p>
+      {% endif %}
 
-    <section id="account-discount">
-      <h2 class="section-title">10%</h2>
+      <p>
+        You doesn't have any active Subscription. <a href="/tools/checkout/front_end/login" class="text-link">Subscribe now!</a>
+      </p>
     </section>
-    <!-- End #Account Discount -->
-
-    <section id="account-authorization">
-      <h2 class="section-title">Authorization</h2>
-    </section>
-    <!-- End #Account Authorization -->
+    <!-- End #Account Subscription -->
   </div>
   <!-- End page-content -->
 </div>
