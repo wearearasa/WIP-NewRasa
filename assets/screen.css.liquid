@@ -1805,7 +1805,6 @@ span.bold-ro__recurring-text {
 
 .page-content .section-title {
   width: 100%;
-  text-align: center;
   font-family: "Muli", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
   font-weight: 100;
 }
@@ -1818,6 +1817,90 @@ span.bold-ro__recurring-text {
 #account input:not(.btn),
 #addresses input:not(.btn) {
   border: 1px solid #aeaeae;
+}
+
+.address-block {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 40px;
+  border: 1px solid #F0F0EE;
+  background: #f3f3f4;
+}
+
+.basic-information,
+.contact-information,
+.address-information {
+  display: inline-block;
+  width: 27%;
+  float: left;
+  padding: 1% 2% 3% 2%;
+}
+
+.contact-information {
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #FFF;
+  height: 165px;
+}
+
+.basic-information .title,
+.contact-information .title,
+.address-information .title {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Muli", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 14px;
+}
+
+.basic-information .address-subtitle,
+.contact-information .address-subtitle,
+.address-information .address-subtitle {
+  font-weight: 600;
+  margin-right: 10%;
+}
+
+.basic-information p,
+.contact-information p { margin-bottom: 15px; }
+
+.address-information p { margin: 0 !important; }
+
+.address-actions {
+  text-align: right;
+  margin-right: 1%;
+  font-size: 13px;
+  width: 100%;
+}
+
+.address-actions a {
+  color: #000;
+  margin: 0 0.5%;
+}
+
+.address-block:first-child { margin-top: 0; }
+
+.address-block:last-child { margin-bottom: 0; }
+
+@media( max-width: 812px ) {
+  .template-customers-account .page-content {
+    width: 100%;
+    overflow-x: hidden;
+    margin-left: 0;
+  }
+
+  .basic-information,
+  .contact-information,
+  .address-information { width: 100%; }
+
+  .contact-information {
+    border-top: 1px solid #FFF;
+    border-right: none;
+    border-bottom: 1px solid #FFF;
+    border-left: none;
+    height: auto;
+  }
+}
+
+@media( max-width: 375px ) {
+  .template-customers-account .menu-sidebar { width: 100%; }
 }
 
 #template {

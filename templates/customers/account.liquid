@@ -92,6 +92,80 @@
 
     <section id="account-address-book">
       <h2 class="section-title">Address Book</h2>
+      
+      {% for ad in customer.addresses %}
+        <div class="address-actions">
+          <a href="#" onclick="Shopify.CustomerAddress.toggleForm({{ ad.id }}); return false">
+            <i class="fa fa-edit"></i> Edit
+          </a>
+          <a href="#"><i class="fa fa-trash"></i> Delete</a>
+        </div>
+        <div id="ad-{{ ad.id }}" class="address-block address-{{ ad.id }}">
+          <div class="basic-information">
+            <h3 class="title">Basic Information</h3>
+            <p class="name">
+              <span class="address-subtitle">Name</span>
+              <span class="address-first-name">{{ ad.first_name }}</span>
+              <span class="address-last-name">{{ ad.last_name}}</span>
+            </p>
+
+            <p class="company">
+              <span class="address-subtitle">Company</span>
+              <span class="address-company">{{ ad.company }}</span>
+            </p>
+          </div>
+          <!-- End Basic Information -->
+
+          <div class="contact-information">
+            <h3 class="title">Contact Information</h3>
+            <p class="email">
+              <span class="address-subtitle">Email</span>
+              <span class="address-email">{{ customer.email }}</span>
+            </p>
+
+            <p class="phone">
+              <span class="address-subtitle">Phone</span>
+              <span class="address-phone">{{ ad.phone }}</span>
+            </p>
+          </div>
+          <!-- End Contact Information -->
+
+          <div class="address-information">
+            <h3 class="title">Address</h3>
+            <p class="address1">
+              <span class="address-address1">{{ ad.address1 }}</span>
+            </p>
+
+            <p class="address2">
+              <span class="address-address2">{{ ad.address2 }}</span>
+            </p>
+
+            <p class="city">
+              <span class="address-city">{{ ad.city }}</span>
+            </p>
+
+            <p class="province">
+              <span class="address-province">{{ ad.province }}</span>
+            </p>
+
+            <p class="zip">
+              <span class="address-zip">{{ ad.zip }}</span>
+            </p>
+
+            <p class="country">
+              <span class="address-country">{{ ad.country }}</span>
+            </p>
+          </div>
+          <!-- End Address Information-->
+          
+        </div>
+
+        <div class="address-form form-{{ ad.id }}">
+          
+        </div>
+      {% endfor %}
+
+
       <div class="address note">
         {% if customer.default_address != nil %}
           <p>{{ customer.default_address.address1 }}</p>
