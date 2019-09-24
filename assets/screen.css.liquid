@@ -1842,7 +1842,8 @@ span.bold-ro__recurring-text {
   border: 1px solid #aeaeae;
 }
 
-.address-block {
+.address-block,
+.user-edit-form {
   display: inline-block;
   width: 100%;
   margin-bottom: 40px;
@@ -1851,23 +1852,31 @@ span.bold-ro__recurring-text {
 }
 
 .basic-information,
+.form-basic-information,
 .contact-information,
-.address-information {
+.form-contact-information,
+.address-information,
+.form-address-information {
   display: inline-block;
   width: 27%;
   float: left;
   padding: 1% 2% 3% 2%;
 }
 
-.contact-information {
+.contact-information,
+.form-contact-information {
   border-left: 1px solid #FFF;
   border-right: 1px solid #FFF;
   height: 165px;
+  width: 33%;
 }
 
 .basic-information .title,
+.form-basic-information .title,
 .contact-information .title,
-.address-information .title {
+.form-contact-information .title,
+.address-information .title,
+.form-address-information .title {
   text-transform: uppercase;
   font-weight: 600;
   font-family: "Muli", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
@@ -1875,11 +1884,51 @@ span.bold-ro__recurring-text {
 }
 
 .basic-information .address-subtitle,
+.form-basic-information label,
 .contact-information .address-subtitle,
-.address-information .address-subtitle {
+.form-contact-information label,
+.address-information .address-subtitle,
+.address-information label {
   font-weight: 600;
   margin-right: 10%;
 }
+
+.user-edit-form { position: relative; }
+
+.user-edit-form input {
+  background: transparent !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid #fff !important;
+  border-left: none !important;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.user-edit-form .address-email { padding: 1em; }
+
+.form-actions {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  color: #000;
+}
+
+.user-edit-submit {
+  background: transparent !important;
+  color:#000 !important;
+  text-transform: none !important;
+  padding: 0 !important;
+  margin-right: 15px !important;
+}
+
+.form-actions a {
+  color: #000;
+  position: relative;
+  top: 2px;
+}
+
+.user-edit-form label { display: none; }
 
 .basic-information p,
 .contact-information p { margin-bottom: 15px; }
@@ -1960,9 +2009,11 @@ span.bold-ro__recurring-text {
 
 #customer_orders table td { padding: 3%; }
 
-.address-block:first-child { margin-top: 0; }
+.address-block:first-child,
+.user-edit-form:first-child { margin-top: 0; }
 
-.address-block:last-child { margin-bottom: 0; }
+.address-block:last-child,
+.user-edit-form:last-child { margin-bottom: 0; }
 
 .order-details .item-title {
   display: inline-block;
