@@ -1786,6 +1786,25 @@ span.bold-ro__recurring-text {
   text-align: center;
 }
 
+.item-menu-sidebar.item-mobile { display: none; }
+
+@media( max-width: 812px ) {
+
+  .template-customers-account .container-account { margin-top: 0; }
+
+  .item-menu-sidebar {
+    padding: 1.5em .75em;
+    border: 1px solid #F0F0EE;
+    margin: 25px 0;
+  }
+
+  .item-menu-sidebar:first-child { margin-top: 0; }
+
+  .item-menu-sidebar:last-child { margin-bottom: 0; }
+
+  .item-menu-sidebar.item-mobile { display: block; }
+}
+
 .item-menu-sidebar:last-child { border-bottom: 1px solid #F0F0EE; }
 
 .item-menu-sidebar a {
