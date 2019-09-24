@@ -42,26 +42,105 @@
       <h2 class="section-title">Order History</h2>
       <div id="customer_orders">
         {% if customer.orders.size != 0 %}
-        <table>
+        <div class="mobile-table">
+        {% for order in customer.orders %}
+            <div class="order-line order-{{ order.name | remove: '#' }}">
+              <div class="date mobile-date">
+                <span class="title">Date</span>
+                <span class="value">{{ order.created_at | date: "%b %d, %Y" }}</span>
+              </div>
+
+              <div class="order mobile-order">
+                <span class="title">Order</span>
+                <span class="value">
+                  <a href="#" data-link=".mobile-order-{{ order.name | remove: '#' }}" class="order-link">{{ order.name }}</a>
+                </span>
+
+                <div class="order-details details-mobile mobile-order-{{ order.name | remove: '#' }}">
+                  {% for line in order.line_items %}
+                    <div class="mobile-details mobile-product">
+                      <span class="item-title">Product</span>
+                      <span class="value item-name"> {{ line.title }}</span>
+                    </div>
+
+                    <div class="mobile-details mobile-quantity">
+                      <span class="item-title">Quantity</span>
+                      <span class="value item-quantity">{{ line.quantity }} x {{ line.final_price | money }}</span>
+                    </div>
+
+                    <div class="mobile-details mobile-total">
+                      <span class="item-title">Total</span>
+                      <span class="item-total">{{ line.final_price | times: line.quantity | money }}</span>
+                    </div>
+                  {% endfor %}
+
+                  {% for discount_application in order.cart_level_discount_applications %}
+                    <div class="mobile-details order-discounts mobile-order-{{ order.name | remove: '#' }} order-totals">
+                      <span>Discounts</span>
+                      <span>
+                        {{ discount_application.title }} - {{ discount_application.total_allocated_amount | money }}
+                      </span>
+                    </div>
+                  {% endfor %}
+
+                  <div class="mobile-details order-shipping mobile-order-{{ order.name | remove: '#' }} order-totals">
+                    <span>Shipping</span>
+                    <span>{{ order.shipping_price | money }}</span>
+                  </div>
+
+                  <div class="mobile-details order-total mobile-order-{{ order.name | remove: '#' }} order-totals">
+                    <span>Total</span>
+                    <span>{{ order.total_price | money }}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mobile-details tracking mobile-tracking">
+                <span class="title">Tracking</span>
+                <span class="value">
+                  {% for line in order.line_items %} 
+                    {% if line.fulfillment.tracking_number %}
+                      {% if track_number != line.fulfillment.tracking_number %}
+                        {{ line.fulfillment.tracking_number | link_to: line.fulfillment.tracking_url }}
+                      {% endif %}
+                      {% assign track_number = line.fulfillment.tracking_number %}
+                    {% endif %}
+                  {% endfor %}
+                </span>
+              </div>
+
+              <div class="mobile-details charge charge-mobile">
+                <span class="title">Charge</span>
+                <span class="value total money">{{ order.total_price | money }}</span>
+              </div>
+
+            </div>
+          {% endfor %}
+        </div>
+        {% comment %} End Mobile Table {% endcomment %}
+        
+        <table class="desktop-table">
           <thead>
             <tr>
-              <th class="order_number">Order</th>
               <th class="date">Date</th>
-              <th class="total">Amount</th>
-              <th class="tracking">Tracking</th>
+              <th class="order_number">Order</th>
+              <th class="tracking" colspan="2">Tracking</th>
+              <th class="total">Charge</th>
             </tr>
           </thead>
           <tbody>
             {% for order in customer.orders %}
-            <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}">
-              <td>{{ order.name | link_to: order.customer_url }}</td>
+            <tr class="{% cycle 'odd', 'even' %} {% if order.cancelled %}cancelled_order{% endif %}"">
               <td><span class="note">{{ order.created_at | date: "%b %d, %Y" }}</span></td>
-              <td><span class="total money">{{ order.total_price | money }}</span></td>
+
               <td>
+                <a href="#" data-link=".order-{{ order.name | remove: '#' }}" class="order-link">{{ order.name }}</a>
+              </td>
+
+              <td colspan="2">
                 <span class="tracking">
-                  {% assign track_number = "" %}
                   {% for line in order.line_items %} 
-                    {% if line.fulfillment.tracking_number %}                    
+                    {% if line.fulfillment.tracking_number %}
                       {% if track_number != line.fulfillment.tracking_number %}
                         {{ line.fulfillment.tracking_number | link_to: line.fulfillment.tracking_url }}
                       {% endif %}
@@ -70,8 +149,55 @@
                   {% endfor %}
                 </span>
               </td>
+              
+              <td><span class="total money">{{ order.total_price | money }}</span></td>
+              
             </tr>
+            <tr class="order-details details-titles order-{{ order.name | remove: '#' }}">
+              <td class="line-item-column"><span class="item-title">Product</span></td>
+              <td class="line-item-column"><span class="item-title" style="text-align: right;">Quantity</span></td>
+              <td class="line-item-column last"><span class="item-title">Amount</span></td>
+            </tr>
+
+            {% for line in order.line_items %}
+              <tr class="order-details order-{{ order.name | remove: '#' }} item item-{{ line.id }}">
+                <td>
+                  <p class="item-name">{{ line.title }}</p>
+                </td>
+
+                <td class="line-item-column">
+                  <p class="item-quantity" style="text-align: right;">
+                    {{ line.quantity }} x {{ line.final_price | money }}
+                  </p>
+                </td>
+
+                <td class="line-item-column last">
+                  <p class="item-total">{{ line.final_price | times: line.quantity | money }}</p>
+                </td>
+              </tr>
             {% endfor %}
+
+            {% for discount_application in order.cart_level_discount_applications %}
+              <tr class="order-discounts order-{{ order.name | remove: '#' }} order-totals">
+                <td colspan="4">Discounts</td>
+                <td>
+                  {{ discount_application.title }} - {{ discount_application.total_allocated_amount | money }}
+                </td>
+              </tr>
+            {% endfor %}
+                
+            <tr class="order-shipping order-{{ order.name | remove: '#' }} order-totals">
+              <td colspan="4">Shipping</td>
+              <td>{{ order.shipping_price | money }}</td>
+            </tr>
+
+            <tr class="order-total order-{{ order.name | remove: '#' }} order-totals">
+              <td colspan="4">Total</td>
+              <td>{{ order.total_price | money }}</td>
+            </tr>
+
+            {% endfor %}
+
           </tbody>
         </table>
         {% else %}

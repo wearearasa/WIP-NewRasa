@@ -101,5 +101,14 @@ jQuery(function($) {
     $(target).toggle();
     $(this).parent().addClass('active')
   })
+
+  // Recent Orders Table
+  $('.order-details').hide();
+  $('.order-totals').hide();
+  $('.order-link').click(function(e){    
+    var target = $(this).data('link');
+    $(target).toggle();
+    console.log($target);
+  });
   
 });
