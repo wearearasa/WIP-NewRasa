@@ -256,13 +256,14 @@
             <input type="text" name="address[city]" value="{{ ad.city }}" placeholder="City">
             
             <label for="address[province]">Province</label>
-            <select name="address[province]" id="address[province]"></select>
+            <select id="address_province_new" class="address_form" name="address[province]" data-default="{{form.province}}"></select>
             
             <label for="address[zip]">Zip</label>
             <input type="text" name="address[zip]" value="{{ ad.zip }}" placeholder="Zip Code">
             
             <label for="address[country]">Country</label>
-            <select name="address[country]" id=""></select>
+            <select id="address_country_new" name="address[country]" data-default="{{form.country}}">{{ country_option_tags }}</select>
+
           </div>
         {% endform %}
 
