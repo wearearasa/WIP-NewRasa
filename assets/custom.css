@@ -464,13 +464,19 @@ section.related-products.grid-shop.home-grid.related-procts {
     margin: 0;
     padding: 0;
 }
-#account.template-customers-login #customer, .template-customers-register #customer{
+#account.template-customers-login #customer,
+.template-customers-register #customer,
+#account.template-customers-login #recover-password {
     max-width: 500px;
     margin: auto;
     border: 4px double #ddd;
     padding: 30px;
     margin-top: 150px;
+    text-align: left;
+    width: 100%;
 }
+
+#account.template-customers-login { text-align: center; }
 
 .featured-review-wrapper {
     width: 100%;
