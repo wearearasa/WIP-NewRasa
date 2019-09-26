@@ -3183,18 +3183,7 @@
                               })(window,document,'script','https://i.tryinteract.com/promotions/init.js','i_promo');
       i_promo('init', 'Cr1Gq1s7P');
     </script>
-
-    <script>
-      {% if template.name == 'account' %}
-        theme.allCountryOptionTags = {{ all_country_option_tags | json }};
-      {% endif %}
-    </script>
-
-
-    
     {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
-    
-    
     <!-- Active Campaign Site Tracking -->
     <script type="text/javascript">
       // Set to false if opt-in required
@@ -3306,7 +3295,7 @@
         
 
          new Shopify.CountryProvinceSelector('address_country_new', 'address_province_new', {
-          hideElement: 'address_province_container_new'
+          //hideElement: 'address_province_container_new'
         });
 
       });

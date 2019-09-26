@@ -111,4 +111,37 @@ jQuery(function($) {
     console.log($target);
   });
   
-});
+  $('.form-container').hide();
+  $('.edit-link-button').click(function(e){
+    var target = $(this).data('form');
+    var block = $(this).data('block');
+    $(target).toggle();
+    $(block).toggle();
+  });
+
+  $('.btn-cancel-edit').click(function(e){
+    $(this).closest('form').toggle();
+  });
+
+  $('.reset-message').hide();
+  // Reset Password - Account page
+  $('#form-reset').submit(function(event){
+    event.preventDefault();
+
+    var url = $('#form-reset').attr('action'),
+    data = $('#form-reset').serialize();
+  
+    $.ajax({
+      url:url,
+        type:'post',
+        data:data,
+        success:function(){
+          $('.reset-message.success').show('faster');
+        },
+        error:function(err){
+          console.log(err);
+          $('.reset-message.err').show('faster');
+        }
+    });
+    })
+})
