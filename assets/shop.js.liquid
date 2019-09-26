@@ -173,10 +173,36 @@ jQuery(function($) {
           $('.loading-gif').hide();
           $(form).toggle();
           $(form).find('input').val('');
+          $('.add-new-address-btn').hide();
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           $('.loading-gif').hide();
           $('.register-address.err').show();
         }
-    });
+    });    
+  });
+
+  $('.address-delete-form').submit(function(event){
+    event.preventDefault();
+    var url = $(this).attr('action'),
+    data = $(this).serialize(),
+    formid = url.split("/account/addresses/"),
+    address = '.address-' + formid[1],
+    loading = '.loading-' + formid[1];
+
+    $(loading).show();
+  
+    $.ajax({
+      url:url,
+        type:'post',
+        data:data,
+        success:function(){
+          $(loading).hide();
+          $(address).remove();
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          $(loading).hide();
+          $('.register-address.err').show();
+        }
+    }); 
   })

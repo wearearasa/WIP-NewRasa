@@ -306,7 +306,7 @@
           <div class="loading-gif">
             <img src="{{ 'loading.gif' | asset_img_url: }}" />
           </div>
-          <span class="register-address err">We're unable to save your new address <br> Please, try again later</span>
+          <span class="register-address err">We're unable to process your request <br> Please, try again later</span>
       </div>
       
       {% for ad in customer.addresses %}
@@ -363,12 +363,18 @@
             </div>
           {% endform %}
         </div>
-        <div class="address-actions">
+        <div class="address-actions address-{{ ad.id }}">
           <a href="#" data-form=".user-edit-form-{{ ad.id }}" class="edit-link-button" data-block=".address-{{ ad.id }}">
             <i class="fa fa-edit"></i> Edit
           </a>
-          <a href="#"><i class="fa fa-trash"></i> Delete</a>
-        </div>
+          <form class="address-delete-form" method="post" action="/account/addresses/{{ ad.id }}" data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+            <input type="hidden" name="_method" value="delete"/>
+            <button type="submit" class="delete">
+                <i class="fa fa-trash"></i>
+                {{ 'customer.addresses.delete' | t }}
+            </button>
+          </form>          
+        </div>        
         <div id="ad-{{ ad.id }}" class="address-block address-{{ ad.id }}">
           <div class="basic-information">
             <h3 class="title">Basic Information</h3>
@@ -424,6 +430,9 @@
             <p class="country">
               <span class="address-country">{{ ad.country }}</span>
             </p>
+            <div class="loading-gif loading-{{ ad.id }}">
+              <img src="{{ 'loading.gif' | asset_img_url: }}" />
+            </div>
           </div>
           <!-- End Address Information-->
           
@@ -434,19 +443,6 @@
         </div>
       {% endfor %}
 
-
-      <div class="address note">
-        {% if customer.default_address != nil %}
-          <p>{{ customer.default_address.address1 }}</p>
-          {% if customer.default_address.address2 != "" %}
-            <p>{{ customer.default_address.address2 }}</p>
-          {% endif %}
-          <p>{{ customer.default_address.city}}, {% if address.province_code %}{{customer.default_address.province_code}}, {% endif %}{{customer.default_address.country}}</p>
-          <p>{{ customer.default_address.zip}}</p>
-          <p>{{ customer.default_address.phone }}</p>
-        {% endif %}
-        <a id="view_address" href="/account/addresses">View Addresses ({{ customer.addresses_count }})</a>
-      </div>
     </section>
     <!-- End #Account Address Book -->
 
