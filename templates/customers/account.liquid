@@ -262,47 +262,117 @@
             <div class="form-basic-information">
             <h3 class="title">Basic Information</h3>
               <label for="address[first_name]">First Name</label>
-              <input type="text" name="address[first_name]" value="{{ ad.first_name }}" placeholder="First Name"/>
+              <input type="text" name="address[first_name]" data-input="first-name" value="{{ ad.first_name }}" placeholder="First Name"/>
               
               <label for="address[last_name]">Last Name</label>
-              <input type="text" name="address[last_name]" value="{{ ad.last_name }}" placeholder="Last Name"/>
+              <input type="text" name="address[last_name]" data-input="last-name" value="{{ ad.last_name }}" placeholder="Last Name"/>
 
               <label for="address[company]">Company</label>
-              <input type="text" name="address[company]" value="{{ ad.company }}" placeholder="Company">
+              <input type="text" name="address[company]" data-input="company" value="{{ ad.company }}" placeholder="Company">
             </div>
 
             <div class="form-contact-information">
               <h3 class="title">Contact Information</h3>
               <label>Email</label>
               <span class="address-email">{{ customer.email }}</span>
+              <input type="hidden" data-input="email" value="{{ customer.email }}" style="display: none;">
               
               <label for="address[phone]">Phone</label>
-              <input type="tel" name="address[phone]" value="{{ ad.phone }}" placeholder="Phone Number">
+              <input type="tel" name="address[phone]" data-input="phone" value="{{ ad.phone }}" placeholder="Phone Number">
             </div>
 
             <div class="form-address-information">
             <h3 class="title">Address</h3>
               
               <label for="address[address1]">Address1</label>
-              <input type="text" name="address[address1]" value="{{ ad.address1 }}" placeholder="Address 1">
+              <input type="text" name="address[address1]" data-input="address1" value="{{ ad.address1 }}" placeholder="Address 1">
               
               <label for="address[address2]">Address2</label>
-              <input type="text" name="address[address2]" value="{{ ad.address2 }}" placeholder="Address 2">
+              <input type="text" name="address[address2]" data-input="address2" value="{{ ad.address2 }}" placeholder="Address 2">
               
               <label for="address[city]">City</label>
-              <input type="text" name="address[city]" value="{{ ad.city }}" placeholder="City">
+              <input type="text" name="address[city]" data-input="city" value="{{ ad.city }}" placeholder="City">
               
               <label for="address[province]">Province</label>
-              <select id="address_province_new" class="address_form" name="address[province]" data-default="{{form.province}}"></select>
+              <select id="address_province_new" class="address_form" data-input="province" name="address[province]" data-default="{{form.province}}"></select>
               
               <label for="address[zip]">Zip</label>
-              <input type="text" name="address[zip]" value="{{ ad.zip }}" placeholder="Zip Code">
+              <input type="text" name="address[zip]" data-input="zip" value="{{ ad.zip }}" placeholder="Zip Code">
               
               <label for="address[country]">Country</label>
-              <select id="address_country_new" name="address[country]" data-default="{{form.country}}">{{ country_option_tags }}</select>
+              <select id="address_country_new" name="address[country]" data-input="country" data-default="{{form.country}}">{{ country_option_tags }}</select>
 
             </div>
           {% endform %}
+
+
+          {% comment %} TEMP ADDRESS {% endcomment %}
+            <div class="address-block temp-address">
+            <div class="basic-information">
+              <h3 class="title">Basic Information</h3>
+              <p class="name">
+                <span class="address-subtitle">Name</span>
+                <span class="address-first-name"></span>
+                <span class="address-last-name"></span>
+              </p>
+
+              <p class="company">
+                <span class="address-subtitle">Company</span>
+                <span class="address-company"></span>
+              </p>
+            </div>
+            <!-- End Basic Information -->
+
+            <div class="contact-information">
+              <h3 class="title">Contact Information</h3>
+              <p class="email">
+                <span class="address-subtitle">Email</span>
+                <span class="address-email"></span>
+              </p>
+
+              <p class="phone">
+                <span class="address-subtitle">Phone</span>
+                <span class="address-phone"></span>
+              </p>
+            </div>
+            <!-- End Contact Information -->
+
+            <div class="address-information">
+              <h3 class="title">Address</h3>
+              <p class="address1">
+                <span class="address-address1"></span>
+              </p>
+
+              <p class="address2">
+                <span class="address-address2"></span>
+              </p>
+
+              <p class="city">
+                <span class="address-city"></span>
+              </p>
+
+              <p class="province">
+                <span class="address-province"></span>
+              </p>
+
+              <p class="zip">
+                <span class="address-zip"></span>
+              </p>
+
+              <p class="country">
+                <span class="address-country">{{ ad.country }}</span>
+              </p>
+              <div class="loading-gif loading-{{ ad.id }}">
+                <img src="{{ 'loading.gif' | asset_img_url: }}" />
+              </div>
+            </div>
+            <!-- End Address Information-->
+            
+          </div>
+          {% comment %} END TEMP ADDRESS {% endcomment %}
+
+
+
           <div class="loading-gif">
             <img src="{{ 'loading.gif' | asset_img_url: }}" />
           </div>

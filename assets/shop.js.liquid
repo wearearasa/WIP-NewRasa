@@ -170,6 +170,30 @@ jQuery(function($) {
         type:'post',
         data:data,
         success:function(){
+          var firstName = $('input[data-input="first-name"]').val();
+          var lastName = $('input[data-input="last-name"]').val();
+          var company = $('input[data-input="company"]').val();
+          var email = $('input[data-input="email"]').val();
+          var phone = $('input[data-input="phone"]').val();
+          var address1 = $('input[data-input="address1"]').val();
+          var address2 = $('input[data-input="address2"]').val();
+          var city = $('input[data-input="city"]').val();
+          var province = $('input[data-input="province"]').val();
+          var zip = $('input[data-input="zip"]').val();
+          var country = $('input[data-input="country"]').val();
+
+          $('.temp-address .address-first-name').text(firstName)
+          $('.temp-address .address-last-name').text(lastName)
+          $('.temp-address .address-company').text(company)
+          $('.temp-address .address-email').text(email)
+          $('.temp-address .address-phone').text(phone)
+          $('.temp-address .address-address1').text(address1)
+          $('.temp-address .address-address2').text(address2)
+          $('.temp-address .address-city').text(city)
+          $('.temp-address .address-province').text(province)
+          $('.temp-address .address-zip').text(zip)
+          $('.temp-address .address-country').text(country)
+
           $('.loading-gif').hide();
           $(form).toggle();
           $(form).find('input').val('');
