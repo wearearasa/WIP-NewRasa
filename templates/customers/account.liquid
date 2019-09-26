@@ -248,6 +248,66 @@
 
     <section id="account-address-book">
       <h2 class="section-title">Address Book</h2>
+
+      <a href="#" data-form=".register-new-address" class="add-new-address-btn">Add new Address <i class="fa fa-plus-circle"></i></a>
+
+      <div class="register-new-address">
+        {% form 'customer_address', customer.new_address, class: 'user-edit-form user-new-address' %}
+            <div class="form-actions">
+              <button type="submit" class="user-edit-submit">
+                <i class="fa fa-save"></i> Save
+              </button>
+              <a href="#" class="btn-cancel-edit"><i class="fa fa-window-close"></i> Cancel</a>
+            </div>
+            <div class="form-basic-information">
+            <h3 class="title">Basic Information</h3>
+              <label for="address[first_name]">First Name</label>
+              <input type="text" name="address[first_name]" value="{{ ad.first_name }}" placeholder="First Name"/>
+              
+              <label for="address[last_name]">Last Name</label>
+              <input type="text" name="address[last_name]" value="{{ ad.last_name }}" placeholder="Last Name"/>
+
+              <label for="address[company]">Company</label>
+              <input type="text" name="address[company]" value="{{ ad.company }}" placeholder="Company">
+            </div>
+
+            <div class="form-contact-information">
+              <h3 class="title">Contact Information</h3>
+              <label>Email</label>
+              <span class="address-email">{{ customer.email }}</span>
+              
+              <label for="address[phone]">Phone</label>
+              <input type="tel" name="address[phone]" value="{{ ad.phone }}" placeholder="Phone Number">
+            </div>
+
+            <div class="form-address-information">
+            <h3 class="title">Address</h3>
+              
+              <label for="address[address1]">Address1</label>
+              <input type="text" name="address[address1]" value="{{ ad.address1 }}" placeholder="Address 1">
+              
+              <label for="address[address2]">Address2</label>
+              <input type="text" name="address[address2]" value="{{ ad.address2 }}" placeholder="Address 2">
+              
+              <label for="address[city]">City</label>
+              <input type="text" name="address[city]" value="{{ ad.city }}" placeholder="City">
+              
+              <label for="address[province]">Province</label>
+              <select id="address_province_new" class="address_form" name="address[province]" data-default="{{form.province}}"></select>
+              
+              <label for="address[zip]">Zip</label>
+              <input type="text" name="address[zip]" value="{{ ad.zip }}" placeholder="Zip Code">
+              
+              <label for="address[country]">Country</label>
+              <select id="address_country_new" name="address[country]" data-default="{{form.country}}">{{ country_option_tags }}</select>
+
+            </div>
+          {% endform %}
+          <div class="loading-gif">
+            <img src="{{ 'loading.gif' | asset_img_url: }}" />
+          </div>
+          <span class="register-address err">We're unable to save your new address <br> Please, try again later</span>
+      </div>
       
       {% for ad in customer.addresses %}
         <div class="user-edit-form-{{ ad.id }} form-container">

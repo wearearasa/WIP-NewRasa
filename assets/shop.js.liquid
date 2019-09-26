@@ -120,7 +120,8 @@ jQuery(function($) {
   });
 
   $('.btn-cancel-edit').click(function(e){
-    $(this).closest('form').toggle();
+    $('.register-address.err').hide();
+    $(this).closest('form').parent().hide();
   });
 
   $('.reset-message').hide();
@@ -143,5 +144,39 @@ jQuery(function($) {
           $('.reset-message.err').show('faster');
         }
     });
-    })
+  })
+
+  $('.register-new-address').hide();
+  $('.add-new-address-btn').click(function(e) {
+    var form = $(this).data('form');
+    $(form).toggle();
+  })
 })
+
+// Save Address Form - Account page
+  $('.register-address.err').hide();
+  $('.loading-gif').hide();
+  $('.user-edit-form').submit(function(event){
+    $('.register-address.err').hide();
+    event.preventDefault();
+    $('.loading-gif').show();
+
+    var url = $(this).closest('form').attr('action'),
+    data = $(this).closest('form').serialize(),
+    form = $(this).closest('form');
+  
+    $.ajax({
+      url:url,
+        type:'post',
+        data:data,
+        success:function(){
+          $('.loading-gif').hide();
+          $(form).toggle();
+          $(form).find('input').val('');
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          $('.loading-gif').hide();
+          $('.register-address.err').show();
+        }
+    });
+  })
