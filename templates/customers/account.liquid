@@ -139,7 +139,7 @@
                   {% for line in order.line_items %} 
                     {% if line.fulfillment.tracking_number %}
                       {% if track_number != line.fulfillment.tracking_number %}
-                        {{ line.fulfillment.tracking_number | link_to: line.fulfillment.tracking_url }}
+                        <a href="{{ line.fulfillment.tracking_url }}" target="_blank">{{ line.fulfillment.tracking_number }}</a>
                       {% endif %}
                       {% assign track_number = line.fulfillment.tracking_number %}
                     {% endif %}
@@ -180,7 +180,7 @@
                   {% for line in order.line_items %} 
                     {% if line.fulfillment.tracking_number %}
                       {% if track_number != line.fulfillment.tracking_number %}
-                        {{ line.fulfillment.tracking_number | link_to: line.fulfillment.tracking_url }}
+                        <a href="{{ line.fulfillment.tracking_url }}" target="_blank">{{ line.fulfillment.tracking_number }}</a>
                       {% endif %}
                       {% assign track_number = line.fulfillment.tracking_number %}
                     {% endif %}
