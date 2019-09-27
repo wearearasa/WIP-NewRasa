@@ -108,7 +108,6 @@ jQuery(function($) {
   $('.order-link').click(function(e){    
     var target = $(this).data('link');
     $(target).toggle();
-    console.log($target);
   });
   
   $('.form-container').hide();
@@ -120,12 +119,14 @@ jQuery(function($) {
   });
 
   $('.btn-cancel-edit').click(function(e){
+    var block = $(this).data('block');
     $('.register-address.err').hide();
     $(this).closest('form').parent().hide();
+    $(block).show();
   });
 
-  $('.reset-message').hide();
   // Reset Password - Account page
+  $('.reset-message').hide();
   $('#form-reset').submit(function(event){
     event.preventDefault();
 
@@ -140,7 +141,6 @@ jQuery(function($) {
           $('.reset-message.success').show('faster');
         },
         error:function(err){
-          console.log(err);
           $('.reset-message.err').show('faster');
         }
     });
@@ -156,11 +156,12 @@ jQuery(function($) {
 // Save Address Form - Account page
   $('.register-address.err').hide();
   $('.loading-gif').hide();
+ 
   $('.user-edit-form').submit(function(event){
-    $('.register-address.err').hide();
-    event.preventDefault();
     $('.loading-gif').show();
-
+    $('.register-address.err').hide();
+    
+    event.preventDefault();
     var url = $(this).closest('form').attr('action'),
     data = $(this).closest('form').serialize(),
     form = $(this).closest('form');

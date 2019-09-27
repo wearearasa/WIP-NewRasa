@@ -386,12 +386,12 @@
               <button type="submit" class="user-edit-submit">
                 <i class="fa fa-save"></i> Save
               </button>
-              <a href="#" class="btn-cancel-edit"><i class="fa fa-window-close"></i> Cancel</a>
+              <a href="#" class="btn-cancel-edit" data-block=".address-{{ ad.id }}"><i class="fa fa-window-close"></i> Cancel</a>
             </div>
             <div class="form-basic-information">
             <h3 class="title">Basic Information</h3>
               <label for="address[first_name]">First Name</label>
-              <input type="text" name="address[first_name]" value="{{ ad.first_name }}" placeholder="First Name"/>
+              <input type="text" name="address[first_name]" data-input="first-name" value="{{ ad.first_name }}" placeholder="First Name"/>
               
               <label for="address[last_name]">Last Name</label>
               <input type="text" name="address[last_name]" value="{{ ad.last_name }}" placeholder="Last Name"/>
