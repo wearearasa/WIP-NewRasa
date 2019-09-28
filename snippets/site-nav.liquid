@@ -555,7 +555,7 @@
     </div>
 
     <div class="tealbar-menu-center">
-      <p>✨ Free shipping on all orders $50+ ✨</p>
+      <p>✨ Free shipping on all orders {% if customer.tags contains 'Wholesale' %} $350+ {% else %} $50+ {% endif %} ✨</p>
     </div>
 
     <div class="tealbar-menu-right">

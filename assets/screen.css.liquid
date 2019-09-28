@@ -1749,16 +1749,429 @@ span.bold-ro__recurring-text {
   top: 13px;
 }
 
-#account,
 #addresses {
   max-width: 500px;
   margin: 6em auto;
   padding: 1em 1.5em;
 }
 
+.template-customers-account .container-account {
+  display: inline-block;
+  width: 76%;
+  margin: 70px 12% 0 12%;
+}
+
+.template-customers-account .menu-sidebar {
+  display: inline-block;
+  float: left;
+  width: 20%;
+}
+
+.template-customers-account .page-content {
+  display: inline-block;
+  width: 76%;
+  margin-left: 4%;
+}
+
+.menu-options-sidebar {
+  list-style: none;
+  padding: 0;
+}
+
+.item-menu-sidebar {
+  padding: .9em .75em;
+  border-top: 1px solid #F0F0EE;
+  border-right: 1px solid #F0F0EE;
+  border-left: 1px solid #F0F0EE;
+  text-align: center;
+}
+.item-account-subscription { border-bottom: 1px solid #F0F0EE; }
+
+.item-menu-sidebar.item-mobile { display: none; }
+
+
+@media( max-width: 812px ) {
+
+  .template-customers-account .container-account { margin-top: 0; }
+
+  .item-menu-sidebar {
+    padding: 1.5em .75em;
+    border: 1px solid #F0F0EE;
+    margin: 25px 0;
+  }
+
+  .item-menu-sidebar:first-child { margin-top: 0; }
+
+  .item-menu-sidebar:last-child { margin-bottom: 0; }
+
+  .item-menu-sidebar.item-mobile { display: block; }
+}
+
+.item-menu-sidebar:last-child { border-bottom: 1px solid #F0F0EE; }
+
+.item-menu-sidebar a {
+  display: inline-block
+}
+
+.item-menu-sidebar.active {
+  background: #F0F0EE;
+  border: 1px solid transparent;
+}
+
+.item-menu-sidebar.active a { color: #000; }
+
+.page-content .action_return a {
+  font-weight: 600;
+  font-size: 12px;
+  color: #000 !important;
+}
+
+.page-content .action_return span { text-decoration: underline; }
+
+.page-content .section-title {
+  width: 100%;
+  font-family: "Muli", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-weight: 100;
+}
+
+.page-content .section-subtitle {
+  font-size: 20px;
+  color: #000;
+}
+
 #account input:not(.btn),
 #addresses input:not(.btn) {
   border: 1px solid #aeaeae;
+}
+
+.address-block,
+.user-edit-form {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 40px;
+  border: 1px solid #F0F0EE;
+  background: #f3f3f4;
+}
+
+.basic-information,
+.form-basic-information,
+.contact-information,
+.form-contact-information,
+.address-information,
+.form-address-information {
+  display: inline-block;
+  width: 27%;
+  float: left;
+  padding: 1% 2% 3% 2%;
+}
+
+.contact-information,
+.form-contact-information {
+  border-left: 1px solid #FFF;
+  border-right: 1px solid #FFF;
+  height: 165px;
+  width: 33%;
+}
+
+.basic-information .title,
+.form-basic-information .title,
+.contact-information .title,
+.form-contact-information .title,
+.address-information .title,
+.form-address-information .title {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: "Muli", "Helvetica Neue", "Helvetica", "Roboto", "Arial", sans-serif;
+  font-size: 14px;
+}
+
+.basic-information .address-subtitle,
+.form-basic-information label,
+.contact-information .address-subtitle,
+.form-contact-information label,
+.address-information .address-subtitle,
+.address-information label {
+  font-weight: 600;
+  margin-right: 10%;
+}
+
+.user-edit-form { position: relative; }
+
+.user-edit-form input {
+  background: transparent !important;
+  border-top: none !important;
+  border-right: none !important;
+  border-bottom: 2px solid #fff !important;
+  border-left: none !important;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.hidden-reset-pass label,
+.hidden-reset-pass input {
+  display: none;
+  position: absolute;
+  top: -9000%;
+  left: -9000%;
+}
+
+.loading-gif {
+  position: absolute;
+  top: 200px;
+  left: 40%;
+}
+
+.reset-message,
+.register-address {
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  background: #fff;
+  padding: 3%;
+  margin-top: 20px;
+}
+
+.register-address.err {
+  position: absolute;
+  top: 150px;
+}
+
+.reset-pass-btn {
+  width: 100%;
+  display: block !important;
+  padding: 0 !important;
+  text-transform: none !important;
+  background: transparent !important;
+  color: #ff0000 !important;
+  font-weight: 600;
+  text-align: left;
+  font-size: 11px !important;
+  position: relative;
+  top: -10px;
+}
+
+.user-edit-form .address-email { padding: 1em; }
+
+.form-actions {
+  position: absolute;
+  right: 0;
+  top: -25px;
+  color: #000;
+}
+
+.user-edit-submit {
+  background: transparent !important;
+  color:#000 !important;
+  text-transform: none !important;
+  padding: 0 !important;
+  margin-right: 15px !important;
+}
+
+.form-actions a {
+  color: #000;
+  position: relative;
+  top: 2px;
+}
+
+.user-edit-form label { display: none; }
+
+.basic-information p,
+.contact-information p { margin-bottom: 15px; }
+
+.address-information p { margin: 0 !important; }
+
+.address-actions {
+  text-align: right;
+  margin-right: 1%;
+  font-size: 13px;
+  width: 100%;
+  position: relative;
+}
+
+.address-actions .address-delete-form { display: contents; }
+
+.address-actions a,
+.address-actions button {
+  color: #000;
+  margin: 0 0.5%;
+}
+
+.address-actions button {
+  background: transparent;
+  text-transform: none;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  display: inherit;
+}
+
+@media( min-width: 813px ) {
+  .desktop-table { display: table; }
+  .mobile-table { display: none; }
+}
+
+@media( max-width: 812px ) {
+  .desktop-table { display: none; }
+  .mobile-table { display: inline-block; }
+}
+
+.mobile-table {
+  width: 100%;
+}
+
+.order-line {
+  margin-bottom: 30px;
+  border-bottom: 2px solid #F0F0EE;
+  display: inline-block;
+  width: 100%;
+}
+
+.order-line .mobile-order .order-totals {
+  width: 21% !important;
+  display: block !important;
+}
+
+.order-line .title { font-weight: 600; }
+
+.order-line div {
+  border-top: 1px solid #F0F0EE;
+  border-left: 1px solid #F0F0EE;
+  border-right: 1px solid #F0F0EE;
+  padding: 2% 5%;
+}
+
+.order-line span {
+  display: inline-block;
+  width: 100%;
+}
+
+.order-line .details-mobile {
+  margin: 0;
+  padding: 0;
+}
+
+.order-line .details-mobile div {
+  padding: 2%
+  display: inline-block;
+  width: 28%;
+}
+
+.order-details div[class*="mobile-order-R"] { margin: 0 1%; }
+
+#customer_orders table,
+#customer_orders table tr { border: 1px solid #F0F0EE; }
+
+#customer_orders table thead tr { border-bottom: 2px solid #F0F0EE; }
+
+#customer_orders table th { padding: 1% 3% }
+
+#customer_orders table td { padding: 3%; }
+
+.address-block:first-child,
+.user-edit-form:first-child { margin-top: 0; }
+
+.address-block:last-child,
+.user-edit-form:last-child { margin-bottom: 0; }
+
+.order-details .item-title {
+  display: inline-block;
+  width: 100%;
+  font-weight: 600;
+  text-align: left;
+  text-transform: uppercase;
+  top: 15px;
+  padding-bottom: 5px;
+  font-size: 12px;
+}
+
+.order-details td:first-child { width: 65%; }
+
+.order-details p {
+  display: inline-block;
+  width: 100%;
+}
+
+.order-details,
+.order-totals {
+  background: #FAFAFA;
+  width: 810px !important;
+  display: inline-table;
+  margin-left: 6%;
+}
+
+table,
+tbody,
+tr { position: relative; }
+.order-details th,
+.order-totals th,
+.order-details td,
+.order-totals td  {
+  padding-left: 1%;
+  padding-right: 1%;
+}
+
+#customer_orders table tr th:last-child,
+#customer_orders table tr td:last-child,
+.line-item-column.last .item-title { text-align: right; }
+
+tr.order-details {
+  border: 1px solid #F0F0EE;
+}
+
+.order-totals {
+  border-right: 1px solid #F0F0EE;
+  border-left: 1px solid #F0F0EE;
+}
+
+.order-totals.order-total {
+  border-bottom: 1px solid #F0F0EE;
+  margin-bottom: 20px;
+}
+
+.order-totals.order-total:after {
+  content: "";
+  display: inline-block;
+  width: 102%;
+  height: 2px;
+  background-color: #F0F0EE;
+  position: absolute;
+  left: -1%;
+  bottom: -15px;
+}
+
+tr.odd td,
+tr.even td { border-bottom: none; }
+
+.order-totals td { border-bottom: none; }
+
+@media( max-width: 812px ) {
+  .template-customers-account .page-content {
+    width: 100%;
+    overflow-x: hidden;
+    margin-left: 0;
+  }
+
+.basic-information,
+.form-basic-information,
+.contact-information,
+.form-contact-information,
+.address-information,
+.form-address-information { width: 100%; }
+
+  .contact-information {
+    border-top: 1px solid #FFF;
+    border-right: none;
+    border-bottom: 1px solid #FFF;
+    border-left: none;
+    height: auto;
+  }
+}
+
+@media( max-width: 812px ) {
+  .template-customers-account .menu-sidebar { width: 100%; }
 }
 
 #template {
