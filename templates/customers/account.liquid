@@ -293,9 +293,6 @@
               <label for="address[city]">City</label>
               <input type="text" name="address[city]" data-input="city" value="{{ ad.city }}" placeholder="City">
               
-              <label for="address[province]">Province</label>
-              <select id="address_province_new" class="address_form" data-input="province" name="address[province]" data-default="{{form.province}}"></select>
-              
               <label for="address[zip]">Zip</label>
               <input type="text" name="address[zip]" data-input="zip" value="{{ ad.zip }}" placeholder="Zip Code">
               
@@ -349,10 +346,6 @@
 
               <p class="city">
                 <span class="address-city"></span>
-              </p>
-
-              <p class="province">
-                <span class="address-province"></span>
               </p>
 
               <p class="zip">
@@ -421,9 +414,6 @@
               <label for="address[city]">City</label>
               <input type="text" name="address[city]" value="{{ ad.city }}" placeholder="City">
               
-              <label for="address[province]">Province</label>
-              <select id="address_province_new" class="address_form" name="address[province]" data-default="{{form.province}}"></select>
-              
               <label for="address[zip]">Zip</label>
               <input type="text" name="address[zip]" value="{{ ad.zip }}" placeholder="Zip Code">
               
@@ -487,10 +477,6 @@
 
             <p class="city">
               <span class="address-city">{{ ad.city }}</span>
-            </p>
-
-            <p class="province">
-              <span class="address-province">{{ ad.province }}</span>
             </p>
 
             <p class="zip">
