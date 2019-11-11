@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:07a8>{% endcomment -%}
+  {%- assign _11a2_safe_variants = '' %}{% for _variant in product.variants %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: _variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% capture _11a2_safe_variants %}{% if _11a2_safe_variants != blank %}{{ _11a2_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _11a2_safe_variants %}[{{ _11a2_safe_variants }}]{% endcapture %}{% assign _11a2_unsafe_variants = product.variants | json %}{% assign _11a2_safe_options = product.options | json %}{% assign _11a2_unsafe_options = product.options | json %}{% for _option in product.options %}{% assign _safe_values = '' %}{% for _value in _option.values %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: _value, locksmith_subject_parent: _option %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% capture _safe_values %}{% if _safe_values != blank %}{{ _safe_values }},{% endif %}{{ _value | json }}{% endcapture %}{% endfor %}{% capture _safe_values %}[{{ _safe_values }}]{% endcapture %}{% assign _unsafe_values = _option.values | json %}{% assign _unsafe_option = _option | json %}{% assign _safe_option = _unsafe_option | replace: _unsafe_values, _safe_values %}{% assign _11a2_safe_options = _11a2_safe_options | replace: _unsafe_option, _safe_option %}{% endfor %}{% assign _11a2_unsafe_options = product.options | json -%}
+{%- comment %}</locksmith:07a8>{% endcomment -%}
+
 {%- comment -%}
 BOLD-COMMON.LIQUID
 Last updated: 2018-Aug-9
@@ -94,8 +98,11 @@ It may be overwritten and any customizations would be lost.
     window.BOLD.common.Shopify.handle = {{ product.handle | json }}
     {%- endif -%}
     {%- comment -%} product page {%- endcomment -%}
-    window.BOLD.common.Shopify.saveProduct({{ product.handle | json }}, {{ product.id | json }}, {{product | json}});
+    window.BOLD.common.Shopify.saveProduct({{ product.handle | json }}, {{ product.id | json }}, {%- comment %}<locksmith:e9f3>{% endcomment -%}{{- product | json | replace: _11a2_unsafe_variants, _11a2_safe_variants | replace: _11a2_unsafe_options, _11a2_safe_options -}}{%- comment %}original: {{product | json}}{%- endcomment %}{%- comment %}</locksmith:e9f3>{% endcomment -%});
     {%- for variant in product.variants -%}
+        {%- comment %}<locksmith:c09e>{% endcomment -%}
+          {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:c09e>{% endcomment -%}
         {%- assign csp_metafield_namespace = variant.id | prepend: "csp" -%}
         window.BOLD.common.Shopify.saveVariant({{ variant.id | json }}, { variant: {{variant|json}}, inventory_quantity: {{variant.inventory_quantity|json}}, product_id: {{ product.id | json }}, product_handle: {{ product.handle | json }}, price: {{ variant.price | json }}, variant_title: {{ variant.title | json }}, group_id: '{{variant.metafields.bold_rp.rp_group_id}}', csp_metafield: {{ product.metafields[csp_metafield_namespace] | json }}});
     {%- endfor -%}
@@ -107,16 +114,28 @@ It may be overwritten and any customizations would be lost.
     {%- unless bold_apps_installed contains 'Product Options' or bold_apps_installed contains 'Customer Pricing' or bold_apps_installed contains 'Product Bundles' or bold_apps_installed contains 'Product Discount' or bold_apps_installed contains 'Quantity Breaks' or bold_apps_installed contains 'Custom Order' or bold_apps_installed contains 'Order Manager' or bold_apps_installed contains 'The Motivator'-%}
         {%- comment -%} collection page {%- endcomment -%}
         {%- for product in collection.products -%}
-            window.BOLD.common.Shopify.saveProduct({{ product.handle | json }}, {{ product.id | json }}, {{product |json}});
+            {%- comment %}<locksmith:498d>{% endcomment -%}
+              {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% assign _a2d1_safe_variants = '' %}{% for _variant in product.variants %}{% capture _a2d1_safe_variants %}{% if _a2d1_safe_variants != blank %}{{ _a2d1_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _a2d1_safe_variants %}[{{ _a2d1_safe_variants }}]{% endcapture %}{% assign _a2d1_unsafe_variants = product.variants | json %}{% assign _a2d1_safe_options = product.options | json %}{% assign _a2d1_unsafe_options = product.options | json %}{% for _option in product.options %}{% assign _safe_values = '' %}{% for _value in _option.values %}{% capture _safe_values %}{% if _safe_values != blank %}{{ _safe_values }},{% endif %}{{ _value | json }}{% endcapture %}{% endfor %}{% capture _safe_values %}[{{ _safe_values }}]{% endcapture %}{% assign _unsafe_values = _option.values | json %}{% assign _unsafe_option = _option | json %}{% assign _safe_option = _unsafe_option | replace: _unsafe_values, _safe_values %}{% assign _a2d1_safe_options = _a2d1_safe_options | replace: _unsafe_option, _safe_option %}{% endfor %}{% assign _a2d1_unsafe_options = product.options | json %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:498d>{% endcomment -%}
+            window.BOLD.common.Shopify.saveProduct({{ product.handle | json }}, {{ product.id | json }}, {%- comment %}<locksmith:1534>{% endcomment -%}{{- product | json | replace: _a2d1_unsafe_variants, _a2d1_safe_variants | replace: _a2d1_unsafe_options, _a2d1_safe_options -}}{%- comment %}original: {{product |json}}{%- endcomment %}{%- comment %}</locksmith:1534>{% endcomment -%});
             {%- for variant in product.variants -%}
+                {%- comment %}<locksmith:6731>{% endcomment -%}
+                  {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+                {%- comment %}</locksmith:6731>{% endcomment -%}
                 {%- assign csp_metafield_namespace = variant.id | prepend: "csp" -%}
                 window.BOLD.common.Shopify.saveVariant({{ variant.id | json }}, { variant: {{variant|json}}, inventory_quantity: {{variant.inventory_quantity|json}}, product_id: {{ product.id | json }}, product_handle: {{ product.handle | json }}, price: {{ variant.price | json }}, variant_title: {{ variant.title | json }}, group_id: '{{variant.metafields.bold_rp.rp_group_id}}', csp_metafield: {{ product.metafields[csp_metafield_namespace] | json }}});
             {%- endfor -%}
         {%- endfor -%}
         {%- comment -%} search page {%- endcomment -%}
         {%- for product in search.results -%}
-            window.BOLD.common.Shopify.saveProduct({{ product.handle | json }}, {{ product.id | json }}, {{product |json}});
+            {%- comment %}<locksmith:d329>{% endcomment -%}
+              {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: search %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:d329>{% endcomment -%}
+            window.BOLD.common.Shopify.saveProduct({{ product.handle | json }}, {{ product.id | json }}, {%- comment %}<locksmith:e9f3>{% endcomment -%}{{- product | json | replace: _11a2_unsafe_variants, _11a2_safe_variants | replace: _11a2_unsafe_options, _11a2_safe_options -}}{%- comment %}original: {{product |json}}{%- endcomment %}{%- comment %}</locksmith:e9f3>{% endcomment -%});
             {%- for variant in product.variants -%}
+                {%- comment %}<locksmith:23fb>{% endcomment -%}
+                  {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+                {%- comment %}</locksmith:23fb>{% endcomment -%}
                 {%- assign csp_metafield_namespace = variant.id | prepend: "csp" -%}
                 window.BOLD.common.Shopify.saveVariant({{ variant.id | json }}, { variant: {{variant|json}} ,inventory_quantity: {{variant.inventory_quantity|json}}, product_id: {{ product.id | json }}, product_handle: {{ product.handle | json }}, price: {{ variant.price | json }}, variant_title: {{ variant.title | json }}, group_id: '{{variant.metafields.bold_rp.rp_group_id}}', csp_metafield: {{ product.metafields[csp_metafield_namespace] | json }}});
             {%- endfor -%}

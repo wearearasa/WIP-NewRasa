@@ -1,11 +1,15 @@
+{%- comment %}<locksmith:8198>{% endcomment -%}
+  {%- assign locksmith_4d44_product__first_available_variant = nil %}{% assign locksmith_4d44_product__selected_variant = nil %}{% for variant in product.variants %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% if locksmith_4d44_product__first_available_variant == nil and variant.available %}{% assign locksmith_4d44_product__first_available_variant = variant %}{% endif %}{% if locksmith_4d44_product__selected_variant == nil and variant.selected %}{% assign locksmith_4d44_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_4d44_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% endfor %}{% if locksmith_4d44_product__selected_or_first_available_variant == nil %}{% assign locksmith_4d44_product__selected_or_first_available_variant = locksmith_4d44_product__first_available_variant %}{% endif %}{% assign _4d44_safe_variants = '' %}{% for _variant in product.variants %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: _variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% capture _4d44_safe_variants %}{% if _4d44_safe_variants != blank %}{{ _4d44_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _4d44_safe_variants %}[{{ _4d44_safe_variants }}]{% endcapture %}{% assign _4d44_unsafe_variants = product.variants | json %}{% assign _4d44_safe_options = product.options | json %}{% assign _4d44_unsafe_options = product.options | json %}{% for _option in product.options %}{% assign _safe_values = '' %}{% for _value in _option.values %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: _value, locksmith_subject_parent: _option %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% capture _safe_values %}{% if _safe_values != blank %}{{ _safe_values }},{% endif %}{{ _value | json }}{% endcapture %}{% endfor %}{% capture _safe_values %}[{{ _safe_values }}]{% endcapture %}{% assign _unsafe_values = _option.values | json %}{% assign _unsafe_option = _option | json %}{% assign _safe_option = _unsafe_option | replace: _unsafe_values, _safe_values %}{% assign _4d44_safe_options = _4d44_safe_options | replace: _unsafe_option, _safe_option %}{% endfor %}{% assign _4d44_unsafe_options = product.options | json -%}
+{%- comment %}</locksmith:8198>{% endcomment -%}
+
 {%- comment -%}
 BOLD-PRODUCT.LIQUID
 Last updated: 2017-October-27
 
 Sets all the appropriate liquid variables for Bold Apps that affect the product.
 Creates an updated JSON object that takes all appropriate apps into account. Can mimic all three types of product objects that Shopify uses.
-When installing, use {%- include 'bold-product', output: 'json' -%} to replace {{ product | json }} in the theme's liquid code.
-Alternatively, use {%- include 'bold-product', output: 'json', escape: true -%} to replace {{ product | json | escape }} in the theme's liquid code.
+When installing, use {%- include 'bold-product', output: 'json' -%} to replace {%- comment %}<locksmith:245a>{% endcomment -%}{{- product | json | replace: _4d44_unsafe_variants, _4d44_safe_variants | replace: _4d44_unsafe_options, _4d44_safe_options -}}{%- comment %}original: {{ product | json }}{%- endcomment %}{%- comment %}</locksmith:245a>{% endcomment -%} in the theme's liquid code.
+Alternatively, use {%- include 'bold-product', output: 'json', escape: true -%} to replace {%- comment %}<locksmith:245a>{% endcomment -%}{{- product | json | replace: _4d44_unsafe_variants, _4d44_safe_variants | replace: _4d44_unsafe_options, _4d44_safe_options | escape -}}{%- comment %}original: {{ product | json | escape }}{%- endcomment %}{%- comment %}</locksmith:245a>{% endcomment -%} in the theme's liquid code.
 
 FLAGS:
   output:              'none' | 'default' | 'script' | 'json'                   Controls how much data is printed
@@ -122,6 +126,9 @@ OPTIONAL: bold-product-error.liquid - If this snippet exists, it will be used to
 
   {%- assign variant_output_json = '' -%}
   {%- for variant in variant_list -%}
+    {%- comment %}<locksmith:f5a7>{% endcomment -%}
+      {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+    {%- comment %}</locksmith:f5a7>{% endcomment -%}
     {%- capture bold_variant_check -%}
       {%- include 'bold-variant' with variant, output: 'json', hide_action: 'skip', base_product: bold_product, customer_tag: bold_product_customer_tag, price_style: bold_product_endpoint -%}
     {%- endcapture -%}
@@ -186,7 +193,7 @@ OPTIONAL: bold-product-error.liquid - If this snippet exists, it will be used to
   {%- if bold_compare_at_price_min > bold_compare_at_price_max -%}{%- assign bold_compare_at_price_min = bold_product.compare_at_price_min -%}{%- assign bold_compare_at_price_max = bold_product.compare_at_price_max -%}{%- assign bold_compare_at_price = bold_product.compare_at_price -%}{%- endif -%}
 
   {%- comment -%}Failsafe: If no valid variants exist, fail back to product.selected_or_first_available_variant after all {%- endcomment -%}
-  {%- if bold_selected_or_first_available_variant == "" -%}{%- assign bold_selected_or_first_available_variant = product.selected_or_first_available_variant -%}{%- endif -%}
+  {%- if bold_selected_or_first_available_variant == "" -%}{%- assign bold_selected_or_first_available_variant = locksmith_4d44_product__selected_or_first_available_variant -%}{%- endif -%}
 
 {%- else -%}
 
@@ -337,6 +344,9 @@ OPTIONAL: bold-product-error.liquid - If this snippet exists, it will be used to
   {%- unless bold_product_output == 'script' or bold_product_output == 'json' -%}
     {%- if product_has_qb -%}
       {%- for var in bold_product.variants -%}
+        {%- comment %}<locksmith:aa40>{% endcomment -%}
+          {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: var, locksmith_subject_parent: bold_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:aa40>{% endcomment -%}
         <div class='bold-hidden' style='display:none' id='variant_html_{{- var.id -}}'>{{- var.metafields.shappify_qb.pricing_html | default: var.metafields.shappify_csp.pricing_html -}}</div>
       {%- endfor -%}
     {%- endif -%}
@@ -347,7 +357,7 @@ OPTIONAL: bold-product-error.liquid - If this snippet exists, it will be used to
     var BOLD = BOLD || {};
     BOLD.products = BOLD.products || {};
     BOLD.variant_lookup = BOLD.variant_lookup || {};
-    {%- for var in bold_product.variants -%}BOLD.variant_lookup[{{- var.id | json -}}] = {{- bold_product.handle | json -}};{%- endfor -%}
+    {%- for var in bold_product.variants -%}{%- comment %}<locksmith:c938>{% endcomment -%}{%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: var, locksmith_subject_parent: bold_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:c938>{% endcomment -%}BOLD.variant_lookup[{{- var.id | json -}}] = {{- bold_product.handle | json -}};{%- endfor -%}
 
     BOLD.products[{{- bold_product.handle | json -}}] =
   {%- endunless -%}
@@ -362,13 +372,19 @@ OPTIONAL: bold-product-error.liquid - If this snippet exists, it will be used to
 "body_html": {{- bold_product.description | json -}},
 "template_suffix":{{- bold_product.template_suffix | json -}},
 "images":[
+    {%- comment %}<locksmith:a283>{% endcomment -%}
+      {%- assign locksmith_66c2_forloop__size = 0 %}{%- for image in bold_product.images -%}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: image %}{% if locksmith_transparent %}{% assign locksmith_66c2_forloop__size = locksmith_66c2_forloop__size | plus: 1 %}{% endif %}{% endfor %}{% assign locksmith_66c2_forloop__index = nil -%}
+    {%- comment %}</locksmith:a283>{% endcomment -%}
     {%- for image in bold_product.images -%}
-    {%- unless forloop.index == 1%},{%- endunless -%}{
+    {%- comment %}<locksmith:7107>{% endcomment -%}
+      {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: image, locksmith_subject_parent: bold_product %}{% if locksmith_transparent %}{% if locksmith_66c2_forloop__index == nil %}{% assign locksmith_66c2_forloop__index = 1 %}{% assign locksmith_66c2_forloop__index0 = 0 %}{% else %}{% assign locksmith_66c2_forloop__index = locksmith_66c2_forloop__index | plus: 1 %}{% assign locksmith_66c2_forloop__index0 = locksmith_66c2_forloop__index0 | plus: 1 %}{% endif %}{% if locksmith_66c2_forloop__index == 1 %}{% assign locksmith_66c2_forloop__first = true %}{% else %}{% assign locksmith_66c2_forloop__first = false %}{% endif %}{% if locksmith_66c2_forloop__index == locksmith_66c2_forloop__size %}{% assign locksmith_66c2_forloop__last = true %}{% else %}{% assign locksmith_66c2_forloop__last = false %}{% endif %}{% assign locksmith_66c2_forloop__rindex = locksmith_66c2_forloop__size | minus: locksmith_66c2_forloop__index | minus: 1 %}{% assign locksmith_66c2_forloop__rindex0 = locksmith_66c2_forloop__size | minus: locksmith_66c2_forloop__index0 | minus: 1 %}{% else %}{% continue %}{% endif -%}
+    {%- comment %}</locksmith:7107>{% endcomment -%}
+    {%- unless locksmith_66c2_forloop__index == 1%},{%- endunless -%}{
 "id":{{- image.id | json -}},
 "product_id":{{- image.product_id | json -}},
 "position":{{- image.position | json -}},
 "src":{{- image.src | json -}},
-"variant_ids":[{%- assign not_first = false -%}{%- for variant in bold_product.variants -%}{%- if variant.featured_image == image -%}{%- if not_first -%},{%- endif -%}{%- assign not_first = true -%}{{- variant.id -}}{%- endif -%}{%- endfor -%}]
+"variant_ids":[{%- assign not_first = false -%}{%- for variant in bold_product.variants -%}  {%- comment %}<locksmith:ef93>{% endcomment -%}{%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: bold_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:ef93>{% endcomment -%}  {%- if variant.featured_image == image -%}{%- if not_first -%},{%- endif -%}{%- assign not_first = true -%}{{- variant.id -}}{%- endif -%}{%- endfor -%}]
 }
     {%- endfor -%}
 ],
@@ -377,7 +393,7 @@ OPTIONAL: bold-product-error.liquid - If this snippet exists, it will be used to
 "product_id": {{- bold_product.featured_image.product_id | json -}},
 "position": {{- bold_product.featured_image.position | json -}},
 "src": {{- bold_product.featured_image.src | json -}},
-"variant_ids": [{%- assign not_first = false -%}{%- for variant in bold_product.variants -%}{%- if variant.featured_image == bold_product.featured_image -%}{%- if not_first -%},{%- endif -%}{%- assign not_first = true -%}{{- variant.id -}}{%- endif -%}{%- endfor -%}]
+"variant_ids": [{%- assign not_first = false -%}{%- for variant in bold_product.variants -%}{%- comment %}<locksmith:475d>{% endcomment -%}{%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: bold_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:475d>{% endcomment -%}{%- if variant.featured_image == bold_product.featured_image -%}{%- if not_first -%},{%- endif -%}{%- assign not_first = true -%}{{- variant.id -}}{%- endif -%}{%- endfor -%}]
 },
     {%- endif -%}
 "handle":{{- bold_product_handle | default: bold_product.handle | json -}},

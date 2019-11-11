@@ -66,6 +66,9 @@ FLAGS:
 {%- assign bold_base_variant = bold_variant -%}
 {%- unless bold_base_variant_id == bold_variant.id -%}
   {%- for variant_check in bold_variant_base_product.variants -%}
+    {%- comment %}<locksmith:f471>{% endcomment -%}
+      {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant_check, locksmith_subject_parent: bold_variant_base_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+    {%- comment %}</locksmith:f471>{% endcomment -%}
     {%- if variant_check.id == bold_base_variant_id -%}
       {%- assign bold_base_variant = variant_check -%}
       {%- assign bold_is_base_variant = false -%}
@@ -120,6 +123,9 @@ FLAGS:
       {%- if bold_variant_base_product -%}
         {%- assign found_csp_level = false -%}
         {%- for variant in bold_variant_base_product.variants -%}
+           {%- comment %}<locksmith:8a24>{% endcomment -%}
+             {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: bold_variant_base_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+           {%- comment %}</locksmith:8a24>{% endcomment -%}
            {%- if variant.metafields.shappify_csp.csp_base == bold_variant.id and variant.metafields.shappify_csp.csp_tag == bold_variant_customer_tag -%}
              {%- assign found_csp_level = true -%}
              {%- break -%}
@@ -227,6 +233,9 @@ null,
 {%- if not_first_tag -%},{%- endif -%}{%- assign not_first_tag = true -%}
 {{- tag | json -}}:
 {%- for csp_variant in bold_variant_base_product.variants -%}
+{%- comment %}<locksmith:6d8e>{% endcomment -%}
+  {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: csp_variant, locksmith_subject_parent: bold_variant_base_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+{%- comment %}</locksmith:6d8e>{% endcomment -%}
 {%- if csp_variant.metafields.shappify_csp.csp_qty and csp_variant.metafields.shappify_csp.csp_qty != 1 -%}{%- continue -%}{%- endif -%}
 {%- assign base_check = csp_variant.metafields.shappify_csp.csp_base | default: csp_variant.id%}
 {%- if base_check == bold_base_variant.id and csp_variant.metafields.shappify_csp.csp_tag == tag -%}
@@ -255,6 +264,9 @@ null,
 {%- assign qb_price_varies = false -%}
 {%- assign not_first_tag = false -%}
 {%- for qb_variant in bold_variant_base_product.variants -%}
+{%- comment %}<locksmith:3ff5>{% endcomment -%}
+  {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: qb_variant, locksmith_subject_parent: bold_variant_base_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+{%- comment %}</locksmith:3ff5>{% endcomment -%}
 {%- if qb_variant.metafields.shappify_qb.qb_parent == bold_variant.id or qb_variant.metafields.shappify_csp.csp_base == bold_base_variant.id or qb_variant.id == bold_base_variant.id -%}
 {%- if qb_variant.metafields.shappify_csp.csp_tag == blank or qb_variant.metafields.shappify_csp.csp_tag == bold_variant_customer_tag -%}
 {%- if not_first_tag -%},{%- endif -%}{%- assign not_first_tag = true -%}
@@ -280,6 +292,9 @@ null,
 {%- if variant_has_bdl -%}
 ,"bdl_lookup":{
 {%- for bdl_variant in base_product.variants -%}
+{%- comment %}<locksmith:1479>{% endcomment -%}
+  {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: bdl_variant, locksmith_subject_parent: base_product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+{%- comment %}</locksmith:1479>{% endcomment -%}
 {%- unless bold_variant.id == bdl_variant.metafields.shappify_bundle.bundle_parent -%}{%- continue -%}{%- endunless -%}
 "id":{{- bdl_variant.id -}},
 "price":{{- bdl_variant.price | json -}},

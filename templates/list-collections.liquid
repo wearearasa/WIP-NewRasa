@@ -10,7 +10,7 @@ To use the code below, get rid of the above 'include', and get rid of the commen
 
 <div class="shopmenu">
   <div class="container">
-{% for link in linklists.collections-menu.links %}{% include 'easylockdown_filter_collections' with l %}
+{% for link in linklists.collections-menu.links %}{%- comment %}<locksmith:3c10>{% endcomment -%}{%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: link, locksmith_subject_parent: linklists.collections-menu %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:3c10>{% endcomment -%}{% include 'easylockdown_filter_collections' with l %}
   <a href="{{ link.url }}">{{ link.title }}</a>
 {% endfor %}
   </div>
@@ -20,7 +20,7 @@ To use the code below, get rid of the above 'include', and get rid of the commen
 	{% paginate collection.products by 12 %}
 
   <div class="container">
-     {% for product in collection.products %}{% include 'easylockdown_filter_collection' with product %}
+     {% for product in collection.products %}{%- comment %}<locksmith:a4fb>{% endcomment -%}{%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:a4fb>{% endcomment -%}{% include 'easylockdown_filter_collection' with product %}
       {% include 'product-grid-item' with products_per_row %}
     {% else %}
       <p>Amazing products coming your way, stay tuned!</p>

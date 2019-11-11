@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:16d8>{% endcomment -%}
+  {%- include 'locksmith' -%}
+{%- comment %}</locksmith:16d8>{% endcomment -%}
+
 <!DOCTYPE html>
 <html lang="en-US" prefix="og: http://ogp.me/ns#">
 <head>
@@ -16,7 +20,10 @@
   })(window,document,'script','dataLayer','GTM-KRW8J6W');</script>
   <!-- End Google Tag Manager -->
   {% if page_description %}
-  <meta name="description" content="{{ page_description | escape }}" />
+  {%- comment %}<locksmith:c663>{% endcomment -%}
+    {%- include 'locksmith-variables', locksmith_hiding_scope: 'resource' %}{% if locksmith_transparent %}<meta name="description" content="{{ page_description | escape }}" />{% endif -%}
+    {%- comment %}original: <meta name="description" content="{{ page_description | escape }}" />{%- endcomment %}
+  {%- comment %}</locksmith:c663>{% endcomment -%}
   {% endif %}
   <style></style>
   <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,400i,500,700,700i|Muli:300,400,400i,700" rel="stylesheet">

@@ -32,6 +32,9 @@
 <div class="shopmenu">
   <div class="container">
     {% for link in linklists[collection-listing].links %}
+      {%- comment %}<locksmith:bf84>{% endcomment -%}
+        {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: link, locksmith_subject_parent: linklists[collection-listing] %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:bf84>{% endcomment -%}
       {% if link.type == 'collection_link' %}
         {% assign collection = link.object %}
         {% include 'collection-grid-item' with products_per_row %}
@@ -44,6 +47,9 @@
 <div class="shopmenu">
   <div class="container">
 {% for link in linklists.collections-menu.links %}
+  {%- comment %}<locksmith:4762>{% endcomment -%}
+    {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: link, locksmith_subject_parent: linklists.collections-menu %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+  {%- comment %}</locksmith:4762>{% endcomment -%}
   <a href="{{ link.url }}">{{ link.title }}</a>
 {% endfor %}
   </div>
@@ -52,6 +58,9 @@
     {% paginate collections by products_per_page %}
       <div class="container">
         {% for collection in collections %}
+          {%- comment %}<locksmith:621e>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:621e>{% endcomment -%}
           {% include 'collection-grid-item' with products_per_row %}
         {% endfor %}
       </div>

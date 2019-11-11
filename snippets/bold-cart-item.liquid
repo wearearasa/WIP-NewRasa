@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:c821>{% endcomment -%}
+  {%- assign __bold_item = bold_item %}{% assign bold_item = bold-cart-item %}{% assign locksmith_82a4_bold_item__price = nil %}{% for variant in bold_item.variants %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: bold_item %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: bold_item %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% if locksmith_82a4_bold_item__price == nil %}{% assign locksmith_82a4_bold_item__price = variant.price %}{% endif %}{% endfor %}{% assign bold_item = __bold_item -%}
+{%- comment %}</locksmith:c821>{% endcomment -%}
+
 <!-- bold-cart-item.liquid -->
 {% comment %} Last updated 2017-Aug-31 {% endcomment %}
 {% capture bold_cart_item_liquid %}
@@ -69,7 +73,7 @@ To use this file:
 {% assign bold_item_list = bold_cart.items | default: bold_cart.line_items %}
 
 {% assign bold_item = bold-cart-item %}
-{% assign bold_item_price = bold_item.price %}
+{% assign bold_item_price = locksmith_82a4_bold_item__price %}
 {% assign bold_item_quantity = bold_item.quantity %}
 
 
@@ -120,14 +124,14 @@ To use this file:
 {% comment %} UNIT PRICE AND QUANTITY WITH BUY THE MEASURE {% endcomment %}
 {% if bold_ratio != 1 %}
   {% assign bold_item_quantity = bold_item_quantity | divided_by: bold_ratio %}
-  {% assign bold_item_price = bold_item.price | times: bold_ratio %}
+  {% assign bold_item_price = locksmith_82a4_bold_item__price | times: bold_ratio %}
 {% endif %}
 
 {% comment %} TOTAL PRICE WITH PRICED OPTIONS {% endcomment %}
 {% if bold_item.properties[master_builder] != blank %}
   {% if bold_item.properties._extra_price %}
   {% comment %} PRICE IS ATTACHED TO THE MASTER, NO NEED TO LOOP THROUGH CART {% endcomment %}
-    {% assign bold_item_price = bold_item.price %}
+    {% assign bold_item_price = locksmith_82a4_bold_item__price %}
     {% for bold_extra in  bold_item.properties._extra_price %}
       {% assign bold_item_price = bold_item_price | plus: bold_extra.last %}
     {% endfor %}
@@ -280,10 +284,10 @@ To use this file:
 				{% if bold_item.properties.discounted_price %}<span class="discounted_price_in_cart">{{ bold_item_price | money }}</span><span class="bold_ro_each"> each</span>{% endif %}
 				{% if bold_item.properties._secondary_discount_percent %}
 				  {% assign bold_ro_secondary_discount_multiplier = 100.00 | minus: bold_item.properties._secondary_discount_percent | times: 0.01 %}
-				  {% assign bold_ro_secondary_discount_price = bold_item.price | times: bold_ro_secondary_discount_multiplier %}
+				  {% assign bold_ro_secondary_discount_price = locksmith_82a4_bold_item__price | times: bold_ro_secondary_discount_multiplier %}
 				  <br>
 				  {% if bold_item.properties._secondary_discount_required_orders == '1' %}
-					{% if bold_ro_secondary_discount_price < bold_item.price %}
+					{% if bold_ro_secondary_discount_price < locksmith_82a4_bold_item__price %}
 						<span class="bold_ro_is_discount">Discounted price </span>
 					{% else %}
 						<span class="bold_ro_no_discount">Price </span>
@@ -291,7 +295,7 @@ To use this file:
 					<span class="bold_ro_price_after_first">after first order </span>
 					<span class="bold_ro_secondary_discount_price">{{bold_ro_secondary_discount_price | money}}</span>
 				  {% else %}
-					{% if bold_ro_secondary_discount_price < bold_item.price %}
+					{% if bold_ro_secondary_discount_price < locksmith_82a4_bold_item__price %}
 						<span class="bold_ro_is_discount">Discounted price </span>
 					{% else %}
 						<span class="bold_ro_no_discount">Price </span>
@@ -310,6 +314,9 @@ To use this file:
 			{% assign bold_ro_convertible_title = all_products[bold_item.properties._convertible_product_handle].title %}
 			{% assign bold_ro_convertible_variant_id = bold_item.properties._convertible_variant_id | times: 1 %}
 			{% for var in all_products[bold_item.properties._convertible_product_handle].variants %}
+			  {%- comment %}<locksmith:2d04>{% endcomment -%}
+			    {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: var, locksmith_subject_parent: all_products[bold_item.properties._convertible_product_handle] %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+			  {%- comment %}</locksmith:2d04>{% endcomment -%}
 			  {% if var.id == bold_ro_convertible_variant_id %}
 				{% assign bold_ro_convertible_product_price = var.price %}
 				{% if var.title != 'Default Title' %}

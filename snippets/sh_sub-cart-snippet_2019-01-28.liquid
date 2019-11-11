@@ -8,7 +8,7 @@
         {% for item in cart.items %}
         {
             'id': {{item.id}},
-            'product': { id:{{item.product_id}}, handle:'{{item.product.handle}}', title:{{item.product.title | json}},variants:[{% for variant in item.product.variants %}{% if item.variant_id == variant.id %}{id:{{variant.id}},title:{{variant.title | json}},available:{{variant.available}},price:'{{variant.price}}',inventory_quantity:'{{variant.inventory_quantity}}'}{% endif %}{% endfor %}]}
+            'product': { id:{{item.product_id}}, handle:'{{item.product.handle}}', title:{{item.product.title | json}},variants:[{% for variant in item.product.variants %}{%- comment %}<locksmith:5360>{% endcomment -%}{%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: item.product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:5360>{% endcomment -%}{% if item.variant_id == variant.id %}{id:{{variant.id}},title:{{variant.title | json}},available:{{variant.available}},price:'{{variant.price}}',inventory_quantity:'{{variant.inventory_quantity}}'}{% endif %}{% endfor %}]}
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
         ],

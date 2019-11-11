@@ -1,5 +1,8 @@
 {% assign shappify_min = shappify-bdl-min-price.price_max %}
 {% for variant in shappify-bdl-min-price.variants %}
+    {%- comment %}<locksmith:9a50>{% endcomment -%}
+      {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: shappify-bdl-min-price %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+    {%- comment %}</locksmith:9a50>{% endcomment -%}
     {% if  variant.metafields.shappify_bundle.is_bundle == "true" %}{% else %}
         {% if variant.price < shappify_min %}
             {% assign shappify_min = variant.price %}

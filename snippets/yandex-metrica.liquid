@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:00fb>{% endcomment -%}
+  {%- assign locksmith_b306_product__selected_variant = nil %}{% assign locksmith_b306_product__price = nil %}{% for variant in product.variants %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% if locksmith_b306_product__selected_variant == nil and variant.selected %}{% assign locksmith_b306_product__selected_variant = variant %}{% endif %}{% if locksmith_b306_product__price == nil %}{% assign locksmith_b306_product__price = variant.price %}{% endif %}{% endfor -%}
+{%- comment %}</locksmith:00fb>{% endcomment -%}
+
 <script type="text/javascript">
 /* PRELOADS */
 var loadScript = function(url, callback) {
@@ -94,11 +98,14 @@ if (jQuery311) {
             'products': [{
                 'id': "{{product.id}}",
                 'name': "{{product.title}}",
-                'price': "{{product.price | money_without_currency | replace: ",", "."}}",
+                'price': "{{locksmith_b306_product__price | money_without_currency | replace: ",", "."}}",
                 'brand': "{{product.vendor}}",
                 'category': "{{collection.title}}",
                 {% for option in product.options_with_values %} 
                 {% for value in option.values %} 
+                {%- comment %}<locksmith:e230>{% endcomment -%}
+                  {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: value, locksmith_subject_parent: option %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+                {%- comment %}</locksmith:e230>{% endcomment -%} 
                 {% if option.selected_value == value %}
                 "variant": "{{value}}",
                 {% endif %} 
@@ -108,7 +115,7 @@ if (jQuery311) {
         };
 
         function productView() {
-            var sku = '{{product.selected_variant.sku}}';
+            var sku = '{{locksmith_b306_product__selected_variant.sku}}';
             
             dataLayer.push({
                 "ecommerce": {
@@ -124,7 +131,7 @@ if (jQuery311) {
         productView();
 
         jQuery311(document).on('click', __bva__.cartTriggers, function() {
-            var skumatch = "{{product.selected_variant.sku}}";
+            var skumatch = "{{locksmith_b306_product__selected_variant.sku}}";
             if (sku != skumatch) {
                 productView();
             }
@@ -267,11 +274,14 @@ if (jQuery311) {
                 'products': [{
                     'id': "{{product.id}}",
                     'name': "{{product.title}}",
-                    'price': "{{product.price | money_without_currency | replace: ",", "."}}",
+                    'price': "{{locksmith_b306_product__price | money_without_currency | replace: ",", "."}}",
                     'brand': "{{product.vendor}}",
                     'category': "{{collection.title}}",
                     {% for option in product.options_with_values %} 
                       {% for value in option.values %} 
+                        {%- comment %}<locksmith:a1ee>{% endcomment -%}
+                          {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: value, locksmith_subject_parent: option %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+                        {%- comment %}</locksmith:a1ee>{% endcomment -%} 
                         {% if option.selected_value == value %}
                             "variant": "{{value}}",
                         {% endif %} 

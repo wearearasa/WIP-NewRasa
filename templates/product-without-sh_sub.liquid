@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:f3bf>{% endcomment -%}
+  {%- assign locksmith_8be2_product__available = false %}{% assign locksmith_8be2_product__first_available_variant = nil %}{% assign locksmith_8be2_product__selected_variant = nil %}{% assign locksmith_8be2_product__price = nil %}{% assign locksmith_8be2_product__compare_at_price = nil %}{% for variant in product.variants %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% if locksmith_8be2_product__available == false and variant.available %}{% assign locksmith_8be2_product__available = true %}{% endif %}{% if locksmith_8be2_product__first_available_variant == nil and variant.available %}{% assign locksmith_8be2_product__first_available_variant = variant %}{% endif %}{% if locksmith_8be2_product__selected_variant == nil and variant.selected %}{% assign locksmith_8be2_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_8be2_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% if locksmith_8be2_product__price == nil %}{% assign locksmith_8be2_product__price = variant.price %}{% endif %}{% if locksmith_8be2_product__compare_at_price == nil %}{% assign locksmith_8be2_product__compare_at_price = variant.compare_at_price %}{% endif %}{% endfor %}{% if locksmith_8be2_product__selected_or_first_available_variant == nil %}{% assign locksmith_8be2_product__selected_or_first_available_variant = locksmith_8be2_product__first_available_variant %}{% endif -%}
+{%- comment %}</locksmith:f3bf>{% endcomment -%}
+
 {%- include 'bold-ro' -%}
 {%- include 'bold-product' with product, hide_action: 'break', output: 'none' -%}
 {% assign add_to_cart = 'Add to cart' %}
@@ -48,9 +52,12 @@
 <section class="product-morphing-pinned" id="morphing-pinned">
   <div class="container">
     <div class="product-container">
-      {% assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image %}
+      {% assign featured_image = locksmith_8be2_product__selected_or_first_available_variant.featured_image | default: product.featured_image %}
 
       {% for image in product.images %}
+      {%- comment %}<locksmith:d90e>{% endcomment -%}
+        {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: image, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:d90e>{% endcomment -%}
       <div class="product-item">
         <a href="{{ image | img_url: '1024x1024' }}">
           <img src="{{ image | img_url: 'large' }}" alt="{{ image.alt | escape }}" />
@@ -89,13 +96,13 @@
       {{ description_top['leadin'] }}
       
       <form action="/cart/add" data-productid="{{product.id}}" method="post" enctype="multipart/form-data"> 
-{% if product.available %}{% include 'subscription-product' %}{% endif %} 
+{% if locksmith_8be2_product__available %}{% include 'subscription-product' %}{% endif %} 
         
       <div id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="delta">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
         <p>
-          {% assign variant = product.selected_or_first_available_variant %}
-          {% if product.compare_at_price > product.price %}
+          {% assign variant = locksmith_8be2_product__selected_or_first_available_variant %}
+          {% if locksmith_8be2_product__compare_at_price > locksmith_8be2_product__price %}
           <span class="product-price on-sale" itemprop="price">{{ variant.price | money }}</span>
           <s class="product-compare-price">{{ variant.compare_at_price | money }}</s>
           {% else %}
@@ -104,7 +111,7 @@
         </p>
       </div>
         <span class="product-stock">
-            {% if product.available %}
+            {% if locksmith_8be2_product__available %}
             <span class="product-in-stock">In Stock</span>
             {% else %}
             <span class="product-out-stock">Out of Stock</span>
@@ -121,7 +128,10 @@
         <div id="product-variants" class="{% if hide_default_title %} hidden{% endif %}">
           <select id="product-select" name="id" data-productid="{{product.id }}">
           {% for variant in product.variants %}
-            <option{% if variant == product.selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
+            {%- comment %}<locksmith:b697>{% endcomment -%}
+              {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:b697>{% endcomment -%}
+            <option{% if variant == locksmith_8be2_product__selected_or_first_available_variant %} selected{% endif %} value="{{ variant.id }}">
             {{ variant.title }} - {{ variant.price | money }}
             </option>
           {% endfor %}
@@ -154,6 +164,9 @@
 <section class="grid-shop">
   <div class="container">
     {% for product in collections['all'].products %}
+      {%- comment %}<locksmith:ac2b>{% endcomment -%}
+        {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collections.all %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:ac2b>{% endcomment -%}
       {% include 'product-grid-item' with products_per_row %}
     {% else %}
       <p>There are no products in this view.</p>

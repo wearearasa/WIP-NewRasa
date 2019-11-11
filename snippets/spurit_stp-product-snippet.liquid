@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:4f09>{% endcomment -%}
+  {%- assign _5f47_safe_variants = '' %}{% for _variant in product.variants %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: _variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% capture _5f47_safe_variants %}{% if _5f47_safe_variants != blank %}{{ _5f47_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _5f47_safe_variants %}[{{ _5f47_safe_variants }}]{% endcapture %}{% assign _5f47_unsafe_variants = product.variants | json %}{% assign _5f47_safe_options = product.options | json %}{% assign _5f47_unsafe_options = product.options | json %}{% for _option in product.options %}{% assign _safe_values = '' %}{% for _value in _option.values %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: _value, locksmith_subject_parent: _option %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% capture _safe_values %}{% if _safe_values != blank %}{{ _safe_values }},{% endif %}{{ _value | json }}{% endcapture %}{% endfor %}{% capture _safe_values %}[{{ _safe_values }}]{% endcapture %}{% assign _unsafe_values = _option.values | json %}{% assign _unsafe_option = _option | json %}{% assign _safe_option = _unsafe_option | replace: _unsafe_values, _safe_values %}{% assign _5f47_safe_options = _5f47_safe_options | replace: _unsafe_option, _safe_option %}{% endfor %}{% assign _5f47_unsafe_options = product.options | json -%}
+{%- comment %}</locksmith:4f09>{% endcomment -%}
+
 <script>
     if(typeof(Spurit) === 'undefined'){
         var Spurit = {};
@@ -8,5 +12,5 @@
     if(!Spurit.tieredPricing.snippet){
         Spurit.tieredPricing.snippet = {};
     }
-    Spurit.tieredPricing.snippet.product = {{ product | json }};
+    Spurit.tieredPricing.snippet.product = {%- comment %}<locksmith:8957>{% endcomment -%}{{- product | json | replace: _5f47_unsafe_variants, _5f47_safe_variants | replace: _5f47_unsafe_options, _5f47_safe_options -}}{%- comment %}original: {{ product | json }}{%- endcomment %}{%- comment %}</locksmith:8957>{% endcomment -%};
 </script>

@@ -1,7 +1,11 @@
+{%- comment %}<locksmith:e6e6>{% endcomment -%}
+  {%- assign _05eb_safe_variants = '' %}{% for _variant in product.variants %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: _variant, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% capture _05eb_safe_variants %}{% if _05eb_safe_variants != blank %}{{ _05eb_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _05eb_safe_variants %}[{{ _05eb_safe_variants }}]{% endcapture %}{% assign _05eb_unsafe_variants = product.variants | json %}{% assign _05eb_safe_options = product.options | json %}{% assign _05eb_unsafe_options = product.options | json %}{% for _option in product.options %}{% assign _safe_values = '' %}{% for _value in _option.values %}{% include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: _value, locksmith_subject_parent: _option %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif %}{% capture _safe_values %}{% if _safe_values != blank %}{{ _safe_values }},{% endif %}{{ _value | json }}{% endcapture %}{% endfor %}{% capture _safe_values %}[{{ _safe_values }}]{% endcapture %}{% assign _unsafe_values = _option.values | json %}{% assign _unsafe_option = _option | json %}{% assign _safe_option = _unsafe_option | replace: _unsafe_values, _safe_values %}{% assign _05eb_safe_options = _05eb_safe_options | replace: _unsafe_option, _safe_option %}{% endfor %}{% assign _05eb_unsafe_options = product.options | json -%}
+{%- comment %}</locksmith:e6e6>{% endcomment -%}
+
 <script>
 	var SUBParams = {
 		"id" : "6a02e3ad853877f8210148effb3bc35a",
-        "app_id" : "1",		"product" : {{ product | json }},
+        "app_id" : "1",		"product" : {%- comment %}<locksmith:2b7a>{% endcomment -%}{{- product | json | replace: _05eb_unsafe_variants, _05eb_safe_variants | replace: _05eb_unsafe_options, _05eb_safe_options -}}{%- comment %}original: {{ product | json }}{%- endcomment %}{%- comment %}</locksmith:2b7a>{% endcomment -%},
 		"moneyFormat" : "{{ shop.money_with_currency_format }}",
 		"productView": "sub-json"
 	};

@@ -5,5 +5,8 @@ Do not modify or remove this snippet, this snippet can be overwritten when the a
 
 {%- assign limoniapps-discountninja-collections = "" -%}
 {%- for collection in product.collections -%}
+	{%- comment %}<locksmith:a723>{% endcomment -%}
+	  {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: collection, locksmith_subject_parent: product %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+	{%- comment %}</locksmith:a723>{% endcomment -%}
 	{%- assign limoniapps-discountninja-collections = limoniapps-discountninja-collections | append: collection.handle | append: "," -%}
 {%- endfor -%}  

@@ -14,6 +14,9 @@
   <div class="container">
     <div class="filter-list">
         {% for link in linklists.collections-menu.links %}
+          {%- comment %}<locksmith:2ad6>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: link, locksmith_subject_parent: linklists.collections-menu %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:2ad6>{% endcomment -%}
           <a href="{{ link.url }}">{{ link.title }}</a>
         {% endfor %}
     </div>
@@ -24,6 +27,9 @@
 	{% paginate collection.products by 6 %}
       <div class="container AjaxinateLoop">
           {% for product in collection.products %}
+          {%- comment %}<locksmith:7732>{% endcomment -%}
+            {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collection %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:7732>{% endcomment -%}
           {% include 'product-grid-item' with products_per_row %}
           {% else %}
           <p>Amazing products coming your way, stay tuned!</p>

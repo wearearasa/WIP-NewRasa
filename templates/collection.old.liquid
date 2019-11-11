@@ -15,6 +15,9 @@
   <div class="container">
 
      {% for product in collections.bestsellers.products %}
+      {%- comment %}<locksmith:0d22>{% endcomment -%}
+        {%- include 'locksmith-variables', locksmith_scope: 'subject', locksmith_subject: product, locksmith_subject_parent: collections.bestsellers %}{% if locksmith_transparent %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:0d22>{% endcomment -%}
       {% include 'product-grid-item' with products_per_row %}
     {% else %}
       <p>There are no products in this view.</p>
