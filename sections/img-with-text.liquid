@@ -1,0 +1,80 @@
+{% for block in section.blocks %}
+<div class='img-text-section'>
+  <div class='page-width'>
+    <div class="img-text-block image-align-{{ block.settings.alignment }}">
+      <div class="col-md-6 imageblock">
+          {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | img_url: 'master' }}">
+          {%- endif -%}
+      </div>
+      <div class="col-md-6 text-block">
+        <div class="textblock">
+          {%- if block.settings.title != blank -%}
+              <h2 class="text-header">{{ block.settings.title }}</h2>
+          {%- endif -%}
+          {%- if block.settings.content != blank -%}
+              <div class="text-content">{{ block.settings.content }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endfor %}
+
+
+{% schema %}
+  {
+    "name": "Image text",
+    "settings": [],
+    "blocks": [
+      {
+        "type": "image",
+        "name": "TextImage",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "title"
+          },
+          {
+            "type": "html",
+            "id": "content",
+            "label": "content"
+          },
+          {
+            "type": "select",
+            "id": "alignment",
+            "label": "Horizontal alignment",
+            "default": "left",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              },
+              {
+                "value": "center",
+                "label": "Centered"
+              },
+              {
+                "value": "right",
+                "label": "Right"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

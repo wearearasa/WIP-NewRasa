@@ -1,0 +1,64 @@
+<div class='adaptogens-section'>
+  <div class='page-width'>
+    <div class="adaptogens-imageblock">
+      <div class="col-md-6 left-block left-image">
+          {%- if section.settings.leftimage != blank -%}
+              <img src="{{ section.settings.leftimage | img_url: 'master' }}">
+          {%- endif -%}
+      </div>
+      <div class="col-md-6 col-12 adaptogens-block adaptogens-content">
+        <div class="right-content">
+          {%- if section.settings.righttitle != blank -%}
+              <h2 class="text-center">{{ section.settings.righttitle | escape }}</h2>
+          {%- endif -%}
+          {%- if section.settings.content != blank -%}
+              <p class="text-center">{{ section.settings.content | escape }}</p>
+          {%- endif -%}
+          {%- if section.settings.btnlink != blank -%}
+              <a class="benefit-link" href="{{ section.settings.btnlink }}">{{ section.settings.btntext }}</a>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Adaptogens",
+    "settings": [
+      {
+      "type": "image_picker",
+      "id": "leftimage",
+      "label": "leftimage"
+      },
+      {
+      "type": "text",
+      "id": "righttitle",
+      "label": "righttitle"
+      },
+      {
+      "type": "html",
+      "id": "content",
+      "label": "content"
+      },
+      {
+      "type": "url",
+      "id": "btnlink",
+      "label": "btnlink"
+      },
+      {
+      "type": "text",
+      "id": "btntext",
+      "label": "btntext"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

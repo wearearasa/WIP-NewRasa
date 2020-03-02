@@ -1,0 +1,126 @@
+<div class="our-guarantees">
+  <div class='page-width-new'>
+  	{%- if section.settings.ourtitle != blank -%}
+      <h2 class="text-center">{{ section.settings.ourtitle | escape }}</h2>
+    {%- endif -%}
+    <div class="guarantee-slide" id="guarantee-accordion">
+     <div class="one-whole mob-acc-slider"> 
+    	{%- for block in section.blocks -%}
+      	  <div class="col-sm-6 col-md-3" data-toggle="collapse" href="#collapse-{{ block.settings.ourheading | replace: ' ', '-' }}" role="button" aria-expanded="false" aria-controls="collapse-{{ block.settings.ourheading | replace: ' ', '-' }}">
+      		<div class="col-md-5">
+              {%- if block.settings.ourslide != blank -%}
+                  <img src="{{ block.settings.ourslide | img_url: 'master' }}">
+              {%- endif -%}
+              </div>
+      		<div class="col-md-7 guarantee-content">
+              {%- if block.settings.ourheading != blank -%}
+                  <h4>{{ block.settings.ourheading | escape }}</h4>
+              {%- endif -%}
+      		</div>
+     	 </div>
+      {%- endfor -%}
+      </div>
+      <div class="accordian-slider">
+      {%- for block in section.blocks -%}
+      	 <div class="collapse no-transition" data-parent="#guarantee-accordion" id="collapse-{{ block.settings.ourheading | replace: ' ', '-' }}">
+		     <div class="card card-body">
+               {{ block.settings.textcontent }}
+  			</div>
+         </div>
+      	{%- endfor -%}
+      </div>
+    </div>
+    <div class="guarantee-image">
+    	{%- if section.settings.guaranteebottom != blank -%}
+        	<img src="{{ section.settings.guaranteebottom | img_url: 'master' }}">
+        {%- endif -%} 
+    </div>
+  </div>
+  <div class="guarantee-bottom-image">
+    <img src="//cdn.shopify.com/s/files/1/0275/9140/9750/files/New_Project_13.png?v=1575436454" alt="guarantee-bottom-img">
+  </div>
+<!--   <div class="guarantee-end">
+  		{%- if section.settings.guaranteeimagebottom != blank -%}
+        	<img src="{{ section.settings.guaranteeimagebottom | img_url: 'master' }}">
+        {%- endif -%} 
+  </div> -->
+</div>
+
+
+{% schema %}
+  {
+    "name": "guarantees name",
+    "settings": [
+		{
+          "type": "text",
+          "id": "ourtitle",
+		  "label": "ourtitle"
+		},
+		{
+		  "type": "image_picker",
+          "id": "guaranteebottom",
+          "label": "guaranteebottom"
+		},
+		{
+		  "type": "image_picker",
+          "id": "guaranteeimagebottom",
+          "label": "guaranteeimagebottom"
+		}
+	],
+	"blocks": [
+		{
+    		"type": "image",
+      		"name": "ourslide",
+			"settings": [
+				{
+					"type": "image_picker",
+          			"id": "ourslide",
+          			"label": "ourslide"
+				},
+				{
+					"type": "text",
+					"id": "ourheading",
+					"label": "ourheading"
+				},
+				{
+					"type": "richtext",
+					"id": "textcontent",
+					"label": "Content Text"
+				}
+			]
+		}
+	],
+	"presets": [
+    {
+      "name": "our guarantees section",
+      "category": {
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "hi": "इमेज",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "ms": "Imej",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

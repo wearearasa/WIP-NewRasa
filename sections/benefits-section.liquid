@@ -1,0 +1,125 @@
+<div class='benefits-section'>
+  <div class='page-width'>
+    {% if section.settings.title != blank %}
+    <h4 class="text-center">{{ section.settings.subheading | escape }}</h4>
+    <h2 class="text-center">{{ section.settings.title | escape }}</h2>
+    {% endif %}
+    <div class="benefits-order mob-slider">
+    {%- for block in section.blocks -%}
+      {%- if block.settings.imagebenefits != blank -%}
+        <div class="two-sixths grid__item">
+      	  <div class='benefit-content'>
+            <img id="{{ img_id }}"
+                 class="feature-row__image lazyload"
+                 src="{{ block.settings.imagebenefits | img_url: '200x200' }}"
+                 data-src="{{ img_url }}"
+                 data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                 alt="{{ block.settings.image.alt | escape }}">
+          </div>
+          <h3 class="text-center">{{ block.settings.benefitname | escape }}</h3>
+          <p class="text-center benefit-para">{{ block.settings.benefitpara | escape }}</p>
+      	</div>
+      {%- endif -%}
+        {%- endfor -%}
+    </div>
+ 	{% if section.settings.link != blank %}
+		<a class="benefit-link" href="{{ section.settings.link }}">{{ section.settings.btntxt }}</a>
+	{% endif %}
+  </div>
+</div>
+<!-- 	<div class="benefits-image">	
+      {%- if section.settings.imagerow != blank -%}
+          <img src="{{ section.settings.imagerow | img_url: 'master' }}">
+      {%- endif -%} 
+  	</div> -->
+
+
+{% schema %}
+  {
+    "name": "Benefits Section",
+	"class": "benefits-loop",
+	"max_blocks": 6,
+    "settings": [
+		{
+          "type": "text",
+          "id": "subheading",
+		  "label": "subheading"
+		},
+		{
+          "type": "text",
+          "id": "title",
+		  "label": "heading"
+		},
+		{
+          "type": "url",
+          "id": "link",
+		  "label": "Button link"
+		},
+		{
+          "type": "text",
+          "id": "btntxt",
+		  "label": "Button Text"
+		},
+		{
+	      "type": "image_picker",
+          "id": "imagerow",
+          "label": "imagerow"
+		}
+	],
+	"blocks": [
+		{
+	  		"type": "image",
+      		"name": "Imagebottom",
+	  		"settings": [
+	   		  {
+	      		"type": "image_picker",
+          		"id": "imagebenefits",
+          		"label": "imagebenefits"
+			  },
+			  {
+				"type": "text",
+				"id": "benefitname",
+				"label": "benefitname"
+			  },
+			  {
+				"type": "text",
+				"id": "benefitpara",
+				"label": "benefitpara"
+			  }
+  	  		]
+		}
+	],
+	"presets": [
+    {
+      "name": "image with loop",
+      "category": {
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "hi": "इमेज",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "ms": "Imej",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

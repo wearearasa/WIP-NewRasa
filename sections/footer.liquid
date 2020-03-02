@@ -1,0 +1,757 @@
+{%- assign social_icons = false -%}
+{%- assign inline_list = false -%}
+
+{%- if
+  settings.social_twitter_link != blank
+  or settings.social_facebook_link != blank
+  or settings.social_pinterest_link != blank
+  or settings.social_instagram_link != blank
+  or settings.social_tumblr_link != blank
+  or settings.social_snapchat_link != blank
+  or settings.social_youtube_link != blank
+  or settings.social_vimeo_link != blank
+  or request.page_type == 'article'
+  or request.page_type == 'blog'
+-%}
+  {%- assign social_icons = true -%}
+{%- endif -%}
+
+{%- case section.blocks.size -%}
+  {%- when 1 -%}
+    {%- assign footer_item = 'site-footer__item--full-width' -%}
+    {%- assign inline_list = true -%}
+  {%- when 2 -%}
+    {%- assign footer_item = 'site-footer__item--one-half' -%}
+    {%- assign inline_list = true -%}
+  {%- when 3 -%}
+    {%- assign footer_item = 'site-footer__item--one-third' -%}
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'newsletter' -%}
+        {%- assign footer_item = 'site-footer__item--one-quarter' -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- when 4 -%}
+    {%- assign footer_item = 'site-footer__item--one-quarter' -%}
+	{%- for block in section.blocks -%}
+      {%- if block.type == 'social_link' -%}
+        {%- assign footer_item = 'site-footer__item--one-quarter' -%}
+        {%- break -%}
+      {%- endif -%}
+    {%- endfor -%}
+  {%- when 5 -%}
+    {%- assign footer_item = 'site-footer__item--one-fifth' -%}
+{%- endcase -%}
+
+{% comment %} Create an appropriate hover color based on text color and brightness {% endcomment %}
+{%- assign footer_text_color = section.settings.color_footer_text -%}
+{%- assign footer_text_color_brightness = section.settings.color_footer_text | color_brightness -%}
+{%- if footer_text_color_brightness <= 26 -%}
+  {%- assign footer_text_color_hover = footer_text_color | color_lighten: 25 -%}
+{%- elsif footer_text_color_brightness <= 65 -%}
+  {%- assign footer_text_color_hover = footer_text_color | color_lighten: 15 -%}
+{%- else -%}
+  {%- assign footer_text_color_hover = footer_text_color | color_darken: 10 -%}
+{%- endif -%}
+
+<style>
+  .site-footer__hr {
+    border-bottom: 1px solid {{ section.settings.color_footer_bg | color_darken: 10 }};
+  }
+
+  .site-footer p,
+  .site-footer__linklist-item a,
+  .site-footer__rte a,
+  .site-footer h4,
+  .site-footer small,
+  .site-footer__copyright-content a,
+  .site-footer__newsletter-error {
+    color: {{ section.settings.color_footer_text }};
+  }
+
+  .site-footer {
+    color: {{ section.settings.color_footer_text }};
+    background-color: {{ section.settings.color_footer_bg }};
+  }
+
+  .site-footer__rte a {
+    border-bottom: 1px solid {{ section.settings.color_footer_text }};
+  }
+
+  .site-footer__rte a:hover,
+  .site-footer__linklist-item a:hover,
+  .site-footer__copyright-content a:hover {
+    color: {{ footer_text_color_hover }};
+    border-bottom: 1px solid {{ footer_text_color_hover }};
+  }
+  .site-footer__copyright-content {
+      text-transform: uppercase;
+  }
+</style>
+
+<footer class="site-footer" role="contentinfo">
+  {% include "instagram-feed" %}
+  <div class="page-width">
+    <div class="site-footer__content">
+      {%- for block in section.blocks -%}
+
+        <div class="site-footer__item
+                    {% if section.blocks.size == 1 %} site-footer__item--center{% endif %}
+                    {{ footer_item }}
+                    {% if block.type == 'newsletter' and section.blocks.size == 4 %}site-footer-newsletter__one-half{% endif %}"             		
+             {{ block.shopify_attributes }}>
+          <div class="site-footer__item-inner site-footer__item-inner--{{ block.type }}">
+
+            {%- if block.settings.title -%}
+              <p class="h4">{{ block.settings.title | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.newsletter_mail_id != blank -%}
+            	<a href="mailto:{{ block.settings.newsletter_mail_id }}">{{ block.settings.newsletter_mail_id }}</a>
+            {%- endif -%}
+            {%- if block.settings.newsletter_heading != blank -%}
+            	<h4>{{ block.settings.newsletter_heading }}</h4>
+            {%- endif-%}
+            {%- if block.settings.newsletter_description != blank -%}
+            	<p>{{ block.settings.newsletter_description }}</p>
+            {%- endif -%}
+            {%- if section.settings.footer_link != blank -%}
+            	<a href="{{ section.settings.button_link }}">{{ section.settings.footer_link | escape }}</a>
+            {%- endif -%}
+            {%- if section.settings.footerhead != blank -%}
+            	<h4>{{ section.settings.footerhead | escape }}</h4>
+            {%- endif -%}
+            {%- if section.settings.footercontent != blank -%}
+            	<p>{{ section.settings.footercontent | escape }}</p>
+			{%- endif -%}
+            
+            {%- case block.type -%}
+              {%- when 'newsletter' -%}
+                <div class="site-footer__newsletter
+                          {% if section.blocks.size == 1 %} site-footer__single-block--centered{% endif %}">
+                  {%- assign formId = 'ContactFooter' -%}
+                  {% form 'customer', id: formId, novalidate: 'novalidate', onsubmit: 'return validateNewsletterEmail();' %}
+                    {%- if form.posted_successfully? -%}
+                      <p class="form-message form-message--success" tabindex="-1" data-form-status>
+                        {{ 'general.newsletter_form.confirmation' | t }}
+                      </p>
+                    {%- endif -%}
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <div class="input-group {% if form.errors %} input-group--error{% endif %}">
+                      <input type="email"
+                        name="contact[email]"
+                        id="{{ formId }}-email"
+                        class="input-group__field newsletter__input{% if form.errors %} input--error{% endif %}"
+                        value="{{ form.email }}"
+                        placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                        aria-label="{{ 'general.newsletter_form.email_placeholder' | t }}"
+                        aria-required="true"
+                        required
+                        autocorrect="off"
+                        autocapitalize="off"
+                        {% if form.errors %}
+                          aria-invalid="true"
+                          aria-describedby="{{ formId }}-email-error"
+                          data-form-status
+                        {% endif %}>
+                      <span class="input-group__btn">
+                        <button type="submit" class="btn newsletter__submit" name="commit" id="Subscribe">
+                          <span class="newsletter__submit-text--large">{{ 'general.newsletter_form.submit' | t }}</span>
+                        </button>
+                      </span>
+                    </div>
+                      <span id="{{ formId }}-email-error" class="input-error-message hide">
+                        <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                        {% include 'icon-error' %}
+                        <span class="site-footer__newsletter-error">Email can't be blank.</span>
+                      </span>
+                  {% endform %}
+                </div>
+            
+            	
+
+            {%- when 'link_list' -%}
+                {%- assign footer_linklist = block.settings.menufooter -%}
+                  <ul class="site-footer__linklist
+                            {% if inline_list %}list--inline{% endif %}">
+                    {%- for link in linklists[footer_linklist].links -%}
+                    	{%- if block.settings.menufooter != blank -%}
+                          <li class="site-footer__linklist-item">
+                            <a href="{{ link.url }}"
+                              {% if link.current %} aria-current="page"{% endif %}
+                            >
+                              {{ link.title | escape }}
+                            </a>
+                          </li>
+                    	{% endif %}
+                    {%- endfor -%}
+                  </ul>  
+            
+            {%- when 'text' -%}
+                {%- if block.settings.text != blank -%}
+                  <div class="site-footer__rte
+                              {% if section.blocks.size == 1 %} site-footer__single-block--centered{% endif %}">
+                      {{ block.settings.text }}
+                  </div>
+                {%- endif -%}
+
+              {%- when 'link_list' -%}
+                {%- assign footer_linklist = block.settings.menu -%}
+                  <ul class="site-footer__linklist
+                            {% if inline_list %}list--inline{% endif %}">
+                    {%- for link in linklists[footer_linklist].links -%}
+                      <li class="site-footer__linklist-item">
+                        <a href="{{ link.url }}" target="{{ block.settings.link_target }}"
+                          {% if link.current %} aria-current="page"{% endif %}
+                        >
+                          {{ link.title | escape }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+            
+              {%- when 'url' -%}
+            <a href="{{ block.settings.link }}"></a>
+
+            {%- endcase -%}
+
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+
+  
+
+  <div class="page-width">
+    <div class="grid grid--no-gutters small--text-center footer-content">
+      <div class="grid__item seven-tenths small--one-whole">
+          <div class="bottom-footer">
+            <small>FDA DISCLAIMER: * THESE STATEMENTS HAVE NOT BEEN EVALUATED BY THE FOOD & DRUG ADMINISTRATION. THIS PRODUCT IS NOT INTENDED TO DIAGNOSE, TREAT, CURE OR PREVENT ANY DISEASE.</small>
+          </div>
+      </div>
+
+      <div class="grid__item three-tenths small--one-whole footer-copyright">
+        <small class="site-footer__copyright-content">&copy; Copyright {{ shop.name | link_to: routes.root_url }} {{ 'now' | date: "%Y" }} </small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+{% schema %}
+{
+  "name": {
+    "da": "Sidefod",
+    "de": "Fußzeile",
+    "en": "Footer",
+    "es": "Pie de página",
+    "fi": "Alatunniste",
+    "fr": "Pied de page",
+    "hi": "फुटर",
+    "it": "Footer",
+    "ja": "フッター",
+    "ko": "바닥글",
+    "ms": "Pengaki",
+    "nb": "Footer",
+    "nl": "Voettekst",
+    "pt-BR": "Rodapé",
+    "pt-PT": "Rodapé",
+    "sv": "Sidfot",
+    "th": "ส่วนท้าย",
+    "zh-CN": "页脚",
+    "zh-TW": "頁尾"
+  },
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "da": "Betalingsmetoder",
+        "de": "Zahlungsarten",
+        "en": "Payment methods",
+        "es": "Métodos de pago",
+        "fi": "Maksutavat",
+        "fr": "Moyens de paiement",
+        "hi": "भुगतान की विधियां",
+        "it": "Metodi di pagamento",
+        "ja": "決済方法",
+        "ko": "결제 방법",
+        "ms": "Kaedah bayaran",
+        "nb": "Betalingsmetoder",
+        "nl": "Betaalmethoden",
+        "pt-BR": "Formas de pagamento",
+        "pt-PT": "Métodos de Pagamento",
+        "sv": "Betalningsmetoder",
+        "th": "วิธีการชำระเงิน",
+        "zh-CN": "支付方式",
+        "zh-TW": "付款方式"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": {
+        "da": "Vis betalingsikoner",
+        "de": "Zahlungs-Buttons anzeigen",
+        "en": "Show payment icons",
+        "es": "Mostrar iconos de pago",
+        "fi": "Näytä maksukuvakkeet",
+        "fr": "Afficher les icônes de paiement",
+        "hi": "भुगतान आइकन दिखाएं",
+        "it": "Mostra le icone di pagamento",
+        "ja": "支払いアイコンを表示する",
+        "ko": "결제 아이콘 표시",
+        "ms": "Tunjukkan ikon pembayaran",
+        "nb": "Vis betalingsikoner",
+        "nl": "Betalingspictogrammen weergeven",
+        "pt-BR": "Exibir ícones de pagamento",
+        "pt-PT": "Mostrar ícones de pagamento",
+        "sv": "Visa betalningsikoner",
+        "th": "แสดงไอคอนการชำระเงิน",
+        "zh-CN": "显示付款图标",
+        "zh-TW": "顯示付款圖示"
+      },
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": {
+        "da": "Farve",
+        "de": "Farbe",
+        "en": "Color",
+        "es": "Color",
+        "fi": "Väri",
+        "fr": "Couleur",
+        "hi": "रंग",
+        "it": "Colore",
+        "ja": "色",
+        "ko": "색상",
+        "ms": "Warna",
+        "nb": "Farge",
+        "nl": "Kleur",
+        "pt-BR": "Cor",
+        "pt-PT": "Cor",
+        "sv": "Färg",
+        "th": "สี",
+        "zh-CN": "颜色",
+        "zh-TW": "顏色"
+      }
+    },
+    {
+      "type": "color",
+      "id": "color_footer_bg",
+      "label": {
+        "da": "Baggrund",
+        "de": "Hintergrundfarbe",
+        "en": "Background",
+        "es": "Fondo",
+        "fi": "Tausta",
+        "fr": "Couleur de fond",
+        "hi": "पृष्ठभूमि",
+        "it": "Sfondo",
+        "ja": "背景",
+        "ko": "배경",
+        "ms": "Latar belakang",
+        "nb": "Bakgrunn",
+        "nl": "Achtergrond",
+        "pt-BR": "Plano de fundo",
+        "pt-PT": "Fundo",
+        "sv": "Bakgrund",
+        "th": "พื้นหลัง",
+        "zh-CN": "背景",
+        "zh-TW": "背景"
+      },
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "color_footer_text",
+      "label": {
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "hi": "टेक्स्ट",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "ms": "Teks",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "default": "#3d4246"
+    },
+	{
+		"type": "header",
+      	"content":"Instagram Feed"
+	},
+	{
+        "id": "access_token",
+        "type": "textarea",
+        "label": "Access token",
+        "info": "[Generate access token](https://appstore.mageworx.com/instagram-access-token)"
+      },
+      {
+        "id": "section_title",
+        "type": "text",
+        "label": "Section title",
+	"default": "Our Instagram feed"
+      },
+      {
+        "id": "number_of_images",
+        "type": "range",
+        "label": "Number of recent images to load",
+        "max": 50,
+        "min": 1,
+        "step": 1,
+        "default": 10
+      }
+  ],
+  "blocks": [
+    {
+      "type": "link_list",
+      "name": {
+        "da": "Menu",
+        "de": "Menü",
+        "en": "Menu",
+        "es": "Menú",
+        "fi": "Valikko",
+        "fr": "Menu",
+        "hi": "मेनू",
+        "it": "Menu",
+        "ja": "メニュー",
+        "ko": "메뉴",
+        "ms": "Menu",
+        "nb": "Meny",
+        "nl": "Menu",
+        "pt-BR": "Menu",
+        "pt-PT": "Menu",
+        "sv": "Meny",
+        "th": "เมนู",
+        "zh-CN": "菜单",
+        "zh-TW": "選單"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "da": "Overskrift",
+            "de": "Überschrift",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "hi": "शीर्षक",
+            "it": "Heading",
+            "ja": "見出し",
+            "ko": "제목",
+            "ms": "Tajuk",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": {
+            "da": "Hurtige links",
+            "de": "Quick-Links",
+            "en": "Quick links",
+            "es": "Enlaces rápidos",
+            "fi": "Pikalinkit",
+            "fr": "Liens rapides",
+            "hi": "त्वरित लिंक",
+            "it": "Link rapidi",
+            "ja": "クイックリンク",
+            "ko": "빠른 링크",
+            "ms": "Pautan Pantas",
+            "nb": "Hurtigkoblinger",
+            "nl": "Snelle links",
+            "pt-BR": "Links rápidos",
+            "pt-PT": "Ligações rápidas",
+            "sv": "Snabblänkar",
+            "th": "ลิงก์ด่วน",
+            "zh-CN": "快速链接",
+            "zh-TW": "快速連結"
+          }
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": {
+            "da": "Menu",
+            "de": "Menü",
+            "en": "Menu",
+            "es": "Menú",
+            "fi": "Valikko",
+            "fr": "Menu",
+            "hi": "मेनू",
+            "it": "Menu",
+            "ja": "メニュー",
+            "ko": "메뉴",
+            "ms": "Menu",
+            "nb": "Meny",
+            "nl": "Menu",
+            "pt-BR": "Menu",
+            "pt-PT": "Menu",
+            "sv": "Meny",
+            "th": "เมนู",
+            "zh-CN": "菜单",
+            "zh-TW": "選單"
+          },
+          "default": "footer"
+        },
+        {
+           "type":      "select",
+           "id":        "link_target",
+           "label":     "Select a target",
+           "options": [
+             {
+               "value": "_blank",
+               "label": "_blank"
+             },
+             {
+               "value": "_self",
+               "label": "_self"
+             },
+             {
+               "value": "_parent",
+               "label": "_parent"
+             },
+             {
+               "value": "_top",
+               "label": "_top"
+             }
+           ],
+           "default":   "_self"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": {
+        "da": "Tekst",
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fi": "Teksti",
+        "fr": "Texte",
+        "hi": "टेक्स्ट",
+        "it": "Testo",
+        "ja": "テキスト",
+        "ko": "텍스트",
+        "ms": "Teks",
+        "nb": "Tekst",
+        "nl": "Tekst",
+        "pt-BR": "Texto",
+        "pt-PT": "Texto",
+        "sv": "Text",
+        "th": "ข้อความ",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      },
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "da": "Overskrift",
+            "de": "Überschrift",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "hi": "शीर्षक",
+            "it": "Heading",
+            "ja": "見出し",
+            "ko": "제목",
+            "ms": "Tajuk",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "default": {
+            "da": "Fortæl om din virksomhed",
+            "de": "Reden Sie über Ihr Unternehmen",
+            "en": "Talk about your business",
+            "es": "Habla sobre tu negocio",
+            "fi": "Kerro yrityksestäsi",
+            "fr": "Parlez de votre entreprise",
+            "hi": "अपने व्यवसाय के बारे में बात करें",
+            "it": "Parla della tua attività commerciale",
+            "ja": "あなたのビジネスについて語る",
+            "ko": "비즈니스에 대한 이야기하기",
+            "ms": "Bercakap tentang perniagaan anda",
+            "nb": "Snakk om bedriften din",
+            "nl": "Vertel over je bedrijf",
+            "pt-BR": "Fale sobre o seu negócio",
+            "pt-PT": "Fale sobre o seu negócio",
+            "sv": "Prata om ditt företag",
+            "th": "พูดถึงธุรกิจของคุณ",
+            "zh-CN": "介绍您的业务",
+            "zh-TW": "描述您的商家"
+          }
+        },
+        {
+		 	"type": "link_list",
+          	"id": "menufooter",	
+			"label": "menufooter",
+			"default": "footer"
+		},
+		{
+			"type": "url",
+      		"id": "footer_link",
+			"label": "Footer link"
+		},
+		{
+			"type": "text",
+          	"id": "footerhead",
+          	"label": "footerhead"
+		},
+		{
+			"type": "text",
+          	"id": "footercontent",
+          	"label": "footercontent"
+		}
+      ]
+    },
+	{
+	  "type": "social_link",
+	  "name": "social icons",
+	  "settings": [
+        {
+          "type": "url",
+          "id": "socialtitle",
+		  "label": "heading"
+		}
+	  ]
+	},
+    {
+      "type": "newsletter",
+      "limit": 1,
+      "name": {
+        "da": "Tilmelding til nyhedsbrev",
+        "de": "Newsletter-Anmeldung",
+        "en": "Newsletter signup",
+        "es": "Suscripción al boletín",
+        "fi": "Uutiskirjeen tilaus",
+        "fr": "Inscription",
+        "hi": "न्यूज़लेटर साइनअप",
+        "it": "Iscriviti alla Newsletter",
+        "ja": "ニュースレターの登録",
+        "ko": "뉴스레터 신청",
+        "ms": "Pendaftaran surat berita",
+        "nb": "Registrering for nyhetsbrev",
+        "nl": "Nieuwsbriefaanmelding",
+        "pt-BR": "Assinatura da newsletter",
+        "pt-PT": "Registo na newsletter",
+        "sv": "Nyhetsbrevsregistrering",
+        "th": "การสมัครรับจดหมายข่าว",
+        "zh-CN": "新闻通讯注册",
+        "zh-TW": "訂閱電子報"
+      },
+      "settings": [
+        {
+        "type": "text",
+        "id": "newsletter_mail_id",
+        "label": "Mail"
+        },
+        {
+          "type": "text",
+          "id": "newsletter_heading",
+          "label": "Newsletter Heading"
+        },
+		{
+          "type": "richtext",
+          "id": "newsletter_description",
+          "label": "Newsletter description"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": {
+            "da": "Overskrift",
+            "de": "Überschrift",
+            "en": "Heading",
+            "es": "Título",
+            "fi": "Otsake",
+            "fr": "Titre",
+            "hi": "शीर्षक",
+            "it": "Heading",
+            "ja": "見出し",
+            "ko": "제목",
+            "ms": "Tajuk",
+            "nb": "Overskrift",
+            "nl": "Kop",
+            "pt-BR": "Título",
+            "pt-PT": "Título",
+            "sv": "Rubrik",
+            "th": "ส่วนหัว",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          },
+          "info": {
+            "da": "Abonnenter føjes til din \"accepterer markedsføring\" [kundeliste.](/admin/customers?query=&accepts_marketing=1)",
+            "de": "Abonnenten werden zu Ihrer \"akzeptiert Marketingmaterial\"-Liste hinzugefügt [Kundenliste.](/admin/customers?query=&accepts_marketing=1)",
+            "en": "Subscribers will be added to your “accepts marketing” [customer list.](/admin/customers?query=&accepts_marketing=1)",
+            "es": "Se añadirá los suscriptores a tu lista \"acepta marketing\"[lista de clients.](/admin/customers?query=&accepts_marketing=1)",
+            "fi": "Tilaajat lisätään \"hyväksyy markkinoinnin\" -asiakaslistaan [asiakaslista.](/ Admin / customers? Query = & accepts_marketing = 1)",
+            "fr": "Les abonnés seront ajoutés à votre [liste de clients](/admin/customers?query=&accepts_marketing=1) « Accepte le marketing ».",
+            "hi": "सदस्य को आपकी \"मार्केटिंग स्वीकार करता है\" [ग्राहक सूची](/admin/customers?query=&accepts_marketing=1) में जोड़ दिया जाएगा.",
+            "it": "Gli iscritti verranno aggiunti al tuo [elenco clienti](/admin/customers?query=&accepts_marketing=1) “Accetta marketing”.",
+            "ja": "購読者は「マーケティングを受け入れる」[顧客リスト](/admin/customers?query=&accepts_marketing=1)に追加されます。",
+            "ko": "구독자는 \"마케팅 허용\"[고객 목록]에 추가됩니다 (/admin/ customers?query=& accepts_marketing=1).",
+            "ms": "Pelanggan akan ditambahkan kepada \"menerima pemasaran\" anda [senarai pelanggan.](/ Admin / customers = query = & accepts_marketing = 1)",
+            "nb": "Abonnenter blir lagt til listen «godtar markedsføring» [kundeliste.](/admin/customers?query=&accepts_marketing=1)",
+            "nl": "Abonnees worden toegevoegd aan je \"accepteert marketing\" [klantenlijst.](/admin/customers?query=&accepts_marketing=1)",
+            "pt-BR": "Os assinantes serão adicionados à sua lista de pessoas que “aceitam marketing” [lista de clientes.](/admin/customers?query=&accepts_marketing=1)",
+            "pt-PT": "Os subscritores serão adicionados à sua lista de \"aceitam marketing\" [lista de clientes.](/admin/customers?query=&accepts_marketing=1)",
+            "sv": "Prenumeranter läggs till i din \"accepterar marknadsföring\" [kundlista.](/admin/customers?query=&accepts_marketing=1)",
+            "th": "ระบบจะเพิ่มผู้สมัครใช้งานของคุณไปยัง “ยอมรับการตลาด” [รายการลูกค้า](/admin/customers?query=&accepts_marketing=1)",
+            "zh-CN": "订阅者将被添加到您的“接受营销”部分 [客户列表。](/admin/customers?query=&accepts_marketing=1)",
+            "zh-TW": "系統會將訂閱者新增至您的「接受行銷」[顧客清單。](/admin/customers?query=&accepts_marketing=1)"
+          },
+          "default": {
+            "da": "Nyhedsbrev",
+            "de": "Newsletter",
+            "en": "Newsletter",
+            "es": "Boletín",
+            "fi": "Uutiskirje",
+            "fr": "Newsletter",
+            "hi": "न्यूज़लेटर",
+            "it": "Newsletter",
+            "ja": "ニュースレター",
+            "ko": "뉴스레터",
+            "ms": "Surat berita",
+            "nb": "Nyhetsbrev",
+            "nl": "Nieuwsbrief",
+            "pt-BR": "Newsletter",
+            "pt-PT": "Newsletter",
+            "sv": "Nyhetsbrev",
+            "th": "จดหมายข่าว",
+            "zh-CN": "新闻通讯",
+            "zh-TW": "電子報"
+          }
+        }
+      ]
+    }	
+  ]
+}
+{% endschema %}

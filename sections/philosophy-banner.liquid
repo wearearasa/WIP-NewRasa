@@ -1,0 +1,31 @@
+<div class="philosophy">
+  <div class="philosophy-banner" style="background-image: url({{ section.settings.philosophy_banner | img_url: 'master' }})">
+    <h1 class="banner-title">{{ page.title }}</h1>
+  </div>
+</div>
+<div class="philosophy-bottom-image">
+  <img src="{{ section.settings.philosophy_bottom | img_url: 'master' }}">
+</div>
+{% schema %}
+  {
+    "name": "philosophy-bannerSection",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "philosophy_banner",
+        "label": "Philosophy Banner"
+      },
+      {
+        "type": "image_picker",
+        "id": "philosophy_bottom",
+        "label": "Philosophy bottomImage"
+      }
+    ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

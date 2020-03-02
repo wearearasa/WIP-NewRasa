@@ -1,8 +1,6 @@
 development:
-  password: ${DEV_PASSWD}
-  theme_id: ${DEV_THEMEID}
-  store: ${DEV_SHOP}
+  password: 2846a7a0038ff789dd3042babc3ec65f
+  theme_id: "80445538378"
+  store: rasa-koffee.myshopify.com
 live:
-  password: ${DEV_PASSWD}
-  theme_id: ${LIVE_THEMEID}
-  store: ${DEV_SHOP}
+  store: ""

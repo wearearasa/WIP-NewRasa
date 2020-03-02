@@ -1,0 +1,1363 @@
+{
+  "current": {
+    "color_text": "#3d4246",
+    "color_body_text": "#69727b",
+    "color_sale_text": "#557b97",
+    "color_button": "#557b97",
+    "color_button_text": "#fff",
+    "color_small_button_text_border": "#3d4246",
+    "color_text_field_text": "#000",
+    "color_text_field_border": "#949494",
+    "color_text_field": "#fff",
+    "color_image_overlay_text": "#fff",
+    "color_image_overlay": "#3d4246",
+    "image_overlay_opacity": 40,
+    "color_borders": "#e8e9eb",
+    "color_body_bg": "#fff",
+    "type_header_font": "poppins_n4",
+    "type_header_base_size": 28,
+    "type_base_font": "poppins_n5",
+    "type_base_size": 16,
+    "type_bold_product_titles": true,
+    "share_image": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "social_twitter_link": "",
+    "social_facebook_link": "",
+    "social_pinterest_link": "",
+    "social_instagram_link": "",
+    "social_tumblr_link": "",
+    "social_snapchat_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "favicon": "shopify:\/\/shop_images\/rasa-favicon.png",
+    "enable_ajax": true,
+    "checkout_header_image": "",
+    "checkout_logo_image": "",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "medium",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#fff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo": "shopify:\/\/shop_images\/logo-new.png",
+          "logo_max_width": 130,
+          "main_linklist": "main-menu",
+          "message": true,
+          "home_page_only": true,
+          "message_text": "✨ Free shipping on all orders $50+ ✨",
+          "message_link": "",
+          "color_bg": "#17a7a1",
+          "color_text": "#fff",
+          "help_link": "shopify:\/\/pages\/frequently-asked-questions"
+        }
+      },
+      "hero": {
+        "type": "hero",
+        "blocks": {
+          "1581117717440": {
+            "type": "image",
+            "settings": {
+              "imagebottom": ""
+            }
+          }
+        },
+        "block_order": [
+          "1581117717440"
+        ],
+        "settings": {
+          "image": "shopify:\/\/shop_images\/header-6.jpg",
+          "alignment": "top",
+          "text_alignment": "center",
+          "title": "Perk Up & Chill Out",
+          "text": "<p>Adaptogen coffee alternatives to energize and support a healthy lifestyle.<\/p>",
+          "button_label": "Shop Rasa",
+          "button_link": "shopify:\/\/collections\/all"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "newsletter": {
+            "type": "newsletter",
+            "settings": {
+              "newsletter_mail_id": "atyourservice@wearerasa.com",
+              "newsletter_heading": "signup & get 15% off",
+              "newsletter_description": "<p>Plus product updates, herbal knowledge, deals and recipes straight to your inbox.<\/p>",
+              "title": "Contact"
+            }
+          },
+          "link_list": {
+            "type": "link_list",
+            "settings": {
+              "title": "Policies",
+              "menu": "",
+              "link_target": "_self"
+            }
+          },
+          "1575321842786": {
+            "type": "link_list",
+            "settings": {
+              "title": "Product",
+              "menu": "",
+              "link_target": "_self"
+            }
+          },
+          "1575321813133": {
+            "type": "link_list",
+            "settings": {
+              "title": "Social",
+              "menu": "",
+              "link_target": "_blank"
+            }
+          }
+        },
+        "block_order": [
+          "newsletter",
+          "link_list",
+          "1575321842786",
+          "1575321813133"
+        ],
+        "settings": {
+          "show_payment_icons": false,
+          "color_footer_bg": "#ebe9e1",
+          "color_footer_text": "#3d4246",
+          "access_token": "3110167449.1677ed0.b2eb9236b5234eaf89f05287fb5c388c",
+          "section_title": "LET’S BE FRIENDS @WEARERASA",
+          "number_of_images": 6
+        }
+      },
+      "1574893967903": {
+        "type": "benefits-section",
+        "blocks": {
+          "1574894869773": {
+            "type": "image",
+            "settings": {
+              "imagebenefits": "shopify:\/\/shop_images\/Asset_3.png",
+              "benefitname": "Sustained Energy",
+              "benefitpara": "Get energy today while nourishing long term reserves."
+            }
+          },
+          "1574894952799": {
+            "type": "image",
+            "settings": {
+              "imagebenefits": "shopify:\/\/shop_images\/Asset_4.png",
+              "benefitname": "Stress Resilience",
+              "benefitpara": "Keep cortisol levels in check, so you can stay cool in difficult situations."
+            }
+          },
+          "1574895261807": {
+            "type": "image",
+            "settings": {
+              "imagebenefits": "shopify:\/\/shop_images\/Asset_2.png",
+              "benefitname": "Detox & Digest",
+              "benefitpara": "Prebiotics feed your gut flora and help maintain microbiome balance."
+            }
+          }
+        },
+        "block_order": [
+          "1574894869773",
+          "1574894952799",
+          "1574895261807"
+        ],
+        "settings": {
+          "subheading": "The Benefits",
+          "title": "Upgrade Your System",
+          "link": "shopify:\/\/pages\/mission",
+          "btntxt": "Learn More",
+          "imagerow": ""
+        }
+      },
+      "1574902567879": {
+        "type": "adapto-section",
+        "blocks": {
+          "1574961385968": {
+            "type": "image",
+            "settings": {
+              "imageslide": "shopify:\/\/shop_images\/eleuthero.png",
+              "slideheading": "Eleuthero",
+              "slidecontent": "Energy"
+            }
+          },
+          "1574961470481": {
+            "type": "image",
+            "settings": {
+              "imageslide": "shopify:\/\/shop_images\/Rhodiola.png",
+              "slideheading": "Rhodiola",
+              "slidecontent": "Endurance"
+            }
+          },
+          "1575616402354": {
+            "type": "image",
+            "settings": {
+              "imageslide": "shopify:\/\/shop_images\/ashwagandha_be813584-3d09-42db-8e3e-d3fdadb38562.png",
+              "slideheading": "Ashwagandha",
+              "slidecontent": "Calm"
+            }
+          },
+          "1574961510260": {
+            "type": "image",
+            "settings": {
+              "imageslide": "shopify:\/\/shop_images\/reishi_86b53e34-8159-4b7f-bebb-eeaa0a62f474.png",
+              "slideheading": "Reishi",
+              "slidecontent": "Relaxation"
+            }
+          },
+          "1574961551286": {
+            "type": "image",
+            "settings": {
+              "imageslide": "shopify:\/\/shop_images\/Codonopsis.png",
+              "slideheading": "Codonopsis",
+              "slidecontent": "Vitality"
+            }
+          },
+          "1576196289214": {
+            "type": "image",
+            "settings": {
+              "imageslide": "shopify:\/\/shop_images\/shatavari.png",
+              "slideheading": "Shatavari",
+              "slidecontent": "nourishment"
+            }
+          },
+          "1576196344417": {
+            "type": "image",
+            "settings": {
+              "imageslide": "shopify:\/\/shop_images\/he_shou_wu.png",
+              "slideheading": "He Shou Wu",
+              "slidecontent": "Longevity"
+            }
+          }
+        },
+        "block_order": [
+          "1574961385968",
+          "1574961470481",
+          "1575616402354",
+          "1574961510260",
+          "1574961551286",
+          "1576196289214",
+          "1576196344417"
+        ],
+        "settings": {
+          "title": "Adapto-what??",
+          "paragraph": "<strong>Adaptogens<\/strong>  help your body adapt to physical and emotional stresses, leading to greater energy &amp; stress resilience.",
+          "link": "shopify:\/\/blogs\/news\/wait-what-are-adaptogens-anyway",
+          "btntxt": "Learn More",
+          "fullimage": ""
+        }
+      },
+      "blog-template": {
+        "type": "blog-template",
+        "settings": {
+          "blog_show_author": false,
+          "blog_show_date": false,
+          "journel_banner": "",
+          "banner_heading": "Read our adapto - journal",
+          "banner_text": "Geek out on the power of plants with us! Read on for Recipes, herbs knowledge, adaptogens science, and the latest research on feeling better in your mind and body."
+        }
+      },
+      "1574969484848": {
+        "type": "full-image",
+        "settings": {
+          "imagefull": "shopify:\/\/shop_images\/upgrade-systems_spilled-coffee.jpg",
+          "imagebottom": "shopify:\/\/shop_images\/New_Project_13.png"
+        }
+      },
+      "1574978679196": {
+        "type": "shop-section",
+        "blocks": {
+          "1574978692262": {
+            "type": "image",
+            "settings": {
+              "titleshop": "Original Rasa",
+              "titlehead": "Most Potent",
+              "shopparagraph": "<p>No allergens,&nbsp; no fillers, and no BS.&nbsp;Packed with organic, sustainable herbs that provide lasting energy, nourishing your adrenals rather than taxing them.<\/p>",
+              "link": "shopify:\/\/products\/original-rasa-8-oz",
+              "btntxt": "Shop Rasa",
+              "shopslide": "shopify:\/\/shop_images\/Original.png"
+            }
+          },
+          "1574979090805": {
+            "type": "image",
+            "settings": {
+              "titleshop": "Cacao Rasa",
+              "titlehead": "Most Decadent",
+              "shopparagraph": "<p><em>Adaptogen&nbsp;Formula&nbsp;+ Direct-Trade Cacao<\/em><\/p>\n<p>All the benefits you get from adaptogens with added antioxidants, flavonoids, and nutrients.<\/p>",
+              "link": "shopify:\/\/products\/cacao-rasa-1",
+              "btntxt": "Shop Rasa",
+              "shopslide": "shopify:\/\/shop_images\/Cacao.png"
+            }
+          },
+          "1574979203670": {
+            "type": "image",
+            "settings": {
+              "titleshop": "Dirty Rasa",
+              "titlehead": "Most Like Coffee",
+              "shopparagraph": "<p><em>Adaptogen&nbsp;Formula + Fair-Trade Coffee<\/em><\/p>\n<p><\/p>\n<p>Our herbs balance the effects of coffee for less adrenal &amp; nervous system impact.<\/p>",
+              "link": "shopify:\/\/products\/dirty-rasa-8-oz-32-servings",
+              "btntxt": "Shop Rasa",
+              "shopslide": "shopify:\/\/shop_images\/Dirty.png"
+            }
+          }
+        },
+        "block_order": [
+          "1574978692262",
+          "1574979090805",
+          "1574979203670"
+        ],
+        "settings": {
+          "shopimage": "shopify:\/\/shop_images\/Asset_6-faded.png",
+          "shopbottom": "shopify:\/\/shop_images\/wave-adaptogens.png"
+        }
+      },
+      "1574984153966": {
+        "type": "our-guarantees",
+        "blocks": {
+          "1574984217834": {
+            "type": "image",
+            "settings": {
+              "ourslide": "shopify:\/\/shop_images\/usda-organic.png",
+              "ourheading": "USDA Certified Organic",
+              "textcontent": "<p>&nbsp;Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum<\/p>"
+            }
+          },
+          "1574984279869": {
+            "type": "image",
+            "settings": {
+              "ourslide": "shopify:\/\/shop_images\/Asset_8.png",
+              "ourheading": "Fair Trade",
+              "textcontent": "<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\/p>"
+            }
+          },
+          "1574984313115": {
+            "type": "image",
+            "settings": {
+              "ourslide": "shopify:\/\/shop_images\/Asset_26.png",
+              "ourheading": "3rd Party Lab Tested",
+              "textcontent": "<p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.<\/p>"
+            }
+          },
+          "1574984347128": {
+            "type": "image",
+            "settings": {
+              "ourslide": "shopify:\/\/shop_images\/whole30.png",
+              "ourheading": "Whole 30 Approved",
+              "textcontent": "<p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1574984217834",
+          "1574984279869",
+          "1574984313115",
+          "1574984347128"
+        ],
+        "settings": {
+          "ourtitle": "Our Guarantees",
+          "guaranteebottom": "shopify:\/\/shop_images\/guarantee-img.jpg",
+          "guaranteeimagebottom": ""
+        }
+      },
+      "1574986602031": {
+        "type": "ritual-section",
+        "blocks": {
+          "1574986654113": {
+            "type": "image",
+            "settings": {
+              "ritualslide": "shopify:\/\/shop_images\/Story-1.jpg",
+              "text": "<p>1. Add 1 tbsp of Rasa per 8 oz of water&nbsp;<\/p>\n<p>2. Pour boiling water&nbsp;into French Press<\/p>\n<p>3. Brew for 15-20 mins, or Pressure, for maximum potency.<\/p>\n<p><\/p>\n<p>Rasa needs a longer brewing time or pressure for maximum potency. We recommend&nbsp;using&nbsp;a french press, percolator, moka pot, or espresso machine.<\/p>",
+              "ritualimage": ""
+            }
+          },
+          "1574986792108": {
+            "type": "image",
+            "settings": {
+              "ritualslide": "shopify:\/\/shop_images\/enjoy-your-herbs.jpg",
+              "text": "<p>Drink it straight or make a latte! Most&nbsp;people like Rasa with something creamy and a little sweet &amp; spice. Think:<\/p>\n<p>&bull; Oat milk, honey and cinnamon<br>&bull; MCT oil with maple syrup<br>&bull; Coconut butter, Cacao and Cayenne<\/p>",
+              "ritualimage": ""
+            }
+          }
+        },
+        "block_order": [
+          "1574986654113",
+          "1574986792108"
+        ],
+        "settings": {
+          "ritualtitle": "How To Brew",
+          "ritualhead": "Making Rasa is Easy",
+          "rituallink": "shopify:\/\/pages\/how-to-brew-rasa",
+          "btntxt": "How to Brew",
+          "ritualimage": "shopify:\/\/shop_images\/how-to-brew-icon.png"
+        }
+      },
+      "1574988935807": {
+        "type": "starter-section",
+        "settings": {
+          "starttitle": "Starter Pack",
+          "starthead": "Something For All Your Moods",
+          "startpara": "Not sure where to start? Try our Starter Pack! Four servings of each blend so you can discover the right Rasas for you.",
+          "starlink": "shopify:\/\/products\/try-rasa",
+          "starttext": "Try Rasa",
+          "startimage": "shopify:\/\/shop_images\/starter-pack-homepage.jpg",
+          "startstatic": "shopify:\/\/shop_images\/StarterPack-icon.png"
+        }
+      },
+      "1574990632003": {
+        "type": "review-section",
+        "blocks": {
+          "1574990690238": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Jaz M.",
+              "reviewpara": "I ordered the the well named Big Sexy original 2 lb bag Off the website and it arrived super quick. Now I can count.on Rasa everyday!",
+              "showmore": "Read More"
+            }
+          },
+          "1574990747870": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Ashley N.",
+              "reviewpara": "I love this stuff and I am a coffee fanatic. Rasa is a great substitute that leaves me satisfied without anxiety or jitters.",
+              "showmore": "Read More"
+            }
+          },
+          "1574990777442": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Alicia E.",
+              "reviewpara": "Hubby and I really love it! Have switched to this instead of coffee entirely and wouldn't go back!",
+              "showmore": "Read More"
+            }
+          },
+          "1574990793079": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Cassandra I.",
+              "reviewpara": "I have been drinking Rasa for a year now only missing a few days. I love it. It is creamy and tasty. I have even gifted a few bags to others I know would enjoy it as much as me. I had gotten really sick a few years ago and had to stop drinking coffee. Rasa is so much better then coffee and I don’t even miss coffee anymore. So if your on the fence, give it a try you won’t regret it and you won’t look back!",
+              "showmore": "Read More"
+            }
+          },
+          "1577110021853": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Jessica F.",
+              "reviewpara": "Love the aroma, taste, &amp; amazing sustainable clear energy &amp; mind! So love it! Felt deeply in my Buddha state while moving thru family life. Grateful! ❤️",
+              "showmore": "Read More"
+            }
+          },
+          "1577110082903": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Anneli A.",
+              "reviewpara": "I am really loving Rasa Cacao! It is taking the place of sweet cocoa for me this winter. I'm finding the subtle tone of cacao and the many herbs are a fantastic alternative blend that satisfies me. Not to mention I am drinking something that is actually really good for me! It is especially yummy with this season's Peppermint Nut Pods creamer. So good!",
+              "showmore": "Read More"
+            }
+          },
+          "1577110139621": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Amara W.",
+              "reviewpara": "Cocoa RASA is THE BEST RASA! I’m obsessed with the flavor. We add it in with the dirty RASA, original RASA and even by itself!",
+              "showmore": "Read More"
+            }
+          },
+          "1577110179030": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Carol R.",
+              "reviewpara": "I wasn't sure which Rasa Coffee I would like the best....so I ordered the starter pack. Its a Great way to sample all the flavors. I have since ordered a full pack of the Dirty Rasa. I am so glad Rasa was recommended to me!",
+              "showmore": "Read More"
+            }
+          }
+        },
+        "block_order": [
+          "1574990690238",
+          "1574990747870",
+          "1574990777442",
+          "1574990793079",
+          "1577110021853",
+          "1577110082903",
+          "1577110139621",
+          "1577110179030"
+        ],
+        "settings": {
+          "reviewtitle": "The People Have Spoken",
+          "reviewhead": "Real Reviews From Rasa Lovers",
+          "reviewsingle": "",
+          "reviewleft": "shopify:\/\/shop_images\/Ritual-1.png",
+          "reviewbottom": ""
+        }
+      },
+      "1575321959742": {
+        "type": "collection",
+        "settings": {
+          "title": "Complete The Ritual",
+          "titleheading": "A Few Of Our Favourite Things",
+          "shopimagebottom": "shopify:\/\/shop_images\/wave-CompleteRitual.png",
+          "collection": "adaptogenic-lifestyle-products",
+          "grid": 3,
+          "rows": 1,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "1575408065596": {
+        "type": "membership-section",
+        "blocks": {
+          "1575408129428": {
+            "type": "image",
+            "settings": {
+              "memberimage": "shopify:\/\/shop_images\/15off.png",
+              "memberpara": "15% off Every Order"
+            }
+          },
+          "1575408193371": {
+            "type": "image",
+            "settings": {
+              "memberimage": "shopify:\/\/shop_images\/freeship.png",
+              "memberpara": "Free US Shipping"
+            }
+          },
+          "1575410383267": {
+            "type": "image",
+            "settings": {
+              "memberimage": "shopify:\/\/shop_images\/editswapcancel.png",
+              "memberpara": "Swap, Skip, Pause or Cancel - Anytime"
+            }
+          },
+          "1575408232540": {
+            "type": "image",
+            "settings": {
+              "memberimage": "shopify:\/\/shop_images\/safe.png",
+              "memberpara": "First Access & Limited Edition Products"
+            }
+          },
+          "1575410338652": {
+            "type": "image",
+            "settings": {
+              "memberimage": "shopify:\/\/shop_images\/gifts.png",
+              "memberpara": "Surprise Samples & Special Gifts"
+            }
+          }
+        },
+        "block_order": [
+          "1575408129428",
+          "1575408193371",
+          "1575410383267",
+          "1575408232540",
+          "1575410338652"
+        ],
+        "settings": {
+          "membertitle": "Rasa Membership",
+          "memberhead": "Ready to Reclaim Your Vitality?",
+          "memberbottom": "shopify:\/\/shop_images\/membership-homepage-bags.png",
+          "membership_topimg": "shopify:\/\/shop_images\/membership-homepage.png",
+          "slightimage": "shopify:\/\/shop_images\/wave-Reviews.png",
+          "slightimagetop": "shopify:\/\/shop_images\/wave-ReviewsBottom.png",
+          "memberlink": "https:\/\/rasa-coffee.myshopify.com\/account\/login",
+          "btntxt": "Become a Member"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "blog_show_author": false,
+          "blog_show_date": false,
+          "show_share_buttons": true
+        }
+      },
+      "collection-icons": {
+        "type": "collection-icons",
+        "blocks": {
+          "1575702486645": {
+            "type": "image",
+            "settings": {
+              "icon_link": "essential-collection",
+              "ourheading": "Essential collection",
+              "icon": ""
+            }
+          },
+          "1575702643708": {
+            "type": "image",
+            "settings": {
+              "icon_link": "curated-collection",
+              "ourheading": "Curated collection",
+              "icon": ""
+            }
+          },
+          "1575702654761": {
+            "type": "image",
+            "settings": {
+              "icon_link": "complete-the-ritual",
+              "ourheading": "Complete the ritual",
+              "icon": ""
+            }
+          }
+        },
+        "block_order": [
+          "1575702486645",
+          "1575702643708",
+          "1575702654761"
+        ],
+        "settings": {}
+      },
+      "search-bar": {
+        "type": "search-bar",
+        "settings": {}
+      },
+      "product-template": {
+        "type": "product-template",
+        "blocks": {
+          "1576242792874": {
+            "type": "image",
+            "settings": {
+              "ourheading": "30-day product guarantee. if you don’t love rasa, return it, no questions asked.",
+              "icon": ""
+            }
+          },
+          "1576242928152": {
+            "type": "image",
+            "settings": {
+              "ourheading": "Life is all about options which is why we created the rasa membership program.",
+              "icon": ""
+            }
+          }
+        },
+        "block_order": [
+          "1576242792874",
+          "1576242928152"
+        ],
+        "settings": {
+          "image_size": "medium",
+          "show_quantity_selector": true,
+          "show_variant_labels": true,
+          "show_vendor": false,
+          "enable_zoom": true,
+          "enable_payment_button": false,
+          "show_share_buttons": false
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "heading": "You may also like",
+          "show_vendor": false
+        }
+      },
+      "collection": {
+        "type": "collection",
+        "settings": {
+          "title": "Complete The Ritual",
+          "titleheading": "A few of our favourite things",
+          "shopimagebottom": "",
+          "collection": "",
+          "grid": 3,
+          "rows": 1,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "our-guarantees": {
+        "type": "our-guarantees",
+        "blocks": {
+          "1576127099578": {
+            "type": "image",
+            "settings": {
+              "ourslide": "",
+              "ourheading": "Powerful Ingredients",
+              "textcontent": "<p>lorem<\/p>"
+            }
+          },
+          "1576127159441": {
+            "type": "image",
+            "settings": {
+              "ourslide": "",
+              "ourheading": "Balanced Formula",
+              "textcontent": "<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+            }
+          },
+          "1576127204600": {
+            "type": "image",
+            "settings": {
+              "ourslide": "",
+              "ourheading": "3rd Party Lab Tested",
+              "textcontent": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<\/p>"
+            }
+          },
+          "1576127224132": {
+            "type": "image",
+            "settings": {
+              "ourslide": "",
+              "ourheading": "Always Delicious",
+              "textcontent": "<p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1576127099578",
+          "1576127159441",
+          "1576127204600",
+          "1576127224132"
+        ],
+        "settings": {
+          "ourtitle": "Our Guarantees",
+          "guaranteebottom": "",
+          "guaranteeimagebottom": ""
+        }
+      },
+      "ritual-section": {
+        "type": "ritual-section",
+        "blocks": {
+          "1576127555112": {
+            "type": "image",
+            "settings": {
+              "ritualslide": "",
+              "text": "<p>Rasa takes 10-15 mins, or pressure, for maximum potency.<\/p>\n<p>We recommend brewing in a french press, percolator, moka pot, or espresso machine.<\/p>\n<p>No drip machine or pourover.<\/p>",
+              "ritualimage": ""
+            }
+          },
+          "1576127866966": {
+            "type": "image",
+            "settings": {
+              "ritualslide": "",
+              "text": "<p>Rasa takes 10-15 mins, or pressure, for maximum potency.<\/p>\n<p>We recommend brewing in a french press, percolator, moka pot, or espresso machine.<\/p>\n<p>No drip machine or pourover.<\/p>",
+              "ritualimage": ""
+            }
+          }
+        },
+        "block_order": [
+          "1576127555112",
+          "1576127866966"
+        ],
+        "settings": {
+          "ritualtitle": "How to brew",
+          "ritualhead": "Your Rasa Ritual",
+          "rituallink": "shopify:\/\/pages\/how-to-brew-rasa",
+          "btntxt": "How To Make Rasa",
+          "ritualimage": ""
+        }
+      },
+      "review-section": {
+        "type": "review-section",
+        "blocks": {
+          "1576131802588": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Jaz M.",
+              "reviewpara": "I ordered the the well named Big Sexy original 2 lb bag Off the website and it arrived super quick. Now I can count.on Rasa everyday!",
+              "showmore": "Read More"
+            }
+          },
+          "1576131832569": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Ashley N.",
+              "reviewpara": "I love this stuff and I am a coffee fanatic. Rasa is a great substitute that leaves me satisfied without anxiety or jitters.",
+              "showmore": "Read More"
+            }
+          },
+          "1576131865658": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Alicia E.",
+              "reviewpara": "Hubby and I really love it! Have switched to this instead of coffee entirely and wouldn't go back!",
+              "showmore": "Read More"
+            }
+          },
+          "1576131903817": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Cassandra I.",
+              "reviewpara": "I have been drinking Rasa for a year now only missing a few days. I love it. It is creamy and tasty. I have even gifted a few bags to others I know would enjoy it as much as me. I had gotten really sick a few years ago and had to stop drinking coffee. Rasa is so much better then coffee and I don’t even miss coffee anymore. So if your on the fence, give it a try you won’t regret it and you won’t look back!",
+              "showmore": "Read More"
+            }
+          },
+          "1577110333732": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Jessica F.",
+              "reviewpara": "Love the aroma, taste, &amp; amazing sustainable clear energy &amp; mind! So love it! Felt deeply in my Buddha state while moving thru family life. Grateful! ❤️",
+              "showmore": "Read More"
+            }
+          },
+          "1577110371510": {
+            "type": "image",
+            "settings": {
+              "reviewslide": "",
+              "reviewname": "Anneli A.",
+              "reviewpara": "I am really loving Rasa Cacao! It is taking the place of sweet cocoa for me this winter. I'm finding the subtle tone of cacao and the many herbs are a fantastic alternative blend that satisfies me. Not to mention I am drinking something that is actually really good for me! It is especially yummy with this season's Peppermint Nut Pods creamer. So good!",
+              "showmore": "Read More"
+            }
+          }
+        },
+        "block_order": [
+          "1576131802588",
+          "1576131832569",
+          "1576131865658",
+          "1576131903817",
+          "1577110333732",
+          "1577110371510"
+        ],
+        "settings": {
+          "reviewtitle": "The People Have Spoken",
+          "reviewhead": "Real Reviews From Rasa Lovers",
+          "reviewsingle": "",
+          "reviewleft": "",
+          "reviewbottom": ""
+        }
+      },
+      "starter-section": {
+        "type": "starter-section",
+        "settings": {
+          "starttitle": "Starter Pack",
+          "starthead": "Discover The Best Rasa For You",
+          "startpara": "Not sure where to start? Our Starter Pack has\n4 servings of each blend so you can get a\ntaste of each delicious flavour!",
+          "starlink": "shopify:\/\/products\/try-rasa",
+          "starttext": "The Starter Pack",
+          "startimage": "",
+          "startstatic": ""
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "blocks": {
+          "1576133706688": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_id": "essential-collection",
+              "icon": "",
+              "show_view_all": false,
+              "show_review_and_description": true
+            }
+          },
+          "1576133885150": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_id": "curated-collection",
+              "icon": "",
+              "show_view_all": true,
+              "show_review_and_description": false
+            }
+          },
+          "1576133909992": {
+            "type": "collection",
+            "settings": {
+              "collection": "",
+              "collection_id": "complete-the-ritual",
+              "icon": "",
+              "show_view_all": true,
+              "show_review_and_description": false
+            }
+          }
+        },
+        "block_order": [
+          "1576133706688",
+          "1576133885150",
+          "1576133909992"
+        ],
+        "settings": {
+          "display_type": "selected",
+          "sort": "alphabetical",
+          "grid": 3,
+          "rows": 1
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "layout": "grid",
+          "grid": 3,
+          "rows": 3,
+          "show_collection_image": true,
+          "show_vendor": false,
+          "sort_enable": true,
+          "tags_enable": true
+        }
+      },
+      "product-two-images": {
+        "type": "product-two-images",
+        "settings": {
+          "membership_topimg": "",
+          "slightimage": "",
+          "slightimagetop": "",
+          "guaranteebottom": ""
+        }
+      },
+      "why-adaptogens": {
+        "type": "why-adaptogens",
+        "settings": {
+          "leftimage": "",
+          "righttitle": "Why Adaptogens?",
+          "content": "Feeling stressed, out of patience, lacking brain power,\nforever tired… burned out? Adaptogens can help!\nAdaptogens are powerful super herbs scientifically\nproven to help your body cope with stress, helping\nyou regain balance while replenishing your energy\nreserves. Rasa has 7 stress-fighting\nadaptogens in one cup!",
+          "btnlink": "shopify:\/\/pages\/our-herbs",
+          "btntext": "Adaptogens 101"
+        }
+      },
+      "philosophy-banner": {
+        "type": "philosophy-banner",
+        "settings": {
+          "philosophy_banner": "",
+          "philosophy_bottom": ""
+        }
+      },
+      "custom-content": {
+        "type": "custom-content",
+        "blocks": {
+          "1578897186594": {
+            "type": "text",
+            "settings": {
+              "title": "Our Story",
+              "text": "<p><strong>We’re passionate about changing the way people energize.<\/strong><br>Coffee is wonderful. And, it’s an external source of energy that can be taxing to your adrenals and nervous system in the long run.<\/p>",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          },
+          "1578914955528": {
+            "type": "img-text",
+            "settings": {
+              "image": "",
+              "title": "How It All Started",
+              "content": "<p>It was late 2015. My first son was 4 months old, and the sleepless nights were wearing me thin. I was desperate for a solution, but knew that coffee hurt my belly, made me feel acidic, AND contributed to anxiety and sleeplessness.\n<\/p>\n\n<p>I searched for something that would help me cope with the stress of motherhood and life, while nourishing my body. I tried every coffee alternative I could get my hands on, but nothing hit the spot. Some coffee alternatives were healthy, but tasted gross.\n<\/p>\n\n<ul>\n<li>Some had cacao, which actually has caffeine. I wanted a fully caffeine-free option.<\/li>\n<li>Some were caffeine-free, but had “natural flavors.” No thanks.<\/li>\n<li>And some tasted good and were caffeine free, but weren't packed with the health benefits I was seeking.<\/li>\n<\/ul>\n<p><strong>I knew we could do WAY better than this, and decided to create a delicious coffee alternative.<\/strong><\/p>\n<p>A herbalist friend of mine and I got together and crafted a dark, rich, and roasty coffee alternative, loaded with adaptogens. We tested our herbal coffee on some coffee-lovers at a Thanksgiving dinner—they were in love! And so Rasa Koffee was born.\n<\/p>",
+              "imgText_align": "right"
+            }
+          },
+          "1578902113582": {
+            "type": "bottom-img",
+            "settings": {
+              "btm_img": ""
+            }
+          },
+          "1578915221738": {
+            "type": "img-text",
+            "settings": {
+              "image": "",
+              "title": "What Gets Us Up in the Morning",
+              "content": "<p>Well, besides the Rasa, that sure helps! At Rasa, there are three main cylinders in our engine:<\/p>\n\n<p><strong>1. Adaptogens<\/strong>\n<br>We believe adaptogens are Nature’s antidote to the stressors of modern life. It’s no wonder they’re trending—adaptogens are exactly what most of us need! We’re committed to sharing these incredible herbs with the world in the most accessible way possible.<\/p>\n<p><strong>2. Energizing from within<\/strong><br>We believe in energizing from within, and to do that we are disrupting one of the world’s favorite pastimes by making our relationship to coffee a little less dependent and a little more nourishing. We love coffee, but it can actually be quite draining. With the right additions and substitutions, this time-honored ritual will be majorly upgraded in your life.\n<\/p>\n<p><strong>3. Sustainability<\/strong><br>We operate every aspect of our business in the most sustainable, honest, transparent, conscious, high-integrity way we can. We want to do well by you, our planet, the herbs we use, the workers who harvest them, and each other. That’s what it’s all about, isn’t it?\n<\/p>",
+              "imgText_align": "left"
+            }
+          },
+          "1578897537091": {
+            "type": "text",
+            "settings": {
+              "title": "Sustainability: Our Herbs",
+              "text": "<p><strong>When it comes to our herbs, we believe in relationships.<\/strong><br>Relationships with our growers and wildcrafters, with the regions and cultures our plants call home, and most importantly, with the medicines themselves. Because of this we buy herbs differently than most, resulting in potent, pure, and sustainable product offerings.\n<\/p>\n<p>We’re committed to staying 100% organic, continuously improving our sustainability and testing, sourcing directly from traditional growing regions, and promoting quality herbal education with the help of our Resident Herb Nerd Ben LeVine.\n<\/p>",
+              "alignment": "center",
+              "align_text": "center"
+            }
+          },
+          "1578915354395": {
+            "type": "img-text",
+            "settings": {
+              "image": "",
+              "title": "Adaptogens",
+              "content": "<p><strong>Adapto-whats?<\/strong><br>\nAdaptogens are Nature’s antidote to stress. These herbs live in harsh conditions around the world, meaning they have not only learned how to be resilient in the face of stress but these badass mofos actually thrive in stressful environments.<\/p>\n<p>To be characterized as as adaptogen, an herb must meet these 3 criteria:<\/p>\n<ul>\n<li>It must be safe in normal therapeutic doses<\/li>\n<li>It must help your body holistically resist a wide variety of stressors<\/li>\n<li>It must have a normalizing effect on overall body function, helping your body to maintain homeostasis\n(read: balance, baby!)<\/li>\n<\/ul>",
+              "imgText_align": "right"
+            }
+          },
+          "1578902149814": {
+            "type": "bottom-img",
+            "settings": {
+              "btm_img": ""
+            }
+          },
+          "1578915389777": {
+            "type": "img-text",
+            "settings": {
+              "image": "",
+              "title": "Energizing from Within with Adaptogens",
+              "content": "<p>Adaptogens help you to freak out slower (&amp; less intensely!), and recover faster in response to stress…all while increasing stress resilience overall.<\/p>\n\n<p>These amazing superherbs work through both your hormonal and nervous systems to help your body cope with stress more effectively. This “multiple-pathway action” is known as “network pharmacology,” and is the opposite of pharmaceutical drugs, which are “one drug, one action.”<\/p>\n<p>This is why we have a goal to get more adaptogens into more people by adding them to their go-to stress relievers. They help take it one step further, from just stress relief to true nourishment.<\/p>\n<p>So go ahead, take a moment for yourself…have some Rasa and remember, we got you.<\/p>",
+              "imgText_align": "left"
+            }
+          }
+        },
+        "block_order": [
+          "1578897186594",
+          "1578914955528",
+          "1578902113582",
+          "1578915221738",
+          "1578897537091",
+          "1578915354395",
+          "1578902149814",
+          "1578915389777"
+        ],
+        "settings": {
+          "title": ""
+        }
+      }
+    },
+    "content_for_index": [
+      "hero",
+      "1574893967903",
+      "1574969484848",
+      "1574978679196",
+      "1574902567879",
+      "1574984153966",
+      "1574986602031",
+      "1574988935807",
+      "1575408065596",
+      "1574990632003",
+      "1575321959742"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "color_text": "#3d4246",
+      "color_body_text": "#69727b",
+      "color_sale_text": "#557B97",
+      "color_borders": "#e8e9eb",
+      "color_button": "#557B97",
+      "color_button_text": "#fff",
+      "color_small_button_text_border": "#3d4246",
+      "color_text_field": "#fff",
+      "color_text_field_text": "#000",
+      "color_text_field_border": "#949494",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3d4246",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#fff",
+      "type_header_font": "work_sans_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "work_sans_n4",
+      "type_base_size": 16,
+      "type_bold_product_titles": false,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {}
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "slideshow-1": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "slideshow-1"
+          ],
+          "settings": {}
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "collection": "frontpage"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link_list": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "text": {
+              "type": "text",
+              "settings": {}
+            },
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "link_list",
+            "text",
+            "newsletter"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "feature-row",
+        "slideshow"
+      ]
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#6d6d6d",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button_text_border": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_text_field_border": "#909090",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "type_bold_product_titles": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "align_logo": "left",
+            "logo": "",
+            "logo_max_width": 135,
+            "main_linklist": "main-menu",
+            "message": true,
+            "color_bg": "#162950",
+            "color_text": "#ffffff"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "alignment": "center"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center center"
+              }
+            },
+            "1492095993817": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "1492095993817"
+          ],
+          "settings": {
+            "slideshow_height": "medium",
+            "text_size": "medium",
+            "autorotate": false,
+            "autorotate_speed": 5
+          }
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "grid": 3,
+            "rows": 1,
+            "show_vendor": true,
+            "show_view_all": true
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "image_size": "medium",
+            "show_quantity_selector": false,
+            "show_variant_labels": true,
+            "show_vendor": false,
+            "enable_zoom": true,
+            "show_share_buttons": true
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {
+            "layout": "grid",
+            "grid": 2,
+            "rows": 2,
+            "show_collection_image": true,
+            "show_vendor": false,
+            "sort_enable": true,
+            "tags_enable": true
+          }
+        },
+        "1492033809691": {
+          "type": "map",
+          "settings": {}
+        },
+        "1492033877875": {
+          "type": "quotes",
+          "blocks": {
+            "1492033877875-0": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492033877875-0"
+          ],
+          "settings": {}
+        },
+        "1492033924902": {
+          "type": "custom-content",
+          "blocks": {
+            "1492033924902-0": {
+              "type": "text",
+              "settings": {
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492033924902-0"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "1492096252560": {
+          "type": "collection-list",
+          "blocks": {
+            "1492096252560-0": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-1": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-2": {
+              "type": "featured_collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492096252560-0",
+            "1492096252560-1",
+            "1492096252560-2"
+          ],
+          "settings": {
+            "grid": 3
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "blog_show_author": true,
+            "blog_show_date": false
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_author": true,
+            "blog_show_date": true,
+            "show_share_buttons": true
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "cart_notes_enable": false
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link_list": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "text": {
+              "type": "text",
+              "settings": {}
+            },
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "link_list",
+            "text",
+            "newsletter"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "slideshow",
+        "1492033924902",
+        "1492096252560",
+        "1492033877875",
+        "1492033809691"
+      ]
+    }
+  }
+}

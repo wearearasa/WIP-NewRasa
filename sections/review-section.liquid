@@ -1,0 +1,161 @@
+<div class="review-head">
+<div class="review-section">
+  <div class='page-width'>
+  	 <div class="">
+    	{% if section.settings.reviewtitle != blank %}
+    		<h4 class="text-center">{{ section.settings.reviewtitle | escape }}</h4>	
+	    {% endif %}
+    	{% if section.settings.reviewhead != blank %}
+    		<h2 class="text-center">{{ section.settings.reviewhead | escape }}</h2>	
+    	{% endif %}
+     </div>
+<!--      <div class="review-slider">
+       	{%- for block in section.blocks -%}
+       		<div class="col-md-4">
+              {%- if block.settings.reviewslide != blank -%}
+                  <img src="{{ block.settings.reviewslide | img_url: 'master' }}">
+              {%- endif -%}
+              {%- if block.settings.reviewname != blank -%}
+                  <h3 class="text-center">{{ block.settings.reviewname | escape }}
+              		<img src="{{ 'stars.png' | asset_img_url: 'master' }}" alt="reviews-stars" style="height: 18px;margin-top:10px;">
+              	  </h3>
+              {%- endif -%}
+              <div class="review-content truncate">
+                {%- if block.settings.reviewpara != blank -%}
+                    {{ block.settings.reviewpara | escape }}
+                {%- endif -%}
+              </div>
+               {%- if block.settings.showmore != blank -%}
+              <p class="show-more"><a>{{ block.settings.showmore | escape }}</a></p>
+                {%- endif -%}
+            </div>
+       	{%- endfor -%}
+     </div> -->
+        <div class="yotpo yotpo-reviews-carousel" 
+     data-header-customisation-enabled="1" 
+     data-header-customisation-color="#bd9766" 
+     data-header-customisation-font-size="18" 
+     data-header-customisation-text="Real Reviews From Rasa Lovers" 
+     data-header-customisation-alignment="left" 
+     data-background-color="transparent" 
+     data-mode="top_rated" 
+     data-type="site" 
+     data-count="9" 
+     data-show-bottomline="1" 
+     data-autoplay-enabled="1" 
+     data-autoplay-speed="5000" 
+     data-show-navigation="1">&nbsp;</div>
+    <div class="review-image">
+    	<div class="review-right">	
+          {%- if section.settings.reviewsingle != blank -%}
+              <img src="{{ section.settings.reviewsingle | img_url: 'master' }}">
+          {%- endif -%}
+      	</div>
+      	<div class="review-left">
+    		{%- if section.settings.reviewleft != blank -%}
+        		<img src="{{ section.settings.reviewleft | img_url: 'master' }}">
+        	{%- endif -%}  		
+      	</div>
+    </div>
+  </div>
+  </div>
+  <div class="review-bottomimage">
+   	{%- if section.settings.reviewbottom != blank -%}
+    	<img src="{{ section.settings.reviewbottom | img_url: 'master' }}">
+    {%- endif -%}  		
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Review Section",
+    "settings": [
+		{
+  		  "type": "text",
+  		  "id": "reviewtitle",
+  		  "label": "reviewtitle"
+  		},
+  		{
+  		  "type": "text",
+  		  "id": "reviewhead",
+  		  "label": "reviewhead"
+  		},
+		{
+		  "type": "image_picker",
+          "id": "reviewsingle",
+          "label": "reviewsingle"
+		},
+		{
+		  "type": "image_picker",
+          "id": "reviewleft",
+          "label": "reviewleft"
+		},
+		{
+		  "type": "image_picker",
+          "id": "reviewbottom",
+          "label": "reviewbottom"
+		}
+	],
+	"blocks": [
+		{
+			"type": "image",
+      		"name": "Imageslide",
+			"settings": [
+				{
+					"type": "image_picker",
+          			"id": "reviewslide",
+          			"label": "reviewslide"
+				},
+				{
+                  "type": "text",
+                  "id": "reviewname",
+                  "label": "reviewname"
+                },
+				{
+                  "type": "html",
+                  "id": "reviewpara",
+                  "label": "reviewpara"
+                },
+				{
+                  "type": "text",
+                  "id": "showmore",
+                  "label": "showmore"
+                }
+			]
+		}
+	],
+	"presets": [
+    {
+      "name": "our review section",
+      "category": {
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "hi": "इमेज",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "ms": "Imej",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

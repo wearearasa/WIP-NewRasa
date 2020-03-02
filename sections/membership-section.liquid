@@ -1,0 +1,153 @@
+<div class="membership-block">
+  <div class="image-topslide">
+    {%- if section.settings.slightimagetop != blank -%}
+    <img src="{{ section.settings.slightimagetop | img_url: 'master' }}">
+    {%- endif -%}
+  </div>
+  {%- if section.settings.membership_topimg != blank -%}
+    <div class="membership-topimg">
+      <img src="{{ section.settings.membership_topimg | img_url: 'master' }}">
+    </div>
+  {%- endif -%}
+  <div class="membership-section">
+    <div class='page-width'>
+      {% if section.settings.membertitle != blank %}
+          <h4 class="text-center">{{ section.settings.membertitle | escape }}</h4>
+      {% endif %}
+      {% if section.settings.memberhead != blank %}
+          <h2 class='text-center'>{{ section.settings.memberhead }}</h2>
+      {% endif %}
+      <div class="member-slider mob-slider">
+          {%- for block in section.blocks -%}
+              <div class="col-sm-6 col-md-4 membership-loop">
+                {%- if block.settings.memberimage != blank -%}
+                  <div class="membership-icon">
+                      <img class="" src="{{ block.settings.memberimage | img_url: 'master' }}">
+                  </div>
+                {%- endif -%}
+                {%- if block.settings.memberpara != blank -%}
+                  <div class="membership-text">
+                    <p>{{ block.settings.memberpara }}</p>
+                  </div>
+                {%- endif -%}              
+              </div>
+          {%- endfor -%}
+      </div>
+      <div class='member-link'>
+        {%- if section.settings.memberlink != blank -%}
+            <a class="benefit-link" href="{{ section.settings.memberlink }}">{{ section.settings.btntxt }}</a>
+        {%- endif -%}
+      </div>
+      <div class="member-image">
+        <div class="col-md-6"></div>
+        <div class="col-md-6 member-singleimage">
+      {%- if section.settings.memberbottom != blank -%}
+          <img src="{{ section.settings.memberbottom | img_url: 'master' }}">
+      {%- endif -%}
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="image-bottomslide">
+    {%- if section.settings.slightimage != blank -%}
+    <img src="{{ section.settings.slightimage | img_url: 'master' }}">
+    {%- endif -%}
+  </div>
+</div>
+{% schema %}
+  {
+    "name": "Membership section",
+    "settings": [
+		{
+          "type": "text",
+          "id": "membertitle",
+		  "label": "membertitle"
+		},
+		{
+          "type": "text",
+          "id": "memberhead",
+		  "label": "memberhead"
+		},
+		{
+  			"type": "image_picker",
+  			"id": "memberbottom",
+  			"label": "memberbottom"
+  		},
+		{
+  			"type": "image_picker",
+  			"id": "membership_topimg",
+  			"label": "membership topimg"
+  		},
+		{
+  			"type": "image_picker",
+  			"id": "slightimage",
+  			"label": "slightimage"
+  		},
+		{
+  			"type": "image_picker",
+  			"id": "slightimagetop",
+  			"label": "slightimagetop"
+  		},
+		{
+        	"type": "url",
+            "id": "memberlink",
+            "label": "memberlink"
+        },
+        {
+          "type": "text",
+          "id": "btntxt",
+          "label": "Button Text"
+        }
+	],
+	"blocks": [
+		{
+			"type": "image",
+      		"name": "Imageslide",
+			"settings": [
+				{
+					"type": "image_picker",
+          			"id": "memberimage",
+          			"label": "memberimage"
+				},
+				{
+					"type": "text",
+          			"id": "memberpara",
+          			"label": "memberpara"
+				}
+			]
+		}
+	],
+	"presets": [
+    {
+      "name": "Membership",
+      "category": {
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "hi": "इमेज",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "ms": "Imej",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

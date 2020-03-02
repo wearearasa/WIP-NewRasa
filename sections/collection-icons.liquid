@@ -1,0 +1,61 @@
+<div class="collection-icons">
+  <div class='page-width'>
+    	{%- for block in section.blocks -%}
+      	  <div class="col-md-4 collectionIcon text-center">
+            {%- if block.settings.icon_link != blank -%}
+               <a href="#{{ block.settings.icon_link }}">
+            {%- endif -%}
+              <div class="icon-title">
+                {%- if block.settings.ourheading != blank -%}
+                    <h4>{{ block.settings.ourheading | escape }}</h4>
+                {%- endif -%}
+              </div>
+              <div class="icons small--hide">
+                {%- if block.settings.icon != blank -%}
+                    <img src="{{ block.settings.icon | img_url: 'master' }}">
+                {%- endif -%}
+              </div>
+            {%- if block.settings.icon_link != blank -%}
+              </a>
+            {%- endif -%}
+     	 </div>
+      	{%- endfor -%}
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "collection icons",
+    "settings": [],
+	"blocks": [
+		{
+    		"type": "image",
+      		"name": "collection",
+			"settings": [
+				{
+					"type": "text",
+					"id": "icon_link",
+					"label": "icon_link"
+				},
+				{
+					"type": "text",
+					"id": "ourheading",
+					"label": "ourheading"
+				},
+				{
+					"type": "image_picker",
+          			"id": "icon",
+          			"label": "icon"
+				}
+			]
+		}
+	]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

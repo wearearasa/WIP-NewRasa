@@ -1,0 +1,180 @@
+{% comment %}
+    Renders a list of menu items
+    Accepts:
+    - linklist: {Object} Linklist Liquid object (required)
+    - wrapper_class: {String} CSS wrapper class for the navigation (optional)
+
+    Usage:
+    {% include 'site-nav', linklist: section.settings.main_linklist, wrapper_class: 'site-nav--centered' %}
+{% endcomment %}
+<ul class="site-nav list--inline{% if wrapper_class != blank %} {{ wrapper_class }}{% endif %}" id="SiteNav">
+  {% for link in linklists[linklist].links %}
+    {%- assign child_list_handle = link.title | handleize -%}
+
+    {% comment %}
+      Check if third-level nav exists on each parent link.
+    {% endcomment %}
+    {%- assign three_level_nav = false -%}
+    {% if link.links != blank %}
+      {% if link.levels == 2 %}
+        {%- assign three_level_nav = true -%}
+      {% endif %}
+    {% endif %}
+
+    {% if link.links != blank %}
+      <li class="site-nav--has-dropdown{% if three_level_nav %} site-nav--has-centered-dropdown{% endif %}{% if link.active %} site-nav--active{% endif %}" data-has-dropdowns>
+         <a href="{{ link.url }}"
+          class="site-nav__link site-nav__link--main{% if link.child_active %} site-nav__link--active{% endif %}"
+          {% if link.current %} aria-current="page"{% endif %}
+        >
+          <span class="site-nav__label 5">{{ link.title | escape }}</span>
+        </a>
+
+        <div class="site-nav__dropdown{% if three_level_nav %} site-nav__dropdown--centered{% endif %}" id="SiteNavLabel-{{ child_list_handle }}">
+          {% if three_level_nav %}
+            <div class="site-nav__childlist">
+              <ul class="site-nav__childlist-grid">
+                {% if link.links != blank %}
+                  {% for childlink in link.links %}
+                    <li class="site-nav__childlist-item">
+                      <a href="{{ childlink.url }}"
+                        class="site-nav__link site-nav__child-link site-nav__child-link--parent"
+                        {% if childlink.current %} aria-current="page"{% endif %}
+                      >
+                        <span class="site-nav__label 2">{{ childlink.title | escape }}</span>
+                      </a>
+
+                      {% if childlink.links != blank %}
+                        <ul>
+                        {% for grandchildlink in childlink.links %}
+                          <li>
+                            <a href="{{ grandchildlink.url }}"
+                            class="site-nav__link site-nav__child-link"
+                            {% if grandchildlink.current %} aria-current="page"{% endif %}
+                          >
+                              <span class="site-nav__label 3">{{ grandchildlink.title | escape }}</span>
+                            </a>
+                          </li>
+                        {% endfor %}
+                        </ul>
+                      {% endif %}
+
+                    </li>
+                  {% endfor %}
+                {% endif %}
+              </ul>
+            </div>
+
+          {% else %}
+            <ul class="row d-flex">
+              {% for childlink in link.links %}
+                <li class="col-xs-6 col-md-6 justify-space-around">
+                  <div class="post-mega-menu">
+                    <span class="site-nav__label 4">{{ childlink.title | escape }}</span> 
+                    
+                    
+                    {% if link.type == 'collections_link' %}                    
+                    	{% if forloop.index == 1 %}
+                    		{% for product in childlink.object.products limit:4 %}	
+                    			<div class="col-xs-6 col-md-6 text-center">
+                    			{% if product %}
+                                  <a href="{{ product.url }}">
+                                    <div class="post-image for-product" style="background-image: url( {{ product | img_url: 'medium' }})">
+                                      <img src="{{ product | img_url: 'medium' }}" class="product-image" />                    	
+                                    </div>
+                                    <div class="product-title">{{ product.title | escape }}</div>
+                                  </a>
+                                  {% endif %}
+                    			</div>
+	                    	{% endfor %}
+                    	{% endif %}
+                        {% if forloop.index == 2 %}
+                    		{% for product in childlink.object.products limit:3 %}	
+                    <div class="collection-list"><a href="{{ product.url }}"><span class="product-title">{{ product.title | escape }}</span></a><i>from</i> {{ product.price_min | money  }}</div>
+                    		{% endfor %}
+                    	{% endif %}
+                        {% if forloop.index == 3 %}
+                    		{% for product in childlink.object.products limit:4 %}	
+                    <div class="collection-list"><a href="{{ product.url }}"><span class="product-title">{{ product.title | escape }}</span></a><i>from</i> {{ product.price_min | money  }}</div>
+                    		{% endfor %}
+                          <div class="article__meta-buttons">
+                            <a href="/collections/all" class="btn btn--tertiary btn--small">Shop All Products</a>
+                          </div>                    
+                        {% endif %}                             
+                    {% else %}
+                    
+                      {% comment %}
+                      description for product & single post
+                      {% endcomment %}
+					<a href="{{ childlink.url }}">
+                      {% if childlink.object.image %}
+                        <div class="post-image for-blog" style="background-image: url( {{ childlink.object | img_url: 'master' }})">
+                            <img src="{{ childlink.object | img_url: 'master' }}" class="post-image" />                    	
+                        </div>
+                      {% endif %}                  
+
+                      <div class="post-title">
+                        {% if childlink.object.articles %}
+                              {% for article in childlink.object.articles limit:5 %}
+                               <a href="{{ article.url }}"  class="site-nav__link site-nav__child-link{% if forloop.last %} site-nav__link--last{% endif %}" {% if childlink.current %} aria-current="page"{% endif %}>		    
+                                  <h2 class="article__title h3">{{ article.title }}</h2>
+                               </a>
+                                  <div class="article__tags rte">
+                                  {% for articletag in article.tags %}
+                                    <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ articletag }}{% unless forloop.last %} | {% endunless %}</a>
+                                  {% endfor %}
+                                  </div>
+                              {% endfor %}
+                        {% else %}
+                          <h2 class="article__title">{{ childlink.object.title }}</h2>
+                              <div class="article__tags rte">
+                                 {% for articletag in childlink.object.tags %}
+                                <a href="{{ blog.url }}/tagged/{{ tag | handle }}" class="single-article">{{ articletag }}{% unless forloop.last %} | {% endunless %}</a>
+                         {% endfor %}
+                        </div>
+                        {% endif %}
+                      </div>
+
+                      {% if childlink.object.content %}
+                      <div class="post-description">
+                          {{ childlink.object.excerpt }}
+                        </div>
+                      {% endif %}
+                    </a>
+                    </div>
+                    <div class="article__meta-buttons">
+                      <a href="{{ childlink.url }}" class="btn btn--tertiary btn--small">
+                        {% if childlink.object.articles %}Browse all posts {% else %} Continue reading {% endif %}
+                      </a>
+                    </div>
+                     {% endif %}
+                    {% comment %}
+                     image for single post
+                    {% endcomment %}
+                    
+                    {% if childlink.object.images %}
+                    <div id="product-image">
+                    	{{ childlink.object | img_url }}
+                      </div>
+                    {% endif %}
+                    {% comment %}
+                    title for all
+                    {% endcomment %}
+                </li>
+              {% endfor %}
+            </ul>          
+          {% endif %}
+        </div>
+      </li>
+    {% else %}
+      <li {% if link.active %} class="site-nav--active"{% endif %}>
+        <a href="{{ link.url }}"
+          class="site-nav__link site-nav__link--main{% if link.active %} site-nav__link--active{% endif %}"
+          {% if link.current %} aria-current="page"{% endif %}
+        >
+          <span class="site-nav__label 5">{{ link.title | escape }}</span>
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

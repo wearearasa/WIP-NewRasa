@@ -1,0 +1,78 @@
+<h1 style="display: none;">{{ 'customer.account.title' | t }}</h1>
+<div class="account-nav">
+<div class="section-header account-header">
+  <div class="page-width">
+    <a href="/account" class="nav-item">Account</a>
+    <a href="/tools/recurring/customers/35365071bd26d3ce90f980c4/subscriptions" class="nav-item">Subscription</a>
+    <a href="#customer_orders" class="nav-item">Order History</a>
+    <a href="/account/addresses" class="nav-item">Shipping Address</a>
+    <a href="#" class="nav-item">Refer-a-friend</a>    
+    {{ 'layout.customer.log_out' | t | customer_logout_link }}
+  </div>
+  </div>
+</div>
+<div class="page-width">
+  <div class="account-info">
+    <p class="">This is your dashboard and from here, you can track your orders, review your order history, or change your information. If you're a subscriber, head over to the "Your Subscription" section to make any and all changes to your subscription. Questions, comments or feedback? Visit our help center: <a href="mailto:atyourservice@wearerasa.com" aria-describedby="a11y-external-message">atyourservice@wearerasa.com</a>.</p>
+  </div>
+  <div class="grid myaccount">
+    <div class="grid__item myaccount__account-details">
+      <h2 class="content-title">Shipping Addresses</h2>
+	
+      <div class="account-details">
+        <div class="shipping-details">
+          <p class="address-title text-upper">Current Address</p>
+          {{ customer.default_address | format_address }}
+        <p><a href="{{ routes.account_addresses_url }}" class="btn btn--small">{{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})</a></p>
+        </div>
+
+        <!-- Begin ReCharge code -->
+        <p id="rc_link_container">
+            <a href="/tools/recurring/login">Manage Subscriptions</a>
+        </p>
+      <!-- End ReCharge code -->
+      </div>
+    </div>
+    <div id="customer_orders" class="grid__item myaccount__order-history">
+      <h2 class="content-title">{{ 'customer.orders.title' | t }}</h2>
+
+      {% paginate customer.orders by 20 %}
+        {% if customer.orders.size != 0 %}
+
+          <table class="responsive-table">
+            <thead>
+              <tr>
+                <th scope="col">{{ 'customer.orders.order_number' | t }}</th>
+                <th scope="col">{{ 'customer.orders.date' | t }}</th>
+                <th scope="col">{{ 'customer.orders.payment_status' | t }}</th>
+                <th scope="col">{{ 'customer.orders.fulfillment_status' | t }}</th>
+                <th scope="col">{{ 'customer.orders.total' | t }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for order in customer.orders %}
+                <tr>
+                  <th data-label="{{ 'customer.orders.order_number' | t }}" scope="row">
+                    <a href="{{ order.customer_url }}" class="btn btn--secondary btn--small" aria-label="{{ 'customer.orders.order_number_link' | t: number: order.name }}">{{ order.name }}</a>
+                  </th>
+                  <td data-label="{{ 'customer.orders.date' | t }}">{{ order.created_at | time_tag: format: 'date' }}</td>
+                  <td data-label="{{ 'customer.orders.payment_status' | t }}">{{ order.financial_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.fulfillment_status' | t }}">{{ order.fulfillment_status_label }}</td>
+                  <td data-label="{{ 'customer.orders.total' | t }}">{{ order.total_price | money }}</td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        {% else %}
+
+          <p>{{ 'customer.orders.none' | t }}</p>
+
+        {% endif %}
+        {%- if paginate.pages > 1 -%}
+          {% include 'pagination', paginate: paginate %}
+        {%- endif -%}
+      {% endpaginate %}
+    </div>
+  </div>
+</div>

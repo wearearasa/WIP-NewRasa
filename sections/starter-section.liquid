@@ -1,0 +1,108 @@
+<div class='starter-section'>
+  <div class='page-width'>
+    <div class="starter-imageblock">
+    <div class="col-md-6 starter-block starter-image">
+    	{%- if section.settings.startimage != blank -%}
+            <img src="{{ section.settings.startimage | img_url: 'master' }}">
+        {%- endif -%}
+    </div>
+    <div class="col-md-6 col-12 starter-block starter-content">
+      <div class="starter-content">
+    	{%- if section.settings.starttitle != blank -%}
+      		<h4 class="text-center">{{ section.settings.starttitle | escape }}</h4>
+    	{%- endif -%}
+		{%- if section.settings.starthead != blank -%}
+      		<h2 class="text-center">{{ section.settings.starthead | escape }}</h2>
+      	{%- endif -%}
+      	{%- if section.settings.startpara != blank -%}
+      		<p class="text-center">{{ section.settings.startpara | escape }}</p>
+      	{%- endif -%}
+      	{%- if section.settings.starlink != blank -%}
+      		<a class="benefit-link" href="{{ section.settings.starlink }}">{{ section.settings.starttext }}</a>
+      	{%- endif -%}
+      </div>
+    </div>
+    <div class="starter-imagebanner">
+        {%- if section.settings.startstatic != blank -%}
+       		<img src="{{ section.settings.startstatic | img_url: 'master' }}">
+        {%- endif -%}
+     </div>
+  </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Starter Section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "starttitle",
+        "label": "starttitle"
+      },
+      {
+        "type": "text",
+        "id": "starthead",
+        "label": "starthead"
+      },
+      {
+        "type": "html",
+        "id": "startpara",
+        "label": "startpara"
+      },
+      {
+        "type": "url",
+        "id": "starlink",
+        "label": "starlink"
+      },
+      {
+        "type": "text",
+        "id": "starttext",
+        "label": "starttext"
+      },
+      {
+        "type": "image_picker",
+        "id": "startimage",
+        "label": "startimage"
+      },
+      {
+        "type": "image_picker",
+        "id": "startstatic",
+        "label": "startstatic"
+      }
+    ],	
+	"presets": [
+    {
+      "name": "our starter section",
+      "category": {
+        "da": "Billede",
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fi": "Kuva",
+        "fr": "Image",
+        "hi": "इमेज",
+        "it": "Immagine",
+        "ja": "画像",
+        "ko": "이미지",
+        "ms": "Imej",
+        "nb": "Bilde",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "pt-PT": "Imagem",
+        "sv": "Bild",
+        "th": "รูปภาพ",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      }
+    }
+  ]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

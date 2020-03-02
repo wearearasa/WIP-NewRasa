@@ -1,0 +1,24 @@
+{% comment %}
+  The contents of the blog.liquid template can be found in /sections/blog-template.liquid
+{% endcomment %}
+
+{% section 'search-bar' %}
+{% section 'blog-template' %}
+<div id="shopify-section-collection" class="shopify-section index-section collection-block">
+  <div class="page-width collection-section">
+    <div class="section-header text-center">
+      <h2>Shop Bestsellers</h2>
+    </div>
+    <ul class="grid grid--uniform grid--view-items mob-slider">
+     {% for product in collections['best-selling-products'].products limit:3 %}
+      {%- include 'bold-product' with product, hide_action: 'skip' -%}
+{%- include 'bold-product-json', product: product -%}
+      <li class="grid__item grid__item--collection small--one-half medium-up--one-third">
+        {% include 'product-card-grid' , max_height: 345, product: product, show_vendor: false %}
+      </li>
+     {% else %}
+      <p>There are no products in this view.</p>
+    {% endfor %}
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,324 @@
+<div class="page-width insta-feed-mobile">
+  <div id="mw-instagram-feed--{{ section.id }}" class="mw-instagram-feed">
+      {% if section.settings.section_title %}
+        <p class="mw-instagram-feed__title">{{ section.settings.section_title }}</p>
+      {% endif %}
+      <img class="insta-icon d-md-none" src="{{ 'insta-icon.png' | asset_img_url }}" />
+      <div class="mw-instagram-feed">
+          <div class="mw-instagram-feed__slider"></div>
+          <button class="prev icon-arrow"><img src="{{ 'insta-left-arrow.png' | asset_img_url }}" /></button>
+          <button class="next icon-arrow"><img src="{{ 'insta-right-arrow.png' | asset_img_url }}" /></button>
+      </div>
+      <img class="insta-icon d-lg-block" src="{{ 'insta-icon.png' | asset_img_url }}" />
+</div>
+</div>
+<script type="text/javascript">
+  jQuery(document).ready(function () {
+  	if (typeof jQuery === 'undefined') {
+      	return;
+    }
+    mwInstagramFeed.init();
+  });
+
+  var mwInstagramFeed = (function() {
+    var ACCESS_TOKEN = "{{ section.settings.access_token }}",
+        COUNT = {{ section.settings.number_of_images }} || 10,
+        IMAGES_TO_SHOW = 6,
+        DURATION = 3000,
+        SLIDER_SELECTOR = '#mw-instagram-feed--{{ section.id }} .mw-instagram-feed__slider',
+        SLIDE_SELECTOR = '#mw-instagram-feed--{{ section.id }} .mw-instagram-feed__slide',
+        sliderConfig = {};
+        $objects = {};
+
+    function fetchImages(successCallback, failCallback) {
+      $.get('https://api.instagram.com/v1/users/self/media/recent?access_token=' + ACCESS_TOKEN + '&count=' + COUNT)
+        .done(successCallback)
+        .fail(failCallback);
+    }
+
+    function onFetchSuccess(response) {
+      var data = response.data;
+
+      if (response.meta.code === 200 && data.length > 0) {
+        var loadedImagesCount = data.length;
+
+        var slider;
+
+        data.forEach(function(item) {
+          var imageSrc = item.images.standard_resolution.url,
+              imageLikes = item.likes.count,
+              imageComments = item.comments.count,
+              imageLink = item.link, 
+              slideTemplate = '<div class="slide"><a href="' + imageLink + '" target="_blank" rel="noreferrer, noopener" class="mw-instagram-feed__slide" style="background-image: url(' + imageSrc + ')"><div class="mw-instagram-feed__slide__meta"><div class="mw-instagram-feed__slide__likes"><i class="mw-instagram-feed__slide__likes__icon"><svg viewBox="0 0 32 27"><path fill="#FFF" d="M16.0119205,4.47985855 C16.5897808,3.43747948 17.3102775,2.57431646 18.1990121,1.85013732 C21.4942787,-0.834445965 26.5926158,-0.571108095 29.5623789,2.46824982 C31.9213656,4.8821803 32.5028832,7.7496371 31.5885473,10.9499237 C30.88268,13.4260312 29.5404348,15.5619939 27.9092595,17.5223981 C25.2686574,20.6934249 22.0575096,23.1951347 18.5903478,25.3896169 C17.8223057,25.8760605 17.0359768,26.3369018 16.2496479,26.7904281 C16.1326129,26.8562626 15.9204869,26.8745499 15.8107666,26.8123729 C11.824262,24.5410838 8.09742879,21.9186775 4.97405729,18.5208875 C3.10149732,16.4836765 1.5507836,14.2343322 0.625475646,11.6009535 C-0.142566527,9.41744361 -0.288860275,7.21930389 0.673021114,5.06505382 C1.92383265,2.26343148 4.10726683,0.548077852 7.13554741,0.123811284 C10.9464995,-0.406521926 13.9016332,1.03817889 15.9131722,4.34818962 C15.9351163,4.38110685 15.9570604,4.40670914 16.0119205,4.47985855 Z"/></svg></i><span class="mw-instagram-feed__slide__likes__count">' + imageLikes + '</span></div><div class="mw-instagram-feed__slide__comments"><i class="mw-instagram-feed__slide__comments__icon"><svg viewBox="0 0 32 31"><path fill="#FFF" d="M16,0.266666667 C7.1776,0.266666667 7.99355157e-16,6.7264 7.99355157e-16,14.6666667 C7.99355157e-16,17.4426667 0.8784,20.1312 2.54293333,22.4554667 C2.22773333,25.9418667 1.38293333,28.5301333 0.156266667,29.7562667 C-0.00586666667,29.9184 -0.0464,30.1664 0.056,30.3712 C0.1472,30.5541333 0.333333333,30.6666667 0.533333333,30.6666667 C0.557866667,30.6666667 0.582933333,30.6650667 0.608,30.6613333 C0.824,30.6309333 5.8416,29.9082667 9.4704,27.8144 C11.5317333,28.6458667 13.7269333,29.0666667 16,29.0666667 C24.8224,29.0666667 32,22.6069333 32,14.6666667 C32,6.7264 24.8224,0.266666667 16,0.266666667 Z"/></svg></i><span class="mw-instagram-feed__slide__comments__count">' + imageComments + '</span></div></div></a></div>';
+
+          $objects.slider.append(slideTemplate);
+        });
+
+        slider = jQuery('.mw-instagram-feed__slider').slick({
+          slidesToShow: IMAGES_TO_SHOW,
+          slidesToScroll: 1,
+          prevArrow: '.prev',
+          nextArrow: '.next',
+          responsive: [
+            {
+              breakpoint: 1199,
+              settings: {
+                slidesToShow: 5
+              }
+            },
+            {
+              breakpoint: 991,
+              settings: {
+                slidesToShow: 4
+              }
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 4
+              }
+            },
+            {
+              breakpoint: 420,
+              settings: {
+                slidesToShow: 3
+              }
+            }
+           ]
+        });
+      }
+    }
+
+    function onFetchFail(response) {
+      console.error('Instagram feed: Error while connecting to Instagram.');
+    }
+
+    function bindObjects() {
+      var self = {};
+
+      self.slider = $('.mw-instagram-feed__slider');
+
+      return self;
+    }
+
+    function addEventListeners() {
+      $(window).resize(function() {
+        setTimeout(setSlideHeight, 100);
+      });
+    }
+    
+    function setSlideHeight() {
+      setTimeout(function(){
+        var $slide = $(SLIDE_SELECTOR);
+        if (window.innerWidth > 767) {
+        	var wrapperWidth = $slide.parent().width() - 40 + 'px';
+        } else {
+        	var wrapperWidth = $slide.parent().width() + 'px';
+        }
+        $slide.css('height', wrapperWidth);
+      },500)
+    }
+
+    function init() {
+      $objects = bindObjects();
+//       sliderConfig = configureSlider();
+      fetchImages(onFetchSuccess, onFetchFail);
+      addEventListeners();
+      setSlideHeight();
+    }
+    
+    return {
+      init: init
+    }
+  })();
+</script>
+
+<style>
+.mw-instagram-feed__slider {
+	width: 90%;
+	margin: 0 auto;
+}
+
+.mw-instagram-feed {
+	position: relative;
+}
+
+.mw-instagram-feed button.next {
+	right: 0;
+}
+
+.mw-instagram-feed button.prev {
+	left: 0;
+}
+
+button.icon-arrow {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+button.icon-arrow img {
+	max-width: 16px;
+}
+
+img.insta-icon {
+	display: block;
+	margin: 35px auto 55px;
+	max-height: 40px;
+}
+
+.mw-instagram-feed__title {
+	text-align: center;
+	margin: 0 0 40px;
+	font-size: 18px;
+	letter-spacing: 1px;
+}
+
+.mw-instagram-feed__slide {
+	display: block;
+	min-height: 105px;
+	background-size: cover;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	position: relative;
+	border-radius: 25px;
+}
+
+.mw-instagram-feed__slide:hover .mw-instagram-feed__slide__meta {
+	opacity: 1;
+}
+
+.mw-instagram-feed__slide:hover .mw-instagram-feed__slide__likes,
+  .mw-instagram-feed__slide:hover .mw-instagram-feed__slide__comments {
+	opacity: 1;
+	transform: translateY(0px);
+}
+
+.mw-instagram-feed__slide__meta {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	opacity: 0;
+	border-radius: 25px;
+	transition: opacity .2s ease-in;
+}
+
+.mw-instagram-feed__slide__likes,
+  .mw-instagram-feed__slide__comments {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	color: #fff;
+	font-size: 16px;
+	transform: translateY(10px);
+	opacity: 0;
+	transition: all .15s ease-in;
+	transition-delay: .1s;
+}
+
+.mw-instagram-feed__slide__likes {
+	margin-right: 10%;
+}
+
+.mw-instagram-feed__slide__likes__icon,
+  .mw-instagram-feed__slide__comments__icon {
+	width: 20px;
+	height: 20px;
+	margin-right: 5px;
+}
+
+.mw-instagram-feed__slide__comments__icon {
+	position: relative;
+	top: -1px;
+}
+
+@media screen and (min-width: 1200px) {
+	.d-md-none {
+		display: none !important;
+	}
+
+	.mw-instagram-feed__slide {
+		margin: 0 20px;
+	}
+}
+
+@media screen and (max-width: 1199px) {
+	.d-lg-block {
+		display: none !important;
+	}
+
+	.mw-instagram-feed {
+		margin-bottom: 60px;
+	}
+
+	.mw-instagram-feed__slide {
+		margin: 0 15px;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	button.icon-arrow {
+		display: none !important;
+	}
+
+	.page-width.insta-feed-mobile {
+		padding: 0;
+	}
+
+	.mw-instagram-feed__slider {
+		width: 100%;
+	}
+
+	.page-width.insta-feed-mobile .mw-instagram-feed__title {
+		padding: 0 20px;
+	}
+
+	.mw-instagram-feed__slider .slick-slide {
+		margin: 0 10px;
+	}
+
+	.mw-instagram-feed__slide {
+		margin: 0;
+	}
+
+	.mw-instagram-feed__slider .slick-list {
+		margin: 0 -25px;
+	}
+
+	.mw-instagram-feed button.prev {
+		left: 15px;
+	}
+
+	.mw-instagram-feed button.next {
+		right: 15px;
+	}
+}
+</style>
