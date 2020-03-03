@@ -1,0 +1,129 @@
+{% comment %} 
+  Name: Block Content
+  Version: 1.0
+{% endcomment %}
+
+{% assign blockName = section.settings.title %}
+
+<div class="block-section block-{{ blockName }}" style="background-color:{{ section.settings.block-background-color }}">
+
+  <h1 class="block-title block-title-{{ blockName }}">{{ section.settings.title }}</h1>
+  <h2 class="block-subtitle block-subtitle-{{ blockName }}">{{ section.settings.subtitle }}</h2>
+
+  <p class="block.paragraph-{{ blockName }}">{{ section.settings.paragraph }}</p>
+
+  {% for block in section.blocks %}
+
+  {{ block.settings.blockImage | asset_img_url}}
+
+    <img src="{{ block.settings.blockImage | asset_img_url | img_url: 'full' }}" alt="Team photo">
+
+    <!-- <div class="btn" id="call-to-action">
+      <a href="{{ block.settings.link }}" class="btn">{{ block.settings.linktext }}</a>
+    </div> -->
+  {% endfor %}
+
+</div>
+
+{% schema %}
+
+{
+  "name": "Layout Block Content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }, {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    }, {
+      "type": "html",
+      "id": "paragraph",
+      "label": "paragraph"
+    }, {
+      "type": "color",
+      "id": "block-background-color",
+      "label": "Background color",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "select",
+      "name": "Add Button",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "link",
+          "type": "url",
+          "label": "Button link"
+        }, {
+          "id": "linkText",
+          "type": "text",
+          "label": "Button text",
+          "default": "Click here"
+        }, {
+          "id": "buttonBackgroundColor",
+          "type": "color",
+          "label": "Button Background Color"
+        }, {
+          "id": "buttonTextColor",
+          "type": "color",
+          "label": "Button Text Color"
+        }
+      ]
+    }, {
+      "type": "image",
+      "name": "Block Image",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "label": "Add Image",
+          "id": "blockImage"
+        }, {
+          "type": "radio",
+          "id": "imagePosition",
+          "label": "Choose which side you want your image",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            }, {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Block Section",
+      "category": "Layout"
+    }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+.block-section {
+  display: inline-block;
+  width: 100%;
+  background-color: {{section.settings.block-background-color}}}
+
+.block-{{blockName}}{
+  background-color: {{section.settings.block-background-color}}}
+
+{% endstylesheet %}
+
+{% javascript %}
+
+
+
+{% endjavascript %}
