@@ -3,6 +3,59 @@
   Version: 1.0
 {% endcomment %}
 
+{% assign blockName = section.settings.title | downcase | replace: " ", "-" %}
+<div class="ingredients-section block-{{ blockName }}">
+
+    <div class="block-content">
+        {% if section.settings.subtitle %}
+          <h4 class="block-subtitle block-subtitle-{{ blockName }} text-center">{{ section.settings.subtitle }}</h2>
+        {% endif %}
+    
+        {% if section.settings.title %}
+          <h3 class="block-title block-title-{{ blockName }} text-center">{{ section.settings.title }}</h1>
+        {% endif %}
+    
+        <ul class="ingredient-list">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'ingredient-items' %}
+                  <li class="ingredient-item ingredient-{{ block.settings.ingredientName | downcase | replace: " ", "-" }}">
+                    {% if block.settings.ingredientImage %}
+                      <img src="{{ block.settings.ingredientImage | img_url: "master" }}" class="ingredient-image">
+                    {% endif %}
+                    
+                    {% if block.settings.ingredientName %}
+                      <p class="ingredient-name"></p>{{ block.settings.ingredientName }}</li><p>
+                    {% endif %}
+                  </li>
+              
+        {% endcase %}
+      {% endfor %}
+    </ul>
+      </div>
+
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'top-left-image' %}
+        {% assign tli = block.settings.topLeftImage %}
+        <span class="ingredients-section-bkg top-left-image"></span>
+
+      {% when 'top-right-image' %}
+        {% assign tri = block.settings.topRightImage %}
+        <span class="ingredients-section-bkg top-right-image"></span>
+
+      {% when 'bottom-left-image' %}
+        {% assign bli = block.settings.bottomLeftImage %}
+        <span class="ingredients-section-bkg bottom-left-image"></span>
+
+      {% when 'bottom-right-image' %}
+        {% assign bri = block.settings.bottomRightImage %}
+        <span class="ingredients-section-bkg bottom-right-image"></span>
+    {% endcase %}
+  {% endfor %}
+
+</div>
+
 {% schema %}
 
 {
@@ -30,7 +83,7 @@
       "limit": 1,
       "settings": [
         {
-          "id": "top-left-image",
+          "id": "topLeftImage",
           "type": "image_picker",
           "label": "Add Top Left Image"
         }
@@ -41,9 +94,9 @@
       "limit": 1,
       "settings": [
         {
-          "id": "top-left-image",
+          "id": "topRightImage",
           "type": "image_picker",
-          "label": "Add Top Left Image"
+          "label": "Add Top Right Image"
         }
       ]
     }, {
@@ -52,7 +105,7 @@
       "limit": 1,
       "settings": [
         {
-          "id": "bottom-right-image",
+          "id": "bottomRightImage",
           "type": "image_picker",
           "label": "Add Bottom Right Image"
         }
@@ -63,7 +116,7 @@
       "limit": 1,
       "settings": [
         {
-          "id": "bottom-left-image",
+          "id": "bottomLeftImage",
           "type": "image_picker",
           "label": "Add Bottom Left Image"
         }
@@ -73,15 +126,15 @@
       "name": "Ingredients",
       "limit": 6,
       "settings": [{
-        "id": "ingredient-name",
+        "id": "ingredientName",
         "type": "text",
         "label": "Ingredient Name"
       }, {
-        "id": "ingredient-image",
+        "id": "ingredientImage",
         "type": "image_picker",
         "label": "Add Ingredient Image"
       }, {
-        "id": "ingredient-desc",
+        "id": "ingredientDesc",
         "type": "text",
         "label": "Add Ingredient Description"
       }]
@@ -105,3 +158,94 @@
 
 {% javascript %}
 {% endjavascript %}
+
+<style>
+  .ingredients-section {
+    height: 400px;
+    position: relative;
+    z-index: -9;
+
+  }
+
+  .block-section {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+  }
+
+  .block-title {
+    font-family: Recoleta;
+    font-size: 50px;
+  }
+
+  .block-subtitle {
+    text-transform: uppercase;
+  }
+
+  .ingredients-section .block-content {
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .block-{{blockName}} {
+    background-color: {{ section.settings.block-background-color }};
+  }
+
+  .ingredients-section-bkg:before {
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: inline-block;
+    content: "";
+    width: 25%;
+    height: 200px;
+    z-index: -1;
+  }
+
+  .top-left-image:before {
+    background-image: url( {{ tli | img_url: "master" }} );
+    background-position: top left;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .top-right-image:before {
+    background-image: url( {{ tri | img_url: "master" }} );
+    background-position: top right;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .bottom-right-image:before {
+    background-image: url( {{ bri | img_url: "master" }} );
+    background-position: bottom right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  .bottom-left-image:before {
+    background-image: url( {{ bli | img_url: "master" }} );
+    background-position: bottom left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }  
+
+  .ingredient-list { display: inline; }
+
+  .ingredient-item {
+    display: inline;
+    float: left;
+    list-style: none;
+    text-align: center;
+  }
+
+  .ingredient-name {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+</style>
