@@ -1,0 +1,107 @@
+{% comment %} 
+  Name: Ingredients Section
+  Version: 1.0
+{% endcomment %}
+
+{% schema %}
+
+{
+  "name": "Ingredients Block Content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }, {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
+    }, {
+      "type": "color",
+      "id": "block-background-color",
+      "label": "Background color",
+      "default": "#fff"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "top-left-image",
+      "name": "Top Left Image",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "top-left-image",
+          "type": "image_picker",
+          "label": "Add Top Left Image"
+        }
+      ]
+    }, {
+      "type": "top-right-image",
+      "name": "Top Right Image",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "top-left-image",
+          "type": "image_picker",
+          "label": "Add Top Left Image"
+        }
+      ]
+    }, {
+      "type": "bottom-right-image",
+      "name": "Bottom Right Image",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "bottom-right-image",
+          "type": "image_picker",
+          "label": "Add Bottom Right Image"
+        }
+      ]
+    }, {
+      "type": "bottom-left-image",
+      "name": "Bottom Left Image",
+      "limit": 1,
+      "settings": [
+        {
+          "id": "bottom-left-image",
+          "type": "image_picker",
+          "label": "Add Bottom Left Image"
+        }
+      ]
+    }, {
+      "type": "ingredient-items",
+      "name": "Ingredients",
+      "limit": 6,
+      "settings": [{
+        "id": "ingredient-name",
+        "type": "text",
+        "label": "Ingredient Name"
+      }, {
+        "id": "ingredient-image",
+        "type": "image_picker",
+        "label": "Add Ingredient Image"
+      }, {
+        "id": "ingredient-desc",
+        "type": "text",
+        "label": "Add Ingredient Description"
+      }]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients Block",
+      "category": "Layout"
+    }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
