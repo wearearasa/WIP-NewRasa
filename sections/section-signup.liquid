@@ -10,7 +10,11 @@
       {% if section.settings.title %}
         <h3 class="block-title block-title-{{ blockName }} text-center">{{ section.settings.title }}</h1>
       {% endif %}
-    
+
+      {% if section.settings.signup-text %}
+          <p class="signup-text">{{ section.settings.signup-text }}</p>
+      {% endif %}
+      <div class="klaviyo-form-MDHntb"></div>
     </div>
 
 </div>
@@ -32,7 +36,7 @@
       "type": "color",
       "id": "block-background-color",
       "label": "Background color",
-      "default": "#fff"
+      "default": "#008B8F"
     }
   ],
   "presets": [
@@ -55,5 +59,55 @@
 {% endjavascript %}
 
 <style>
+  .block-section {
+    display: inline-block;
+    width: 100%;
+    position: relative;
+  }
+
+  .block-title {
+    color: #17A7A1;
+    font-family: Recoleta;
+    font-size: 50px;
+    text-transform: uppercase;
+  }
+
+  .signup-section {
+    height: 420px;
+    padding: 60px 0;
+  }
+
+  .block-{{blockName}} {
+    background-color: {{ section.settings.block-background-color }};
+  }
+
+  .signup-text {
+    color: #17A7A1;
+  }
+
+  .signup-text { text-align: center; }
+
+  /* Klavyio Customisation */
+  .signup-section form {
+    max-width: 80% !important;
+  }
+
+  .Ndwyt.Ndwyt { flex-flow: wrap; }
+
+  .kgtZaW:first-child { width: 60%; }
+
+  .kgtZaW:nth-child(2) { width: 40%; }
   
+  /* Email Input */
+  .signup-section input[type="email"] {
+    background-color: transparent !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-bottom: 2px solid #17A7A1 !important;
+    border-left: none !important;
+    border-radius: 0 !important;
+    height: auto !important;
+    padding: 15px 30px 15px 0 !important;
+  }
+
 </style>
