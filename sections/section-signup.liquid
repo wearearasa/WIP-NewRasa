@@ -1,0 +1,59 @@
+{% comment %} 
+  Name: Signup Section
+  Version: 1.0
+{% endcomment %}
+
+{% assign blockName = section.settings.title | downcase | replace: " ", "-" %}
+<div class="signup-section block-{{ blockName }}">
+
+    <div class="block-content">
+      {% if section.settings.title %}
+        <h3 class="block-title block-title-{{ blockName }} text-center">{{ section.settings.title }}</h1>
+      {% endif %}
+    
+    </div>
+
+</div>
+
+{% schema %}
+
+{
+  "name": "Signup Block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }, {
+      "type": "text",
+      "id": "signup-text",
+      "label": "Text"
+    }, {
+      "type": "color",
+      "id": "block-background-color",
+      "label": "Background color",
+      "default": "#fff"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Signup Block",
+      "category": "Layout"
+    }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
+
+<style>
+  
+</style>
