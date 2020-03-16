@@ -28,7 +28,7 @@
                       <p class="ingredient-name">{{ block.settings.ingredientName }}</p>
                     {% endif %}
 
-                    {% if block.settings.ingredientDesc %}
+                    {% if block.settings.ingredientDesc != blank %}
                     <div class="modal-description modal-{{ block.settings.ingredientName | downcase | replace: " ", "-" }}">
                       <div class="ingredient-description ingredient-{{ block.settings.ingredientName | downcase | replace: " ", "-" }}-description">
                         <span class="modal-close">X</span>
@@ -279,6 +279,7 @@
       border: 1px solid #fff;
       width: 80%;
       position: relative;
+      top: 40%;
     }
 
     .modal-close {
@@ -309,7 +310,9 @@
       margin: 10px 0;
     }
 
-    .ingredient-list:hover { cursor: pointer; }
+    .ingredient-item:active,
+    .ingredient-item:hover
+    .ingredient-item:focus { cursor: pointer; }
 
     .ingredient-item:nth-child(odd),
     .ingredient-item:nth-child(even) { flex: 50%; }
@@ -322,14 +325,16 @@
     $('.modal-description').hide();
   });
 
-  $('.ingredient-item').click(function(e){
+  if($(window).width() <= 749 ) {
+    $('.ingredient-item').click(function(e){
     e.preventDefault();
     var t = '.' + $(this).data('popup');
     $(t).show();
   })
 
   $('.modal-close').click(function(ev){
-    ev.preventDefault();
-    $('.modal-description').hide();
+    ev.stopPropagation();
+    $(this).parent().parent().hide()
   })
+  }
 </script>
