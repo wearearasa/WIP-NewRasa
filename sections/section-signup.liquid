@@ -11,6 +11,10 @@
         <h3 class="block-title block-title-{{ blockName }} text-center">{{ section.settings.title }}</h1>
       {% endif %}
 
+      {% if section.settings.subtitle %}
+        <h3 class="block-subtitle block-subtitle-{{ blockName }} text-center">{{ section.settings.subtitle }}</h1>
+      {% endif %}
+
       {% if section.settings.signup-text %}
           <p class="signup-text">{{ section.settings.signup-text }}</p>
       {% endif %}
@@ -28,6 +32,11 @@
       "type": "text",
       "id": "title",
       "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle"
     }, {
       "type": "text",
       "id": "signup-text",
@@ -72,6 +81,17 @@
     text-transform: uppercase;
   }
 
+  .block-subtitle {
+    max-width: 650px;
+    width: 100%;
+    text-align: center !important;
+    margin: 0 auto;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    font-size: 30px;
+    color: #0e6460;
+  }
+
   .signup-section {
     height: 420px;
     padding: 60px 0;
@@ -94,10 +114,14 @@
     margin: 0 auto !important;
   }
 
-  .Ndwyt.Ndwyt { flex-flow: wrap; }
+  .Ndwyt.Ndwyt {
+    flex-flow: wrap;
+    position: relative;
+    bottom: 30px;
+    }
 
   .kgtZaW:first-child {
-    width: 60%;
+    width: 66%;
     }
 
   .kgtZaW:nth-child(2) {
@@ -176,6 +200,12 @@
       margin-top: -50px;
       width: 100%;
       }
+  }
+
+  @media( max-width: 375px ) {
+    .signup-section {
+      height: 500px;
+    }
   }
 
 </style>
