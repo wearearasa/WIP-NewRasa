@@ -3,7 +3,18 @@ Name: Slideshow
 Version: 1.0
 {% endcomment %}
 
+{% if customer.id != null %}
 
+<section class="slider-section">
+  <ul class="slick-slider">
+    <li class="slider-item slider-item-1">
+    </li>
+
+    <li class="slider-item slider-item-2">
+      </li>
+  </div>
+</section>
+{% endif; %}
 
 {% schema %}
 
@@ -88,11 +99,44 @@ Version: 1.0
 {% endstylesheet %}
 
 {% javascript %}
-
-
-
 {% endjavascript %}
 
 <style>
-  
+  .slider-section,
+  .slider {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .slider-item {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    list-style: none;
+    height: 520px;
+  }
+
+  .slider-item-1 {
+    background-image:url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/iced-dalgona-coffee-royalty-free-image-1586272836.jpg?crop=0.668xw:1.00xh;0.332xw,0&resize=980:*");
+  }
+
+  .slider-item-2 {
+    background-image:url("https://conteudo.solutudo.com.br/wp-content/uploads/2019/10/coffee.jpg");
+  }
 </style>
+
+<script type="text/javascript">
+  $(".slick-slider").slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    autoplay: true,
+    infinity: true,
+    adaptiveHeight: true,
+    dots: true,
+    draggable: true,
+    mobileFirst: true,
+  });
+</script>
