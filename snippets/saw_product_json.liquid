@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:7bcb>{% endcomment -%}
+  {%- assign __p = p %}{% assign p = saw_product_json %}{% assign locksmith_ed16_p__available = false %}{% assign locksmith_ed16_p__price = nil %}{% assign locksmith_ed16_p__price_min = nil %}{% assign locksmith_ed16_p__price_max = nil %}{% assign locksmith_ed16_p__price_varies = false %}{% assign locksmith_ed16_p__compare_at_price = nil %}{% assign locksmith_ed16_p__compare_at_price_min = nil %}{% assign locksmith_ed16_p__compare_at_price_max = nil %}{% assign locksmith_ed16_p__compare_at_price_varies = false %}{% for variant in p.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: p, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: p, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_ed16_p__available == false and variant.available %}{% assign locksmith_ed16_p__available = true %}{% endif %}{% if locksmith_ed16_p__price == nil %}{% assign locksmith_ed16_p__price = variant.price %}{% endif %}{% if locksmith_ed16_p__price_min == nil or variant.price < locksmith_ed16_p__price_min %}{% assign locksmith_ed16_p__price_min = variant.price %}{% endif %}{% if locksmith_ed16_p__price_max == nil or locksmith_ed16_p__price_max < variant.price %}{% assign locksmith_ed16_p__price_max = variant.price %}{% endif %}{% if locksmith_ed16_p__compare_at_price == nil %}{% assign locksmith_ed16_p__compare_at_price = variant.compare_at_price %}{% endif %}{% if locksmith_ed16_p__compare_at_price_min == nil or variant.compare_at_price < locksmith_ed16_p__compare_at_price_min %}{% assign locksmith_ed16_p__compare_at_price_min = variant.compare_at_price %}{% endif %}{% if locksmith_ed16_p__compare_at_price_max == nil or locksmith_ed16_p__compare_at_price_max < variant.compare_at_price %}{% assign locksmith_ed16_p__compare_at_price_max = variant.compare_at_price %}{% endif %}{% endfor %}{% if locksmith_ed16_p__price_min != locksmith_ed16_p__price_max %}{% assign locksmith_ed16_p__price_varies = true %}{% endif %}{% if locksmith_ed16_p__compare_at_price_min != locksmith_ed16_p__compare_at_price_max %}{% assign locksmith_ed16_p__compare_at_price_varies = true %}{% endif %}{% assign _ed16_safe_variants = '' %}{% for _variant in p.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: _variant, subject_parent: p, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture _ed16_safe_variants %}{% if _ed16_safe_variants != blank %}{{ _ed16_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _ed16_safe_variants %}[{{ _ed16_safe_variants }}]{% endcapture %}{% assign _ed16_unsafe_variants = p.variants | json %}{% assign _ed16_safe_options = p.options | json %}{% assign _ed16_unsafe_options = p.options | json %}{% for _option in p.options %}{% assign _safe_values = '' %}{% for _value in _option.values %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: _value, subject_parent: _option, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture _safe_values %}{% if _safe_values != blank %}{{ _safe_values }},{% endif %}{{ _value | json }}{% endcapture %}{% endfor %}{% capture _safe_values %}[{{ _safe_values }}]{% endcapture %}{% assign _unsafe_values = _option.values | json %}{% assign _unsafe_option = _option | json %}{% assign _safe_option = _unsafe_option | replace: _unsafe_values, _safe_values %}{% assign _ed16_safe_options = _ed16_safe_options | replace: _unsafe_option, _safe_option %}{% endfor %}{% assign _ed16_unsafe_options = p.options | json %}{% assign p = __p -%}
+{%- comment %}</locksmith:7bcb>{% endcomment -%}
+
 {% if shop.metafields.sawholesale['base_price'] == blank %}
 	{% assign base_price = 'compare_at_price' %}
 {% else %}
@@ -19,12 +23,15 @@
 {% endif %}
 {% assign saw_discount = 1 | minus: saw_discount %}
 {% if saw_has_discount == false %}
-{%- capture saw_json -%}{{ p | json }}{%- endcapture saw_json -%}
+{%- capture saw_json -%}{%- comment %}<locksmith:084c>{% endcomment -%}{{- p | json | replace: _ed16_unsafe_variants, _ed16_safe_variants | replace: _ed16_unsafe_options, _ed16_safe_options -}}{%- comment %}original: {{ p | json }}{%- endcomment %}{%- comment %}</locksmith:084c>{% endcomment -%}{%- endcapture saw_json -%}
 {% else %}
-{% assign w_price = p.price %}
+{% assign w_price = locksmith_ed16_p__price %}
 {% assign w_price_max = 0 %}
 {%- capture saw_variants_json -%}[
 {% for v in p.variants %}
+  {%- comment %}<locksmith:792e>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: v, subject_parent: p, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+  {%- comment %}</locksmith:792e>{% endcomment -%}
   {% unless v.title contains '% Off' %}
   {% unless v.metafields.shappify_qb.qb_hide == "1" %}
   {% unless v.metafields.shappify_bundle.is_bundle == "true" %}
@@ -93,12 +100,12 @@
 "price":{{- w_price | times: saw_discount | json -}},
 "price_min":{{- w_price | times: saw_discount | json -}},
 "price_max":{{- w_price_max | times: saw_discount | json -}},
-"available":{{- p.available | json -}},
-"price_varies":{{- p.price_varies | json -}},
-"compare_at_price":{% if p.compare_at_price %}{{- p.compare_at_price | times: saw_discount | json -}}{% else %}{{ p.compare_at_price | json }}{% endif %},
-"compare_at_price_min":{% if p.compare_at_price_min %}{{- p.compare_at_price_min | times: saw_discount | json -}}{% else %}{{ p.compare_at_price_min | json }}{% endif %},
-"compare_at_price_max":{% if p.compare_at_price_max %}{{- p.compare_at_price_max | times: saw_discount | json -}}{% else %}{{ p.compare_at_price_max | json }}{% endif %},
-"compare_at_price_varies":{{- p.compare_at_price_varies | json -}},
+"available":{{- locksmith_ed16_p__available | json -}},
+"price_varies":{{- locksmith_ed16_p__price_varies | json -}},
+"compare_at_price":{% if locksmith_ed16_p__compare_at_price %}{{- locksmith_ed16_p__compare_at_price | times: saw_discount | json -}}{% else %}{{ locksmith_ed16_p__compare_at_price | json }}{% endif %},
+"compare_at_price_min":{% if locksmith_ed16_p__compare_at_price_min %}{{- locksmith_ed16_p__compare_at_price_min | times: saw_discount | json -}}{% else %}{{ locksmith_ed16_p__compare_at_price_min | json }}{% endif %},
+"compare_at_price_max":{% if locksmith_ed16_p__compare_at_price_max %}{{- locksmith_ed16_p__compare_at_price_max | times: saw_discount | json -}}{% else %}{{ locksmith_ed16_p__compare_at_price_max | json }}{% endif %},
+"compare_at_price_varies":{{- locksmith_ed16_p__compare_at_price_varies | json -}},
 "variants":{{- saw_variants_json -}},
 "images": {{- p.images | json -}},
 "featured_image":{{- p.featured_image | json -}},

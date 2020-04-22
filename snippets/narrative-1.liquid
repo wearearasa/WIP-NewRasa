@@ -58,6 +58,9 @@
   <div class="container">
 
      {% for product in collections.home.products %}
+      {%- comment %}<locksmith:343b>{% endcomment -%}
+        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collections.home, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:343b>{% endcomment -%}
       {% include 'product-grid-item' with products_per_row %}
     {% else %}
       <p>There are no products in this view.</p>

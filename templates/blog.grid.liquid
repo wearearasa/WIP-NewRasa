@@ -11,6 +11,9 @@
   <div class="container">
     <div class="archive-posts">
       {% for article in blog.articles %}
+        {%- comment %}<locksmith:a977>{% endcomment -%}
+          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: article, subject_parent: blog, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+        {%- comment %}</locksmith:a977>{% endcomment -%}
         {% include 'article-grid-item' with products_per_row %}
       {% endfor %}
     </div>

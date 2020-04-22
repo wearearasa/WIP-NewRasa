@@ -8,7 +8,7 @@
         {% for item in cart.items %}
         {
             'id': {{item.id}},
-            'product': { id:{{item.product_id}}, handle:'{{item.product.handle}}', title:{{item.product.title | json}},variants:[{% for variant in item.product.variants %}{% if item.variant_id == variant.id %}{id:{{variant.id}},title:{{variant.title | json}},available:{{variant.available}},price:'{{variant.price}}',inventory_quantity:'{{variant.inventory_quantity}}'}{% endif %}{% endfor %}]}
+            'product': { id:{{item.product_id}}, handle:'{{item.product.handle}}', title:{{item.product.title | json}},variants:[{% for variant in item.product.variants %}{%- comment %}<locksmith:9599>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: item.product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:9599>{% endcomment -%}{% if item.variant_id == variant.id %}{id:{{variant.id}},title:{{variant.title | json}},available:{{variant.available}},price:'{{variant.price}}',inventory_quantity:'{{variant.inventory_quantity}}'}{% endif %}{% endfor %}]}
         }{% unless forloop.last %},{% endunless %}
         {% endfor %}
         ],

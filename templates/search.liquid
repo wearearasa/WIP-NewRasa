@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:b860>{% endcomment -%}
+  {%- if search.results %}{% paginate search.results by 10 %}{% assign locksmith_search__results_count = 0 %}{% for result in search.results %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: result, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% assign locksmith_search__results_count = locksmith_search__results_count | plus: 1 %}{% endfor %}{% endpaginate %}{% endif -%}
+{%- comment %}</locksmith:b860>{% endcomment -%}
+
 {% comment %}
 The search.liquid template is not a required template.
 That search.liquid template is included in the current theme to make it easier for you 
@@ -37,27 +41,50 @@ selectors inside search.css.
     paginate tag. Move the opening and closing paginate tags to the very top and bottom of your
     search.liquid template if you need to.
     If you fail to do the above, the pagination of search results will be broken.
-    search.results_count is fine to access in or out of the paginate block.
+    locksmith_search__results_count is fine to access in or out of the paginate block.
     {% endcomment %}
   
-    {% if search.results_count == 0 %}  
-    <p class="centered">Your search for "{{ search.terms }}" did not yield any results.</p>              
+    {% if locksmith_search__results_count == 0 %}  
+      <p class="centered">Your search for "{{ search.terms }}" did not yield any results.</p>              
     {% else %}
-    <ol>
-      {% for item in search.results %}      
-      <li class="clearfix">
-        <h3>{{ item.title | link_to: item.url }}</h3>
-        {% if item.vendor %}
-        <div class="result-image">
-          <a href="{{ item.url }}" title="{{ item.title | escape }}">
-            {{ item | img_url: 'small' | img_tag: item.featured_image.alt }}
-          </a>
-        </div>
-        {% endif %}
-        <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>        
-      </li>
-      {% endfor %}
-    </ol>
+      <ol>
+        {% for item in search.results %}
+          {%- comment %}<locksmith:88fd>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: item, subject_parent: search, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:88fd>{% endcomment -%}
+          {% if item.type == "Wholesale" %}
+            {% if customer %}
+              {% for tag in customer.tags %}
+                {% if tag == "Wholesale" and item.type == "Wholesale" %}
+                  <li class="clearfix">
+                  <h3>{{ item.title | link_to: item.url }}</h3>
+                  {% if item.vendor %}
+                    <div class="result-image">
+                      <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                        {{ item | img_url: 'small' | img_tag: item.featured_image.alt }}
+                      </a>
+                    </div>
+                  {% endif %}
+                  <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>        
+                  </li>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% else %}      
+            <li class="clearfix">
+            <h3>{{ item.title | link_to: item.url }}</h3>
+              {% if item.vendor %}
+                <div class="result-image">
+                  <a href="{{ item.url }}" title="{{ item.title | escape }}">
+                    {{ item | img_url: 'small' | img_tag: item.featured_image.alt }}
+                  </a>
+                </div>
+              {% endif %}
+              <span>{{ item.content | strip_html | truncatewords: 40 | highlight: search.terms }}</span>        
+              </li>
+            {% endif %}
+          {% endfor %}
+      </ol>
     {% endif %}    
     
     {% if paginate.pages > 1 %}

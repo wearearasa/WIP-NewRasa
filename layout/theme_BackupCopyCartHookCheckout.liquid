@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:8ee5>{% endcomment -%}
+  {%- assign locksmith_6eb6_product__first_available_variant = nil %}{% assign locksmith_6eb6_product__selected_variant = nil %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_6eb6_product__first_available_variant == nil and variant.available %}{% assign locksmith_6eb6_product__first_available_variant = variant %}{% endif %}{% if locksmith_6eb6_product__selected_variant == nil and variant.selected %}{% assign locksmith_6eb6_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_6eb6_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% endfor %}{% if locksmith_6eb6_product__selected_or_first_available_variant == nil %}{% assign locksmith_6eb6_product__selected_or_first_available_variant = locksmith_6eb6_product__first_available_variant %}{% endif %}{% assign _6eb6_safe_variants = '' %}{% for _variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: _variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture _6eb6_safe_variants %}{% if _6eb6_safe_variants != blank %}{{ _6eb6_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _6eb6_safe_variants %}[{{ _6eb6_safe_variants }}]{% endcapture %}{% assign _6eb6_unsafe_variants = product.variants | json %}{% assign _6eb6_safe_options = product.options | json %}{% assign _6eb6_unsafe_options = product.options | json %}{% for _option in product.options %}{% assign _safe_values = '' %}{% for _value in _option.values %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: _value, subject_parent: _option, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture _safe_values %}{% if _safe_values != blank %}{{ _safe_values }},{% endif %}{{ _value | json }}{% endcapture %}{% endfor %}{% capture _safe_values %}[{{ _safe_values }}]{% endcapture %}{% assign _unsafe_values = _option.values | json %}{% assign _unsafe_option = _option | json %}{% assign _safe_option = _unsafe_option | replace: _unsafe_values, _safe_values %}{% assign _6eb6_safe_options = _6eb6_safe_options | replace: _unsafe_option, _safe_option %}{% endfor %}{% assign _6eb6_unsafe_options = product.options | json %}{% include 'locksmith' -%}
+{%- comment %}</locksmith:8ee5>{% endcomment -%}
+
 <!DOCTYPE html>
 <html lang="en-US" prefix="og: http://ogp.me/ns#">
 <head>
@@ -18,7 +22,10 @@
   })(window,document,'script','dataLayer','GTM-KRW8J6W');</script>
   <!-- End Google Tag Manager -->
   {% if page_description %}
-  <meta name="description" content="{{ page_description | escape }}" />
+  {%- comment %}<locksmith:c57b>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}" />{% endif -%}
+    {%- comment %}original: <meta name="description" content="{{ page_description | escape }}" />{%- endcomment %}
+  {%- comment %}</locksmith:c57b>{% endcomment -%}
   {% endif %}
   <style></style>
   <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,400i,500,700,700i|Muli:300,400,400i,700" rel="stylesheet">
@@ -3441,8 +3448,8 @@ var afterpay_shop_currency = {{ shop.currency | json }};
 var afterpay_shop_money_format = {{ shop.money_format | json }};
 var afterpay_shop_permanent_domain = {{ shop.permanent_domain | json }};
 var afterpay_theme_name = {{ theme.name | json }};
-var afterpay_product = {{ product | json }};
-var afterpay_current_variant = {{ product.selected_or_first_available_variant | json }};
+var afterpay_product = {%- comment %}<locksmith:b6b2>{% endcomment -%}{{- product | json | replace: _6eb6_unsafe_variants, _6eb6_safe_variants | replace: _6eb6_unsafe_options, _6eb6_safe_options -}}{%- comment %}original: {{ product | json }}{%- endcomment %}{%- comment %}</locksmith:b6b2>{% endcomment -%};
+var afterpay_current_variant = {{ locksmith_6eb6_product__selected_or_first_available_variant | json }};
 var afterpay_cart_total_price = {{ cart.total_price | json }};
 var afterpay_js_snippet_version = '1.0.1';
 </script>

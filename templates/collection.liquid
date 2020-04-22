@@ -14,6 +14,9 @@
   <div class="container">
     <div class="filter-list">
         {% for link in linklists.collections-menu.links %}
+          {%- comment %}<locksmith:e4de>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.collections-menu, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:e4de>{% endcomment -%}
           <a href="{{ link.url }}">{{ link.title }}</a>
         {% endfor %}
     </div>
@@ -24,7 +27,13 @@
 	{% paginate collection.products by 6 %}
       <div class="container AjaxinateLoop">
           {% for product in collection.products %}
+          {%- comment %}<locksmith:beab>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:beab>{% endcomment -%}
           {% include 'product-grid-item' with products_per_row %}
+          {% if sold_out %}
+          <div class="badge badge--sold-out"><span class="badge-label">{{ 'products.product.sold_out' | t }}</span></div>
+        {% endif %}
           {% else %}
           <p>Amazing products coming your way, stay tuned!</p>
           {% endfor %}

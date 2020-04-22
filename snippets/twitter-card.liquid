@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:a2f0>{% endcomment -%}
+  {%- assign locksmith_c612_product__price = nil %}{% assign locksmith_c612_product__price_min = nil %}{% assign locksmith_c612_product__price_max = nil %}{% assign locksmith_c612_product__price_varies = false %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_c612_product__price == nil %}{% assign locksmith_c612_product__price = variant.price %}{% endif %}{% if locksmith_c612_product__price_min == nil or variant.price < locksmith_c612_product__price_min %}{% assign locksmith_c612_product__price_min = variant.price %}{% endif %}{% if locksmith_c612_product__price_max == nil or locksmith_c612_product__price_max < variant.price %}{% assign locksmith_c612_product__price_max = variant.price %}{% endif %}{% endfor %}{% if locksmith_c612_product__price_min != locksmith_c612_product__price_max %}{% assign locksmith_c612_product__price_varies = true %}{% endif -%}
+{%- comment %}</locksmith:a2f0>{% endcomment -%}
+
 {% comment %}
 
   This snippet renders meta data needed to create a Twitter card
@@ -14,11 +18,20 @@
  
 {% if template contains 'product' %}
   <meta name="twitter:card" content="product" />
-  <meta name="twitter:title" content="{{ product.title | escape }}" />
-  <meta name="twitter:description" content="{{ product.description | strip_html | strip_newlines | truncatewords: 60, '' | escape }}" />
-  <meta name="twitter:image" content="http:{{ product | img_url: 'large' }}" />
+  {%- comment %}<locksmith:b76e>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="twitter:title" content="{{ product.title | escape }}" />{% endif -%}
+    {%- comment %}original: <meta name="twitter:title" content="{{ product.title | escape }}" />{%- endcomment %}
+  {%- comment %}</locksmith:b76e>{% endcomment -%}
+  {%- comment %}<locksmith:7d7a>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="twitter:description" content="{{ product.description | strip_html | strip_newlines | truncatewords: 60, '' | escape }}" />{% endif -%}
+    {%- comment %}original: <meta name="twitter:description" content="{{ product.description | strip_html | strip_newlines | truncatewords: 60, '' | escape }}" />{%- endcomment %}
+  {%- comment %}</locksmith:7d7a>{% endcomment -%}
+  {%- comment %}<locksmith:b918>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="twitter:image" content="http:{{ product | img_url: 'large' }}" />{% endif -%}
+    {%- comment %}original: <meta name="twitter:image" content="http:{{ product | img_url: 'large' }}" />{%- endcomment %}
+  {%- comment %}</locksmith:b918>{% endcomment -%}
   <meta name="twitter:label1" content="Price" />
-  <meta name="twitter:data1" content="{% if product.price_varies %}From {% endif %}{{ product.price | money_with_currency | strip_html }}" />
+  <meta name="twitter:data1" content="{% if locksmith_c612_product__price_varies %}From {% endif %}{{ locksmith_c612_product__price | money_with_currency | strip_html }}" />
   {% if product.vendor == blank %}
   <meta name="twitter:label2" content="Availability" />
   <meta name="twitter:data2" content="In stock" />  
@@ -28,8 +41,14 @@
   {% endif %}
 {% elsif template contains 'article' %}
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="{{ article.title | escape }}" />
-  <meta name="twitter:description" content="{{ article.excerpt_or_content | strip_html | truncatewords: 60, '' | escape }}" />
+  {%- comment %}<locksmith:b9f6>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="twitter:title" content="{{ article.title | escape }}" />{% endif -%}
+    {%- comment %}original: <meta name="twitter:title" content="{{ article.title | escape }}" />{%- endcomment %}
+  {%- comment %}</locksmith:b9f6>{% endcomment -%}
+  {%- comment %}<locksmith:c3e6>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="twitter:description" content="{{ article.excerpt_or_content | strip_html | truncatewords: 60, '' | escape }}" />{% endif -%}
+    {%- comment %}original: <meta name="twitter:description" content="{{ article.excerpt_or_content | strip_html | truncatewords: 60, '' | escape }}" />{%- endcomment %}
+  {%- comment %}</locksmith:c3e6>{% endcomment -%}
   {% assign img_tag = '<' | append: 'img' %}
   {% if article.content contains img_tag %}
     {% assign src = article.content | split: 'src="' %}

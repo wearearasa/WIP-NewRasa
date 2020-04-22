@@ -28,6 +28,9 @@
           {% for item in cart.items %}
             window.hulkapps.cart_collections["v{{item.variant_id}}"] = []
             {% for c in item.product.collections %}
+              {%- comment %}<locksmith:1d95>{% endcomment -%}
+                {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: c, subject_parent: item.product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+              {%- comment %}</locksmith:1d95>{% endcomment -%}
               window.hulkapps.cart_collections["v{{item.variant_id}}"].push({{c.id}})
             {% endfor %}
           {% endfor %}

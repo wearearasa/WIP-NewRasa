@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:250b>{% endcomment -%}
+  {%- assign _ef9e_safe_variants = '' %}{% for _variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: _variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture _ef9e_safe_variants %}{% if _ef9e_safe_variants != blank %}{{ _ef9e_safe_variants }},{% endif %}{{ _variant | json }}{% endcapture %}{% endfor %}{% capture _ef9e_safe_variants %}[{{ _ef9e_safe_variants }}]{% endcapture %}{% assign _ef9e_unsafe_variants = product.variants | json %}{% assign _ef9e_safe_options = product.options | json %}{% assign _ef9e_unsafe_options = product.options | json %}{% for _option in product.options %}{% assign _safe_values = '' %}{% for _value in _option.values %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: _value, subject_parent: _option, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture _safe_values %}{% if _safe_values != blank %}{{ _safe_values }},{% endif %}{{ _value | json }}{% endcapture %}{% endfor %}{% capture _safe_values %}[{{ _safe_values }}]{% endcapture %}{% assign _unsafe_values = _option.values | json %}{% assign _unsafe_option = _option | json %}{% assign _safe_option = _unsafe_option | replace: _unsafe_values, _safe_values %}{% assign _ef9e_safe_options = _ef9e_safe_options | replace: _unsafe_option, _safe_option %}{% endfor %}{% assign _ef9e_unsafe_options = product.options | json -%}
+{%- comment %}</locksmith:250b>{% endcomment -%}
+
 <script>
     if(typeof(Spurit) === 'undefined'){
         var Spurit = {};
@@ -8,5 +12,5 @@
     if(!Spurit.tieredPricing.snippet){
         Spurit.tieredPricing.snippet = {};
     }
-    Spurit.tieredPricing.snippet.product = {{ product | json }};
+    Spurit.tieredPricing.snippet.product = {%- comment %}<locksmith:4019>{% endcomment -%}{{- product | json | replace: _ef9e_unsafe_variants, _ef9e_safe_variants | replace: _ef9e_unsafe_options, _ef9e_safe_options -}}{%- comment %}original: {{ product | json }}{%- endcomment %}{%- comment %}</locksmith:4019>{% endcomment -%};
 </script>

@@ -4,6 +4,9 @@
 	{% assign collection = collections[section.settings.collection] %}
         <ul class="grid clearfix">
         {% for product in collection.products %}
+          {%- comment %}<locksmith:53f4>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:53f4>{% endcomment -%}
           {% include 'product-grid-item-home' with 'three-per-row' %}
         {% else %}
         <li>

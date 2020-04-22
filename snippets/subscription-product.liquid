@@ -156,6 +156,9 @@
 		<input type="hidden" name="" id="rc_shipping_interval_unit_type" value="{{ shipping_interval_unit_type }}">
 		<select id="rc_duplicate_selector" data-productid="{{ product.id }}" class="styled replaced no-js" style="display: none;">
 			{% for variant in product.variants %}
+				{%- comment %}<locksmith:0e11>{% endcomment -%}
+				  {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+				{%- comment %}</locksmith:0e11>{% endcomment -%}
 				<option value="{{ variant.metafields.subscriptions.discount_variant_id }}">{{ variant.metafields.subscriptions.discount_variant_id }}</option>
 			{% endfor %}
 		</select>
@@ -259,9 +262,9 @@
 				shipping_interval_unit_type: "{{ shipping_interval_unit_type }}",
 				shipping_interval_frequency: [{% for interval in shipping_interval_frequency %}{{ interval }}, {% endfor %}],
 				discount_percentage: {{ discount_percentage }},
-				variant_to_duplicate: { {% for variant in product.variants %}{{ variant.id }}:'{{ variant.metafields.subscriptions.discount_variant_id }}', {% endfor %} },
-				variant_to_price: { {% for variant in product.variants %}{{ variant.id }}:'{{ variant.price }}', {% endfor %} },
-				duplicate_to_price: { {% for variant in product.variants %}{{ variant.metafields.subscriptions.discount_variant_id }}: '{{ variant.metafields.subscriptions.discount_variant_price | replace: ".", "" }}', {% endfor %} },
+				variant_to_duplicate: { {% for variant in product.variants %}{%- comment %}<locksmith:6d62>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:6d62>{% endcomment -%}{{ variant.id }}:'{{ variant.metafields.subscriptions.discount_variant_id }}', {% endfor %} },
+				variant_to_price: { {% for variant in product.variants %}{%- comment %}<locksmith:d8cc>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:d8cc>{% endcomment -%}{{ variant.id }}:'{{ variant.price }}', {% endfor %} },
+				duplicate_to_price: { {% for variant in product.variants %}				{%- comment %}<locksmith:3571>{% endcomment -%}{%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}{%- comment %}</locksmith:3571>{% endcomment -%}				{{ variant.metafields.subscriptions.discount_variant_id }}: '{{ variant.metafields.subscriptions.discount_variant_price | replace: ".", "" }}', {% endfor %} },
 			};
 
 			if (document.readyState === "complete" || document.readyState === "loaded") {

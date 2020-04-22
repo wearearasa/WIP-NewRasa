@@ -32,6 +32,9 @@
 <div class="shopmenu">
   <div class="container">
     {% for link in linklists[collection-listing].links %}
+      {%- comment %}<locksmith:8bcc>{% endcomment -%}
+        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists[collection-listing], variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:8bcc>{% endcomment -%}
       {% if link.type == 'collection_link' %}
         {% assign collection = link.object %}
         {% include 'collection-grid-item' with products_per_row %}
@@ -44,6 +47,9 @@
 <div class="shopmenu">
   <div class="container">
 {% for link in linklists.collections-menu.links %}
+  {%- comment %}<locksmith:312a>{% endcomment -%}
+    {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.collections-menu, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+  {%- comment %}</locksmith:312a>{% endcomment -%}
   <a href="{{ link.url }}">{{ link.title }}</a>
 {% endfor %}
   </div>
@@ -52,6 +58,9 @@
     {% paginate collections by products_per_page %}
       <div class="container">
         {% for collection in collections %}
+          {%- comment %}<locksmith:d7df>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:d7df>{% endcomment -%}
           {% include 'collection-grid-item' with products_per_row %}
         {% endfor %}
       </div>

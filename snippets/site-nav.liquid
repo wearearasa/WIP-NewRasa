@@ -549,6 +549,9 @@
       <div class="tealbar-menu-left">
       <ul class="menu-left-links">
         {% for link in linklists.teal-bar-left.links %}
+          {%- comment %}<locksmith:c710>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.teal-bar-left, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:c710>{% endcomment -%}
           <li><a href="{{ link.url }}">{{ link.title }}</a></li>
         {% endfor %}
       </ul>
@@ -562,6 +565,9 @@
       <ul class="menu-right-links">
         {% assign loginUrl = "https://wearerasa.com/account/login" %}
         {% for link in linklists.teal-bar-right.links %}
+          {%- comment %}<locksmith:264f>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.teal-bar-right, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:264f>{% endcomment -%}
           {% if link.url == loginUrl %}
             {% if shop.customer_accounts_enabled %}
               {% if customer %}
@@ -585,12 +591,18 @@
       <div class="menu-left">
         <ul class="menu-left-links">
           {% for link in linklists.desktop-left.links %}
+          {%- comment %}<locksmith:5f0a>{% endcomment -%}
+            {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.desktop-left, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+          {%- comment %}</locksmith:5f0a>{% endcomment -%}
           {%- if link.links != blank -%} {% assign class = "has-submenu" %} {% endif %}
           <li class="{{ class }}" >
             <a href="{{ link.url }}">{{ link.title }}</a>
             {%- if link.links != blank -%}
               <ul class="submenu">
                 {%- for child_link in link.links -%}
+                  {%- comment %}<locksmith:9209>{% endcomment -%}
+                    {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: child_link, subject_parent: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                  {%- comment %}</locksmith:9209>{% endcomment -%}
                   <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
                 {% endfor %}
               </ul>
@@ -622,6 +634,9 @@
           {% endif %}
 
           {% for link in linklists.dev-mobile.links %}
+            {%- comment %}<locksmith:2a3b>{% endcomment -%}
+              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.dev-mobile, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:2a3b>{% endcomment -%}
             <li><a href="{{ link.url }}" class="nav-link-text">{{ link.title }}</a></li>
           {% endfor %}
           
@@ -656,6 +671,9 @@
         </li>
         {% assign loginUrl = "https://wearerasa.com/account/login" %}
         {% for link in linklists.desktop-right.links %}
+            {%- comment %}<locksmith:f80f>{% endcomment -%}
+              {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: link, subject_parent: linklists.desktop-right, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+            {%- comment %}</locksmith:f80f>{% endcomment -%}
             {% if shop.customer_accounts_enabled %}
               {% if customer %}
                 <li class="has-submenu" >
@@ -671,6 +689,9 @@
                   {%- if link.links != blank -%}
                     <ul class="submenu">
                       {%- for child_link in link.links -%}
+                        {%- comment %}<locksmith:6754>{% endcomment -%}
+                          {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: child_link, subject_parent: link, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+                        {%- comment %}</locksmith:6754>{% endcomment -%}
                         <li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>
                       {% endfor %}
                     </ul>

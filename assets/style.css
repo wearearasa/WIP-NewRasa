@@ -139,6 +139,14 @@ input[type=number]::-webkit-outer-spin-button {
    -webkit-appearance: inner-spin-button !important;
 }
 
+.article-content > img,
+.article-content > p img {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
 @media(min-width: 813px) {
   .mobile-menu,
   .shopping { display: none; }

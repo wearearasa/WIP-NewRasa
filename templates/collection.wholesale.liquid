@@ -233,6 +233,9 @@
   <div class="container">
     <table class="collection-wholesale">
         {% for product in collection.products %}
+      {%- comment %}<locksmith:d840>{% endcomment -%}
+        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: product, subject_parent: collection, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:d840>{% endcomment -%}
       <tr>
           {% include 'product-grid-item-wholesale' with products_per_row %}
         {% else %}  

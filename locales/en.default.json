@@ -352,6 +352,9 @@
       },
       "marketing": {
         "accept_marketing_checkbox_label": "By clicking \"submit,\" you agree to receive emails & special discounts from Rasa and accept our web terms of use and privacy and cookie policy."
+      },
+      "shop_policies": {
+        "terms_of_service": "By submitting this form, you agree to receive automated marketing messages from Rasa at your shipping address mobile number. Consent is not a condition of any purchase. Message and data rates may apply. View privacy policy."
       }
     }
   }

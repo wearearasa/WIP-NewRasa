@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:d8c1>{% endcomment -%}
+  {%- assign locksmith_c92f_product__available = false %}{% assign locksmith_c92f_product__first_available_variant = nil %}{% assign locksmith_c92f_product__selected_variant = nil %}{% assign locksmith_c92f_product__price = nil %}{% assign locksmith_c92f_product__price_min = nil %}{% assign locksmith_c92f_product__price_max = nil %}{% assign locksmith_c92f_product__price_varies = false %}{% assign locksmith_c92f_product__compare_at_price = nil %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_c92f_product__available == false and variant.available %}{% assign locksmith_c92f_product__available = true %}{% endif %}{% if locksmith_c92f_product__first_available_variant == nil and variant.available %}{% assign locksmith_c92f_product__first_available_variant = variant %}{% endif %}{% if locksmith_c92f_product__selected_variant == nil and variant.selected %}{% assign locksmith_c92f_product__selected_variant = variant %}{% endif %}{% if variant == product.selected_or_first_available_variant %}{% assign locksmith_c92f_product__selected_or_first_available_variant = product.selected_or_first_available_variant %}{% endif %}{% if locksmith_c92f_product__price == nil %}{% assign locksmith_c92f_product__price = variant.price %}{% endif %}{% if locksmith_c92f_product__price_min == nil or variant.price < locksmith_c92f_product__price_min %}{% assign locksmith_c92f_product__price_min = variant.price %}{% endif %}{% if locksmith_c92f_product__price_max == nil or locksmith_c92f_product__price_max < variant.price %}{% assign locksmith_c92f_product__price_max = variant.price %}{% endif %}{% if locksmith_c92f_product__compare_at_price == nil %}{% assign locksmith_c92f_product__compare_at_price = variant.compare_at_price %}{% endif %}{% endfor %}{% if locksmith_c92f_product__selected_or_first_available_variant == nil %}{% assign locksmith_c92f_product__selected_or_first_available_variant = locksmith_c92f_product__first_available_variant %}{% endif %}{% if locksmith_c92f_product__price_min != locksmith_c92f_product__price_max %}{% assign locksmith_c92f_product__price_varies = true %}{% endif -%}
+{%- comment %}</locksmith:d8c1>{% endcomment -%}
+
 <td class="shop-item-home">
   <a href="{{ product.url | within: collection }}">
     <figure><img src="{{ product | img_url: 'medium' }}" alt="{{ product.featured_image.alt | escape }}" /></figure>
@@ -18,8 +22,8 @@
   <h4>Wholesale</h4>
   <span class="item-meta">
     <span class="price product-{{product.id}}">
-      {% if product.price_varies %}From {% endif %}{{ product.price | money }}{% if on_sale %}
-      <s class="compare-at-price">{{ product.compare_at_price | money }}</s>
+      {% if locksmith_c92f_product__price_varies %}From {% endif %}{{ locksmith_c92f_product__price | money }}{% if on_sale %}
+      <s class="compare-at-price">{{ locksmith_c92f_product__compare_at_price | money }}</s>
       {% endif %}
     </span>
   </span>
@@ -28,7 +32,7 @@
 
     
 <form action="/cart/add" data-productid="{{product.id}}" method="post" enctype="multipart/form-data" id="AddToCartForm"> 
-{% if product.available %}{% include 'subscription-product' %}{% endif %} 
+{% if locksmith_c92f_product__available %}{% include 'subscription-product' %}{% endif %} 
 	  <div class="product-single-picker">   
           <div class="product-single__quantity">
             <input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
@@ -36,9 +40,12 @@
           <div class="product-variants">
             <select name="id" data-productid="{{product.id }}" id="productSelect" class="product-single__variants">
               {% for variant in product.variants %}
+              {%- comment %}<locksmith:c2e3>{% endcomment -%}
+                {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+              {%- comment %}</locksmith:c2e3>{% endcomment -%}
               {% if variant.available %}
 
-              <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+              <option {% if variant == locksmith_c92f_product__selected_or_first_available_variant %} selected="selected" {% endif %} value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
 
               {% else %}
               <option disabled="disabled">

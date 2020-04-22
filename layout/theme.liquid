@@ -1,25 +1,40 @@
+{%- comment %}<locksmith:2256>{% endcomment -%}
+  {%- include 'locksmith' -%}
+{%- comment %}</locksmith:2256>{% endcomment -%}
+
 <!DOCTYPE html>
 <html lang="en-US" prefix="og: http://ogp.me/ns#">
   <head>
     <title>{{ page_title }}</title>
+   
     <meta name="p:domain_verify" content="9e81d57ec903337af5b7775559f4e37c"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="google-site-verification" content="dduB2eM-brPwGrcrBcvhqcLcFz30yjK0v3Zxghl0NIQ" />
-    <meta name="google-site-verification" content="A2uAb3E2T3bgcbUJE6sCzt8WVR0MrzQhbXIyiKhW49Q" />
+    <meta name="google-site-verification" content="CoDbU94HCSLfHV0GrAnsb5hJ4V52WHzMDMg3xTNXtb4" />
     <meta name="google-site-verification" content="j72HbNS0BXWV1iRRcifHu3yGLLCTcLlU6EmP9AF4ej8" />
     <meta name="msvalidate.01" content="F3934A7784325C5FA6CC36D4BFD42332" />
     <meta name="google-site-verification" content="dHzsyzuhRC0EH5_8lG4IDwwXup8NWpvdBaPy3HZQp00" />
+    {% if template contains "product" %}
+      {% for tag in product.tags %}
+        {% if tag == "noindex" %}
+          <meta name="robots" content="noindex">
+        {% endif %}
+      {% endfor %}
+    {% endif %}
+
     <link rel="pingback" href="/">
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                                                          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                                })(window,document,'script','dataLayer','GTM-KRW8J6W');</script>
-    <!-- End Google Tag Manager -->
+     <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T7LR9V8');</script>
+<!-- End Google Tag Manager -->
     {% if page_description %}
-    <meta name="description" content="{{ page_description | escape }}" />
+    {%- comment %}<locksmith:5ae0>{% endcomment -%}
+      {%- capture var %}{% render 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}" />{% endif -%}
+      {%- comment %}original: <meta name="description" content="{{ page_description | escape }}" />{%- endcomment %}
+    {%- comment %}</locksmith:5ae0>{% endcomment -%}
     {% endif %}
     <style></style>
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:400,400i,500,700,700i|Muli:300,400,400i,700" rel="stylesheet">
@@ -74,17 +89,7 @@
         float: none !important;
       }
 
-      .article-content > div img,
-      .article-content > p img {
-        float: none !important;
-        padding: 0;
-        width: 100% !important;
-        float: none !important;
-        margin: 1em 0 !important;
-        width: 100%;
-        box-sizing: border-box;
-        border: 0;
-      }
+      
 
       .shopify-section {
         position: relative;
@@ -3227,13 +3232,22 @@
       })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
     </script>
 </head>
+  <script type="text/javascript">
+/* <![CDATA[ */
+(function(){if(window.voyage)return;window.voyage={q:[]};var fns=['init', 'track'];
+for(var i=0;i<fns.length;i++){(function(fn){window.voyage[fn]=function(){
+this.q.push([fn,arguments]);}})(fns[i])}})();voyage.init('886ca4b3bb', { popup: false });
+/* ]]> */
+</script>
+<script async src="https://assets.voyagetext.com/voyage.production.js"></script>
+
 
   <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KRW8J6W"
-                      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+   <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7LR9V8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
     {% include 'site-nav' %}
 
@@ -3284,6 +3298,7 @@
     <!-- Warning: Do not remove. This is used for CartHook Checkout Replacement -->
  	
     {{ 'ajaxinate.min.js' | asset_url | script_tag }}
+    {% include 'CML_snippet' %}
     
-  </body>
+  {% include 'subscribe-it-helper' %}</body>
 </html>

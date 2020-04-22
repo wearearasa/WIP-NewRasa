@@ -1,3 +1,7 @@
+{%- comment %}<locksmith:56c0>{% endcomment -%}
+  {%- assign locksmith_1389_product__first_available_variant = nil %}{% for variant in product.variants %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif %}{% if locksmith_1389_product__first_available_variant == nil and variant.available %}{% assign locksmith_1389_product__first_available_variant = variant %}{% endif %}{% endfor -%}
+{%- comment %}</locksmith:56c0>{% endcomment -%}
+
 {% comment %}V2.1.1 - September 2018
 This liquid snippet is used by Discount Ninja, an app from Limoni Apps
 Do not modify or remove this snippet, this snippet can be overwritten when the app is upgraded
@@ -24,8 +28,8 @@ Do not modify or remove this snippet, this snippet can be overwritten when the a
 
   {%- if product -%}
     {%- comment -%}Get the first variant if available{%- endcomment -%}
-    {%- if product.first_available_variant.id -%}
-      {%- assign variantid = product.first_available_variant.id -%}
+    {%- if locksmith_1389_product__first_available_variant.id -%}
+      {%- assign variantid = locksmith_1389_product__first_available_variant.id -%}
     {%- else -%}
       {%- assign variantid = 'null' -%}
     {%- endif -%}
@@ -35,6 +39,9 @@ Do not modify or remove this snippet, this snippet can be overwritten when the a
     window.limoniapps_discountninja_liquid.Product.VariantId = {{ variantid }};
     {%- assign collections = "" -%}
     {%- for collection in product.collections -%}
+      {%- comment %}<locksmith:8498>{% endcomment -%}
+        {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: collection, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+      {%- comment %}</locksmith:8498>{% endcomment -%}
       {%- assign collections = collections | append: collection.handle | append: "," -%}
     {%- endfor -%}
     window.limoniapps_discountninja_liquid.Product.Collections = '{{ collections }}';
@@ -42,6 +49,9 @@ Do not modify or remove this snippet, this snippet can be overwritten when the a
     if (window.limoniapps_discountninja_liquid.ProductVariants === null) window.limoniapps_discountninja_liquid.ProductVariants = [];
 
     {%- for variant in product.variants limit: 200 -%}
+    {%- comment %}<locksmith:21db>{% endcomment -%}
+      {%- capture var %}{% render 'locksmith-variables', scope: 'subject', subject: variant, subject_parent: product, variable: 'transparent' %}{% endcapture %}{% if var == "true" %}{% else %}{% continue %}{% endif -%}
+    {%- comment %}</locksmith:21db>{% endcomment -%}
     {%- comment -%}Add inventory quantity if it is tracked{%- endcomment -%}
     {%- assign inventory_quantity = variant.inventory_quantity -%}
     {%- if inventory_quantity == nil or inventory_quantity < 0 -%}

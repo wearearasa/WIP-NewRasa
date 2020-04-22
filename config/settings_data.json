@@ -360,10 +360,20 @@
               "button-label": "shop our products",
               "button-label-link": "shopify:\/\/collections\/all-products"
             }
+          },
+          "1586207011555": {
+            "type": "text",
+            "settings": {
+              "dark_peach": "How we're taking care of our team – and you – amidst COVID-19.",
+              "heading-static": "A note from the Rasa team.",
+              "button-label": "LEARN MORE",
+              "button-label-link": "shopify:\/\/pages\/a-note-from-rasa-about-covid-19"
+            }
           }
         },
         "block_order": [
-          "1562081216359"
+          "1562081216359",
+          "1586207011555"
         ],
         "settings": {}
       }
