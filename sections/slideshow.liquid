@@ -3,7 +3,7 @@ Name: Slideshow
 Version: 1.0
 {% endcomment %}
 
-<h1>This is a Slider Block</h1>
+
 
 {% schema %}
 
@@ -27,6 +27,22 @@ Version: 1.0
       "type": "html",
       "id": "heading",
       "label": "Heading"
+    }, {
+      "type": "radio",
+      "id": "heading-position",
+      "label": "Change heading alignment",
+      "options": [
+      {
+        "value": "left",
+        "label": "Left"
+      }, {
+        "value": "right",
+        "label": "Right"
+      }, {
+        "value": "center",
+        "label": "Center"
+      }
+      ]
     }, {
       "id": "btn-label",
       "type": "text",
