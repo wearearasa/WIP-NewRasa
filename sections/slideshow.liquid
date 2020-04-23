@@ -4,18 +4,31 @@ Version: 1.0
 {% endcomment %}
 
 {% if customer.id != null %}
-
 <section class="slider-section">
   <ul class="slick-slider">
-    <li class="slider-item slider-item-1">
+    
+    {% for block in section.blocks %}
+    
+    <li class="slider-item slider-item-{{ forloop.index }}">
+      <h3 class="slider-title">{{ block.settings.title }}</h3>
+      
+      {% if block.settings.heading != "" %}
+      <p class="slider-desc slider-desc-{{ forloop.index }}">
+        {{ block.settings.heading }}        
+      </p>
+      {% endif %}
+      
+      {% if block.settings.btn-link %}
+      <div class="btn-section btn-section-{{ forloop.index }}">
+        <a href="{{ block.settings.btn-link }}" class="button-red">{{ block.settings.btn-label }}</a>
+      </div>
+      {% endif %}
     </li>
 
-    <li class="slider-item slider-item-2">
-      </li>
+    {% endfor %}
   </div>
 </section>
-{% endif; %}
-
+{% endif %}
 {% schema %}
 
 {
@@ -39,7 +52,7 @@ Version: 1.0
       "id": "heading",
       "label": "Heading"
     }, {
-      "type": "radio",
+      "type": "select",
       "id": "heading-position",
       "label": "Change heading alignment",
       "options": [
@@ -47,11 +60,11 @@ Version: 1.0
         "value": "left",
         "label": "Left"
       }, {
-        "value": "right",
-        "label": "Right"
-      }, {
         "value": "center",
         "label": "Center"
+      }, {
+        "value": "right",
+        "label": "Right"
       }
       ]
     }, {
@@ -63,7 +76,7 @@ Version: 1.0
       "type": "url",
       "label": "Button link"
     }, {
-      "type": "radio",
+      "type": "select",
       "id": "btn-position",
       "label": "Change button alignment",
       "options": [
@@ -71,11 +84,11 @@ Version: 1.0
         "value": "left",
         "label": "Left"
       }, {
-        "value": "right",
-        "label": "Right"
-      }, {
         "value": "center",
         "label": "Center"
+      }, {
+        "value": "right",
+        "label": "Right"
       }
       ]
     }
@@ -109,7 +122,9 @@ Version: 1.0
     overflow: hidden;
     width: 100%;
   }
-
+  
+  .slick-slider { padding-left: 0; }
+  
   .slider-item {
     background-position: center;
     background-size: cover;
@@ -117,14 +132,56 @@ Version: 1.0
     list-style: none;
     height: 520px;
   }
-
-  .slider-item-1 {
-    background-image:url("https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/iced-dalgona-coffee-royalty-free-image-1586272836.jpg?crop=0.668xw:1.00xh;0.332xw,0&resize=980:*");
+  
+  .slider-title {
+    font-weight: bold;
+    font-size: 60px;
+    line-height: 31px;
+    text-align: center;
+    letter-spacing: 0.02em;
+    margin-bottom: 15px;
+    font-family: Cormorant Garamond;
+    margin-top: 50px;
+  }
+  
+  {% for item in section.blocks %}
+  .slider-item-{{ forloop.index }} {
+    background-image:url({{ item.settings.item-image | img_url: "master" }});
+  }
+  {% endfor %}
+  
+  .slider-desc {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
   }
 
-  .slider-item-2 {
-    background-image:url("https://conteudo.solutudo.com.br/wp-content/uploads/2019/10/coffee.jpg");
+  .slider-desc {
+    color: #2f2e2c;
+    font-size: 0.9375em;
+    letter-spacing: -0.01333em;
+    background-color: rgba(255,255,255,0.5);
+    padding: 2% 5%;
+    margin-top: 3%;
+    margin-bottom: 2%;
   }
+
+  .btn-section {
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  {% for al in section.blocks %}
+  .slider-desc-{{ forloop.index }} {
+    text-align: {{ al.settings.heading-position }};
+  }
+
+  .btn-section-{{ forloop.index }} {
+    text-align: {{ al.settings.btn-position }};
+  }
+
+  {% endfor %}
+  
 </style>
 
 <script type="text/javascript">
