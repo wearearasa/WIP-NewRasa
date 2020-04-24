@@ -173,10 +173,11 @@ Version: 1.0
   
   @media( max-width: 812px ) {
     {% for item in section.blocks %}
-      .slider-item-{{ forloop.index }} {
-        background-image:url({{ item.settings.item-mobile-image | img_url: "master" }});
-        justify-content: {{ item.settings.content-alignment }};
-      }
+      {% if item.settings.item-mobile-image %}
+        .slider-item-{{ forloop.index }} {
+          background-image:url({{ item.settings.item-mobile-image | img_url: "master" }});
+        }
+      {% endif %}
     {% endfor %}
 
     .slider-content {
