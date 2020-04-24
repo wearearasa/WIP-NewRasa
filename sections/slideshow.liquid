@@ -43,16 +43,12 @@ Version: 1.0
     "settings": [
     {
       "type": "image_picker",
-      "label": "Add Image",
+      "label": "Desktop Image",
       "id": "item-image"
     }, {
-      "type": "text",
-      "id": "title",
-      "label": "Title"
-    }, {
-      "type": "html",
-      "id": "heading",
-      "label": "Heading"
+      "type": "image_picker",
+      "label": "Mobile Image",
+      "id": "item-mobile-image"
     }, {
       "type": "select",
       "id": "content-alignment",
@@ -69,6 +65,14 @@ Version: 1.0
         "label": "Right"
       }
       ]
+    }, {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }, {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading"
     }, {
       "id": "btn-label",
       "type": "text",
@@ -127,7 +131,7 @@ Version: 1.0
     letter-spacing: 0.02em;
     font-family: Cormorant Garamond;
     margin-top: 0;
-    margin-bottom: 0;
+    margin-bottom: 15px;
   }
   
   {% for item in section.blocks %}
@@ -167,6 +171,19 @@ Version: 1.0
     color: #fff;
   }
   
+  @media( max-width: 812px ) {
+    {% for item in section.blocks %}
+      .slider-item-{{ forloop.index }} {
+        background-image:url({{ item.settings.item-mobile-image | img_url: "master" }});
+        justify-content: {{ item.settings.content-alignment }};
+      }
+    {% endfor %}
+
+    .slider-content {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
 </style>
 
 <script type="text/javascript">
