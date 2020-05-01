@@ -146,6 +146,15 @@ Version: 1.0
     background-image:url({{ item.settings.item-image | img_url: "master" }});
     justify-content: {{ item.settings.content-alignment }};
   }
+
+  {% if item.settings.title-color %}
+    .slider-item-{{ forloop.index }} .slider-title { color: {{ item.settings.title-color }}; }
+  {% endif %}
+
+  {% if item.settings.heading-color %}
+    .slider-item-{{ forloop.index }} .slider-desc { color: {{ item.settings.heading-color }}; }
+  {% endif %}
+
   {% endfor %}
 
   .slider-item {
