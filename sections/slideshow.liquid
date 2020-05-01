@@ -193,6 +193,8 @@ Version: 1.0
   }
   
   @media( max-width: 812px ) {
+    .slider-item { height: 560px; }
+
     {% for item in section.blocks %}
       {% if item.settings.item-mobile-image %}
         .slider-item-{{ forloop.index }} {
