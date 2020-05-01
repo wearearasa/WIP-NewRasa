@@ -69,9 +69,17 @@ Version: 1.0
       "id": "title",
       "label": "Title"
     }, {
+      "type": "color",
+      "id": "title-color",
+      "label": "Title Color"
+    }, {
       "type": "html",
       "id": "heading",
       "label": "Heading"
+    }, {
+      "type": "color",
+      "id": "heading-color",
+      "label": "Heading Color"
     }, {
       "id": "btn-label",
       "type": "text",
@@ -160,7 +168,6 @@ Version: 1.0
   }
   
   .btn-section { text-align: center; }
-
   
   .slick-dots { bottom: 25px; }
   
@@ -168,6 +175,11 @@ Version: 1.0
   
   .slick-dots li.slick-active button::before {
     color: #fff;
+  }
+
+  .slider-section .button-red {
+    max-width: 200px;
+    width: 100%;
   }
   
   @media( max-width: 812px ) {
@@ -183,6 +195,8 @@ Version: 1.0
       flex: 0 0 100%;
       max-width: 100%;
     }
+
+    .slider-title { line-height: 70px; }
   }
 </style>
 
