@@ -3,114 +3,6 @@ Name: Slideshow
 Version: 1.0
 {% endcomment %}
 
-<section class="slider-section">
-  <ul class="slick-slider">
-    
-    {% for block in section.blocks %}
-    
-    <li class="slider-item slider-item-{{ forloop.index }}">
-      <div class="slider-content slider-content-{{ forloop.index }}">
-        <h3 class="slider-title">{{ block.settings.title }}</h3>
-        
-        {% if block.settings.heading != "" %}
-        <p class="slider-desc slider-desc-{{ forloop.index }}">
-          {{ block.settings.heading }}        
-        </p>
-        {% endif %}
-        
-        {% if block.settings.btn-link %}
-        <div class="btn-section btn-section-{{ forloop.index }}">
-          <a href="{{ block.settings.btn-link }}" class="button-red">{{ block.settings.btn-label }}</a>
-        </div>
-        {% endif %}
-      </div>
-    </li>
-    
-    {% endfor %}
-  </div>
-</section>
-
-{% schema %}
-
-{
-  "name": "Slideshow",
-  "blocks": [
-  {
-    "type": "select",
-    "name": "Add Item",
-    "limit": 4,
-    "settings": [
-    {
-      "type": "image_picker",
-      "label": "Desktop Image",
-      "id": "item-image"
-    }, {
-      "type": "image_picker",
-      "label": "Mobile Image",
-      "id": "item-mobile-image"
-    }, {
-      "type": "select",
-      "id": "content-alignment",
-      "label": "Content alignment",
-      "options": [
-      {
-        "value": "left",
-        "label": "Left"
-      }, {
-        "value": "center",
-        "label": "Center"
-      }, {
-        "value": "right",
-        "label": "Right"
-      }
-      ]
-    }, {
-      "type": "text",
-      "id": "title",
-      "label": "Title"
-    }, {
-      "type": "color",
-      "id": "title-color",
-      "label": "Title Color"
-    }, {
-      "type": "html",
-      "id": "heading",
-      "label": "Heading"
-    }, {
-      "type": "color",
-      "id": "heading-color",
-      "label": "Heading Color"
-    }, {
-      "id": "btn-label",
-      "type": "text",
-      "label": "Button Label"
-    }, {
-      "id": "btn-link",
-      "type": "url",
-      "label": "Button link"
-    }
-    ]
-  }
-  ],
-  "presets": [
-  {
-    "name": "Slideshow",
-    "category": "Layout"
-  }
-  ]
-}
-
-{% endschema %}
-
-{% stylesheet %}
-
-
-
-{% endstylesheet %}
-
-{% javascript %}
-{% endjavascript %}
-
 <style>
   .slider-section,
   .slider {
@@ -227,3 +119,111 @@ Version: 1.0
     cssEase: 'linear'
   });
 </script>
+
+<section class="slider-section">
+  <ul class="slick-slider">
+    
+    {% for block in section.blocks %}
+    
+    <li class="slider-item slider-item-{{ forloop.index }}">
+      <div class="slider-content slider-content-{{ forloop.index }}">
+        <h3 class="slider-title">{{ block.settings.title }}</h3>
+        
+        {% if block.settings.heading != "" %}
+        <p class="slider-desc slider-desc-{{ forloop.index }}">
+          {{ block.settings.heading }}        
+        </p>
+        {% endif %}
+        
+        {% if block.settings.btn-link %}
+        <div class="btn-section btn-section-{{ forloop.index }}">
+          <a href="{{ block.settings.btn-link }}" class="button-red">{{ block.settings.btn-label }}</a>
+        </div>
+        {% endif %}
+      </div>
+    </li>
+    
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+
+{
+  "name": "Slideshow",
+  "blocks": [
+  {
+    "type": "select",
+    "name": "Add Item",
+    "limit": 4,
+    "settings": [
+    {
+      "type": "image_picker",
+      "label": "Desktop Image",
+      "id": "item-image"
+    }, {
+      "type": "image_picker",
+      "label": "Mobile Image",
+      "id": "item-mobile-image"
+    }, {
+      "type": "select",
+      "id": "content-alignment",
+      "label": "Content alignment",
+      "options": [
+      {
+        "value": "left",
+        "label": "Left"
+      }, {
+        "value": "center",
+        "label": "Center"
+      }, {
+        "value": "right",
+        "label": "Right"
+      }
+      ]
+    }, {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    }, {
+      "type": "color",
+      "id": "title-color",
+      "label": "Title Color"
+    }, {
+      "type": "html",
+      "id": "heading",
+      "label": "Heading"
+    }, {
+      "type": "color",
+      "id": "heading-color",
+      "label": "Heading Color"
+    }, {
+      "id": "btn-label",
+      "type": "text",
+      "label": "Button Label"
+    }, {
+      "id": "btn-link",
+      "type": "url",
+      "label": "Button link"
+    }
+    ]
+  }
+  ],
+  "presets": [
+  {
+    "name": "Slideshow",
+    "category": "Layout"
+  }
+  ]
+}
+
+{% endschema %}
+
+{% stylesheet %}
+
+
+
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
